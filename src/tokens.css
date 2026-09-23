@@ -1,0 +1,92 @@
+/**
+ * KlearNow / Klear360 design tokens (from Klearnow_ai/tokens.css)
+ * Applied to marketing scroll experience.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* KlearNow brand primitives */
+  --kn-indigo-500: #458DFC;
+  --kn-indigo-600: #3078F0;
+  --kn-indigo-700: #002d42;
+  --kn-indigo-800: #002333;
+  --kn-indigo-900: #001a26;
+  --kn-indigo-100: #d1dce1;
+  --kn-sapphire-500: #005d7b;
+  --kn-sapphire-400: #357e96;
+  --kn-sea-50: #e8f3f7;
+  --kn-sea-100: #e6ecef;
+  --kn-marigold-500: #f69000;
+  --kn-purple-500: #6c5dd3;
+  --kn-purple-100: #e4dff6;
+  --kn-surface-0: #ffffff;
+  --kn-surface-900: #282e38;
+
+  /* Semantic aliases */
+  --brand-primary: var(--kn-indigo-500);
+  --brand-primary-highlight: var(--kn-sapphire-500);
+  --brand-accent: var(--kn-sapphire-500);
+  --brand-accent-faded: rgba(69, 141, 252, 0.14);
+  --brand-ai: var(--kn-purple-500);
+  --brand-ai-faded: rgba(108, 93, 211, 0.12);
+  --brand-marigold: var(--kn-marigold-500);
+
+  --color-bg-dark: var(--kn-indigo-900);
+  --color-bg-indigo: var(--kn-indigo-500);
+  --color-bg-light: var(--kn-sea-50);
+  --color-fg-dark: var(--kn-surface-900);
+  --color-fg-light: #f0f4f6;
+  --color-fg-muted-dark: rgba(40, 46, 56, 0.55);
+  --color-fg-muted-light: rgba(240, 244, 246, 0.55);
+  --color-fg-secondary-dark: rgba(40, 46, 56, 0.72);
+  --color-fg-secondary-light: rgba(240, 244, 246, 0.72);
+  --color-accent: var(--brand-primary);
+  --color-border-dark: rgba(255, 255, 255, 0.12);
+  --color-border-light: rgba(69, 141, 252, 0.12);
+  --color-border-indigo: rgba(0, 93, 123, 0.25);
+
+  /* Spacing (Klear360) */
+  --spacing-0: 0;
+  --spacing-1: 2px;
+  --spacing-2: 4px;
+  --spacing-3: 8px;
+  --spacing-4: 12px;
+  --spacing-5: 16px;
+  --spacing-6: 20px;
+  --spacing-7: 24px;
+  --spacing-8: 32px;
+  --spacing-9: 40px;
+  --spacing-10: 48px;
+  --spacing-11: 56px;
+
+  /* Typography */
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --type-ui-sm: 11px;
+  --type-ui-md: 14px;
+  --type-body-md: 16px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  --duration-quick: 200ms;
+  --duration-moderate: 280ms;
+  --duration-gentle: 480ms;
+  --duration-2xgentle: 960ms;
+  --easing-entrance: cubic-bezier(0, 0, 0.2, 1);
+  --easing-emphasized: cubic-bezier(0.5, 0, 0, 1);
+  --easing-standard: cubic-bezier(0.3, 0, 0.2, 1);
+
+  --elevation-low: 0 1px 3px rgba(0, 26, 38, 0.08);
+  --elevation-mid: 0 4px 20px rgba(0, 26, 38, 0.12);
+  --elevation-high: 0 8px 32px rgba(0, 26, 38, 0.18);
+
+  --focus-ring: 0 0 0 4px var(--brand-accent-faded);
+  --top-nav-color: var(--kn-indigo-500);
+  --header-height: 56px;
+}

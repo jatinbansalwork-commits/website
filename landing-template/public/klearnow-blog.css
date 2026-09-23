@@ -1,0 +1,97 @@
+/* Blog listing — Crealo-style layout with KlearNow rounded corners */
+
+.section_latest-blog .latest-blog_image,
+.section_latest-blog .all-blog_post-image,
+.section_all-blog-post .all-blog_post-image,
+.section_latest-blog .blog-post-wrapper,
+.section_all-blog-post .blog-post-wrapper {
+  border-radius: 12px;
+  overflow: clip;
+}
+
+.section_latest-blog .latest-blog_image,
+.section_latest-blog .all-blog_post-image,
+.section_all-blog-post .all-blog_post-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background-color: var(--kn-surface-muted, #e8eef5);
+}
+
+.section_latest-blog .blog-post-wrapper,
+.section_all-blog-post .blog-post-wrapper {
+  display: block;
+}
+
+.section_all-blog-post .fs-radio_field-2,
+.section_all-blog-post .fs-radio_button-2,
+.section_all-blog-post .fs-search_field-1 {
+  border-radius: 12px;
+}
+
+.section_all-blog-post .fs-radio_field-2 {
+  overflow: hidden;
+}
+
+.section_latest-blog .latest-blog_collection-item,
+.section_all-blog-post .ressources-cta-collection-item .blog-post-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Webflow IX opacity — static export without blog page interactions */
+.section_latest-blog .latest-blog_image,
+.section_all-blog-post .all-blog_post-image,
+.section_latest-blog .all-blog_post-image,
+.section_latest-blog .latest-blog_description-container,
+.section_all-blog-post .all-blog_text-container {
+  opacity: 1 !important;
+}
+
+.section_all-blog-post .fs-radio_label-2 {
+  border-radius: 12px;
+}
+
+/* Single post (Crealo-style) */
+.section_blog-article .hero_blog-image,
+.section_blog-article .hero_blog-image-container {
+  border-radius: 12px;
+  overflow: clip;
+}
+
+.section_blog-article .hero_blog-image {
+  opacity: 1 !important;
+}
+
+.kn-blog-sidebar-cta {
+  border-radius: 12px;
+}
+
+.kn-blog-sidebar-cta .heading-style-h5 {
+  color: #fff;
+}
+
+.section_blog-author-grid .author_image.kn-author-mark {
+  border-radius: 12px;
+  padding: 0.4rem;
+  background-color: #eef4ff;
+  object-fit: contain;
+}
+
+.section_latest-blog .kn-related-grid.ressources-cta-collection-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.section_latest-blog .kn-related-grid .blog-post-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.section_latest-blog .kn-related-grid .all-blog_post-image {
+  flex: 0 0 auto;
+  max-height: 16rem;
+}

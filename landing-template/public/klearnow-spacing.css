@@ -1,0 +1,1373 @@
+/**
+ * KlearNow — section spacing (2 rules only)
+ *
+ * RULE 2 — STANDARD SPACING
+ *   Each section’s inner band uses one vertical scale (Webflow padding-section-*).
+ *   Values are the single source of truth below — do not hardcode rem in page HTML.
+ *
+ * RULE 1 — OPTICAL SPACING
+ *   When section B follows section A, B’s top band uses OPTICAL (not full standard top)
+ *   so the gap between content does not feel doubled (A bottom + B top).
+ *   Default optical: 3rem. Tight optical (beige stacks, testimonials): 2.5rem.
+ *   Exceptions: first section after logo strip uses standard medium top (5rem).
+ *
+ * Load after klearnow-site.min.css.
+ */
+
+:root {
+  /* Brand primary — buttons, links, accents (sitewide) */
+  --kn-primary: #506EE8;
+  --kn-primary-hover: #3F59D4;
+  --kn-primary-soft: color-mix(in srgb, var(--kn-primary) 12%, #fff);
+  --kn-primary-border: color-mix(in srgb, var(--kn-primary) 28%, transparent);
+  --crealo--2-blue: var(--kn-primary);
+  --crealo-bg--bg-color: #fff;
+
+  /* Rule 2 — standard section padding (top & bottom unless Rule 1 overrides top) */
+  --kn-section-standard-large: 7rem;
+  --kn-section-standard-medium: 5rem;
+  --kn-section-standard-small: 3rem;
+  --kn-section-standard-xxsmall: 1rem;
+
+  /* Rule 1 — optical gap (stacked sections) */
+  --kn-section-optical: 3rem;
+  --kn-section-optical-tight: 2.5rem;
+
+  /* Legacy aliases (use --kn-section-* in new code) */
+  --kn-optical-gap: var(--kn-section-optical);
+  --kn-optical-gap-tight: var(--kn-section-optical-tight);
+
+  --kn-heading-stack-gap: 0.75rem;
+  /* Operation/product hero band — design target 837×460 (aspect-ratio is source of truth) */
+  --kn-hero-media-height: 28.75rem;
+  --kn-hero-media-aspect: 837 / 460;
+  --kn-hero-object-position: 50% 45%;
+  --kn-surface-white: #fff;
+  --kn-surface-beige: var(--crealo--4-beige, #fcf6ef);
+  --kn-dot-grid-opacity: 0.42;
+}
+
+/* ——— Crealo canvas: fixed dot grid + solid section bands (no muddy overlap) ——— */
+.page-wrapper {
+  position: relative;
+  background-color: var(--kn-surface-white);
+  overflow-x: clip;
+}
+
+.page-wrapper::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(80, 110, 232, 0.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: var(--kn-dot-grid-opacity);
+}
+
+.page-wrapper > :is(.nav_main_component, main, .section_footer, .fs-styleguide-nav) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Boot: Crealo loads visible; avoid blank flash (inline overrides removed sitewide) */
+html.kn-booting .page-wrapper {
+  opacity: 1;
+}
+
+html.kn-ready .page-wrapper {
+  opacity: 1;
+}
+
+/* Solid fills so page dots read like Crealo (texture in hero / gutters only) */
+.section_hero.background-color-white,
+.section_customer-logo,
+.section_platform-metrics,
+.section_services,
+.section_support-platform,
+.section_product-overview:not(.background-color-beige),
+.section_support-you,
+.section_nomenclature,
+.section_latest-blog,
+.section_how-switch,
+.section_results:not(.background-color-beige),
+.section_results.version-features:not(.background-color-beige) {
+  background-color: var(--kn-surface-white);
+}
+
+.background-color-beige,
+.section_product-overview.background-color-beige,
+.section_results.background-color-beige,
+.section_support-crealo.background-color-beige,
+.section_support-you.background-color-beige,
+.section_support-platform.background-color-beige,
+.section_nomenclature.background-color-beige,
+.section_how-switch.background-color-beige {
+  background-color: var(--kn-surface-beige);
+}
+
+/* ——— Rule 2: standard spacing (padding-section-* bands) ——— */
+.padding-section-large {
+  padding-top: var(--kn-section-standard-large);
+  padding-bottom: var(--kn-section-standard-large);
+}
+
+.padding-section-medium {
+  padding-top: var(--kn-section-standard-medium);
+  padding-bottom: var(--kn-section-standard-medium);
+}
+
+.padding-section-small {
+  padding-top: var(--kn-section-standard-small);
+  padding-bottom: var(--kn-section-standard-small);
+}
+
+.padding-section-xxsmall {
+  padding-top: var(--kn-section-standard-xxsmall);
+  padding-bottom: var(--kn-section-standard-xxsmall);
+}
+
+/* ——— Rule 1: optical spacing (adjacent sections) ——— */
+
+/* Beige support-you / how-switch rhythm (operation-type pages) */
+.section_support-you.background-color-beige + .section_product-overview.background-color-beige .padding-section-medium,
+.section_support-you.background-color-beige + .section_product-overview .padding-section-medium {
+  padding-top: var(--kn-optical-gap);
+}
+
+.section_product-overview.background-color-beige + .section_support-you:not(.background-color-beige) .padding-section-large,
+.section_product-overview.background-color-beige + .section_results .padding-section-large,
+.section_product-overview:not(.background-color-beige) + .section_support-you.is-licensed-broker .padding-section-large {
+  padding-top: var(--kn-optical-gap);
+}
+
+/* White product band — beige on analytics cards (customs brokers two-up, etc.) */
+.section_product-overview:not(.background-color-beige) .product_grid.is_analytics.is_two-up .product-overview_grid.is_analytics.is_vertical {
+  background-color: var(--kn-surface-beige, var(--crealo--4-beige, #fcf6ef));
+  border-radius: 12px;
+  overflow: clip;
+}
+
+.section_results.version-features.is-freight-audience + .section_support-you.is-licensed-broker .padding-section-large {
+  padding-top: var(--kn-optical-gap);
+}
+
+.section_support-you.is-licensed-broker + .section_how-switch .padding-section-medium {
+  padding-top: var(--kn-optical-gap);
+}
+
+/* Product ecosystem — beige product bands (shared; was duplicated inline on product pages) */
+.section_product-overview.background-color-beige .advantages_heading-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.section_product-overview.background-color-beige .advantages_subheading {
+  max-width: 42rem;
+  margin: 0 auto;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--kn-text) 72%, transparent);
+}
+
+.section_product-overview.background-color-beige .product-overview_grid {
+  align-items: stretch;
+  min-height: 21.375rem;
+}
+
+.section_product-overview.background-color-beige .product-overview_text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: center;
+  padding: 2.5rem 2rem;
+}
+
+@media screen and (max-width: 991px) {
+  .section_product-overview.background-color-beige .product-overview_grid {
+    min-height: 0;
+  }
+}
+
+/* Homepage + Crealo-style hero: card pair + wide slot (Webflow 2-col) */
+.section_hero .hero_image-grid:not(.gestion-des-cessions-page) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  width: 100%;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.section_hero .hero_homepage-image-grid,
+.section_hero .hero_image-grid .hero_image-item {
+  min-width: 0;
+}
+
+.section_hero .hero_homepage-image-grid.is-1 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  align-items: stretch;
+  min-height: 0;
+  width: 100%;
+}
+
+/* Homepage hero pair — shared card proportion (279×368 design slot) */
+.section_hero .hero_homepage-image-grid.is-1 .hero-home-lottie-placeholder.has-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 279 / 368;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.section_hero .hero_homepage-image-grid.is-1 .hero-home-hero-photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  margin: 0;
+  padding: 0;
+  border: none;
+  object-fit: cover !important;
+  object-position: center center;
+}
+
+.section_hero .hero_homepage-image-grid.is-1 .hero-home-hero-photo.is-hero-art,
+.section_hero .hero_homepage-image-grid.is-1 .hero-home-hero-photo.is-hero-svg {
+  object-fit: cover !important;
+  background: transparent;
+}
+
+.section_hero .hero_image-grid:not(.gestion-des-cessions-page) .hero-home-lottie-placeholder {
+  width: 100%;
+  min-height: 23rem;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: rgba(80, 110, 232, 0.06);
+  border: 1px dashed rgba(80, 110, 232, 0.22);
+  border-radius: 12px;
+}
+
+.section_hero .hero_homepage-image-grid.is-1 .hero-home-lottie-placeholder.has-photo {
+  min-height: 0;
+  border: none;
+  background: transparent;
+}
+
+.section_hero .hero_image-grid:not(.gestion-des-cessions-page) > .hero-home-lottie-placeholder.is-slot-3 {
+  min-height: 0;
+  height: auto;
+  align-self: stretch;
+}
+
+.section_hero .hero_image-grid:not(.gestion-des-cessions-page) > .hero-home-lottie-placeholder.is-slot-3.has-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 586 / 368;
+  min-height: 0;
+  overflow: hidden;
+  line-height: 0;
+  border: none;
+  background: transparent;
+}
+
+.section_hero .hero_image-grid:not(.gestion-des-cessions-page) > .hero-home-lottie-placeholder.is-slot-3.has-photo .hero-home-hero-photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  margin: 0;
+  object-fit: cover !important;
+  object-position: center center;
+}
+
+.section_hero .hero_image-grid:not(.gestion-des-cessions-page) .hero-home-lottie-placeholder.has-photo {
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+}
+
+.section_hero .hero-home-hero-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 23rem;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.section_hero .hero-home-hero-photo.is-hero-svg {
+  object-fit: contain;
+  background-color: #fff;
+}
+
+/* Homepage hero cards — stack outer grid on tablet; pair stays 2-up */
+@media screen and (max-width: 991px) {
+  .section_hero .hero_image-grid:not(.gestion-des-cessions-page) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+  }
+
+  .section_hero .hero_homepage-image-grid.is-1 {
+    width: 100%;
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+
+  .section_hero .hero_image-grid:not(.gestion-des-cessions-page) > .hero-home-lottie-placeholder.is-slot-3 {
+    min-height: clamp(12rem, 38vw, 18rem);
+    max-width: 36rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .section_hero .hero_homepage-image-grid.is-1 {
+    gap: 0.65rem;
+    max-width: 100%;
+  }
+}
+
+/* Why KlearNow / ABI tile — raster pattern (replaces inline SVG) */
+.hero-why-crealo_image.is_kn-pattern {
+  overflow: hidden;
+}
+
+.hero-why-crealo_image.is_kn-pattern:not(.is_margin) .hero-why-crealo_pattern-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  mix-blend-mode: lighten;
+}
+
+.hero-why-crealo_image.is_kn-pattern.is_margin .hero-why-crealo_pattern-img {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: 100% 50%;
+}
+
+/* Slot 3 pattern — flush to top of image band (drop Crealo is_margin offset) */
+.hero-why-crealo_item.is_3 .hero-why-crealo_image-container {
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.hero-why-crealo_item.is_3 .hero-why-crealo_image.is_kn-pattern.is_margin {
+  margin-top: 0;
+}
+
+.hero-why-crealo_item.is_3 .hero-why-crealo_pattern-img {
+  object-position: 100% 0;
+}
+
+/* Slot 1 pattern — top-right on brown tile; lighten drops black plate */
+.hero-why-crealo_item.is_1 .hero-why-crealo_image-container {
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.hero-why-crealo_item.is_1 .hero-why-crealo_image.is_kn-pattern.is_margin {
+  margin-top: 0;
+}
+
+.hero-why-crealo_item.is_1 .hero-why-crealo_pattern-img {
+  object-position: 100% 0;
+  mix-blend-mode: lighten;
+}
+
+.section_hero .hero_padding {
+  padding-top: clamp(2.5rem, 4.5vw, 4rem);
+}
+
+/* Heading stacks (homepage baseline) */
+.services_heading > .heading-description,
+.advantages_heading-description {
+  width: 100%;
+}
+
+.services_heading > :is(.support-platform_eyebrow, [class*="heading-style-h"], .text-size-regular, .text-size-medium),
+.heading-description > :is(.support-platform_eyebrow, [class*="heading-style-h"], .text-size-regular, .text-size-medium),
+.advantages_heading-description > :is(.support-platform_eyebrow, [class*="heading-style-h"], .text-size-regular, .text-size-medium) {
+  margin: 0;
+}
+
+.advantages_heading-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.advantages_heading-description .advantages_subheading {
+  margin: 0;
+}
+
+/* Section heading stacks — icon → title → subcopy (homepage services baseline) */
+.services_heading,
+.services_heading.mob,
+.section_support-platform .services_heading,
+.section_results .services_heading:has(> .heading-description),
+.support-you_heading,
+.product-overview_heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--kn-heading-stack-gap);
+  text-align: center;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services_heading > :is(.icon-1x1-medium, .icon-1x1-small, img.klearnow-mark-icon),
+.services_heading > :is(.heading-style-h2, .heading-style-h3, h2, h3),
+.services_heading > :is(.text-size-regular, .text-size-medium, p.text-size-regular),
+.support-you_heading > :is(.icon-1x1-medium, img.klearnow-mark-icon),
+.support-you_heading > :is(.heading-style-h2, h2),
+.support-you_heading > :is(.text-size-regular, .text-size-medium) {
+  margin: 0;
+}
+
+.section_results .services_heading > .heading-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--kn-heading-stack-gap);
+  width: 100%;
+  margin: 0;
+}
+
+/* Eyebrow / title / subcopy inside Webflow .heading-flex wrapper */
+.section_results .heading-description .heading-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--kn-heading-stack-gap);
+  width: 100%;
+}
+
+.section_results .heading-description .heading-flex > :is(
+  .support-platform_eyebrow,
+  [class*="heading-style-h"],
+  .text-size-regular,
+  .text-size-medium
+) {
+  margin: 0;
+}
+
+/* Operation-type: title + body split (version-features-7 grid) — keep icon aligned with copy */
+.section_results.version-features.is-freight-audience .services_heading.version-features-5 {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 72rem;
+}
+
+.section_results.version-features.is-freight-audience .heading-description.version-features-7 > .text-size-regular {
+  margin: 0;
+  align-self: end;
+  max-width: min(22rem, 100%);
+}
+
+.section_results.version-features.is-freight-audience .heading-description .heading-flex {
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.section_results.version-features.is-freight-audience .heading-style-h2.text-align-center.version-features-8 {
+  text-align: left;
+}
+
+@media screen and (max-width: 991px) {
+  .section_results.version-features.is-freight-audience .heading-description.version-features-7 > .text-size-regular {
+    align-self: flex-start;
+    max-width: min(36rem, 100%);
+  }
+}
+
+/* Homepage “You'll only hear about the exceptions.” card tint — also solution CTA band */
+.support-crealo_grid .support-crealo_item,
+.solution_cta {
+  background-color: color-mix(in srgb, var(--kn-primary) 10%, transparent);
+  border-radius: 12px;
+}
+
+/* Logo strip → first body section: standard medium top (chapter start, not optical) */
+.section_customer-logo.is_homepage + [class*="section_"]
+  > .padding-global
+  > :is(.container-large, .container-medium)
+  > :is(.padding-section-large, .padding-section-medium) {
+  padding-top: var(--kn-section-standard-medium);
+}
+
+/* Operation “How it works” bento — even gutters + card padding */
+.section_support-you .support-you_grid {
+  column-gap: 1.5rem;
+  row-gap: 1.5rem;
+  align-items: stretch;
+}
+
+.section_support-you .support-you_grid .support-you_item {
+  border-radius: 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1.5rem;
+  align-self: stretch;
+}
+
+/* Twin middle cards (no .grid) — same vertical rhythm as full-width .grid rows */
+.section_support-you .support-you_grid > .support-you_item:not(.grid) {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: 100%;
+}
+
+.section_support-you .support-you_grid > .support-you_item:not(.grid) .support-you_image-container {
+  margin-top: auto;
+}
+
+.section_support-you .support-you_grid .support-you_image,
+.section_support-you .support-you_grid .support-you_image-container {
+  border-radius: 0;
+}
+
+/* “Ideal for…” licensed-broker band — single card spans full container */
+.section_support-you.is-licensed-broker .support-you_grid > .support-you_item.grid {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Back-to-back large sections */
+.section_support-you + .section_results .padding-section-large,
+.section_support-you + .section_results.version-features .padding-section-large {
+  padding-top: var(--kn-optical-gap);
+}
+
+.section_support-you + .section_product-overview .padding-section-medium,
+.section_results.version-features + .section_product-overview .padding-section-medium {
+  padding-top: var(--kn-optical-gap);
+}
+
+.section_results.version-features.is-freight-audience + .section_support-you.is-licensed-broker .padding-section-large,
+.section_results.version-features.is-freight-audience + .section_results .padding-section-large {
+  padding-top: var(--kn-optical-gap);
+}
+
+.section_support-you + .section_results.version-features.is-freight-audience .padding-section-large {
+  padding-top: var(--kn-optical-gap);
+}
+
+.section_product-overview:has(.product_grid.is_analytics) + .section_support-you .padding-section-large {
+  padding-top: var(--kn-optical-gap);
+}
+
+/* Product overview stacks → testimonials */
+.section_product-overview.background-color-beige:has(+ .section_testimonials) .padding-section-medium,
+.section_product-overview.background-color-beige:has(+ .section_product-overview.background-color-beige) .padding-section-medium {
+  padding-bottom: var(--kn-optical-gap-tight);
+}
+
+.section_product-overview.background-color-beige + .section_product-overview.background-color-beige .padding-section-medium {
+  padding-top: var(--kn-optical-gap-tight);
+}
+
+.section_product-detailled + .section_results .padding-section-medium,
+.section_results:has(+ .section_product-overview.is-how-it-works) .padding-section-medium {
+  padding-bottom: var(--kn-optical-gap);
+}
+
+.section_product-overview.is-how-it-works .padding-section-medium {
+  padding-top: var(--kn-optical-gap);
+}
+
+.section_product-overview.is-how-it-works + .section_results.version-features .padding-section-medium {
+  padding-top: var(--kn-optical-gap);
+}
+
+/* Testimonials header: standard medium unless a Rule 1 adjacency sets optical tight */
+.section_testimonials .padding-section-medium.padding-top {
+  padding-top: var(--kn-section-standard-medium);
+}
+
+.section_testimonials .padding-section-medium.padding-bottom {
+  padding-bottom: var(--kn-optical-gap-tight);
+}
+
+/* Homepage / resource handoff into dark testimonials */
+.section_latest-blog .padding-section-medium {
+  padding-bottom: var(--kn-optical-gap-tight);
+}
+
+.section_latest-blog + .section_testimonials .padding-section-medium.padding-top {
+  padding-top: var(--kn-section-standard-medium);
+}
+
+.section_results + .section_testimonials .padding-section-medium.padding-top,
+.section_results.version-features + .section_testimonials .padding-section-medium.padding-top,
+.section_product-overview.background-color-beige + .section_testimonials .padding-section-medium.padding-top,
+.section_how-switch + .section_testimonials .padding-section-medium.padding-top {
+  padding-top: var(--kn-section-optical-tight);
+}
+
+.section_product-overview.background-color-beige:has(+ .section_testimonials) .padding-section-medium {
+  padding-bottom: var(--kn-optical-gap);
+}
+
+.section_how-switch .padding-section-medium {
+  padding-bottom: var(--kn-optical-gap);
+}
+
+/* How-it-works slider — prevent horizontal page scroll from Webflow track width */
+.section_how-switch {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+.section_how-switch:not(.is-freight-forwarders-how-switch) .how-switch_slider.w-slider {
+  display: block !important;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  align-items: stretch;
+  margin-bottom: 0;
+}
+
+.section_how-switch:not(.is-freight-forwarders-how-switch) .how-switch_slider-mask.w-slider-mask,
+.section_how-switch:not(.is-freight-forwarders-how-switch) .how-switch_slider .how-switch_slider-mask,
+.section_how-switch:not(.is-freight-forwarders-how-switch) .how-switch_slider .w-slider-mask {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  flex: none;
+}
+
+.section_how-switch:not(.is-freight-forwarders-how-switch) .how-switch_slide.w-slide {
+  width: 100% !important;
+  max-width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.section_how-switch:not(.is-freight-forwarders-how-switch) .how-switch_slide,
+.section_how-switch:not(.is-freight-forwarders-how-switch) .how-switch_slide-grid {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Operation "When to use" carousel — dot nav for full-width sliders only (not Crealo 31rem track) */
+.section_how-switch:not(.is-freight-forwarders-how-switch) .how-switch_slider .slide-nav-5.w-slider-nav {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  position: static;
+  inset: auto;
+  width: 100%;
+  padding-top: 1.5rem;
+  margin: 0;
+  z-index: 1;
+}
+
+.section_how-switch .how-switch_slider .w-slider-dot {
+  background-color: rgba(45, 45, 45, 0.25);
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  border-radius: 999px;
+}
+
+.section_how-switch .how-switch_slider .w-slider-dot.w-active {
+  background-color: #2d2d2d;
+  width: 56px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+/* Freight forwarders — Crealo obligation-reddition how-switch carousel (31rem × 36rem cards) */
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slider.w-slider {
+  display: flex !important;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 4.75rem;
+  position: relative;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slider-mask.w-slider-mask,
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slider .how-switch_slider-mask,
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slider .w-slider-mask {
+  display: block !important;
+  width: 31rem !important;
+  max-width: 31rem !important;
+  height: 100%;
+  overflow: visible !important;
+  flex: none;
+  position: static;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slide.w-slide {
+  width: 31rem !important;
+  max-width: 31rem !important;
+  min-width: 31rem !important;
+  flex: 0 0 31rem !important;
+  margin-left: 0.75rem !important;
+  margin-right: 0.75rem !important;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slide,
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slide-grid {
+  width: 100%;
+  max-width: 100%;
+  min-height: 36rem;
+  max-height: 36rem;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slide-grid {
+  grid-template-rows: max-content minmax(0, 1fr);
+  align-content: stretch;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slide-text-container {
+  gap: 0.75rem;
+  padding-top: 1.25rem;
+  padding-bottom: 0.75rem;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slide-image-container,
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slide-image-container.is-margin {
+  max-height: none;
+  min-height: 0;
+  height: auto;
+  padding-bottom: 0;
+  padding-left: 0;
+  overflow: hidden;
+  align-self: stretch;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slide-image {
+  width: 100%;
+  height: 100%;
+  min-height: 14rem;
+  max-height: none;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .padding-section-medium > .heading-style-h2.text-align-center {
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance;
+}
+
+/* Crealo obligation-reddition track — arrows only, no dot pagination */
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slider .slide-nav-5.w-slider-nav,
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slider .w-slider-nav {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slider-left-arrow,
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slider-right-arrow {
+  bottom: -1rem !important;
+  z-index: 2;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slider-left-arrow {
+  right: 3.75rem !important;
+  left: auto !important;
+}
+
+.section_how-switch.is-freight-forwarders-how-switch .how-switch_slider-right-arrow {
+  right: 0 !important;
+}
+
+/* Testimonials — static fallback when CMS slider did not hydrate (EN + FR) */
+.testimonial_container.is-testimonial-static .testimonial_slider {
+  display: none;
+}
+
+.testimonial_container.is-testimonial-static > .w-dyn-list {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+.testimonial_container.is-testimonial-static > .w-dyn-list .w-dyn-item:not(:first-child) {
+  display: none;
+}
+
+/* Contact page — primary action is the form; never show duplicate footer CTA band */
+body.is-talk-to-klear .section_cta {
+  display: none !important;
+}
+
+/*
+ * Demo modal — Webflow :lang(en) puts a 2-col grid on the full-screen overlay, which
+ * can mis-layer the card vs page content. Keep overlay as flex; card as 2-col grid only.
+ */
+.fs_modal-2_popup-2.w--open,
+html[lang="en"] .fs_modal-2_popup-2.w--open {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: unset !important;
+  grid-template-rows: unset !important;
+}
+
+.fs_modal-2_popup-2 .fs_modal-2_wrapper {
+  overflow: hidden;
+  isolation: isolate;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.fs_modal-2_popup-2 .fs_modal-2_image {
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 35rem;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.fs_modal-2_popup-2 .fs_modal-2_content {
+  grid-column: 2;
+  grid-row: 1;
+  background-color: #fff;
+  min-width: 0;
+}
+
+.fs_modal-2_popup-2 .fs_modal-2_close-2 {
+  z-index: 2;
+}
+
+/* Demo video modal — match Talk to Klear form fields + primary button */
+.fs_modal-2_content form.is_demo.contact_form-container-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.fs_modal-2_content form.is_demo h2.heading-style-h2 {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.fs_modal-2_content form.is_demo .contact_form-divider {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+}
+
+.fs_modal-2_content form.is_demo .contact_form-item {
+  margin-bottom: 0.75rem;
+}
+
+.fs_modal-2_content form.is_demo .contact_form-field-text-2 {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--kn-text, #2d2d2d) 52%, #fff);
+}
+
+.fs_modal-2_content form.is_demo .contact_form-field-2.w-input {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.625rem;
+  border: 1px solid #dfe1e7;
+  background: #fff;
+  color: var(--kn-text, #2d2d2d);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  box-shadow: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fs_modal-2_content form.is_demo .contact_form-field-2.w-input:focus {
+  outline: none;
+  border-color: var(--kn-primary, #0066ff);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--kn-primary, #0066ff) 12%, transparent);
+}
+
+.fs_modal-2_content form.is_demo .contact_form-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.fs_modal-2_content form.is_demo .contact_form-checklist-field.w-checkbox-input {
+  float: none;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  min-width: 1rem;
+  margin: 0;
+  align-self: center;
+}
+
+.fs_modal-2_content form.is_demo .contact_form-checklist-field-text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--kn-text, #2d2d2d) 62%, #fff);
+}
+
+.fs_modal-2_content form.is_demo .contact_form-checklist-field-link {
+  color: var(--kn-primary, #0066ff);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fs_modal-2_content form.is_demo .contact_form-checklist-field-link:hover {
+  color: var(--kn-primary-hover, #0052cc);
+}
+
+.fs_modal-2_content form.is_demo .demo_submit-button.w-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 2.75rem;
+  margin-top: 0.25rem;
+  padding: 0 1.375rem;
+  border: none !important;
+  background: var(--kn-primary, #0066ff) !important;
+  color: #fff !important;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.fs_modal-2_content form.is_demo .demo_submit-button.w-button:hover {
+  background: var(--kn-primary-hover, #0052cc) !important;
+}
+
+@media (max-width: 479px) {
+  .fs_modal-2_content form.is_demo .contact_form-divider {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Full-page machine translation in progress (locale dropdown) */
+body.kn-full-translate-busy {
+  cursor: progress;
+}
+
+body.kn-full-translate-busy .locale-nav-dropdown,
+body.kn-full-translate-busy .locale-nav-item {
+  pointer-events: none;
+}
+
+/* CTA + footer (shared tail) */
+.section_cta .container-medium.is_footer-cta {
+  border-radius: 12px;
+  overflow: clip;
+}
+
+.section_cta .padding-section-large.cta-image {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.section_footer .padding-section-small.padding-0 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Homepage + blog teasers — match blog listing card crop */
+.main-wrapper .latest-blog_image {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Product hero — avoid extra bottom band vs logo strip */
+.section_hero .hero_padding.product-page.padding-bottom-none {
+  padding-bottom: 0;
+}
+
+/* Product + operation heroes — dotted earth background (shared pattern) */
+.section_hero.background-color-white {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Extra hero dot layer only on product/operation earth-dot heroes (avoid triple grid with page dots) */
+.section_hero.background-color-white:has(.hero_background-image.is-earth-dots)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(80, 110, 232, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.4;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 100%);
+}
+
+.section_hero .hero_background-image.is-earth-dots {
+  z-index: 0;
+  opacity: 0.11;
+  object-fit: cover;
+  object-position: center 42%;
+  width: 100%;
+  min-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: min(36rem, 85vh);
+  max-height: none;
+  bottom: auto;
+  -webkit-mask-image: radial-gradient(ellipse 82% 72% at 50% 42%, #000 18%, transparent 100%);
+  mask-image: radial-gradient(ellipse 82% 72% at 50% 42%, #000 18%, transparent 100%);
+}
+
+.section_hero .hero_padding {
+  overflow: visible;
+}
+
+/* Hero media placeholders removed — keep copy band compact */
+.section_hero .hero_padding:not(.padding-bottom-none) {
+  padding-bottom: 3rem;
+}
+
+.section_hero .hero_padding,
+.section_hero .hero_text,
+.section_hero .container-large {
+  position: relative;
+  z-index: 1;
+}
+
+/* Product hero: old Webflow SVG bg inflated the band — earth dots only */
+.section_hero .hero_background-image:not(.is-earth-dots) {
+  display: none !important;
+}
+
+.section_hero .hero_padding.product-page,
+.section_hero .hero_padding.padding-bottom-none {
+  position: relative;
+  overflow: visible;
+}
+
+/* Product + operation heroes — fixed aspect at every breakpoint (stable crop) */
+.section_hero .hero_image-grid.gestion-des-cessions-page {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: var(--kn-hero-media-aspect);
+}
+
+.section_hero .hero_image-grid.gestion-des-cessions-page.is-full-width-media {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 100%;
+}
+
+.section_hero .hero_image-grid.is-full-width-media .hero_image-item.is-full-width {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.section_hero .hero_image-grid.is-full-width-media .hero_image-item.is-2,
+.section_hero .hero_image-grid.is-full-width-media .hero_image-layer {
+  display: none !important;
+}
+
+.section_hero .hero_image-grid.gestion-des-cessions-page .hero_image-item.is-1 {
+  height: 100%;
+}
+
+.section_hero .hero_image-container > .hero-industries_image-placeholder,
+.section_hero .hero_image-grid .hero-industries_image-placeholder {
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.section_hero .hero_container > .hero_image-container {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: var(--kn-hero-media-aspect);
+}
+
+.section_hero .hero_container > .hero_image-container > .hero-industries_image-placeholder {
+  min-height: 100%;
+  height: 100%;
+}
+
+.section_hero .hero-industries_image-placeholder {
+  min-height: 100% !important;
+  background-color: rgba(80, 110, 232, 0.06);
+  border: 1px dashed rgba(80, 110, 232, 0.22);
+  box-sizing: border-box;
+}
+
+/* Hero photo (operation-type + product) — real image, no dashed dev placeholder border */
+.section_hero .optype-hero-visual.hero-industries_image-placeholder {
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(40, 46, 56, 0.12);
+  box-shadow: none;
+}
+
+/* Empty hero shell until page-specific art is wired */
+.section_hero .hero-industries_image-placeholder.is-empty-hero {
+  background-color: rgba(80, 110, 232, 0.06);
+  border: 1px dashed rgba(80, 110, 232, 0.22);
+  min-height: 0;
+}
+
+.section_hero .optype-hero-visual .optype-hero-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.section_hero .optype-hero-visual.is-hero-focal-bl {
+  --kn-hero-object-position: 24% 82%;
+}
+
+.section_hero .optype-hero-visual.is-hero-focal-br {
+  --kn-hero-object-position: 76% 82%;
+}
+
+.section_hero .optype-hero-visual.is-hero-focal-kleardata {
+  --kn-hero-object-position: 44% 52%;
+}
+
+.section_hero .optype-hero-visual .optype-hero-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--kn-hero-object-position);
+  border-radius: inherit;
+}
+
+.section_hero .hero_image-grid.gestion-des-cessions-page .hero_image-item.is-full-width,
+.section_hero .hero_image-grid.gestion-des-cessions-page .hero-industries_image-placeholder.optype-hero-visual {
+  min-height: 0;
+}
+
+.section_hero .hero_image-grid.gestion-des-cessions-page .hero_image-item,
+.section_hero .hero_image-grid.gestion-des-cessions-page .hero_image-layer {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+.section_hero .hero_image-grid.gestion-des-cessions-page img.hero_image-container {
+  display: none !important;
+}
+
+@media screen and (max-width: 991px) {
+  .section_customer-logo.is_homepage + .section_support-you > .padding-global > .container-large > .padding-section-large {
+    padding-top: 3rem;
+  }
+
+  .section_support-you + .section_results .padding-section-large,
+  .section_support-you + .section_product-overview .padding-section-medium {
+    padding-top: 2.5rem;
+  }
+}
+
+/* Hero live ticker (shared — was duplicated inline on many pages) */
+.hero_text > .button-group {
+  margin-bottom: 0;
+}
+
+.hero_live-ticker-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: -0.75rem;
+}
+
+.hero_live-ticker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  max-width: min(100%, 36rem);
+  padding: 0.4rem 0.85rem 0.4rem 0.45rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, #fff 94%, var(--kn-primary)),
+    color-mix(in srgb, #fff 82%, var(--kn-primary-soft))
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid color-mix(in srgb, var(--kn-primary) 24%, #fff);
+  box-shadow:
+    0 1px 2px rgba(80, 110, 232, 0.05),
+    0 10px 28px rgba(80, 110, 232, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  color: var(--kn-text);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  overflow: hidden;
+}
+
+.hero_live-ticker::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 62%
+  );
+  transform: translateX(-130%);
+  animation: knTickerShimmer 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero_live-ticker-live {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, #10b981 11%, #fff);
+  border: 1px solid color-mix(in srgb, #10b981 32%, transparent);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #047857;
+}
+
+.hero_live-ticker-dot {
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55);
+  animation: knTickerPulse 2.2s ease-out infinite;
+}
+
+.hero_live-ticker-body {
+  position: relative;
+  z-index: 1;
+  display: inline;
+  min-width: 0;
+}
+
+.hero_live-ticker-num-wrap {
+  display: inline;
+  margin-right: 0.25em;
+}
+
+.hero_live-ticker-num {
+  display: inline-block;
+  color: var(--kn-text);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: inherit;
+  line-height: inherit;
+  min-width: 2ch;
+}
+
+.hero_live-ticker-num.is-tick {
+  animation: knTickerNumPop 0.32s ease;
+}
+
+.hero_live-ticker-lbl {
+  color: color-mix(in srgb, var(--kn-text) 72%, var(--kn-primary));
+  letter-spacing: 0.005em;
+}
+
+@keyframes knTickerShimmer {
+  0%, 72%, 100% { transform: translateX(-130%); }
+  86% { transform: translateX(130%); }
+}
+
+@keyframes knTickerPulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55); }
+  70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes knTickerNumPop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero_live-ticker::before,
+  .hero_live-ticker-dot,
+  .hero_live-ticker-num.is-tick {
+    animation: none !important;
+  }
+}
+

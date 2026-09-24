@@ -1,6 +1,7 @@
 /* KlearData Collect — Docsumo-style scene (fluid width in card slot) */
 .support-platform_image.kd-collect-scene,
 .support-platform_image.kh-verify-scene,
+.support-platform_image.kh-global-scene,
 .support-platform_image.km-analyze-scene {
   container-type: size;
   container-name: kd-collect;
@@ -766,6 +767,10 @@
 [data-kd-collect-scene]:not([data-inview]) .kd-toast,
 [data-kd-collect-scene]:not([data-inview]) .kd-spin,
 [data-kd-collect-scene]:not([data-inview]) .kh-vlines path,
+[data-kd-collect-scene]:not([data-inview]) .kh-global-vlines path,
+[data-kd-collect-scene]:not([data-inview]) .kh-global-node,
+[data-kd-collect-scene]:not([data-inview]) .kh-global-badge,
+[data-kd-collect-scene]:not([data-inview]) .kh-global-live,
 [data-kd-collect-scene]:not([data-inview]) .kd-case-summary,
 [data-kd-collect-scene]:not([data-inview]) .kd-warn-mark,
 [data-kd-collect-scene]:not([data-inview]) .kd-case-toast {
@@ -1066,6 +1071,366 @@
   font-size: 0.88em;
   color: var(--kd-warn);
   font-weight: 500;
+}
+
+.kh-global-scene.kd-collect-scene {
+  --kd-brand: #1a4fd6;
+  --kd-brand-soft: color-mix(in srgb, #1a4fd6 12%, #f7f6f2);
+  --kd-brand-ink: #1a4fd6;
+  --kh-global-accepted: #0d7a4a;
+  --kh-global-filed: #1a4fd6;
+  --kh-global-linked: #5b3fd4;
+  --kh-global-queued: #b45309;
+  --kd-bg-2: color-mix(in srgb, var(--kd-brand-soft) 42%, #fff);
+}
+
+.kh-global-scene .kd-scene-body {
+  padding: 1.12em 1.12em 0.95em;
+  align-items: stretch;
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--kd-brand-soft) 35%, #fff) 0%,
+    var(--kd-surface) 48%,
+    color-mix(in srgb, var(--kd-surface-2) 70%, #fff) 100%
+  );
+}
+
+.kh-sc-global {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  gap: 8px;
+}
+
+.kh-global-lanes-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.kh-global-lanes-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.kh-global-lanes-head .kd-label {
+  margin-bottom: 0;
+}
+
+.kh-global-lanes-meta {
+  font-family: var(--kd-mono);
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--kd-ink-3);
+  white-space: nowrap;
+}
+
+.kh-global-lanes {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.kh-global-lane.kd-src {
+  margin-top: 0;
+  padding: 7px 8px 8px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 5px;
+  min-width: 0;
+  transition:
+    transform 0.38s var(--kd-ease),
+    opacity 0.38s var(--kd-ease),
+    box-shadow 0.38s var(--kd-ease),
+    border-color 0.38s var(--kd-ease);
+}
+
+.kh-global-lanes [data-kn-focus-row].is-active.kd-src {
+  transform: translateY(-2px);
+  box-shadow:
+    var(--kd-shadow-xs),
+    0 10px 22px -16px color-mix(in srgb, var(--kd-brand) 38%, transparent);
+}
+
+.kh-global-lane-flag {
+  position: relative;
+  display: inline-flex;
+  align-self: flex-start;
+}
+
+.kh-global-lane-copy {
+  min-width: 0;
+  width: 100%;
+}
+
+.kh-global-lane-copy b {
+  display: block;
+  font-size: 0.98em;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+}
+
+.kh-global-flag {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--kd-ink) 10%, transparent),
+    0 4px 10px -6px color-mix(in srgb, var(--kd-ink) 22%, transparent);
+  animation: kd-pop-in 0.5s var(--kd-ease) both;
+  animation-delay: calc(var(--d, 0ms) + 80ms);
+}
+
+.kh-global-live {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--kh-global-accepted);
+  box-shadow: 0 0 0 2px #fff;
+  opacity: 0;
+  transform: scale(0.6);
+  animation: kh-global-live-pulse 2.4s var(--kd-ease) infinite;
+  animation-delay: calc(var(--d, 0ms) + 400ms);
+}
+
+.kh-global-lane--queued .kh-global-live {
+  background: var(--kh-global-queued);
+}
+
+@keyframes kh-global-live-pulse {
+  0%,
+  70% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  78%,
+  92% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+.kh-global-lanes [data-kn-focus-row].is-active .kh-global-live {
+  opacity: 1;
+  transform: scale(1);
+  animation: kh-global-live-active 1.6s var(--kd-ease) infinite;
+}
+
+@keyframes kh-global-live-active {
+  0%,
+  100% {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px color-mix(in srgb, var(--kd-brand) 28%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 7px color-mix(in srgb, var(--kd-brand) 12%, transparent);
+  }
+}
+
+.kh-global-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 3px;
+  font-size: 0.74em;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kh-global-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--kd-ink-3);
+}
+
+.kh-global-status--accepted {
+  color: var(--kh-global-accepted);
+}
+
+.kh-global-status--accepted .kh-global-status-dot {
+  background: var(--kh-global-accepted);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--kh-global-accepted) 22%, transparent);
+}
+
+.kh-global-status--filed {
+  color: var(--kh-global-filed);
+}
+
+.kh-global-status--filed .kh-global-status-dot {
+  background: var(--kh-global-filed);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--kh-global-filed) 20%, transparent);
+}
+
+.kh-global-status--linked {
+  color: var(--kh-global-linked);
+}
+
+.kh-global-status--linked .kh-global-status-dot {
+  background: var(--kh-global-linked);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--kh-global-linked) 20%, transparent);
+}
+
+.kh-global-status--queued {
+  color: var(--kh-global-queued);
+}
+
+.kh-global-status--queued .kh-global-status-dot {
+  background: var(--kh-global-queued);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--kh-global-queued) 18%, transparent);
+}
+
+.kh-global-vlines {
+  width: 100%;
+  height: 18px;
+  display: block;
+  margin: -2px 0 0;
+  flex-shrink: 0;
+}
+
+.kh-global-vlines path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--kd-brand) 55%, transparent);
+  stroke-width: 1.5;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 1px 1px color-mix(in srgb, var(--kd-brand) 22%, transparent));
+  animation: kh-vline-dash 0.85s var(--kd-ease) both;
+}
+
+.kh-global-vlines path:nth-of-type(1) {
+  animation-delay: 520ms;
+}
+.kh-global-vlines path:nth-of-type(2) {
+  animation-delay: 580ms;
+}
+.kh-global-vlines path:nth-of-type(3) {
+  animation-delay: 640ms;
+}
+.kh-global-vlines path:nth-of-type(4) {
+  animation-delay: 700ms;
+}
+.kh-global-vlines path:nth-of-type(5) {
+  animation-delay: 760ms;
+}
+
+.kh-global-node {
+  fill: var(--kd-brand);
+  opacity: 0;
+  animation: kd-node-pop 0.45s var(--kd-ease) both;
+  animation-delay: var(--d, 0ms);
+}
+
+.kh-global-node-hub {
+  fill: color-mix(in srgb, var(--kd-brand) 85%, #fff);
+  stroke: var(--kd-brand);
+  stroke-width: 1;
+}
+
+.kh-sc-global .kd-col-case {
+  margin-top: 0;
+  min-height: 0;
+  align-self: stretch;
+}
+
+.kh-global-scene .kd-case-card {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8px;
+}
+
+.kh-global-scene .kd-case-card ul {
+  margin-bottom: 0.25em;
+  flex: 1;
+  min-height: 0;
+}
+
+.kh-global-scene .kd-case-card li {
+  white-space: normal;
+  display: flex;
+  align-items: flex-start;
+}
+
+.kh-global-scene .kd-li-copy {
+  white-space: normal;
+  line-height: 1.28;
+}
+
+.kh-global-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-top: 4px;
+  margin-top: auto;
+}
+
+.kh-global-badge {
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: var(--kd-brand-ink);
+  background: linear-gradient(180deg, #fff 0%, var(--kd-brand-soft) 140%);
+  border: 1px solid color-mix(in srgb, var(--kd-brand) 22%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  animation: kd-sc-in-r 0.45s var(--kd-ease) both;
+  animation-delay: var(--d, 0ms);
+}
+
+.kh-global-scene .kh-global-toast.kd-case-toast {
+  bottom: 10px;
+  --kn-toast-cycle-ms: 3200ms;
+}
+
+.kh-global-scene[data-scene-step="global"] .kd-case-toast.kd-toast.sent {
+  box-shadow: 0 10px 28px -12px color-mix(in srgb, var(--kd-brand) 45%, rgba(15, 17, 23, 0.22));
+}
+
+@container kd-collect (max-width: 28rem) {
+  .kh-global-lanes-meta {
+    display: none;
+  }
+
+  .kh-global-status {
+    font-size: 0.68em;
+  }
+}
+
+@media (max-width: 767px) {
+  .kh-global-lanes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .kh-global-lane.kd-src:nth-child(n + 4) {
+    grid-column: span 1;
+  }
 }
 
 .kh-vlines {
@@ -1372,7 +1737,8 @@
 }
 
 .kd-sc-collect [data-kn-focus-row].is-active.kd-src,
-.kh-verify-doc-row [data-kn-focus-row].is-active.kd-src {
+.kh-verify-doc-row [data-kn-focus-row].is-active.kd-src,
+.kh-global-lanes [data-kn-focus-row].is-active.kd-src {
   background: linear-gradient(180deg, #fff 0%, var(--kd-brand-soft) 120%);
 }
 
@@ -2120,9 +2486,11 @@
 
 .kn-product-scene-slot > .support-platform_image.kd-collect-scene,
 .kn-product-scene-slot > .support-platform_image.kh-verify-scene,
+.kn-product-scene-slot > .support-platform_image.kh-global-scene,
 .kn-product-scene-slot > .support-platform_image.km-analyze-scene,
 [data-kn-scene-slot] > .support-platform_image.kd-collect-scene,
 [data-kn-scene-slot] > .support-platform_image.kh-verify-scene,
+[data-kn-scene-slot] > .support-platform_image.kh-global-scene,
 [data-kn-scene-slot] > .support-platform_image.km-analyze-scene {
   width: 100%;
   height: 100%;
@@ -2405,10 +2773,15 @@
   .kd-toast,
   .kd-spin,
   .kh-vlines path,
+  .kh-global-vlines path,
+  .kh-global-badge,
+  .kh-global-live,
+  .kh-global-flag,
   .kd-case-summary,
   .kd-warn-mark,
   .kd-lane-node,
   .kh-vline-node,
+  .kh-global-node,
   .km-metric {
     animation: none !important;
   }

@@ -2,8 +2,47 @@
   'use strict';
 
   /** Bump when public assets or boot behavior changes. Keep in sync with ?v= on script tags in HTML. */
-  var ASSET_VERSION = '20261063';
+  var ASSET_VERSION = '20261081';
   var html = document.documentElement;
+
+  var KN_FONT_ASSETS = [
+    {
+      family: 'Manrope',
+      weight: 400,
+      url: 'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/6915d21378fc78aee5be857b_Manrope-Regular.ttf',
+      format: 'truetype'
+    },
+    {
+      family: 'Manrope',
+      weight: 500,
+      url: 'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/6915d213907e45f7b245bd2e_Manrope-Medium.ttf',
+      format: 'truetype'
+    },
+    {
+      family: 'Manrope',
+      weight: 600,
+      url: 'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/6915d2130c95e2be441349f0_Manrope-SemiBold.ttf',
+      format: 'truetype'
+    },
+    {
+      family: 'Manrope',
+      weight: 700,
+      url: 'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/6915d213811ae89ceb2b82eb_Manrope-Bold.ttf',
+      format: 'truetype'
+    },
+    {
+      family: 'Ratio',
+      weight: 400,
+      url: 'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/66993ad5e6c552d580170ef3_Ratio-Regular.otf',
+      format: 'opentype'
+    },
+    {
+      family: 'Ratio',
+      weight: 500,
+      url: 'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/66993ad50b367b8e8d8a2389_Ratio-Medium.otf',
+      format: 'opentype'
+    }
+  ];
 
   /** Match first paint to final UI; sans fallbacks avoid Georgia→Manrope button flash on hard refresh. */
   (function injectTypographyCritical() {
@@ -11,53 +50,95 @@
     var sans =
       'Manrope,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif';
     var textSel =
-      '[class*="text-size-"],.paragraph,.nav_main_label-text,.nav_main_feature-heading-text,.nav_main_feature-item,.nav_main_link,.nav_main_dropdown_label,.locale-nav-item-label,.footer_link,.footer_heading,.footer_text-container,.customer-logo_heading-container,.hero_description-container,.testimonial_text,.product-overview_text-container,.support-crealo_text-container,.contact_form-field-text-2,.tab-pane_logo-container-2,.button-v2,.button-v2-2,.fs_modal-2_button,.fs_modal-2_button-2,.demo_submit-button,.talk-to-klear_submit,.talk-to-klear_role,.w-button,input.w-button,button.w-button,.calendly-trigger,input,textarea,select';
+      '[class*="text-size-"],.paragraph,.nav_main_label-text,.nav_main_feature-heading-text,.nav_main_feature-item,.nav_main_link,.nav_main_dropdown_label,.locale-nav-item-label,.footer_link,.footer_heading,.footer_text-container,.customer-logo_heading-container,.hero_description-container,.testimonial_text,.product-overview_text-container,.support-crealo_text-container,.contact_form-field-text-2,.tab-pane_logo-container-2,.button-v2,.button-v2-2,.button-v2-2 div,.fs_modal-2_button,.fs_modal-2_button-2,.demo_submit-button,.talk-to-klear_submit,.talk-to-klear_role,.w-button,input.w-button,button.w-button,.calendly-trigger,button,input,textarea,select,a[role="button"],[role="button"]';
     var headSel =
       '.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h4,.heading-style-h5,.heading-style-h6,.titre,.kd-ds-panel__intro h3,h1,h2,h3,h4,h5,h6';
     var style = document.createElement('style');
     style.id = 'kn-font-critical';
+    var headingStack = 'Ratio,' + sans;
     style.textContent =
       ':root{--crealo-fonts--text:' +
       sans +
-      ';--crealo-fonts--headings:Ratio,' +
-      sans +
-      '}' +
-      'html,body{font-family:' +
+      '!important;--crealo-fonts--headings:' +
+      headingStack +
+      '!important}' +
+      'html,body,.body{font-family:' +
       sans +
       '!important;color:#2d2d2d}' +
       textSel +
-      '{font-family:' +
-      sans +
-      '}' +
+      '{font-family:var(--crealo-fonts--text)!important}' +
       headSel +
-      '{font-family:Ratio,' +
-      sans +
-      '}' +
+      '{font-family:var(--crealo-fonts--headings)!important}' +
       '.heading-style-h2{font-size:2.5rem;font-weight:400;line-height:1}' +
       '.heading-style-h6{font-size:.875rem;line-height:1.5}' +
-      '.text-size-tiny{font-size:.75rem;line-height:1.5;letter-spacing:-.125px}';
+      '.text-size-tiny{font-size:.75rem;line-height:1.5;letter-spacing:-.125px}' +
+      'html.kn-booting .page-wrapper{visibility:hidden}' +
+      'html.kn-ready .page-wrapper{visibility:visible}';
     (document.head || html).appendChild(style);
 
-    if (document.getElementById('kn-font-preload')) return;
-    [
-      'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/6915d21378fc78aee5be857b_Manrope-Regular.ttf',
-      'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/6915d213907e45f7b245bd2e_Manrope-Medium.ttf',
-      'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/6915d2130c95e2be441349f0_Manrope-SemiBold.ttf',
-      'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/66993ad5e6c552d580170ef3_Ratio-Regular.otf',
-      'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/66993ad50b367b8e8d8a2389_Ratio-Medium.otf'
-    ].forEach(function (href) {
-      var link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'font';
-      link.href = href;
-      link.crossOrigin = 'anonymous';
-      link.setAttribute('data-kn-font-preload', '');
-      document.head.appendChild(link);
-    });
-    var marker = document.createElement('meta');
-    marker.id = 'kn-font-preload';
-    marker.name = 'kn-font-preload';
-    document.head.appendChild(marker);
+    function injectFontFaceOptional() {
+      if (document.getElementById('kn-font-faces')) return;
+      var faceStyle = document.createElement('style');
+      faceStyle.id = 'kn-font-faces';
+      faceStyle.textContent = KN_FONT_ASSETS.map(function (face) {
+        return (
+          '@font-face{font-family:' +
+          face.family +
+          ';src:url("' +
+          face.url +
+          '") format("' +
+          face.format +
+          '");font-weight:' +
+          face.weight +
+          ';font-style:normal;font-display:optional}'
+        );
+      }).join('');
+      (document.head || html).appendChild(faceStyle);
+      return faceStyle;
+    }
+
+    injectFontFaceOptional();
+
+    if (!document.getElementById('kn-font-preload')) {
+      if (!document.querySelector('link[rel="preconnect"][href*="website-files.com"]')) {
+        var preconnect = document.createElement('link');
+        preconnect.rel = 'preconnect';
+        preconnect.href = 'https://cdn.prod.website-files.com';
+        preconnect.crossOrigin = 'anonymous';
+        document.head.appendChild(preconnect);
+      }
+      KN_FONT_ASSETS.map(function (face) {
+        return face.url;
+      }).forEach(function (href) {
+        var link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'font';
+        link.href = href;
+        link.crossOrigin = 'anonymous';
+        link.setAttribute('data-kn-font-preload', '');
+        document.head.appendChild(link);
+      });
+      var marker = document.createElement('meta');
+      marker.id = 'kn-font-preload';
+      marker.name = 'kn-font-preload';
+      document.head.appendChild(marker);
+    }
+
+    /** Re-append after Webflow CSS so :root / swap @font-face cannot win on hard refresh. */
+    function repinFontCritical() {
+      var node = document.getElementById('kn-font-critical');
+      if (node && node.parentNode) node.parentNode.appendChild(node);
+      var faces = document.getElementById('kn-font-faces');
+      if (!faces) injectFontFaceOptional();
+      else if (faces.parentNode) faces.parentNode.appendChild(faces);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', repinFontCritical);
+    } else {
+      repinFontCritical();
+    }
+    window.addEventListener('load', repinFontCritical, { once: true });
   })();
 
   /** Apply before Webflow measures sliders (site.min.css uses 31rem mask width). */
@@ -182,6 +263,52 @@
   function markReady() {
     html.classList.remove('kn-booting');
     html.classList.add('kn-ready');
+  }
+
+  /** Avoid button/text flicker when swap fonts load after first paint. */
+  function whenTypographyReady(done) {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      done();
+      return;
+    }
+
+    var finished = false;
+    function finish() {
+      if (finished) return;
+      finished = true;
+      done();
+    }
+
+    var capMs = 1600;
+    var cap = setTimeout(finish, capMs);
+
+    if (!document.fonts || !document.fonts.load) {
+      clearTimeout(cap);
+      finish();
+      return;
+    }
+
+    var loads = [
+      document.fonts.load('400 1em Manrope'),
+      document.fonts.load('500 1em Manrope'),
+      document.fonts.load('600 1em Manrope'),
+      document.fonts.load('700 1em Manrope'),
+      document.fonts.load('400 1em Ratio'),
+      document.fonts.load('500 1em Ratio')
+    ];
+
+    Promise.all(loads)
+      .then(function () {
+        return document.fonts.ready;
+      })
+      .then(function () {
+        clearTimeout(cap);
+        finish();
+      })
+      .catch(function () {
+        clearTimeout(cap);
+        finish();
+      });
   }
 
   function getActiveMain() {
@@ -386,7 +513,8 @@
   var KN_SCENE_FRAGMENTS = {
     collect: '/kleardata-collect-scene.html',
     verify: '/klearhub-verify-scene.html',
-    operate: '/managed-trade-operate-scene.html'
+    operate: '/managed-trade-operate-scene.html',
+    global: '/klearhub-global-scene.html'
   };
 
   function stripFragmentComments(html) {
@@ -430,7 +558,7 @@
           .then(function (html) {
             slot.innerHTML = html;
             slot.dataset.knSceneMounted = '1';
-            slot.classList.remove('product-overview_image-placeholder');
+            slot.classList.remove('product-overview_image-placeholder', 'support-you_image-placeholder');
           })
       );
     });
@@ -538,8 +666,10 @@
           if (window.KlearNavDropdown.updateLayers) window.KlearNavDropdown.updateLayers();
         }
 
-        requestAnimationFrame(function () {
-          requestAnimationFrame(markReady);
+        whenTypographyReady(function () {
+          requestAnimationFrame(function () {
+            requestAnimationFrame(markReady);
+          });
         });
       });
   }

@@ -2228,6 +2228,175 @@
   animation-play-state: paused;
 }
 
+/* ——— KlearHub product trio palette (#496FF0 · #572331 · #B13200 · #FDF6EE · #2D2D2D) ——— */
+.section_support-platform {
+  --kn-pl-blue: #496ff0;
+  --kn-pl-burgundy: #572331;
+  --kn-pl-amber: #b13200;
+  --kn-pl-cream: #fdf6ee;
+  --kn-pl-ink: #2d2d2d;
+}
+
+.section_support-platform .support-platform_image.kd-collect-scene,
+.section_support-platform .support-platform_image.kh-verify-scene,
+.section_support-platform .support-platform_image.km-analyze-scene {
+  --kd-ink: var(--kn-pl-ink);
+  --kd-ink-2: color-mix(in srgb, var(--kn-pl-ink) 72%, transparent);
+  --kd-ink-3: color-mix(in srgb, var(--kn-pl-ink) 58%, transparent);
+  --kn-ui-meta-color: var(--kd-ink-3);
+}
+
+/* Foundation · KlearData Collect */
+.section_support-platform .kd-collect-scene[data-scene-step="collect"] {
+  --kd-brand: var(--kn-pl-blue);
+  --kd-brand-soft: color-mix(in srgb, var(--kn-pl-blue) 14%, var(--kn-pl-cream));
+  --kd-brand-ink: var(--kn-pl-blue);
+  --kd-surface-2: var(--kn-pl-cream);
+  --kd-bg-2: color-mix(in srgb, var(--kn-pl-cream) 55%, #fff);
+  --kd-shadow-hero:
+    0 1px 2px rgba(45, 45, 45, 0.06),
+    0 4px 20px rgba(45, 45, 45, 0.05),
+    0 30px 70px -28px color-mix(in srgb, var(--kn-pl-blue) 28%, transparent);
+}
+
+.section_support-platform .kd-collect-scene[data-scene-step="collect"] .kd-col-flow .kd-flow-row:nth-of-type(1) .kd-src-ic {
+  background: linear-gradient(180deg, #fff 0%, color-mix(in srgb, var(--kn-pl-blue) 16%, var(--kn-pl-cream)) 100%);
+  color: var(--kn-pl-blue);
+  border-color: color-mix(in srgb, var(--kn-pl-blue) 22%, transparent);
+}
+
+.section_support-platform .kd-collect-scene[data-scene-step="collect"] .kd-col-flow .kd-flow-row:nth-of-type(2) .kd-src-ic {
+  background: linear-gradient(180deg, #fff 0%, color-mix(in srgb, var(--kn-pl-burgundy) 14%, var(--kn-pl-cream)) 100%);
+  color: var(--kn-pl-burgundy);
+  border-color: color-mix(in srgb, var(--kn-pl-burgundy) 22%, transparent);
+}
+
+.section_support-platform .kd-collect-scene[data-scene-step="collect"] .kd-col-flow .kd-flow-row:nth-of-type(3) .kd-src-ic {
+  background: linear-gradient(180deg, #fff 0%, color-mix(in srgb, var(--kn-pl-amber) 16%, var(--kn-pl-cream)) 100%);
+  color: var(--kn-pl-amber);
+  border-color: color-mix(in srgb, var(--kn-pl-amber) 24%, transparent);
+}
+
+.section_support-platform .kd-collect-scene[data-scene-step="collect"] .kd-case-toast.kd-toast.warn {
+  --kd-warn: var(--kn-pl-amber);
+  --kd-warn-bg: color-mix(in srgb, var(--kn-pl-amber) 12%, var(--kn-pl-cream));
+  border-color: color-mix(in srgb, var(--kn-pl-amber) 35%, transparent);
+}
+
+.section_support-platform .kd-collect-scene[data-scene-step="collect"] .kd-case-toast.kd-toast.sent b {
+  color: var(--kn-pl-blue);
+}
+
+/* Operating system · KlearHub Verify */
+.section_support-platform .kh-verify-scene[data-scene-step="verify"] {
+  --kd-brand: var(--kn-pl-blue);
+  --kd-brand-soft: color-mix(in srgb, var(--kn-pl-blue) 14%, var(--kn-pl-cream));
+  --kd-brand-ink: var(--kn-pl-blue);
+  --kd-surface-2: var(--kn-pl-cream);
+  --kd-bg-2: color-mix(in srgb, var(--kn-pl-cream) 55%, #fff);
+  --kd-shadow-hero:
+    0 1px 2px rgba(45, 45, 45, 0.06),
+    0 4px 20px rgba(45, 45, 45, 0.05),
+    0 30px 70px -28px color-mix(in srgb, var(--kn-pl-blue) 26%, transparent);
+}
+
+.section_support-platform .kh-verify-scene .kd-doc-thumb-inv {
+  box-shadow: inset 3px 0 0 var(--kn-pl-blue);
+}
+
+.section_support-platform .kh-verify-scene .kd-doc-thumb-bl {
+  box-shadow: inset 3px 0 0 var(--kn-pl-burgundy);
+}
+
+.section_support-platform .kh-verify-scene .kd-doc-thumb-pl {
+  box-shadow: inset 3px 0 0 var(--kn-pl-amber);
+}
+
+.section_support-platform .kh-verify-scene .kh-verify-doc-row .kd-src:first-child .kd-src-n.kd-src-status {
+  background: color-mix(in srgb, var(--kn-pl-blue) 12%, var(--kn-pl-cream));
+  color: var(--kn-pl-blue);
+  border-color: color-mix(in srgb, var(--kn-pl-blue) 28%, transparent);
+  font-weight: 600;
+}
+
+.section_support-platform .kh-verify-scene .kd-sb-step.is-done {
+  color: var(--kn-pl-burgundy);
+  background: color-mix(in srgb, var(--kn-pl-burgundy) 10%, var(--kn-pl-cream));
+  border-color: color-mix(in srgb, var(--kn-pl-burgundy) 22%, transparent);
+}
+
+.section_support-platform .kh-verify-scene .kd-case-toast.kd-toast.warn {
+  --kd-warn: var(--kn-pl-burgundy);
+  --kd-warn-bg: color-mix(in srgb, var(--kn-pl-burgundy) 8%, var(--kn-pl-cream));
+  border-color: color-mix(in srgb, var(--kn-pl-burgundy) 28%, transparent);
+}
+
+.section_support-platform .kh-verify-scene .kd-li-warn .kd-warn-mark {
+  background: color-mix(in srgb, var(--kn-pl-amber) 14%, var(--kn-pl-cream));
+  color: var(--kn-pl-amber);
+  border-color: color-mix(in srgb, var(--kn-pl-amber) 35%, transparent);
+}
+
+/* Service model · Managed Trade Operate */
+.section_support-platform .km-analyze-scene[data-scene-step="operate"] {
+  --kd-brand: var(--kn-pl-blue);
+  --kd-brand-soft: color-mix(in srgb, var(--kn-pl-blue) 14%, var(--kn-pl-cream));
+  --kd-brand-ink: var(--kn-pl-blue);
+  --kd-surface-2: var(--kn-pl-cream);
+  --kd-bg-2: color-mix(in srgb, var(--kn-pl-cream) 55%, #fff);
+  --kd-shadow-hero:
+    0 1px 2px rgba(45, 45, 45, 0.06),
+    0 4px 20px rgba(45, 45, 45, 0.05),
+    0 30px 70px -28px color-mix(in srgb, var(--kn-pl-amber) 22%, transparent);
+}
+
+.section_support-platform .km-analyze-scene .km-metrics .km-metric:nth-child(1) b {
+  color: var(--kn-pl-burgundy);
+}
+
+.section_support-platform .km-analyze-scene .km-metrics .km-metric:nth-child(1) {
+  border-color: color-mix(in srgb, var(--kn-pl-burgundy) 18%, var(--kd-line));
+}
+
+.section_support-platform .km-analyze-scene .km-metrics .km-metric-accent {
+  border-color: color-mix(in srgb, var(--kn-pl-amber) 32%, var(--kd-line));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--kn-pl-amber) 14%, var(--kn-pl-cream)) 0%,
+    #fff 120%
+  );
+}
+
+.section_support-platform .km-analyze-scene .km-metrics .km-metric-accent b,
+.section_support-platform .km-analyze-scene .km-metrics .km-metric-accent .km-metric-link {
+  color: var(--kn-pl-amber);
+}
+
+.section_support-platform .km-analyze-scene .km-metrics .km-metric:nth-child(3) b {
+  color: var(--kn-pl-blue);
+}
+
+.section_support-platform .km-analyze-scene .kd-sb-step.is-active {
+  color: var(--kn-pl-blue);
+  background: color-mix(in srgb, var(--kn-pl-blue) 14%, var(--kn-pl-cream));
+}
+
+.section_support-platform .km-analyze-scene .kd-sb-step.is-done {
+  color: var(--kn-pl-burgundy);
+  background: color-mix(in srgb, var(--kn-pl-burgundy) 10%, var(--kn-pl-cream));
+  border-color: color-mix(in srgb, var(--kn-pl-burgundy) 22%, transparent);
+}
+
+.section_support-platform .km-analyze-scene .kd-case-toast.kd-toast.sent {
+  border-color: color-mix(in srgb, var(--kn-pl-blue) 28%, transparent);
+  background: color-mix(in srgb, var(--kn-pl-blue) 8%, #fff);
+}
+
+.section_support-platform .support-crealo_grid .support-platform_image-placeholder {
+  background: color-mix(in srgb, var(--kn-pl-cream) 65%, #fff);
+  border-color: color-mix(in srgb, var(--kn-pl-blue) 18%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .kd-lane i,
   .kd-src,

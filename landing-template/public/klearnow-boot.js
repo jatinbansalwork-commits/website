@@ -2,18 +2,37 @@
   'use strict';
 
   /** Bump when public assets or boot behavior changes. Keep in sync with ?v= on script tags in HTML. */
-  var ASSET_VERSION = '20260996';
+  var ASSET_VERSION = '20261063';
   var html = document.documentElement;
 
-  /** Match first paint to Crealo stack; preloads reduce Manrope/Ratio swap flash on hard refresh. */
+  /** Match first paint to final UI; sans fallbacks avoid Georgia→Manrope button flash on hard refresh. */
   (function injectTypographyCritical() {
     if (document.getElementById('kn-font-critical')) return;
+    var sans =
+      'Manrope,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif';
+    var textSel =
+      '[class*="text-size-"],.paragraph,.nav_main_label-text,.nav_main_feature-heading-text,.nav_main_feature-item,.nav_main_link,.nav_main_dropdown_label,.locale-nav-item-label,.footer_link,.footer_heading,.footer_text-container,.customer-logo_heading-container,.hero_description-container,.testimonial_text,.product-overview_text-container,.support-crealo_text-container,.contact_form-field-text-2,.tab-pane_logo-container-2,.button-v2,.button-v2-2,.fs_modal-2_button,.fs_modal-2_button-2,.demo_submit-button,.talk-to-klear_submit,.talk-to-klear_role,.w-button,input.w-button,button.w-button,.calendly-trigger,input,textarea,select';
+    var headSel =
+      '.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h4,.heading-style-h5,.heading-style-h6,.titre,.kd-ds-panel__intro h3,h1,h2,h3,h4,h5,h6';
     var style = document.createElement('style');
     style.id = 'kn-font-critical';
     style.textContent =
-      'html{font-family:Manrope,Georgia,sans-serif}' +
-      'body{font-family:Manrope,Georgia,sans-serif;color:#2d2d2d}' +
-      '.heading-style-h2,.heading-style-h3,.heading-style-h4,.heading-style-h5,.heading-style-h6{font-family:Ratio,Georgia,sans-serif}' +
+      ':root{--crealo-fonts--text:' +
+      sans +
+      ';--crealo-fonts--headings:Ratio,' +
+      sans +
+      '}' +
+      'html,body{font-family:' +
+      sans +
+      '!important;color:#2d2d2d}' +
+      textSel +
+      '{font-family:' +
+      sans +
+      '}' +
+      headSel +
+      '{font-family:Ratio,' +
+      sans +
+      '}' +
       '.heading-style-h2{font-size:2.5rem;font-weight:400;line-height:1}' +
       '.heading-style-h6{font-size:.875rem;line-height:1.5}' +
       '.text-size-tiny{font-size:.75rem;line-height:1.5;letter-spacing:-.125px}';
@@ -23,6 +42,7 @@
     [
       'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/6915d21378fc78aee5be857b_Manrope-Regular.ttf',
       'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/6915d213907e45f7b245bd2e_Manrope-Medium.ttf',
+      'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/6915d2130c95e2be441349f0_Manrope-SemiBold.ttf',
       'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/66993ad5e6c552d580170ef3_Ratio-Regular.otf',
       'https://cdn.prod.website-files.com/5f96c1e75e94f64c995cffee/66993ad50b367b8e8d8a2389_Ratio-Medium.otf'
     ].forEach(function (href) {
@@ -321,6 +341,176 @@
     });
   }
 
+  function parseAgentPhases(raw) {
+    if (!raw) return [];
+    return raw.split('|').map(function (chunk) {
+      var i = chunk.indexOf(':');
+      if (i < 0) return null;
+      var t = parseInt(chunk.slice(0, i), 10);
+      var label = chunk.slice(i + 1).trim();
+      if (!label || isNaN(t)) return null;
+      return { t: t, label: label };
+    }).filter(Boolean);
+  }
+
+  function scheduleSceneStory(scene, timers) {
+    var labelEl = scene.querySelector('.kd-sb-agent-label');
+    var phases = parseAgentPhases(scene.getAttribute('data-agent-phases'));
+    if (labelEl && phases.length) {
+      phases.forEach(function (phase) {
+        timers.push(setTimeout(function () {
+          labelEl.textContent = phase.label;
+        }, phase.t));
+      });
+    }
+
+    var focusRows = scene.querySelectorAll('[data-kn-focus-row]');
+    focusRows.forEach(function (row) {
+      var delay = parseInt(row.style.getPropertyValue('--d') || '0', 10);
+      if (isNaN(delay)) delay = 0;
+      timers.push(setTimeout(function () {
+        focusRows.forEach(function (r) {
+          r.classList.toggle('is-dim', r !== row);
+          r.classList.toggle('is-active', r === row);
+        });
+      }, Math.max(0, delay - 40)));
+    });
+
+    timers.push(setTimeout(function () {
+      focusRows.forEach(function (r) {
+        r.classList.remove('is-dim', 'is-active');
+      });
+    }, parseInt(scene.getAttribute('data-loop-ms') || '6200', 10) - 120));
+  }
+
+  var KN_SCENE_FRAGMENTS = {
+    collect: '/kleardata-collect-scene.html',
+    verify: '/klearhub-verify-scene.html',
+    operate: '/managed-trade-operate-scene.html'
+  };
+
+  function stripFragmentComments(html) {
+    return String(html || '')
+      .replace(/<!--[\s\S]*?-->/g, '')
+      .trim();
+  }
+
+  function ensureSceneStylesheet() {
+    if (document.getElementById('kn-scene-styles')) return;
+    if (!document.querySelector('[data-kn-scene-slot]')) return;
+    var link = document.createElement('link');
+    link.id = 'kn-scene-styles';
+    link.rel = 'stylesheet';
+    link.href = withVersion('/kleardata-collect-scene.css');
+    document.head.appendChild(link);
+  }
+
+  function loadSceneFragment(sceneKey) {
+    var path = KN_SCENE_FRAGMENTS[sceneKey];
+    if (!path) return Promise.reject(new Error('Unknown scene: ' + sceneKey));
+    return fetch(withVersion(path), { credentials: 'same-origin' }).then(function (res) {
+      if (!res.ok) throw new Error('Scene fetch failed: ' + path);
+      return res.text();
+    });
+  }
+
+  /** Inject shared HTML fragments into [data-kn-scene-slot] placeholders (homepage + product pages). */
+  function mountSceneSlots() {
+    var slots = document.querySelectorAll('[data-kn-scene-slot][data-kn-scene]');
+    if (!slots.length) return Promise.resolve();
+    ensureSceneStylesheet();
+    var tasks = [];
+    slots.forEach(function (slot) {
+      if (slot.dataset.knSceneMounted === '1') return;
+      var key = slot.getAttribute('data-kn-scene');
+      if (!key) return;
+      tasks.push(
+        loadSceneFragment(key)
+          .then(stripFragmentComments)
+          .then(function (html) {
+            slot.innerHTML = html;
+            slot.dataset.knSceneMounted = '1';
+            slot.classList.remove('product-overview_image-placeholder');
+          })
+      );
+    });
+    return Promise.all(tasks);
+  }
+
+  /** Homepage stack cards — Docsumo-style scenes (Collect, Classify, …) replay on data-inview. */
+  function initProductStackScenes() {
+    var scenes = document.querySelectorAll('[data-kn-product-scene], [data-kd-collect-scene]');
+    if (!scenes.length) return;
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    scenes.forEach(function (scene) {
+      if (scene.dataset.knProductSceneInit) return;
+      scene.dataset.knProductSceneInit = '1';
+
+      var loopMs = parseInt(scene.getAttribute('data-loop-ms') || '6200', 10);
+      if (!loopMs || loopMs < 1000) loopMs = 6200;
+
+      var loopTimer = null;
+      var storyTimers = [];
+
+      function clearStory() {
+        storyTimers.forEach(clearTimeout);
+        storyTimers = [];
+        scene.querySelectorAll('[data-kn-focus-row]').forEach(function (row) {
+          row.classList.remove('is-dim', 'is-active');
+        });
+      }
+
+      function replay() {
+        clearStory();
+        scene.removeAttribute('data-inview');
+        void scene.offsetWidth;
+        scene.setAttribute('data-inview', '');
+        if (!reduced) scheduleSceneStory(scene, storyTimers);
+      }
+
+      function startLoop() {
+        if (reduced) {
+          scene.setAttribute('data-inview', '');
+          return;
+        }
+        replay();
+        if (loopTimer) clearInterval(loopTimer);
+        loopTimer = setInterval(replay, loopMs);
+      }
+
+      function stopLoop() {
+        clearStory();
+        scene.removeAttribute('data-inview');
+        if (loopTimer) {
+          clearInterval(loopTimer);
+          loopTimer = null;
+        }
+      }
+
+      if (typeof IntersectionObserver === 'function') {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) startLoop();
+              else stopLoop();
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px' }
+        );
+        observer.observe(scene);
+        requestAnimationFrame(function () {
+          var rect = scene.getBoundingClientRect();
+          var vh = window.innerHeight || document.documentElement.clientHeight;
+          if (rect.top < vh && rect.bottom > 0) startLoop();
+        });
+      } else {
+        startLoop();
+      }
+    });
+  }
+
   /** Bar height only — never measure full .w-nav (dropdown panels inflate padding-top). */
   function syncNavHeight() {
     var bar = document.querySelector('.nav_main_component.w-nav .nav_main_padding');
@@ -338,14 +528,20 @@
     initHowSwitchSliders();
     initFaqLoadMore();
 
-    if (window.KlearNavDropdown) {
-      if (window.KlearNavDropdown.closeAll) window.KlearNavDropdown.closeAll();
-      if (window.KlearNavDropdown.updateLayers) window.KlearNavDropdown.updateLayers();
-    }
+    mountSceneSlots()
+      .catch(function () {})
+      .then(function () {
+        initProductStackScenes();
 
-    requestAnimationFrame(function () {
-      requestAnimationFrame(markReady);
-    });
+        if (window.KlearNavDropdown) {
+          if (window.KlearNavDropdown.closeAll) window.KlearNavDropdown.closeAll();
+          if (window.KlearNavDropdown.updateLayers) window.KlearNavDropdown.updateLayers();
+        }
+
+        requestAnimationFrame(function () {
+          requestAnimationFrame(markReady);
+        });
+      });
   }
 
   function hardReload() {

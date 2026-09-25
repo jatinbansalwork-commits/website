@@ -1,0 +1,387 @@
+/* Docsumo hero-visual — homepage overlay (scoped) */
+.section_hero .kn-home-hero-overlay__scene {
+  background: transparent !important;
+  background-image: none !important;
+  padding: 0;
+  overflow: visible;
+}
+.section_hero .kn-home-hero-overlay__scene .kn-home-hero-scene-slot,
+.section_hero .kn-home-hero-overlay__scene .kn-home-hero {
+  background: transparent;
+  border: none;
+  padding: 0;
+  overflow: visible;
+}
+.kn-home-hero-overlay__scene .hero-visual,
+.kn-home-hero-overlay__scene--float .hero-visual {
+  --ds-bg-page: #fafaf7;
+  --ds-bg-surface: #f3f2ec;
+  --ds-bg-elevated: #fff;
+  --ds-bg-elevated-2: #f7f6f2;
+  --ds-text-primary: #0f1117;
+  --ds-text-secondary: #0f1117b3;
+  --ds-text-tertiary: #0f11179e;
+  --ds-border-subtle: #0f111717;
+  --ds-border-default: #0f111729;
+  --ds-brand-primary: #4d61fc;
+  --ds-brand-deep: #3a4ee8;
+  --ds-brand-soft: #eceeff;
+  --ds-brand-ink: #3346d8;
+  --ds-brand-secondary: #2f80ed;
+  --ds-on-brand: #fff;
+  --ds-success-fg: #0b7a52;
+  --ds-success-bg: #e2f5ec;
+  --ds-warning-fg: #b45309;
+  --ds-warning-bg: #fef3c7;
+  --bg: var(--ds-bg-page);
+  --bg-2: var(--ds-bg-surface);
+  --surface: var(--ds-bg-elevated);
+  --surface-2: var(--ds-bg-elevated-2);
+  --ink: var(--ds-text-primary);
+  --ink-2: var(--ds-text-secondary);
+  --ink-3: var(--ds-text-tertiary);
+  --line: var(--ds-border-subtle);
+  --line-2: var(--ds-border-default);
+  --brand: var(--ds-brand-primary);
+  --brand-deep: var(--ds-brand-deep);
+  --brand-soft: var(--ds-brand-soft);
+  --brand-ink: var(--ds-brand-ink);
+  --brand-2: var(--ds-brand-secondary);
+  --on-brand: var(--ds-on-brand);
+  --ok: var(--ds-success-fg);
+  --ok-bg: var(--ds-success-bg);
+  --warn: var(--ds-warning-fg);
+  --warn-bg: var(--ds-warning-bg);
+  --glass: #fff;
+  --r-lg: 16px;
+  --ease: cubic-bezier(0.22, 0.7, 0.28, 1);
+  --grad-b: #7f8cff;
+  --shadow-hero: 0 1px 2px #0f11170d, 0 30px 70px -28px #3a4ee861;
+  --sans: Manrope, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  position: relative;
+  width: 27rem;
+  max-width: none;
+  margin-inline: 0;
+  height: 39.75rem;
+  min-height: 39.75rem;
+  overflow: visible;
+  font-family: var(--sans);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+@media (max-width: 991px) {
+  .kn-home-hero-overlay__scene .hero-visual,
+  .kn-home-hero-overlay__scene--float .hero-visual {
+    width: 24rem;
+    height: 36.5rem;
+    min-height: 36.5rem;
+  }
+
+  .kn-home-hero-overlay__scene .hero-visual .file,
+  .kn-home-hero-overlay__scene--float .hero-visual .file {
+    height: 34.25rem;
+    min-height: 34.25rem;
+    max-height: 34.25rem;
+  }
+}
+.kn-home-hero-overlay__scene .hero-visual{position:relative}
+.kn-home-hero-overlay__scene .hero-visual .chips{pointer-events:none;position:absolute;inset:0}
+.kn-home-hero-overlay__scene .hero-visual .chip,
+.kn-home-hero-overlay__scene--float .hero-visual .chip {
+  z-index: 2;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 12px 8px 9px;
+  font-size: 12.5px;
+  line-height: 1.25;
+  animation: 6s ease-in-out infinite bob;
+  display: flex;
+  position: absolute;
+  box-shadow: 0 10px 28px -14px #3a4ee873;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.kn-home-hero-overlay__scene .hero-visual .chip b{color:var(--ink);font-weight:600;display:block}
+.kn-home-hero-overlay__scene .hero-visual .chip small{font-family:var(--mono);color:var(--ink-3);font-size:10.5px;display:block}
+.kn-home-hero-overlay__scene .hero-visual .chip-ic{background:linear-gradient(160deg, var(--brand-soft), var(--surface));border:1px solid color-mix(in srgb, var(--brand) 35%, transparent);border-radius:4px;flex:none;width:20px;height:25px;position:relative}
+.kn-home-hero-overlay__scene .hero-visual .chip-ic:before{content:"";background:color-mix(in srgb, var(--brand) 55%, transparent);height:2px;box-shadow:0 5px 0 color-mix(in srgb, var(--brand) 30%, transparent);border-radius:2px;position:absolute;top:7px;left:4px;right:4px}
+.kn-home-hero-overlay__scene .hero-visual .chip-a{animation-delay:-1s;top:-30px;left:-56px}
+.kn-home-hero-overlay__scene .hero-visual .chip-b{animation-delay:-3s;top:30%;right:-112px}
+.kn-home-hero-overlay__scene .hero-visual .chip-c{animation-delay:-2s;bottom:-34px;left:8%}
+.kn-home-hero-overlay__scene .hero-visual .chip-d{animation-delay:-4.5s;bottom:-18px;right:-26px}
+.kn-home-hero-overlay__scene .hero-visual .chip-e{animation-delay:-.5s;top:-40px;right:14%}
+@media (max-width: 1360px) {
+  .kn-home-hero-overlay__scene .hero-visual .chip-b {
+    display: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .kn-home-hero-overlay__scene .hero-visual .chip-a {
+    left: -6px;
+  }
+
+  .kn-home-hero-overlay__scene .hero-visual .chip-d {
+    right: 4px;
+  }
+}
+
+@media (max-width: 560px) {
+  .kn-home-hero-overlay__scene .hero-visual .chips {
+    display: none;
+  }
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-wrap,
+.kn-home-hero-overlay__scene--float .hero-visual .file-wrap {
+  z-index: 1;
+  position: relative;
+  overflow: visible;
+}
+
+/* Lock card height across animation stages (avoid jump at Verify → File / complete) */
+.kn-home-hero-overlay__scene .hero-visual .file,
+.kn-home-hero-overlay__scene--float .hero-visual .file {
+  height: 37.5rem;
+  min-height: 37.5rem;
+  max-height: 37.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-hero);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  overflow: hidden;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file > [aria-hidden="true"],
+.kn-home-hero-overlay__scene--float .hero-visual .file > [aria-hidden="true"] {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-sec--checks,
+.kn-home-hero-overlay__scene--float .hero-visual .file-sec--checks {
+  flex: 1 1 auto;
+  min-height: 10.75rem;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-foot,
+.kn-home-hero-overlay__scene--float .hero-visual .file-foot {
+  min-height: 2.85rem;
+  flex-wrap: nowrap;
+  margin-top: auto;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-foot > span,
+.kn-home-hero-overlay__scene--float .hero-visual .file-foot > span {
+  white-space: nowrap;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-foot [data-kn-hero-foot-right],
+.kn-home-hero-overlay__scene--float .hero-visual .file-foot [data-kn-hero-foot-right] {
+  flex-shrink: 0;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-head .pill,
+.kn-home-hero-overlay__scene--float .hero-visual .file-head .pill {
+  max-width: none;
+  overflow: visible;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-head,
+.kn-home-hero-overlay__scene--float .hero-visual .file-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, max-content);
+  grid-template-areas:
+    "entry pill"
+    "title title";
+  column-gap: 8px;
+  row-gap: 6px;
+  align-items: start;
+  min-height: 4.75rem;
+  box-sizing: border-box;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-head .file-id,
+.kn-home-hero-overlay__scene--float .hero-visual .file-head .file-id {
+  grid-area: entry;
+  min-width: 0;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-head .pill,
+.kn-home-hero-overlay__scene--float .hero-visual .file-head .pill {
+  grid-area: pill;
+  justify-self: end;
+  align-self: start;
+  margin-top: 0;
+  max-width: min(100%, 14.5rem);
+  font-size: 11px;
+  padding: 3px 8px;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-head .file-title,
+.kn-home-hero-overlay__scene--float .hero-visual .file-head .file-title {
+  grid-area: title;
+  min-width: 0;
+  width: 100%;
+  margin-top: 0;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .file-title-line,
+.kn-home-hero-overlay__scene--float .hero-visual .file-title-line {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kn-home-hero-overlay__scene .hero-visual .check[data-state="running"] .ring {
+  border-color: var(--brand);
+  animation: 0.8s linear infinite spin;
+}
+.kn-home-hero-overlay__scene .hero-visual .file-head{padding:18px 20px 14px}
+.kn-home-hero-overlay__scene .hero-visual .file-id{font-family:var(--mono);color:var(--ink-3);font-size:12px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kn-home-hero-overlay__scene .hero-visual .file-title{letter-spacing:-.01em;font-size:16px;font-weight:600;line-height:1.25;min-height:2.5em}
+.kn-home-hero-overlay__scene .hero-visual .rail{border-bottom:1px solid var(--line);grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;padding:0 20px 14px;display:grid}
+.kn-home-hero-overlay__scene .hero-visual .rail-seg{flex-direction:column;gap:6px;display:flex}
+.kn-home-hero-overlay__scene .hero-visual .rail-bar{background:var(--bg-2);border-radius:4px;height:4px;overflow:hidden}
+.kn-home-hero-overlay__scene .hero-visual .rail-bar span{border-radius:inherit;background:linear-gradient(90deg, var(--brand), var(--grad-b));width:0;height:100%;transition:width .6s var(--ease);display:block}
+.kn-home-hero-overlay__scene .hero-visual .rail-seg[data-state=done] .rail-bar span{width:100%}
+.kn-home-hero-overlay__scene .hero-visual .rail-seg[data-state=active] .rail-bar span{width:55%;animation:rail-fill 1.3s var(--ease) forwards}
+.kn-home-hero-overlay__scene .hero-visual .rail[data-stage="5"] .rail-bar span{background:var(--ok)}
+.kn-home-hero-overlay__scene .hero-visual .rail-label{font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);font-size:10.5px;transition:color .3s}
+.kn-home-hero-overlay__scene .hero-visual .rail-seg[data-state=active] .rail-label{color:var(--brand-ink)}
+.kn-home-hero-overlay__scene .hero-visual .file-sec{padding:14px 20px}
+.kn-home-hero-overlay__scene .hero-visual .file-sec+.file-sec{border-top:1px solid var(--line)}
+.kn-home-hero-overlay__scene .hero-visual .file-sec .label{margin-bottom:8px;display:block}
+.kn-home-hero-overlay__scene .hero-visual .doc{transition:opacity .4s var(--ease);grid-template-columns:28px minmax(0,1fr) auto;align-items:center;gap:12px;padding:8px 0;display:grid}
+.kn-home-hero-overlay__scene .hero-visual .doc+.doc{border-top:1px dashed var(--line)}
+.kn-home-hero-overlay__scene .hero-visual .doc[data-state=ghost]{opacity:.38}
+.kn-home-hero-overlay__scene .hero-visual .doc[data-state=reading] .doc-text{animation:settle .45s var(--ease) both}
+.kn-home-hero-overlay__scene .hero-visual .doc-ic{border:1px solid var(--line-2);background:var(--surface-2);border-radius:4px;width:28px;height:34px;position:relative;overflow:hidden}
+.kn-home-hero-overlay__scene .hero-visual .doc-ic:before,.kn-home-hero-overlay__scene .hero-visual .doc-ic:after{content:"";background:var(--line-2);border-radius:2px;height:2px;position:absolute;left:5px;right:5px}
+.kn-home-hero-overlay__scene .hero-visual .doc-ic:before{top:9px}
+.kn-home-hero-overlay__scene .hero-visual .doc-ic:after{top:15px;right:10px}
+.kn-home-hero-overlay__scene .hero-visual .doc[data-state=done] .doc-ic{border-color:color-mix(in srgb, var(--ok) 45%, transparent)}
+.kn-home-hero-overlay__scene .hero-visual .scan{background:linear-gradient(180deg, transparent, color-mix(in srgb, var(--brand) 55%, transparent), transparent);opacity:0;height:10px;position:absolute;top:-10px;left:0;right:0}
+.kn-home-hero-overlay__scene .hero-visual .doc[data-state=reading] .scan{opacity:1;animation:.9s ease-in-out infinite scan}
+.kn-home-hero-overlay__scene .hero-visual .doc-name{white-space:nowrap;text-overflow:ellipsis;font-size:14px;font-weight:500;overflow:hidden}
+.kn-home-hero-overlay__scene .hero-visual .doc-meta{color:var(--ink-3);font-size:12.5px;font-family:var(--mono);white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.kn-home-hero-overlay__scene .hero-visual .check{color:var(--ink-2);transition:opacity .35s var(--ease);grid-template-columns:18px minmax(0,1fr);gap:10px;padding:6px 0;font-size:13.5px;display:grid}
+.kn-home-hero-overlay__scene .hero-visual .check[data-state=idle]{opacity:.4}
+.kn-home-hero-overlay__scene .hero-visual .check b{color:var(--ink);font-weight:500}
+.kn-home-hero-overlay__scene .hero-visual .tick,.kn-home-hero-overlay__scene .hero-visual .bang,.kn-home-hero-overlay__scene .hero-visual .ring{border-radius:50%;place-items:center;width:18px;height:18px;margin-top:1px;font-size:11px;font-weight:700;display:grid}
+.kn-home-hero-overlay__scene .hero-visual .tick{background:var(--ok-bg);color:var(--ok)}
+.kn-home-hero-overlay__scene .hero-visual .bang{background:var(--warn-bg);color:var(--warn)}
+.kn-home-hero-overlay__scene .hero-visual .check[data-kind=warn],
+.kn-home-hero-overlay__scene--float .hero-visual .check[data-kind=warn] {
+  margin-inline: -20px;
+  padding-inline: 20px;
+  background: linear-gradient(90deg, transparent, transparent);
+}
+
+.kn-home-hero-overlay__scene .hero-visual .check[data-kind=warn][data-state=done],
+.kn-home-hero-overlay__scene--float .hero-visual .check[data-kind=warn][data-state=done] {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--warn-bg) 80%, transparent), transparent);
+}
+.kn-home-hero-overlay__scene .hero-visual .ring{border:2px solid var(--brand);border-right-color:#0000;animation:.8s linear infinite spin}
+.kn-home-hero-overlay__scene .hero-visual .ring.idle{border-color:var(--line-2);animation:none}
+.kn-home-hero-overlay__scene .hero-visual .pop{animation:pop .4s var(--ease) both}
+.kn-home-hero-overlay__scene .hero-visual .file-foot{background:var(--surface-2);border-top:1px solid var(--line);color:var(--ink-2);font-size:12.5px;font-family:var(--mono);flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:8px;padding:12px 20px;display:flex}
+.kn-home-hero-overlay__scene .hero-visual .file-cap{color:var(--ink-3);text-align:right;margin-top:10px;font-size:12px}
+.kn-home-hero-overlay__scene .hero-visual .live .d{animation:1.8s ease-in-out infinite pulse}
+.kn-home-hero-overlay__scene .hero-visual .live{box-shadow:0 0 0 0 color-mix(in srgb, var(--ok) 40%, transparent);animation:ready .8s var(--ease) both}
+.kn-home-hero-overlay__scene .hero-visual .pill{white-space:nowrap;border-radius:999px;align-items:center;gap:6px;padding:4px 9px;font-size:12px;font-weight:500;display:inline-flex}
+.kn-home-hero-overlay__scene .hero-visual .pill-ok{color:var(--ok);background:var(--ok-bg)}
+.kn-home-hero-overlay__scene .hero-visual .pill-warn{color:var(--warn);background:var(--warn-bg)}
+.kn-home-hero-overlay__scene .hero-visual .pill-brand{color:var(--brand-ink);background:var(--brand-soft)}
+.kn-home-hero-overlay__scene .hero-visual .pill-idle{color:var(--ink-3);background:var(--bg-2)}
+.kn-home-hero-overlay__scene .hero-visual .pill .d{background:currentColor;border-radius:50%;width:6px;height:6px}
+.kn-home-hero-overlay__scene .hero-visual .spin{border:1.5px solid;border-right-color:#0000;border-radius:50%;width:10px;height:10px;animation:.8s linear infinite spin}
+.kn-home-hero-overlay__scene .hero-visual .label{font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-size:12px}
+.kn-home-hero-overlay__scene .hero-visual .num{font-variant-numeric:tabular-nums}
+.kn-home-hero-overlay__scene .hero-visual .sr-only{clip:rect(0,0,0,0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(1deg);
+  }
+}
+
+@keyframes rail-fill {
+  0% {
+    width: 8%;
+  }
+  100% {
+    width: 88%;
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: -10px;
+  }
+  100% {
+    top: 34px;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.82);
+  }
+  60% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes settle {
+  0% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes ready {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 45%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.35;
+  }
+}

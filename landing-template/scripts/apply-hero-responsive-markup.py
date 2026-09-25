@@ -30,6 +30,7 @@ HERO_FOCAL_CLASS: dict[str, str] = {
     "kleardata": "is-hero-focal-br",
     "klearhub": "is-hero-focal-br",
     "managed-trade": "is-hero-focal-br",
+    "home": "is-hero-focal-br",
 }
 
 
@@ -39,6 +40,7 @@ def hero_visual_classes(slug: str) -> str:
 
 
 FILE_SLUG: dict[str, str] = {
+    "index.html": "home",
     "product/kleardata.html": "kleardata",
     "product/klearhub.html": "klearhub",
     "product/managed-trade.html": "managed-trade",

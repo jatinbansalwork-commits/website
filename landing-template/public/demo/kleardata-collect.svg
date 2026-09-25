@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="354" viewBox="0 0 600 354" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="kd-title">
+<title id="kd-title">KlearData - ingest trade documents from email, portal, and API into one shipment record</title>
+<rect width="600" height="354" fill="#FFFFFF"/>
+<rect x="0" y="0" width="600" height="44" fill="#FAFAFA"/>
+<line x1="0" y1="44" x2="600" y2="44" stroke="#E8E8E8" stroke-width="1"/>
+<circle cx="20" cy="22" r="5" fill="#FF5F57"/>
+<circle cx="36" cy="22" r="5" fill="#FEBC2E"/>
+<circle cx="52" cy="22" r="5" fill="#28C840"/>
+<text x="72" y="26" font-family="system-ui,-apple-system,BlinkMacSystemFont,sans-serif" font-size="11" fill="#888">KlearData</text>
+<rect x="168" y="12" width="72" height="22" rx="11" fill="#506EE8"/>
+<text x="182" y="27" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#FFFFFF">1 Collect</text>
+<rect x="246" y="12" width="78" height="22" rx="11" fill="#F0F0F0"/>
+<text x="258" y="27" font-family="system-ui,sans-serif" font-size="10" fill="#666">2 Classify</text>
+<rect x="330" y="12" width="72" height="22" rx="11" fill="#F0F0F0"/>
+<text x="342" y="27" font-family="system-ui,sans-serif" font-size="10" fill="#666">3 Extract</text>
+<text x="24" y="72" font-family="system-ui,sans-serif" font-size="10" font-weight="600" letter-spacing="0.06em" fill="#506EE8">SOURCES</text>
+<rect x="24" y="82" width="118" height="52" rx="8" fill="#FDF6EE" stroke="#E8DED4"/>
+<rect x="34" y="94" width="28" height="28" rx="6" fill="#FFFFFF" stroke="#E8E8E8"/>
+<path d="M42 106h12M42 110h8" stroke="#506EE8" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M38 98l4-3h8l4 3v14H38V98z" stroke="#506EE8" stroke-width="1.2" fill="none"/>
+<text x="68" y="104" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#1a1a1a">Email</text>
+<text x="68" y="118" font-family="system-ui,sans-serif" font-size="9" fill="#777">Attachments</text>
+<rect x="24" y="142" width="118" height="52" rx="8" fill="#FFFFFF" stroke="#E8E8E8"/>
+<rect x="34" y="154" width="28" height="28" rx="6" fill="#F5F7FF" stroke="#D4DCFA"/>
+<rect x="40" y="160" width="16" height="12" rx="2" stroke="#506EE8" stroke-width="1.2" fill="none"/>
+<path d="M44 164h8M44 168h6" stroke="#506EE8" stroke-width="1"/>
+<text x="68" y="164" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#1a1a1a">Portal</text>
+<text x="68" y="178" font-family="system-ui,sans-serif" font-size="9" fill="#777">Carrier / vendor</text>
+<rect x="24" y="202" width="118" height="52" rx="8" fill="#FFFFFF" stroke="#E8E8E8"/>
+<rect x="34" y="214" width="28" height="28" rx="6" fill="#F5F7FF" stroke="#D4DCFA"/>
+<path d="M40 222h16M40 226h12M40 230h14" stroke="#506EE8" stroke-width="1.2" stroke-linecap="round"/>
+<text x="68" y="224" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#1a1a1a">API / EDI</text>
+<text x="68" y="238" font-family="system-ui,sans-serif" font-size="9" fill="#777">Automated feeds</text>
+<path d="M148 108h36" stroke="#C4C4C4" stroke-width="1.5" stroke-dasharray="4 3"/>
+<polygon points="184,108 178,105 178,111" fill="#C4C4C4"/>
+<path d="M148 168h36" stroke="#506EE8" stroke-width="1.5"/>
+<polygon points="184,168 178,165 178,171" fill="#506EE8"/>
+<path d="M148 228h36" stroke="#C4C4C4" stroke-width="1.5" stroke-dasharray="4 3"/>
+<polygon points="184,228 178,225 178,231" fill="#C4C4C4"/>
+<rect x="196" y="88" width="88" height="40" rx="6" fill="#FFFFFF" stroke="#E8E8E8"/>
+<text x="208" y="105" font-family="system-ui,sans-serif" font-size="9" fill="#999">Invoice.pdf</text>
+<text x="208" y="118" font-family="system-ui,sans-serif" font-size="8" fill="#506EE8">Queued</text>
+<rect x="196" y="148" width="88" height="40" rx="6" fill="#FFFFFF" stroke="#506EE8" stroke-width="1.5"/>
+<text x="208" y="165" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#1a1a1a">BOL_scan.pdf</text>
+<text x="208" y="178" font-family="system-ui,sans-serif" font-size="8" fill="#28A745">Matched</text>
+<rect x="196" y="208" width="88" height="40" rx="6" fill="#FFFFFF" stroke="#E8E8E8"/>
+<text x="208" y="225" font-family="system-ui,sans-serif" font-size="9" fill="#999">PL_4821.xlsx</text>
+<text x="208" y="238" font-family="system-ui,sans-serif" font-size="8" fill="#999">Pending</text>
+<path d="M292 168h28" stroke="#506EE8" stroke-width="1.5"/>
+<polygon points="320,168 314,165 314,171" fill="#506EE8"/>
+<rect x="328" y="58" width="248" height="276" rx="10" fill="#FDF6EE" stroke="#E8DED4"/>
+<rect x="328" y="58" width="248" height="36" rx="10" fill="#506EE8"/>
+<rect x="328" y="82" width="248" height="12" fill="#506EE8"/>
+<path d="M344 78h8v-6a2 2 0 012-2h12a2 2 0 012 2v6" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.9"/>
+<text x="368" y="80" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Shipment SH-20418</text>
+<text x="344" y="108" font-family="system-ui,sans-serif" font-size="10" fill="#555">Harbor Street Imports LLC - Los Angeles inbound</text>
+<line x1="344" y1="122" x2="560" y2="122" stroke="#E8DED4"/>
+<text x="344" y="142" font-family="system-ui,sans-serif" font-size="9" font-weight="600" letter-spacing="0.05em" fill="#888">DOCUMENT CHECKLIST</text>
+<rect x="344" y="152" width="14" height="14" rx="3" fill="#506EE8"/>
+<path d="M347 159l3 3 6-6" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="366" y="163" font-family="system-ui,sans-serif" font-size="10" fill="#1a1a1a">Commercial invoice</text>
+<text x="520" y="163" font-family="system-ui,sans-serif" font-size="9" fill="#28A745">Complete</text>
+<rect x="344" y="178" width="14" height="14" rx="3" fill="#506EE8"/>
+<path d="M347 185l3 3 6-6" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="366" y="189" font-family="system-ui,sans-serif" font-size="10" fill="#1a1a1a">Bill of lading</text>
+<text x="520" y="189" font-family="system-ui,sans-serif" font-size="9" fill="#28A745">Complete</text>
+<rect x="344" y="204" width="14" height="14" rx="3" fill="#FFFFFF" stroke="#CCC"/>
+<text x="366" y="215" font-family="system-ui,sans-serif" font-size="10" fill="#1a1a1a">Packing list</text>
+<text x="520" y="215" font-family="system-ui,sans-serif" font-size="9" fill="#506EE8">In review</text>
+<rect x="344" y="230" width="14" height="14" rx="3" fill="#FFFFFF" stroke="#CCC"/>
+<text x="366" y="241" font-family="system-ui,sans-serif" font-size="10" fill="#1a1a1a">Certificate of origin</text>
+<text x="520" y="241" font-family="system-ui,sans-serif" font-size="9" fill="#999">Missing</text>
+<rect x="344" y="262" width="216" height="56" rx="8" fill="#FFFFFF" stroke="#E8E8E8"/>
+<text x="356" y="280" font-family="system-ui,sans-serif" font-size="9" fill="#888">Next action</text>
+<text x="356" y="298" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#1a1a1a">Request COO from supplier - auto-email draft ready</text>
+<g opacity="0.15" fill="#506EE8">
+<circle cx="280" cy="100" r="1.5"/><circle cx="292" cy="100" r="1.5"/><circle cx="304" cy="100" r="1.5"/>
+<circle cx="280" cy="112" r="1.5"/><circle cx="292" cy="112" r="1.5"/><circle cx="304" cy="112" r="1.5"/>
+</g>
+</svg>

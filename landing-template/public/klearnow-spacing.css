@@ -905,6 +905,42 @@ html.kn-ready .page-wrapper {
   display: none;
 }
 
+/* CMS source list — keep in DOM for clones; never show alongside the slider */
+.testimonial_container.is-slider-ready > .w-dyn-list {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Testimonials — one card per view; Webflow default widths caused half-slide peek */
+.testimonial_container.is-slider-ready .testimonial_slider {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.testimonial_container.is-slider-ready .testimonial_slider .w-slider-mask {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.testimonial_container.is-slider-ready .testimonial_slide.w-slide {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.testimonial_container.is-slider-ready .w-slider-nav {
+  margin-top: 1.25rem;
+}
+
 /* Contact page — primary action is the form; never show duplicate footer CTA band */
 body.is-talk-to-klear .section_cta {
   display: none !important;
@@ -1118,6 +1154,22 @@ body.kn-full-translate-busy .locale-nav-item {
 .section_hero.background-color-white {
   position: relative;
   overflow: hidden;
+}
+
+.section_hero.background-color-white:has(.kn-home-hero-stage) {
+  overflow: visible;
+}
+
+.section_hero.background-color-white:has(.kn-home-hero-stage) .hero_image,
+.section_hero.background-color-white:has(.kn-home-hero-stage) .hero_container,
+.section_hero.background-color-white:has(.kn-home-hero-stage) .hero_image-grid.gestion-des-cessions-page {
+  overflow: visible;
+}
+
+.section_hero .kn-home-hero-stage.hero_image-container {
+  overflow: visible;
+  background: transparent;
+  border: none;
 }
 
 /* Extra hero dot layer only on product/operation earth-dot heroes (avoid triple grid with page dots) */

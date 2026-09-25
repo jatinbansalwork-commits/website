@@ -2,7 +2,7 @@
   'use strict';
 
   /** Bump when public assets or boot behavior changes. Keep in sync with ?v= on script tags in HTML. */
-  var ASSET_VERSION = '20261081';
+  var ASSET_VERSION = '20261113';
   var html = document.documentElement;
 
   var KN_FONT_ASSETS = [
@@ -313,19 +313,103 @@
 
   function getActiveMain() {
     var isFr = document.body.classList.contains('locale-fr');
-    return document.querySelector(
+    var pane = document.querySelector(
       isFr
         ? 'main.main-wrapper > .kn-locale-pane.is_fr-only'
         : 'main.main-wrapper > .kn-locale-pane.is_en-only'
     );
+    if (pane) return pane;
+    return document.querySelector('main.main-wrapper');
   }
 
-  /** Finsweet CMS Slider can empty .w-dyn-items before our inline init runs — restore + hydrate Webflow slides. */
-  function initTestimonialSlider() {
-    var main = getActiveMain();
-    if (!main) return;
-    var container = main.querySelector('.testimonial_container');
+  var TESTIMONIAL_AUTOPLAY_MS = 6000;
+  var testimonialAutoplayBound = false;
+
+  /** Finsweet CMS Slider fights our Webflow mask — use static CMS HTML + boot hydration only. */
+  function stripFinsweetCmssliderAttrs(root) {
+    var scope = root && root.querySelectorAll ? root : document;
+    scope.querySelectorAll('[fs-cmsslider-element]').forEach(function (node) {
+      node.removeAttribute('fs-cmsslider-element');
+    });
+  }
+
+  function normalizeTestimonialSlider(slider) {
+    if (!slider) return;
+
+    slider.style.display = 'block';
+    slider.style.width = '100%';
+    slider.style.maxWidth = '100%';
+    slider.style.height = '100%';
+
+    var mask = slider.querySelector('.w-slider-mask');
+    if (mask) {
+      mask.style.display = 'block';
+      mask.style.width = '100%';
+      mask.style.maxWidth = '100%';
+      mask.style.overflow = 'hidden';
+    }
+
+    slider.querySelectorAll('.testimonial_slide.w-slide, .w-slide').forEach(function (slide) {
+      slide.style.width = '100%';
+      slide.style.maxWidth = '100%';
+      slide.style.minHeight = '0';
+      slide.style.marginLeft = '0';
+      slide.style.marginRight = '0';
+      slide.style.verticalAlign = 'top';
+    });
+  }
+
+  function redrawTestimonialSlider(slider) {
+    normalizeTestimonialSlider(slider);
+    if (window.Webflow && window.Webflow.require) {
+      try {
+        window.Webflow.require('slider').redraw();
+      } catch (error) {}
+    }
+  }
+
+  function initTestimonialAutoplay(slider) {
+    if (!slider) return;
+
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      slider.setAttribute('data-autoplay', 'false');
+      return;
+    }
+
+    slider.setAttribute('data-autoplay', 'true');
+    slider.setAttribute('data-delay', String(TESTIMONIAL_AUTOPLAY_MS));
+    slider.setAttribute('data-autoplay-limit', '0');
+    slider.setAttribute('data-infinite', 'true');
+    slider.setAttribute('data-animation', 'slide');
+    slider.setAttribute('data-duration', '650');
+    slider.setAttribute('data-easing', 'ease');
+
+    if (testimonialAutoplayBound) return;
+    testimonialAutoplayBound = true;
+
+    var pause = function () {
+      slider.setAttribute('data-autoplay', 'false');
+      redrawTestimonialSlider(slider);
+    };
+
+    var resume = function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      slider.setAttribute('data-autoplay', 'true');
+      redrawTestimonialSlider(slider);
+    };
+
+    slider.addEventListener('mouseenter', pause);
+    slider.addEventListener('mouseleave', resume);
+    slider.addEventListener('focusin', pause);
+    slider.addEventListener('focusout', resume);
+  }
+
+  /** Restore CMS items into Webflow slides — one full card per slide (no peek / half-slide). */
+  function initOneTestimonialContainer(container) {
     if (!container) return;
+
+    stripFinsweetCmssliderAttrs(container);
 
     var slider = container.querySelector('.testimonial_slider');
     var list = container.querySelector('.w-dyn-list');
@@ -340,31 +424,50 @@
     var mask = slider.querySelector('.w-slider-mask');
     if (!mask) return;
 
-    if (!slider.querySelector('.testimonial_slide .testimonial_grid')) {
-      var items = itemsWrap.querySelectorAll(':scope > .w-dyn-item');
-      if (!items.length) return;
+    var items = itemsWrap.querySelectorAll(':scope > .w-dyn-item');
+    if (!items.length) return;
+
+    if (!container.getAttribute('data-kn-dyn-backup') && itemsWrap.innerHTML.trim()) {
+      container.setAttribute('data-kn-dyn-backup', itemsWrap.innerHTML);
+    }
+
+    mask.querySelectorAll('.w-slide').forEach(function (slide) {
+      if (!slide.querySelector('.testimonial_grid')) slide.remove();
+    });
+
+    var populatedInMask = mask.querySelectorAll('.w-slide .testimonial_grid').length;
+    if (populatedInMask !== items.length) {
       mask.innerHTML = '';
       items.forEach(function (item) {
         var slide = document.createElement('div');
         slide.className = 'testimonial_slide w-slide';
+        slide.setAttribute('role', 'group');
+        slide.setAttribute('aria-label', 'Testimonial slide');
         slide.appendChild(item.cloneNode(true));
         mask.appendChild(slide);
       });
     }
 
-    if (!slider.querySelector('.testimonial_slide .testimonial_grid')) {
+    mask.querySelectorAll('.w-slide').forEach(function (slide) {
+      if (!slide.querySelector('.testimonial_grid')) slide.remove();
+    });
+
+    if (!slider.querySelector('.w-slide .testimonial_grid')) {
       container.classList.add('is-testimonial-static');
+      container.classList.remove('is-slider-ready');
       return;
     }
 
     container.classList.remove('is-testimonial-static');
     container.classList.add('is-slider-ready');
 
-    if (window.Webflow && window.Webflow.require) {
-      try {
-        window.Webflow.require('slider').redraw();
-      } catch (error) {}
-    }
+    normalizeTestimonialSlider(slider);
+    initTestimonialAutoplay(slider);
+    redrawTestimonialSlider(slider);
+  }
+
+  function initTestimonialSlider() {
+    document.querySelectorAll('.testimonial_container').forEach(initOneTestimonialContainer);
   }
 
   function isFreightCrealoHowSwitchSlider(slider) {
@@ -480,13 +583,30 @@
     }).filter(Boolean);
   }
 
+  function resetSceneAgentPill(scene) {
+    var agent = scene.querySelector('.kd-sb-agent');
+    var labelEl = scene.querySelector('.kd-sb-agent-label');
+    if (!agent) return;
+    agent.classList.remove('is-success');
+    var spin = agent.querySelector('.kd-spin');
+    if (spin) spin.hidden = false;
+    var phases = parseAgentPhases(scene.getAttribute('data-agent-phases'));
+    if (labelEl && phases.length) labelEl.textContent = phases[0].label;
+  }
+
   function scheduleSceneStory(scene, timers) {
     var labelEl = scene.querySelector('.kd-sb-agent-label');
+    var agent = scene.querySelector('.kd-sb-agent');
     var phases = parseAgentPhases(scene.getAttribute('data-agent-phases'));
     if (labelEl && phases.length) {
       phases.forEach(function (phase) {
         timers.push(setTimeout(function () {
           labelEl.textContent = phase.label;
+          if (!agent) return;
+          var isSuccess = /sent to supplier|checks complete|ready for|filed with/i.test(phase.label);
+          agent.classList.toggle('is-success', isSuccess);
+          var spin = agent.querySelector('.kd-spin');
+          if (spin) spin.hidden = isSuccess;
         }, phase.t));
       });
     }
@@ -507,14 +627,15 @@
       focusRows.forEach(function (r) {
         r.classList.remove('is-dim', 'is-active');
       });
-    }, parseInt(scene.getAttribute('data-loop-ms') || '6200', 10) - 120));
+    }, parseInt(scene.getAttribute('data-loop-ms') || '7400', 10) - 120));
   }
 
   var KN_SCENE_FRAGMENTS = {
     collect: '/kleardata-collect-scene.html',
     verify: '/klearhub-verify-scene.html',
     operate: '/managed-trade-operate-scene.html',
-    global: '/klearhub-global-scene.html'
+    global: '/klearhub-global-scene.html',
+    'home-hero': '/home-hero-scene.html'
   };
 
   function stripFragmentComments(html) {
@@ -524,13 +645,253 @@
   }
 
   function ensureSceneStylesheet() {
-    if (document.getElementById('kn-scene-styles')) return;
     if (!document.querySelector('[data-kn-scene-slot]')) return;
-    var link = document.createElement('link');
-    link.id = 'kn-scene-styles';
-    link.rel = 'stylesheet';
-    link.href = withVersion('/kleardata-collect-scene.css');
-    document.head.appendChild(link);
+    if (!document.getElementById('kn-scene-styles')) {
+      var link = document.createElement('link');
+      link.id = 'kn-scene-styles';
+      link.rel = 'stylesheet';
+      link.href = withVersion('/kleardata-collect-scene.css');
+      document.head.appendChild(link);
+    }
+    if (document.querySelector('[data-kn-scene="home-hero"]') && !document.getElementById('kn-hero-docsumo-styles')) {
+      var heroLink = document.createElement('link');
+      heroLink.id = 'kn-hero-docsumo-styles';
+      heroLink.rel = 'stylesheet';
+      heroLink.href = withVersion('/home-hero-docsumo.css');
+      document.head.appendChild(heroLink);
+    }
+  }
+
+  function setHeroRailStage(rail, activeIndex, allDone) {
+    if (!rail) return;
+    var segs = rail.querySelectorAll('.rail-seg');
+    segs.forEach(function (seg, i) {
+      var state = 'idle';
+      if (allDone) state = 'done';
+      else if (i < activeIndex) state = 'done';
+      else if (i === activeIndex) state = 'active';
+      seg.setAttribute('data-state', state);
+    });
+    rail.setAttribute('data-stage', allDone ? '5' : String(activeIndex));
+  }
+
+  function setHeroStatusPill(pill, mode, label) {
+    if (!pill) return;
+    if (mode === 'ok') {
+      pill.className = 'pill pill-ok live';
+      pill.innerHTML = '<span class="d"></span>' + label;
+      return;
+    }
+    pill.className = 'pill pill-brand working';
+    pill.innerHTML = '<span class="spin"></span><span data-kn-hero-pill-label>' + label + '</span>';
+  }
+
+  function setHeroDoc(doc, state, pillKind, pillText, meta) {
+    if (!doc) return;
+    doc.setAttribute('data-state', state);
+    var pill = doc.querySelector('.pill');
+    if (pill) {
+      pill.className = 'pill pill-' + pillKind + (pillKind === 'ok' ? ' pop' : '');
+      pill.textContent = pillText;
+    }
+    if (meta != null) {
+      var metaEl = doc.querySelector('[data-kn-hero-doc-meta]');
+      if (metaEl) metaEl.textContent = meta;
+    }
+  }
+
+  function setHeroCheck(check, state, kind) {
+    if (!check) return;
+    check.setAttribute('data-state', state);
+    check.setAttribute('data-kind', kind);
+    var icon = check.querySelector('.tick, .bang, .ring');
+    if (!icon) return;
+    if (state === 'done' && kind === 'warn') {
+      icon.outerHTML = '<span class="bang pop">!</span>';
+    } else if (state === 'done') {
+      icon.outerHTML = '<span class="tick pop">✓</span>';
+    } else if (state === 'running') {
+      icon.outerHTML = '<span class="ring"></span>';
+    } else {
+      icon.outerHTML = '<span class="ring idle"></span>';
+    }
+  }
+
+  function applyHeroVisualStage(visual, stage) {
+    var rail = visual.querySelector('[data-kn-hero-rail]');
+    var pill = visual.querySelector('[data-kn-hero-pill]');
+    var docsLabel = visual.querySelector('[data-kn-hero-docs-label]');
+    var docs = [
+      visual.querySelector('[data-kn-hero-doc="0"]'),
+      visual.querySelector('[data-kn-hero-doc="1"]'),
+      visual.querySelector('[data-kn-hero-doc="2"]')
+    ];
+    var checks = [
+      visual.querySelector('[data-kn-hero-check="0"]'),
+      visual.querySelector('[data-kn-hero-check="1"]'),
+      visual.querySelector('[data-kn-hero-check="2"]')
+    ];
+    var footLeft = visual.querySelector('[data-kn-hero-foot-left]');
+    var footRight = visual.querySelector('[data-kn-hero-foot-right]');
+    var fileWrap = visual.querySelector('.file-wrap');
+
+    if (fileWrap) fileWrap.setAttribute('data-playing', stage < 5 ? 'true' : '');
+
+    if (stage === 0) {
+      setHeroRailStage(rail, 0, false);
+      setHeroStatusPill(pill, 'brand', 'Collecting from email & portal…');
+      if (docsLabel) docsLabel.textContent = 'Documents · arriving by email';
+      setHeroDoc(docs[0], 'reading', 'brand', 'Reading', 'Classified · PDF');
+      setHeroDoc(docs[1], 'ghost', 'idle', 'Waiting', 'Scan · MSKU4829184');
+      setHeroDoc(docs[2], 'ghost', 'idle', 'Waiting', '1 pp · 214 CTNS');
+      setHeroCheck(checks[0], 'idle', 'ok');
+      setHeroCheck(checks[1], 'idle', 'ok');
+      setHeroCheck(checks[2], 'idle', 'warn');
+      if (footLeft) footLeft.innerHTML = 'Agents working · <span class="num">0m 20s</span>';
+      if (footRight) footRight.textContent = '0 of 3 checks';
+    } else if (stage === 1) {
+      setHeroRailStage(rail, 1, false);
+      setHeroStatusPill(pill, 'brand', 'Classifying document types…');
+      if (docsLabel) docsLabel.textContent = 'Documents · 7 received';
+      setHeroDoc(docs[0], 'reading', 'brand', 'Reading', '2 pp · PDF');
+      setHeroDoc(docs[1], 'ghost', 'idle', 'Waiting', 'Scan · MSKU4829184');
+      setHeroDoc(docs[2], 'ghost', 'idle', 'Waiting', '1 pp · 214 CTNS');
+      setHeroCheck(checks[0], 'idle', 'ok');
+      setHeroCheck(checks[1], 'idle', 'ok');
+      setHeroCheck(checks[2], 'idle', 'warn');
+      if (footLeft) footLeft.innerHTML = 'Agents working · <span class="num">1m 01s</span>';
+      if (footRight) footRight.textContent = '0 of 3 checks';
+    } else if (stage === 2) {
+      setHeroRailStage(rail, 2, false);
+      setHeroStatusPill(pill, 'brand', 'Extracting fields from invoice & BOL…');
+      setHeroDoc(docs[0], 'done', 'ok', 'Extracted', '2 pp · PDF');
+      setHeroDoc(docs[1], 'reading', 'brand', 'Reading', 'Scan · MSKU4829184');
+      setHeroDoc(docs[2], 'ghost', 'idle', 'Waiting', '1 pp · 214 CTNS');
+      setHeroCheck(checks[0], 'idle', 'ok');
+      setHeroCheck(checks[1], 'idle', 'ok');
+      setHeroCheck(checks[2], 'idle', 'warn');
+      if (footLeft) footLeft.innerHTML = 'Agents working · <span class="num">1m 48s</span>';
+      if (footRight) footRight.textContent = '0 of 3 checks';
+    } else if (stage === 3) {
+      setHeroRailStage(rail, 3, false);
+      setHeroStatusPill(pill, 'brand', 'Running cross-document checks…');
+      setHeroDoc(docs[0], 'done', 'ok', 'Extracted', '2 pp · PDF');
+      setHeroDoc(docs[1], 'done', 'ok', 'Verified', 'Scan · MSKU4829184');
+      setHeroDoc(docs[2], 'done', 'ok', 'Verified', '1 pp · 214 CTNS');
+      setHeroCheck(checks[0], 'idle', 'ok');
+      setHeroCheck(checks[1], 'idle', 'ok');
+      setHeroCheck(checks[2], 'idle', 'warn');
+      if (footLeft) footLeft.innerHTML = 'Agents working · <span class="num">2m 41s</span>';
+      if (footRight) footRight.textContent = '0 of 3 checks';
+    } else if (stage === 4) {
+      setHeroRailStage(rail, 3, false);
+      setHeroStatusPill(pill, 'brand', 'Running cross-document checks…');
+      setHeroDoc(docs[0], 'done', 'ok', 'Extracted', '2 pp · PDF');
+      setHeroDoc(docs[1], 'done', 'ok', 'Verified', 'Scan · MSKU4829184');
+      setHeroDoc(docs[2], 'done', 'ok', 'Verified', '1 pp · 214 CTNS');
+      setHeroCheck(checks[0], 'done', 'ok');
+      setHeroCheck(checks[1], 'running', 'ok');
+      setHeroCheck(checks[2], 'idle', 'warn');
+      if (footLeft) footLeft.innerHTML = 'Agents working · <span class="num">2m 41s</span>';
+      if (footRight) footRight.textContent = '1 of 3 checks';
+    } else {
+      setHeroRailStage(rail, 4, true);
+      setHeroStatusPill(pill, 'ok', 'Ready for broker review');
+      setHeroDoc(docs[0], 'done', 'ok', 'Extracted', '2 pp · PDF');
+      setHeroDoc(docs[1], 'done', 'ok', 'Verified', 'Scan · MSKU4829184');
+      setHeroDoc(docs[2], 'done', 'ok', 'Verified', '1 pp · 214 CTNS');
+      setHeroCheck(checks[0], 'done', 'ok');
+      setHeroCheck(checks[1], 'done', 'ok');
+      setHeroCheck(checks[2], 'done', 'warn');
+      if (footLeft) footLeft.textContent = 'Posted to ACE via webhook';
+      if (footRight) footRight.textContent = '3m 42s · 1 exception routed';
+    }
+  }
+
+  function scheduleHeroVisualStory(visual, timers) {
+    var stages = [
+      { t: 0, s: 0 },
+      { t: 2200, s: 1 },
+      { t: 4400, s: 2 },
+      { t: 6600, s: 3 },
+      { t: 8800, s: 4 },
+      { t: 10800, s: 5 }
+    ];
+    stages.forEach(function (step) {
+      timers.push(
+        setTimeout(function () {
+          applyHeroVisualStage(visual, step.s);
+        }, step.t)
+      );
+    });
+  }
+
+  /** Docsumo-style homepage hero — stage loop on .hero-visual */
+  function initHeroVisualScenes() {
+    var visuals = document.querySelectorAll('[data-kn-hero-visual]');
+    if (!visuals.length) return;
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    visuals.forEach(function (visual) {
+      if (visual.dataset.knHeroVisualInit) return;
+      visual.dataset.knHeroVisualInit = '1';
+
+      var loopMs = parseInt(visual.getAttribute('data-loop-ms') || '14200', 10);
+      if (!loopMs || loopMs < 4000) loopMs = 14200;
+
+      var loopTimer = null;
+      var storyTimers = [];
+
+      function clearStory() {
+        storyTimers.forEach(clearTimeout);
+        storyTimers = [];
+      }
+
+      function replay() {
+        clearStory();
+        applyHeroVisualStage(visual, 0);
+        if (!reduced) scheduleHeroVisualStory(visual, storyTimers);
+      }
+
+      function startLoop() {
+        if (reduced) {
+          applyHeroVisualStage(visual, 5);
+          return;
+        }
+        replay();
+        if (loopTimer) clearInterval(loopTimer);
+        loopTimer = setInterval(replay, loopMs);
+      }
+
+      function stopLoop() {
+        clearStory();
+        if (loopTimer) {
+          clearInterval(loopTimer);
+          loopTimer = null;
+        }
+      }
+
+      if (typeof IntersectionObserver === 'function') {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) startLoop();
+              else stopLoop();
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px' }
+        );
+        observer.observe(visual);
+        requestAnimationFrame(function () {
+          var rect = visual.getBoundingClientRect();
+          var vh = window.innerHeight || document.documentElement.clientHeight;
+          if (rect.top < vh && rect.bottom > 0) startLoop();
+        });
+      } else {
+        startLoop();
+      }
+    });
   }
 
   function loadSceneFragment(sceneKey) {
@@ -576,8 +937,8 @@
       if (scene.dataset.knProductSceneInit) return;
       scene.dataset.knProductSceneInit = '1';
 
-      var loopMs = parseInt(scene.getAttribute('data-loop-ms') || '6200', 10);
-      if (!loopMs || loopMs < 1000) loopMs = 6200;
+      var loopMs = parseInt(scene.getAttribute('data-loop-ms') || '7400', 10);
+      if (!loopMs || loopMs < 1000) loopMs = 7400;
 
       var loopTimer = null;
       var storyTimers = [];
@@ -585,6 +946,7 @@
       function clearStory() {
         storyTimers.forEach(clearTimeout);
         storyTimers = [];
+        resetSceneAgentPill(scene);
         scene.querySelectorAll('[data-kn-focus-row]').forEach(function (row) {
           row.classList.remove('is-dim', 'is-active');
         });
@@ -659,6 +1021,7 @@
     mountSceneSlots()
       .catch(function () {})
       .then(function () {
+        initHeroVisualScenes();
         initProductStackScenes();
 
         if (window.KlearNavDropdown) {
@@ -709,11 +1072,17 @@
 
   window.Webflow = window.Webflow || [];
   window.Webflow.push(function () {
+    initTestimonialSlider();
     scheduleHowSwitchSliders();
   });
   window.addEventListener('resize', function () {
     syncNavHeight();
     initHowSwitchSliders();
+    initTestimonialSlider();
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    stripFinsweetCmssliderAttrs(document);
   });
 
   window.KlearBoot = {

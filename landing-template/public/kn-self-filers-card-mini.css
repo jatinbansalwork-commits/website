@@ -654,6 +654,20 @@
   100% { transform: scaleY(1); }
 }
 
+@media (max-width: 991px) {
+  .services_grid .services_animation-container.is-self-filers-visual,
+  .services_grid .services_animation-container.is-importers-visual,
+  .services_grid .services_animation-container.is-customs-brokers-visual,
+  .services_grid .services_animation-container.is-freight-forwarders-visual,
+  .services_grid .is-self-filers-visual .kn-sf-mini,
+  .services_grid .is-importers-visual .kn-sf-mini,
+  .services_grid .is-customs-brokers-visual .kn-sf-mini,
+  .services_grid .is-freight-forwarders-visual .kn-sf-mini {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .services_grid .is-self-filers-visual .kn-sf-mini[data-live] .kn-sf-beam,
   .services_grid .is-self-filers-visual .kn-sf-mini-tabs span.is-on::after,

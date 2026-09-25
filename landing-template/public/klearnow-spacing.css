@@ -1520,3 +1520,167 @@ body.kn-full-translate-busy .locale-nav-item {
   margin-bottom: 0.75rem;
 }
 
+/* ——— Sitewide responsive (Webflow grid gaps · all marketing pages) ——— */
+.main-wrapper {
+  overflow-x: clip;
+}
+
+@media screen and (max-width: 991px) {
+  .services_grid:not(.is_industries) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: none !important;
+    grid-auto-rows: auto;
+    grid-auto-flow: row;
+  }
+
+  .services_grid:not(.is_industries) > .services_item,
+  .services_grid:not(.is_industries) > a.services_item,
+  #w-node-ebee08c1-053e-ecd4-3312-47a35dfcf60f-8237db56,
+  #w-node-ebee08c1-053e-ecd4-3312-47a35dfcf629-8237db56 {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    grid-area: auto !important;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .compliance_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: none !important;
+  }
+
+  .compliance_grid > * {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+
+  .support-you_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas: none !important;
+  }
+
+  .support-you_grid > .support-you_item {
+    grid-column: 1 / -1 !important;
+    min-width: 0;
+  }
+
+  .product_grid,
+  .product-overview_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-column-gap: clamp(1rem, 3vw, 1.5rem);
+    grid-row-gap: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .footer_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .nomenclature_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .latest-blog_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .testimonials_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+    place-items: stretch;
+  }
+
+  .testimonial_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .testimonial_image-container {
+    min-height: clamp(12rem, 42vw, 18rem) !important;
+    max-height: none !important;
+  }
+
+  .hero-why-kn_grid:not(.kn-agents-grid) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .hero-why-kn_grid:not(.kn-agents-grid) > .hero-why-kn_item,
+  .hero-why-kn_grid:not(.kn-agents-grid) [class*="results-stat-pos-"] {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+
+  .section_platform-metrics .platform-metrics_grid.is-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section_platform-metrics .platform-metrics_grid.is-3 {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: none;
+  }
+
+  .heading-description.version-features-7 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+  }
+
+  .heading-description.version-features-7 > .text-size-regular {
+    align-self: flex-start;
+    max-width: min(36rem, 100%);
+  }
+
+  .support-kn_grid .support-kn_item {
+    min-width: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .compliance_grid,
+  .support-you_grid,
+  .product_grid,
+  .product-overview_grid,
+  .services_grid:not(.is_industries),
+  .footer_grid,
+  .nomenclature_grid,
+  .latest-blog_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .testimonial_text-container {
+    border-top-left-radius: var(--kn-button-radius);
+    border-top-right-radius: var(--kn-button-radius);
+    border-bottom-left-radius: 0;
+  }
+
+  .testimonial_image-container {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: var(--kn-button-radius);
+    border-bottom-right-radius: var(--kn-button-radius);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .section_platform-metrics .platform-metrics_grid.is-5 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero_live-ticker {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 14px;
+    padding: 0.5rem 0.65rem;
+  }
+
+  .hero_live-ticker-body {
+    text-align: center;
+  }
+}
+

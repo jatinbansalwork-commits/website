@@ -211,7 +211,7 @@
   align-items: center;
 }
 
-/* Docsumo Collect — single-line window chrome (stage-scene / scene-bar) */
+/* stage-scene Collect — single-line window chrome (stage-scene / scene-bar) */
 .kd-collect-scene[data-scene-step="collect"] .kd-sb-rail,
 .kd-collect-scene[data-scene-step="collect"] .kd-sb-step-sep {
   display: none;
@@ -838,7 +838,7 @@
   color: var(--kn-ui-meta-color);
 }
 
-/* Pause until in view (Docsumo pattern) — all motion scenes */
+/* Pause until in view (stage-scene pattern) — all motion scenes */
 :where([data-kd-collect-scene], [data-kn-product-scene]):not([data-inview]) .kd-lane i,
 :where([data-kd-collect-scene], [data-kn-product-scene]):not([data-inview]) .kd-src,
 :where([data-kd-collect-scene], [data-kn-product-scene]):not([data-inview]) .kd-case-card li,
@@ -1146,7 +1146,7 @@
   border: 1px solid var(--kd-line);
 }
 
-/* ——— KlearHub · Verify (Docsumo sc-verify / stage-scene chrome) ——— */
+/* ——— KlearHub · Verify (stage-scene sc-verify / stage-scene chrome) ——— */
 .kh-verify-scene .kd-scene-bar {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) minmax(0, max-content);
@@ -2123,7 +2123,7 @@
   box-shadow: inset 3px 0 0 color-mix(in srgb, var(--kd-warn) 45%, transparent);
 }
 
-/* Managed Trade · Operate — Docsumo stage-scene chrome (matches Verify bar) */
+/* Managed Trade · Operate — stage-scene stage-scene chrome (matches Verify bar) */
 .km-analyze-scene .kd-scene-bar {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) minmax(0, max-content);
@@ -2268,7 +2268,7 @@
   min-height: 0;
 }
 
-.support-crealo_grid .support-platform_image.km-analyze-scene {
+.support-kn_grid .support-platform_image.km-analyze-scene {
   min-width: 0;
   width: 100%;
 }
@@ -2308,7 +2308,7 @@
   }
 }
 
-/* Case card shell (Docsumo vchecks / case-card — step-specific polish below) */
+/* Case card shell (stage-scene vchecks / case-card — step-specific polish below) */
 .kd-sc-collect .kd-case-card,
 .kh-verify-scene .kd-case-card,
 .km-analyze-scene .kd-case-card {
@@ -2354,7 +2354,7 @@
   border-bottom: none;
 }
 
-/* Collect — Docsumo stage-scene polish (tokens from docsumo.com CSS) */
+/* Collect — stage-scene stage-scene polish (tokens from stage-scene.com CSS) */
 .kd-collect-scene[data-scene-step="collect"] .kd-flow-row .kd-src {
   margin-top: 0;
   padding: 0.85em 0.75em;
@@ -2432,7 +2432,7 @@
   box-shadow: 0 8px 22px -14px color-mix(in srgb, var(--kd-brand) 50%, rgba(15, 17, 23, 0.2));
 }
 
-/* Verify — Docsumo sc-verify / vdoc / vchecks polish */
+/* Verify — stage-scene sc-verify / vdoc / vchecks polish */
 .kh-verify-scene[data-scene-step="verify"] .kh-sc-verify {
   gap: 0.65em;
 }
@@ -2534,7 +2534,7 @@
   box-shadow: var(--kd-shadow-xs);
 }
 
-/* Operate — Docsumo sc-analyze / an-kpi polish */
+/* Operate — stage-scene sc-analyze / an-kpi polish */
 .km-analyze-scene[data-scene-step="operate"] .km-sc-analyze {
   gap: 0.85em;
 }
@@ -2623,7 +2623,7 @@
   box-shadow: 0 8px 22px -14px color-mix(in srgb, var(--kd-brand) 50%, rgba(15, 17, 23, 0.2));
 }
 
-/* Docsumo polish v2 — shared product scenes (Collect · Verify · Operate) */
+/* stage-scene polish v2 — shared product scenes (Collect · Verify · Operate) */
 [data-kd-collect-scene] .kd-case-head b {
   font-weight: 600;
   font-size: 1.02em;
@@ -2866,8 +2866,8 @@
   max-height: 100%;
 }
 
-.support-crealo_grid .kn-product-scene-slot,
-.support-crealo_grid [data-kn-scene-slot] {
+.support-kn_grid .kn-product-scene-slot,
+.support-kn_grid [data-kn-scene-slot] {
   min-height: 0;
   height: 100%;
   align-self: stretch;
@@ -2875,23 +2875,23 @@
   overflow: hidden;
 }
 
-.support-crealo_grid .support-crealo_item {
+.support-kn_grid .support-kn_item {
   align-items: stretch;
   gap: 1rem;
   box-sizing: border-box;
 }
 
 /* Less inset on the scene column so the demo fills the lavender card */
-.support-crealo_grid .support-crealo_item:has(> .support-crealo_text-container:first-child) {
+.support-kn_grid .support-kn_item:has(> .support-kn_text-container:first-child) {
   padding: 1.25rem 0.5rem 1.25rem 1.5rem;
 }
 
-.support-crealo_grid .support-crealo_item:has(> .kn-product-scene-slot:first-child),
-.support-crealo_grid .support-crealo_item:has(> [data-kn-scene-slot]:first-child) {
+.support-kn_grid .support-kn_item:has(> .kn-product-scene-slot:first-child),
+.support-kn_grid .support-kn_item:has(> [data-kn-scene-slot]:first-child) {
   padding: 1.25rem 1.5rem 1.25rem 0.5rem;
 }
 
-.support-crealo_grid .support-crealo_text-container {
+.support-kn_grid .support-kn_text-container {
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -2915,7 +2915,7 @@
   box-shadow: none;
 }
 
-/* Product cross-sell rows: same 1fr : 2fr as homepage support-crealo_item */
+/* Product cross-sell rows: same 1fr : 2fr as homepage support-kn_item */
 .section_product-overview.background-color-beige .product-overview_grid:has(.kn-product-scene-slot) {
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 2.12fr);
   min-height: var(--kn-scene-canvas-h);
@@ -2983,7 +2983,7 @@
 
 /* Foundation · KlearData Collect */
 .section_support-platform .kd-collect-scene[data-scene-step="collect"],
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="collect"] .kd-collect-scene[data-scene-step="collect"] {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="collect"] .kd-collect-scene[data-scene-step="collect"] {
   --kd-brand: var(--kn-pl-blue);
   --kd-brand-soft: color-mix(in srgb, var(--kn-pl-blue) 14%, var(--kn-pl-cream));
   --kd-brand-ink: var(--kn-pl-blue);
@@ -2996,14 +2996,14 @@
 }
 
 .section_support-platform .kd-collect-scene[data-scene-step="collect"] .kd-scene-body,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="collect"] .kd-collect-scene[data-scene-step="collect"] .kd-scene-body {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="collect"] .kd-collect-scene[data-scene-step="collect"] .kd-scene-body {
   background:
     radial-gradient(58% 58% at 72% 28%, color-mix(in srgb, var(--kn-pl-blue) 8%, transparent), transparent 72%),
     radial-gradient(var(--kd-line) 1px, transparent 1.2px) 0 0 / 18px 18px;
 }
 
 .section_support-platform .kd-collect-scene[data-scene-step="collect"] .kd-lane,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="collect"] .kd-collect-scene[data-scene-step="collect"] .kd-lane {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="collect"] .kd-collect-scene[data-scene-step="collect"] .kd-lane {
   height: 2px;
   background: linear-gradient(
     90deg,
@@ -3013,7 +3013,7 @@
 }
 
 .section_support-platform .kd-collect-scene[data-scene-step="collect"] .kd-lane i,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="collect"] .kd-collect-scene[data-scene-step="collect"] .kd-lane i {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="collect"] .kd-collect-scene[data-scene-step="collect"] .kd-lane i {
   width: 9px;
   height: 9px;
   border-radius: 3px;
@@ -3021,7 +3021,7 @@
 }
 
 .section_support-platform .kd-collect-scene[data-scene-step="collect"] .kd-sc-collect .kd-case-card,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="collect"] .kd-collect-scene[data-scene-step="collect"] .kd-sc-collect .kd-case-card {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="collect"] .kd-collect-scene[data-scene-step="collect"] .kd-sc-collect .kd-case-card {
   min-height: 13.75em;
 }
 
@@ -3049,7 +3049,7 @@
 
 /* Operating system · KlearHub Verify */
 .section_support-platform .kh-verify-scene[data-scene-step="verify"],
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="verify"] .kh-verify-scene[data-scene-step="verify"] {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="verify"] .kh-verify-scene[data-scene-step="verify"] {
   --kd-brand: var(--kn-pl-blue);
   --kd-brand-soft: color-mix(in srgb, var(--kn-pl-blue) 14%, var(--kn-pl-cream));
   --kd-brand-ink: var(--kn-pl-blue);
@@ -3062,26 +3062,26 @@
 }
 
 .section_support-platform .kh-verify-scene[data-scene-step="verify"] .kd-scene-body,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="verify"] .kh-verify-scene[data-scene-step="verify"] .kd-scene-body {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="verify"] .kh-verify-scene[data-scene-step="verify"] .kd-scene-body {
   background:
     radial-gradient(58% 58% at 72% 28%, color-mix(in srgb, var(--kn-pl-blue) 8%, transparent), transparent 72%),
     radial-gradient(var(--kd-line) 1px, transparent 1.2px) 0 0 / 18px 18px;
 }
 
 .section_support-platform .kh-verify-scene[data-scene-step="verify"] .kh-sc-verify .kd-case-card,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="verify"] .kh-verify-scene[data-scene-step="verify"] .kd-case-card {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="verify"] .kh-verify-scene[data-scene-step="verify"] .kd-case-card {
   min-height: 13.25em;
 }
 
 .section_support-platform .kh-verify-scene .kd-sb-agent.is-success,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="verify"] .kh-verify-scene .kd-sb-agent.is-success {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="verify"] .kh-verify-scene .kd-sb-agent.is-success {
   background: var(--kd-ok-bg);
   color: var(--kd-ok);
   border-color: color-mix(in srgb, var(--kd-ok) 28%, transparent);
 }
 
 .section_support-platform .kh-verify-scene .kd-sb-agent.is-success::before,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="verify"] .kh-verify-scene .kd-sb-agent.is-success::before {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="verify"] .kh-verify-scene .kd-sb-agent.is-success::before {
   content: "✓";
   font-size: 0.85em;
   font-weight: 700;
@@ -3122,7 +3122,7 @@
 
 /* Service model · Managed Trade Operate */
 .section_support-platform .km-analyze-scene[data-scene-step="operate"],
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="operate"] .km-analyze-scene[data-scene-step="operate"] {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="operate"] .km-analyze-scene[data-scene-step="operate"] {
   --kd-brand: var(--kn-pl-blue);
   --kd-brand-soft: color-mix(in srgb, var(--kn-pl-blue) 14%, var(--kn-pl-cream));
   --kd-brand-ink: var(--kn-pl-blue);
@@ -3135,26 +3135,26 @@
 }
 
 .section_support-platform .km-analyze-scene[data-scene-step="operate"] .kd-scene-body,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="operate"] .km-analyze-scene[data-scene-step="operate"] .kd-scene-body {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="operate"] .km-analyze-scene[data-scene-step="operate"] .kd-scene-body {
   background:
     radial-gradient(58% 58% at 72% 28%, color-mix(in srgb, var(--kn-pl-blue) 8%, transparent), transparent 72%),
     radial-gradient(var(--kd-line) 1px, transparent 1.2px) 0 0 / 18px 18px;
 }
 
 .section_support-platform .km-analyze-scene[data-scene-step="operate"] .km-sc-analyze .kd-case-card,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="operate"] .km-analyze-scene[data-scene-step="operate"] .kd-case-card {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="operate"] .km-analyze-scene[data-scene-step="operate"] .kd-case-card {
   min-height: 11.5em;
 }
 
 .section_support-platform .km-analyze-scene .kd-sb-agent.is-success,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="operate"] .km-analyze-scene .kd-sb-agent.is-success {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="operate"] .km-analyze-scene .kd-sb-agent.is-success {
   background: var(--kd-ok-bg);
   color: var(--kd-ok);
   border-color: color-mix(in srgb, var(--kd-ok) 28%, transparent);
 }
 
 .section_support-platform .km-analyze-scene .kd-sb-agent.is-success::before,
-.support-crealo_grid [data-kn-scene-slot][data-kn-scene="operate"] .km-analyze-scene .kd-sb-agent.is-success::before {
+.support-kn_grid [data-kn-scene-slot][data-kn-scene="operate"] .km-analyze-scene .kd-sb-agent.is-success::before {
   content: "✓";
   font-size: 0.85em;
   font-weight: 700;
@@ -3199,7 +3199,7 @@
   border-color: color-mix(in srgb, var(--kn-pl-burgundy) 22%, transparent);
 }
 
-.section_support-platform .support-crealo_grid .support-platform_image-placeholder {
+.section_support-platform .support-kn_grid .support-platform_image-placeholder {
   background: color-mix(in srgb, var(--kn-pl-cream) 65%, #fff);
   border-color: color-mix(in srgb, var(--kn-pl-blue) 18%, transparent);
 }

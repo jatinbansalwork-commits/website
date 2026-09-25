@@ -8,13 +8,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 HERO_PLACEHOLDER_GRID = (
-    '<div class="hero_image-grid gestion-des-cessions-page">'
+    '<div class="hero_image-grid kn-hero-fullbleed">'
     '<div id="w-node-_7108d9ff-f65d-66c7-8a0d-20bb92882e57-0dfc17ac" class="hero_image-item is-1">'
-    '<div class="hero-industries_image-placeholder hero_image-container gestion-des-cessions-page is-empty-hero" '
+    '<div class="hero-industries_image-placeholder hero_image-container kn-hero-fullbleed is-empty-hero" '
     'role="img" aria-label="Platform preview"></div></div>'
-    '<div class="hero_image-item is-2 gestion-des-cessions-page">'
-    '<div class="hero_image-layer gestion-des-cessions-page">'
-    '<div class="hero-industries_image-placeholder hero_image-container is-2 gestion-des-cessions-page is-empty-hero" '
+    '<div class="hero_image-item is-2 kn-hero-fullbleed">'
+    '<div class="hero_image-layer kn-hero-fullbleed">'
+    '<div class="hero-industries_image-placeholder hero_image-container is-2 kn-hero-fullbleed is-empty-hero" '
     'role="img" aria-label="Operations preview"></div></div></div></div>'
 )
 
@@ -27,9 +27,9 @@ PRELOAD = """<!-- Preload image hero -->
 
 
 def replace_hero_grids(text: str) -> str:
-    """Swap Crealo CDN hero collages for KlearNow placeholders (keep grid geometry)."""
+    """Swap legacy template CDN hero collages for KlearNow placeholders (keep grid geometry)."""
     pattern = re.compile(
-        r'<div class="hero_image-grid gestion-des-cessions-page">.*?</div>\s*</div>\s*</div>\s*(?=</div>\s*</div>\s*</div>\s*</section>)',
+        r'<div class="hero_image-grid kn-hero-fullbleed">.*?</div>\s*</div>\s*</div>\s*(?=</div>\s*</div>\s*</div>\s*</section>)',
         re.S,
     )
     return pattern.sub(HERO_PLACEHOLDER_GRID, text)

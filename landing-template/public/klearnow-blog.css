@@ -1,4 +1,4 @@
-/* Blog listing — Crealo-style layout with KlearNow rounded corners */
+/* Blog listing — legacy template-style layout with KlearNow rounded corners */
 
 .section_latest-blog .latest-blog_image,
 .section_latest-blog .all-blog_post-image,
@@ -54,7 +54,7 @@
   border-radius: 12px;
 }
 
-/* Single post (Crealo-style) */
+/* Single post (legacy template-style) */
 .section_blog-article .hero_blog-image,
 .section_blog-article .hero_blog-image-container {
   border-radius: 12px;

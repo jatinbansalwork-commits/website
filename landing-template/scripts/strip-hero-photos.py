@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remove hero <picture> / photos; keep gestion-des-cessions placeholder shells."""
+"""Remove hero <picture> / photos; keep kn-hero-fullbleed placeholder shells."""
 from __future__ import annotations
 
 import re
@@ -13,7 +13,7 @@ STANDALONE_IMG = re.compile(
     re.S,
 )
 VISUAL_CLASS = re.compile(
-    r"(<div class=\"hero-industries_image-placeholder hero_image-container gestion-des-cessions-page) optype-hero-visual"
+    r"(<div class=\"hero-industries_image-placeholder hero_image-container kn-hero-fullbleed) optype-hero-visual"
 )
 
 

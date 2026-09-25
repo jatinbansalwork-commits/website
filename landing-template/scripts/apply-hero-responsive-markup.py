@@ -57,7 +57,7 @@ OLD_IMG = re.compile(
 
 def empty_hero_shell() -> str:
     return (
-        '<div class="hero-industries_image-placeholder hero_image-container gestion-des-cessions-page is-empty-hero" '
+        '<div class="hero-industries_image-placeholder hero_image-container kn-hero-fullbleed is-empty-hero" '
         'role="img" aria-label="Operations preview"></div>'
     )
 

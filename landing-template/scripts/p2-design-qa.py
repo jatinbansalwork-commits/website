@@ -39,7 +39,7 @@ EN_COPY_BY_FILE: dict[str, list[tuple[str, str]]] = {
     ],
 }
 
-# --- FR hero + legacy Crealo strings (is_fr-only main) ---
+# --- FR hero + legacy legacy template strings (is_fr-only main) ---
 FR_HERO: dict[str, dict[str, str]] = {
     "freight-forwarders.html": {
         "badge": "Transitaires",
@@ -221,8 +221,8 @@ def apply_fr_copy(fr_main: str, filename: str) -> str:
     return block
 
 
-def fix_customer_logo_crealo(text: str) -> str:
-    """Logo strip still had Crealo FR/EN copy with a highlighted 200."""
+def fix_customer_logo_legacy(text: str) -> str:
+    """Logo strip still had legacy template FR/EN copy with a highlighted 200."""
     plain = FR_LOGO_BLURB
     variants = [
         (
@@ -404,7 +404,7 @@ def main() -> None:
 
         is_op = rel.parts[0] == "operation-type" if rel.parts else False
         if is_op:
-            updated = fix_customer_logo_crealo(updated)
+            updated = fix_customer_logo_legacy(updated)
         is_talk = rel.name == "talk-to-klear.html"
 
         if is_op or is_talk:

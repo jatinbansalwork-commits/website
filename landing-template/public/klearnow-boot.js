@@ -2,7 +2,7 @@
   'use strict';
 
   /** Bump when public assets or boot behavior changes. Keep in sync with ?v= on script tags in HTML. */
-  var ASSET_VERSION = '20261113';
+  var ASSET_VERSION = '20261114';
   var html = document.documentElement;
 
   var KN_FONT_ASSETS = [
@@ -50,25 +50,25 @@
     var sans =
       'Manrope,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif';
     var textSel =
-      '[class*="text-size-"],.paragraph,.nav_main_label-text,.nav_main_feature-heading-text,.nav_main_feature-item,.nav_main_link,.nav_main_dropdown_label,.locale-nav-item-label,.footer_link,.footer_heading,.footer_text-container,.customer-logo_heading-container,.hero_description-container,.testimonial_text,.product-overview_text-container,.support-crealo_text-container,.contact_form-field-text-2,.tab-pane_logo-container-2,.button-v2,.button-v2-2,.button-v2-2 div,.fs_modal-2_button,.fs_modal-2_button-2,.demo_submit-button,.talk-to-klear_submit,.talk-to-klear_role,.w-button,input.w-button,button.w-button,.calendly-trigger,button,input,textarea,select,a[role="button"],[role="button"]';
+      '[class*="text-size-"],.paragraph,.nav_main_label-text,.nav_main_feature-heading-text,.nav_main_feature-item,.nav_main_link,.nav_main_dropdown_label,.locale-nav-item-label,.footer_link,.footer_heading,.footer_text-container,.customer-logo_heading-container,.hero_description-container,.testimonial_text,.product-overview_text-container,.support-kn_text-container,.contact_form-field-text-2,.tab-pane_logo-container-2,.button-v2,.button-v2-2,.button-v2-2 div,.fs_modal-2_button,.fs_modal-2_button-2,.demo_submit-button,.talk-to-klear_submit,.talk-to-klear_role,.w-button,input.w-button,button.w-button,.calendly-trigger,button,input,textarea,select,a[role="button"],[role="button"]';
     var headSel =
       '.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h4,.heading-style-h5,.heading-style-h6,.titre,.kd-ds-panel__intro h3,h1,h2,h3,h4,h5,h6';
     var style = document.createElement('style');
     style.id = 'kn-font-critical';
     var headingStack = 'Ratio,' + sans;
     style.textContent =
-      ':root{--crealo-fonts--text:' +
+      ':root{--kn-fonts--text:' +
       sans +
-      '!important;--crealo-fonts--headings:' +
+      '!important;--kn-fonts--headings:' +
       headingStack +
       '!important}' +
       'html,body,.body{font-family:' +
       sans +
       '!important;color:#2d2d2d}' +
       textSel +
-      '{font-family:var(--crealo-fonts--text)!important}' +
+      '{font-family:var(--kn-fonts--text)!important}' +
       headSel +
-      '{font-family:var(--crealo-fonts--headings)!important}' +
+      '{font-family:var(--kn-fonts--headings)!important}' +
       '.heading-style-h2{font-size:2.5rem;font-weight:400;line-height:1}' +
       '.heading-style-h6{font-size:.875rem;line-height:1.5}' +
       '.text-size-tiny{font-size:.75rem;line-height:1.5;letter-spacing:-.125px}' +
@@ -470,12 +470,12 @@
     document.querySelectorAll('.testimonial_container').forEach(initOneTestimonialContainer);
   }
 
-  function isFreightCrealoHowSwitchSlider(slider) {
+  function isFreightHowSwitchSlider(slider) {
     return slider && slider.closest('.is-freight-forwarders-how-switch');
   }
 
-  /** Crealo obligation-reddition: 31rem cards in a flex track, mask overflow visible. */
-  function normalizeCrealoHowSwitchSlider(slider) {
+  /** legacy template obligation-reddition: 31rem cards in a flex track, mask overflow visible. */
+  function normalizeFreightHowSwitchSlider(slider) {
     if (!slider) return;
     slider.style.display = 'flex';
     slider.style.width = '100%';
@@ -502,8 +502,8 @@
   /** Webflow ships `.how-switch_slider-mask { width: 31rem }` in a flex row — override before redraw. */
   function normalizeHowSwitchSlider(slider) {
     if (!slider) return;
-    if (isFreightCrealoHowSwitchSlider(slider)) {
-      normalizeCrealoHowSwitchSlider(slider);
+    if (isFreightHowSwitchSlider(slider)) {
+      normalizeFreightHowSwitchSlider(slider);
       return;
     }
 
@@ -653,11 +653,11 @@
       link.href = withVersion('/kleardata-collect-scene.css');
       document.head.appendChild(link);
     }
-    if (document.querySelector('[data-kn-scene="home-hero"]') && !document.getElementById('kn-hero-docsumo-styles')) {
+    if (document.querySelector('[data-kn-scene="home-hero"]') && !document.getElementById('kn-hero-motion-styles')) {
       var heroLink = document.createElement('link');
-      heroLink.id = 'kn-hero-docsumo-styles';
+      heroLink.id = 'kn-hero-motion-styles';
       heroLink.rel = 'stylesheet';
-      heroLink.href = withVersion('/home-hero-docsumo.css');
+      heroLink.href = withVersion('/home-hero-motion.css');
       document.head.appendChild(heroLink);
     }
   }
@@ -826,7 +826,7 @@
     });
   }
 
-  /** Docsumo-style homepage hero — stage loop on .hero-visual */
+  /** stage-scene-style homepage hero — stage loop on .hero-visual */
   function initHeroVisualScenes() {
     var visuals = document.querySelectorAll('[data-kn-hero-visual]');
     if (!visuals.length) return;
@@ -926,7 +926,7 @@
     return Promise.all(tasks);
   }
 
-  /** Homepage stack cards — Docsumo-style scenes (Collect, Classify, …) replay on data-inview. */
+  /** Homepage stack cards — stage-scene-style scenes (Collect, Classify, …) replay on data-inview. */
   function initProductStackScenes() {
     var scenes = document.querySelectorAll('[data-kn-product-scene], [data-kd-collect-scene]');
     if (!scenes.length) return;

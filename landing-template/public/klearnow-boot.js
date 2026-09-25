@@ -2,7 +2,7 @@
   'use strict';
 
   /** Bump when public assets or boot behavior changes. Keep in sync with ?v= on script tags in HTML. */
-  var ASSET_VERSION = '20261116';
+  var ASSET_VERSION = '20261150';
   var html = document.documentElement;
 
   var KN_FONT_ASSETS = [
@@ -603,7 +603,7 @@
         timers.push(setTimeout(function () {
           labelEl.textContent = phase.label;
           if (!agent) return;
-          var isSuccess = /sent to supplier|checks complete|ready for|filed with/i.test(phase.label);
+          var isSuccess = /sent to supplier|checks complete|ready for|filed with|audit trail complete/i.test(phase.label);
           agent.classList.toggle('is-success', isSuccess);
           var spin = agent.querySelector('.kd-spin');
           if (spin) spin.hidden = isSuccess;
@@ -635,6 +635,7 @@
     verify: '/klearhub-verify-scene.html',
     operate: '/managed-trade-operate-scene.html',
     global: '/klearhub-global-scene.html',
+    'managed-broker': '/managed-trade-broker-scene.html',
     'home-hero': '/home-hero-scene.html'
   };
 
@@ -903,6 +904,90 @@
     });
   }
 
+  function mountBrandAuroraLayer(selector) {
+    var className = 'kn-metrics-aurora';
+    document.querySelectorAll(selector).forEach(function (section) {
+      if (section.querySelector('.' + className)) return;
+      var aurora = document.createElement('div');
+      aurora.className = className;
+      aurora.setAttribute('aria-hidden', 'true');
+      aurora.innerHTML = '<span></span><span></span><span></span>';
+      section.insertBefore(aurora, section.firstChild);
+    });
+  }
+
+  /**
+   * One shared dark tail background: testimonials + CTA + footer stay separate in the DOM
+   * but sit inside .kn-page-tail for a single gradient / aurora (sitewide).
+   */
+  function wrapPageTail() {
+    if (document.querySelector('.kn-page-tail')) return;
+
+    var start = document.querySelector('.section_testimonials') || document.querySelector('.section_cta');
+    var footer = document.querySelector('.section_footer');
+    if (!start || !footer) return;
+
+    var parent = start.parentElement;
+    if (!parent || footer.parentElement !== parent) return;
+
+    var wrap = document.createElement('div');
+    wrap.className = 'kn-page-tail';
+    wrap.setAttribute('data-kn-page-tail', '1');
+
+    parent.insertBefore(wrap, start);
+
+    var node = start;
+    while (node) {
+      var next = node.nextElementSibling;
+      wrap.appendChild(node);
+      if (node === footer) break;
+      node = next;
+    }
+  }
+
+  /** Wrap tail + mount brand aurora on every marketing page (CSS via klearnow-spacing imports). */
+  function initSectionGradients() {
+    if (!document.querySelector('.section_footer')) return;
+    wrapPageTail();
+    mountBrandAuroraLayer('.kn-page-tail');
+    mountBrandAuroraLayer('.section_platform-metrics');
+  }
+
+  function initPlatformMetricsBand() {
+    if (!document.querySelector('.section_platform-metrics')) return;
+
+    var sections = document.querySelectorAll('.section_platform-metrics');
+    if (!sections.length) return;
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    sections.forEach(function (section) {
+      if (section.dataset.knMetricsInit) return;
+      section.dataset.knMetricsInit = '1';
+
+      if (reduced) {
+        section.setAttribute('data-inview', '');
+        return;
+      }
+
+      if (typeof IntersectionObserver !== 'function') {
+        section.setAttribute('data-inview', '');
+        return;
+      }
+
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) section.setAttribute('data-inview', '');
+            else section.removeAttribute('data-inview');
+          });
+        },
+        { threshold: 0.2, rootMargin: '0px 0px -5% 0px' }
+      );
+      observer.observe(section);
+    });
+  }
+
   /** Inject shared HTML fragments into [data-kn-scene-slot] placeholders (homepage + product pages). */
   function mountSceneSlots() {
     var slots = document.querySelectorAll('[data-kn-scene-slot][data-kn-scene]');
@@ -1014,9 +1099,12 @@
     resetUiState();
     syncNavHeight();
     bustLocalAssets();
+    initSectionGradients();
     initTestimonialSlider();
     initHowSwitchSliders();
     initFaqLoadMore();
+
+    initPlatformMetricsBand();
 
     mountSceneSlots()
       .catch(function () {})

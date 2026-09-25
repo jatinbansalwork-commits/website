@@ -14,6 +14,9 @@
  * Load after klearnow-site.min.css.
  */
 
+@import url("/section-gradients.css");
+@import url("/platform-metrics-aurora.css");
+
 :root {
   /* Sans fallbacks only — avoids Georgia serif flash before Manrope loads (buttons/nav). */
   --kn-fonts--text: Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -153,7 +156,6 @@ html.kn-ready .page-wrapper {
 /* Solid fills so page dots read like legacy template (texture in hero / gutters only) */
 .section_hero.background-color-white,
 .section_customer-logo,
-.section_platform-metrics,
 .section_services,
 .section_support-platform,
 .section_product-overview:not(.background-color-beige),
@@ -1385,6 +1387,16 @@ body.kn-full-translate-busy .locale-nav-item {
 /* Hero media placeholders removed — keep copy band compact */
 .section_hero .hero_padding:not(.padding-bottom-none) {
   padding-bottom: 3rem;
+}
+
+/* Homepage dashboard hero — extra space between copy/ticker and media (+50% vs 3rem) */
+.section_hero:has(.kn-home-hero-stage) .hero_padding:not(.padding-bottom-none) {
+  padding-bottom: 4.5rem;
+}
+
+/* Homepage — dashboard media → logo strip (+50% vs 2rem margin-top) */
+.section_hero:has(.kn-home-hero-stage) + .section_customer-logo.is_homepage {
+  margin-top: 3rem;
 }
 
 .section_hero .hero_padding,

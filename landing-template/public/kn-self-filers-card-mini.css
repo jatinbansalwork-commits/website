@@ -5,6 +5,7 @@
 .services_grid .services_animation-container.is-freight-forwarders-visual {
   overflow: hidden;
   pointer-events: none;
+  border-radius: 6px;
 }
 
 .services_grid .is-self-filers-visual .kn-sf-mini,
@@ -39,7 +40,7 @@
   overflow: hidden;
   background: var(--kn-sf-surface);
   border: 1px solid var(--kn-sf-line);
-  border-radius: inherit;
+  border-radius: 6px;
   box-shadow:
     0 1px 2px #0f11170d,
     0 16px 36px -22px color-mix(in srgb, var(--kn-sf-brand) 38%, transparent);
@@ -81,6 +82,7 @@
   color: var(--kn-sf-ink-3);
   background: color-mix(in srgb, var(--kn-pl-cream) 72%, #fff);
   border-bottom: 1px solid var(--kn-sf-line);
+  border-radius: 6px 6px 0 0;
 }
 
 .services_grid .is-self-filers-visual .kn-sf-mini-lights,

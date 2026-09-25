@@ -1347,6 +1347,26 @@ body.kn-full-translate-busy .locale-nav-item {
   overflow: visible;
   background: transparent;
   border: none;
+  border-radius: var(--kn-button-radius, 12px);
+}
+
+/* Homepage hero — clip dashboard PNG + match site card radius (float layer stays outside) */
+.section_hero .kn-home-hero-shell.kn-home-hero-overlay--media {
+  border-radius: var(--kn-button-radius, 12px);
+}
+
+.section_hero .kn-home-hero-overlay__bg {
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.section_hero .kn-home-hero-overlay__bg-img {
+  border-radius: inherit;
+}
+
+.section_hero .kn-home-hero-overlay__scene--float .hero-visual .file {
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 /* Extra hero dot layer only on product/operation earth-dot heroes (avoid triple grid with page dots) */

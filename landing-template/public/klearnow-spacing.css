@@ -1494,3 +1494,29 @@ body.kn-full-translate-busy .locale-nav-item {
   }
 }
 
+/* Compliance coverage grid — anchor title + description to bottom of tile */
+.section_results .hero-why-kn_grid .hero-why-kn_item[class*="results-stat-pos-"] {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-end;
+  grid-template-rows: unset;
+  grid-template-columns: unset;
+}
+
+.section_results .hero-why-kn_grid .hero-why-kn_item[class*="results-stat-pos-"] .hero-why-kn_text-container {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  margin-top: auto;
+  height: auto !important;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+
+.section_results .hero-why-kn_grid .hero-why-kn_item[class*="results-stat-pos-"] .hero-why-kn_text-container .heading-style-h2 {
+  margin-bottom: 0.75rem;
+}
+

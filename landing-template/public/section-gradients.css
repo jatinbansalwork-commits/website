@@ -1,0 +1,232 @@
+/**
+ * Marketing pages — Docsumo-style section backgrounds (KlearNow brand tokens)
+ * Scoped to .page-wrapper (in-flow) + body.locale-en direct section bands (homepage tail).
+ */
+
+.page-wrapper :is(section, div)[class*="section_"] > .padding-global,
+body.locale-en > div[class*="section_"] > .padding-global,
+.page-wrapper > section.section_hero > .container-large.hero_image, body.locale-en > section.section_hero > .container-large.hero_image {
+  position: relative;
+  z-index: 1;
+}
+
+/* ——— Hero + logo strip ——— */
+
+.page-wrapper .section_hero.background-color-white, body.locale-en > .section_hero.background-color-white {
+  isolation: isolate;
+}
+
+.page-wrapper .section_hero.background-color-white::before, body.locale-en > .section_hero.background-color-white::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(48% 42% at 0% 0%, color-mix(in srgb, var(--kn-primary) 14%, transparent), transparent 72%),
+    radial-gradient(44% 40% at 100% 12%, color-mix(in srgb, var(--kn-primary) 10%, transparent), transparent 68%),
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      color-mix(in srgb, var(--kn-primary-soft) 55%, transparent) 42%,
+      transparent 100%
+    );
+}
+
+.page-wrapper .section_customer-logo, body.locale-en > .section_customer-logo {
+  position: relative;
+  isolation: isolate;
+}
+
+.page-wrapper .section_customer-logo::before, body.locale-en > .section_customer-logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--kn-primary) 6%, #fff) 0%,
+    transparent 55%
+  );
+}
+
+/* ——— Wash base (corner glow + dot grid) ——— */
+
+.page-wrapper .section_services, body.locale-en > .section_services,
+.page-wrapper .section_product-overview:not(.background-color-beige), body.locale-en > .section_product-overview:not(.background-color-beige),
+.page-wrapper .section_support-kn:not(.background-color-beige), body.locale-en > .section_support-kn:not(.background-color-beige),
+.page-wrapper .section_support-platform, body.locale-en > .section_support-platform,
+.page-wrapper .section_how-switch, body.locale-en > .section_how-switch,
+.page-wrapper .section_results:not(.background-color-beige), body.locale-en > .section_results:not(.background-color-beige),
+.page-wrapper .section_results.version-features:not(.background-color-beige), body.locale-en > .section_results.version-features:not(.background-color-beige),
+.page-wrapper .section_nomenclature, body.locale-en > .section_nomenclature,
+.page-wrapper .section_product-overview.background-color-beige, body.locale-en > .section_product-overview.background-color-beige,
+.page-wrapper .section_support-you.background-color-beige, body.locale-en > .section_support-you.background-color-beige,
+.page-wrapper .section_results.background-color-beige, body.locale-en > .section_results.background-color-beige,
+.page-wrapper .section_support-you:not(.background-color-beige), body.locale-en > .section_support-you:not(.background-color-beige),
+.page-wrapper .section_latest-blog, body.locale-en > .section_latest-blog {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+
+.page-wrapper .section_services::before, body.locale-en > .section_services::before,
+.page-wrapper .section_product-overview:not(.background-color-beige)::before, body.locale-en > .section_product-overview:not(.background-color-beige)::before,
+.page-wrapper .section_support-kn:not(.background-color-beige)::before, body.locale-en > .section_support-kn:not(.background-color-beige)::before,
+.page-wrapper .section_support-platform::before, body.locale-en > .section_support-platform::before,
+.page-wrapper .section_how-switch::before, body.locale-en > .section_how-switch::before,
+.page-wrapper .section_results:not(.background-color-beige)::before, body.locale-en > .section_results:not(.background-color-beige)::before,
+.page-wrapper .section_results.version-features:not(.background-color-beige)::before, body.locale-en > .section_results.version-features:not(.background-color-beige)::before,
+.page-wrapper .section_nomenclature::before, body.locale-en > .section_nomenclature::before,
+.page-wrapper .section_product-overview.background-color-beige::before, body.locale-en > .section_product-overview.background-color-beige::before,
+.page-wrapper .section_support-you.background-color-beige::before, body.locale-en > .section_support-you.background-color-beige::before,
+.page-wrapper .section_results.background-color-beige::before, body.locale-en > .section_results.background-color-beige::before,
+.page-wrapper .section_support-you:not(.background-color-beige)::before, body.locale-en > .section_support-you:not(.background-color-beige)::before,
+.page-wrapper .section_latest-blog::before, body.locale-en > .section_latest-blog::before,
+.page-wrapper .section_services::after, body.locale-en > .section_services::after,
+.page-wrapper .section_product-overview:not(.background-color-beige)::after, body.locale-en > .section_product-overview:not(.background-color-beige)::after,
+.page-wrapper .section_support-kn:not(.background-color-beige)::after, body.locale-en > .section_support-kn:not(.background-color-beige)::after,
+.page-wrapper .section_support-platform::after, body.locale-en > .section_support-platform::after,
+.page-wrapper .section_how-switch::after, body.locale-en > .section_how-switch::after,
+.page-wrapper .section_results:not(.background-color-beige)::after, body.locale-en > .section_results:not(.background-color-beige)::after,
+.page-wrapper .section_results.version-features:not(.background-color-beige)::after, body.locale-en > .section_results.version-features:not(.background-color-beige)::after,
+.page-wrapper .section_nomenclature::after, body.locale-en > .section_nomenclature::after,
+.page-wrapper .section_product-overview.background-color-beige::after, body.locale-en > .section_product-overview.background-color-beige::after,
+.page-wrapper .section_support-you.background-color-beige::after, body.locale-en > .section_support-you.background-color-beige::after,
+.page-wrapper .section_results.background-color-beige::after, body.locale-en > .section_results.background-color-beige::after,
+.page-wrapper .section_support-you:not(.background-color-beige)::after, body.locale-en > .section_support-you:not(.background-color-beige)::after,
+.page-wrapper .section_latest-blog::after, body.locale-en > .section_latest-blog::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Blue */
+.page-wrapper .section_services::before, body.locale-en > .section_services::before,
+.page-wrapper .section_product-overview:not(.background-color-beige)::before, body.locale-en > .section_product-overview:not(.background-color-beige)::before,
+.page-wrapper .section_support-kn:not(.background-color-beige)::before, body.locale-en > .section_support-kn:not(.background-color-beige)::before {
+  background:
+    radial-gradient(42% 40% at 6% 28%, color-mix(in srgb, var(--kn-primary) 18%, #fff), transparent 70%),
+    radial-gradient(46% 44% at 96% 72%, color-mix(in srgb, var(--kn-primary) 12%, #fff), transparent 70%);
+}
+
+.page-wrapper .section_services::after, body.locale-en > .section_services::after,
+.page-wrapper .section_product-overview:not(.background-color-beige)::after, body.locale-en > .section_product-overview:not(.background-color-beige)::after,
+.page-wrapper .section_support-kn:not(.background-color-beige)::after, body.locale-en > .section_support-kn:not(.background-color-beige)::after {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--kn-primary) 24%, transparent) 1.1px,
+    transparent 1.6px
+  );
+  background-size: 24px 24px;
+  opacity: 0.32;
+  mask-image: radial-gradient(ellipse 92% 85% at 50% 45%, #000 25%, transparent 100%);
+}
+
+/* Teal */
+.page-wrapper .section_support-platform::before, body.locale-en > .section_support-platform::before,
+.page-wrapper .section_how-switch::before, body.locale-en > .section_how-switch::before {
+  background:
+    radial-gradient(42% 40% at 6% 28%, color-mix(in srgb, #357e96 16%, #fff), transparent 70%),
+    radial-gradient(46% 44% at 96% 72%, color-mix(in srgb, #357e96 11%, #fff), transparent 70%);
+}
+
+.page-wrapper .section_support-platform::after, body.locale-en > .section_support-platform::after,
+.page-wrapper .section_how-switch::after, body.locale-en > .section_how-switch::after {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, #357e96 22%, transparent) 1.1px,
+    transparent 1.6px
+  );
+  background-size: 24px 24px;
+  opacity: 0.28;
+  mask-image: radial-gradient(ellipse 92% 85% at 50% 45%, #000 25%, transparent 100%);
+}
+
+/* Violet */
+.page-wrapper .section_results:not(.background-color-beige)::before, body.locale-en > .section_results:not(.background-color-beige)::before,
+.page-wrapper .section_results.version-features:not(.background-color-beige)::before, body.locale-en > .section_results.version-features:not(.background-color-beige)::before,
+.page-wrapper .section_support-you:not(.background-color-beige)::before, body.locale-en > .section_support-you:not(.background-color-beige)::before {
+  background-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--kn-primary) 10%, #fff) 46%,
+    transparent 100%
+  );
+}
+
+.page-wrapper .section_results:not(.background-color-beige)::after, body.locale-en > .section_results:not(.background-color-beige)::after,
+.page-wrapper .section_results.version-features:not(.background-color-beige)::after, body.locale-en > .section_results.version-features:not(.background-color-beige)::after,
+.page-wrapper .section_support-you:not(.background-color-beige)::after, body.locale-en > .section_support-you:not(.background-color-beige)::after {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--kn-primary) 18%, transparent) 1px,
+    transparent 1.5px
+  );
+  background-size: 22px 22px;
+  opacity: 0.22;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 20%, transparent 100%);
+}
+
+/* Warm (beige bands + nomenclature) */
+.page-wrapper .section_nomenclature::before, body.locale-en > .section_nomenclature::before,
+.page-wrapper .section_product-overview.background-color-beige::before, body.locale-en > .section_product-overview.background-color-beige::before,
+.page-wrapper .section_support-you.background-color-beige::before, body.locale-en > .section_support-you.background-color-beige::before,
+.page-wrapper .section_results.background-color-beige::before, body.locale-en > .section_results.background-color-beige::before {
+  background:
+    radial-gradient(40% 38% at 8% 30%, color-mix(in srgb, #fcf6ef 90%, var(--kn-primary) 10%), transparent 72%),
+    radial-gradient(44% 42% at 94% 68%, color-mix(in srgb, var(--kn-primary-soft) 80%, #fff), transparent 70%);
+}
+
+.page-wrapper .section_nomenclature::after, body.locale-en > .section_nomenclature::after,
+.page-wrapper .section_product-overview.background-color-beige::after, body.locale-en > .section_product-overview.background-color-beige::after,
+.page-wrapper .section_support-you.background-color-beige::after, body.locale-en > .section_support-you.background-color-beige::after,
+.page-wrapper .section_results.background-color-beige::after, body.locale-en > .section_results.background-color-beige::after {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--kn-primary) 16%, transparent) 1.1px,
+    transparent 1.6px
+  );
+  background-size: 26px 26px;
+  opacity: 0.2;
+}
+
+/* Blog band */
+.page-wrapper .section_latest-blog::before, body.locale-en > .section_latest-blog::before {
+  background:
+    radial-gradient(50% 45% at 100% 0%, color-mix(in srgb, var(--kn-primary) 12%, #fff), transparent 68%),
+    radial-gradient(40% 38% at 0% 100%, color-mix(in srgb, var(--kn-primary-hover) 8%, #fff), transparent 65%);
+}
+
+/* ——— Unified page tail (BG + aurora: platform-metrics-aurora.css) ——— */
+
+.kn-page-tail > .section_testimonials,
+.kn-page-tail > .section_cta,
+.kn-page-tail > .section_footer {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+  background-image: none !important;
+  overflow: visible;
+  isolation: auto;
+}
+
+.kn-page-tail > .section_cta {
+  height: auto;
+  min-height: 37.5rem;
+}
+
+.kn-page-tail > .section_testimonials > .padding-global,
+.kn-page-tail > .section_cta > .padding-global,
+.kn-page-tail > .section_footer > .padding-global {
+  position: relative;
+  z-index: 1;
+}
+
+.kn-page-tail .section_cta .padding-section-large.cta-image {
+  background-image: none !important;
+  background-color: transparent;
+}

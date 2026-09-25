@@ -14,19 +14,22 @@
  * Load after klearnow-site.min.css.
  */
 
+@import url("/section-gradients.css");
+@import url("/platform-metrics-aurora.css");
+
 :root {
   /* Sans fallbacks only — avoids Georgia serif flash before Manrope loads (buttons/nav). */
-  --crealo-fonts--text: Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+  --kn-fonts--text: Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  --crealo-fonts--headings: Ratio, Manrope, ui-sans-serif, system-ui, sans-serif;
+  --kn-fonts--headings: Ratio, Manrope, ui-sans-serif, system-ui, sans-serif;
 
   /* Brand primary — buttons, links, accents (sitewide) */
   --kn-primary: #506EE8;
   --kn-primary-hover: #3F59D4;
   --kn-primary-soft: color-mix(in srgb, var(--kn-primary) 12%, #fff);
   --kn-primary-border: color-mix(in srgb, var(--kn-primary) 28%, transparent);
-  --crealo--2-blue: var(--kn-primary);
-  --crealo-bg--bg-color: #fff;
+  --kn--2-blue: var(--kn-primary);
+  --kn-bg--bg-color: #fff;
 
   /* Rule 2 — standard section padding (top & bottom unless Rule 1 overrides top) */
   --kn-section-standard-large: 7rem;
@@ -48,14 +51,14 @@
   --kn-hero-media-aspect: 837 / 460;
   --kn-hero-object-position: 50% 45%;
   --kn-surface-white: #fff;
-  --kn-surface-beige: var(--crealo--4-beige, #fcf6ef);
+  --kn-surface-beige: var(--kn--4-beige, #fcf6ef);
   --kn-dot-grid-opacity: 0.42;
 }
 
 /* Beat Webflow reset (html sans-serif) + hardcoded Manrope,Georgia rules in site.min.css */
 html,
 body {
-  font-family: var(--crealo-fonts--text) !important;
+  font-family: var(--kn-fonts--text) !important;
 }
 
 :is(
@@ -75,7 +78,7 @@ body {
   .testimonial_text,
   .testimonial_collaborator-text-container,
   .product-overview_text-container,
-  .support-crealo_text-container,
+  .support-kn_text-container,
   .services_heading,
   .heading-description,
   .advantages_heading-description,
@@ -96,7 +99,7 @@ body {
   textarea,
   select
 ) {
-  font-family: var(--crealo-fonts--text);
+  font-family: var(--kn-fonts--text);
 }
 
 :is(
@@ -115,10 +118,10 @@ body {
   h5,
   h6
 ) {
-  font-family: var(--crealo-fonts--headings);
+  font-family: var(--kn-fonts--headings);
 }
 
-/* ——— Crealo canvas: fixed dot grid + solid section bands (no muddy overlap) ——— */
+/* ——— legacy template canvas: fixed dot grid + solid section bands (no muddy overlap) ——— */
 .page-wrapper {
   position: relative;
   background-color: var(--kn-surface-white);
@@ -141,7 +144,7 @@ body {
   z-index: 1;
 }
 
-/* Boot: Crealo loads visible; avoid blank flash (inline overrides removed sitewide) */
+/* Boot: legacy template loads visible; avoid blank flash (inline overrides removed sitewide) */
 html.kn-booting .page-wrapper {
   opacity: 1;
 }
@@ -150,10 +153,9 @@ html.kn-ready .page-wrapper {
   opacity: 1;
 }
 
-/* Solid fills so page dots read like Crealo (texture in hero / gutters only) */
+/* Solid fills so page dots read like legacy template (texture in hero / gutters only) */
 .section_hero.background-color-white,
 .section_customer-logo,
-.section_platform-metrics,
 .section_services,
 .section_support-platform,
 .section_product-overview:not(.background-color-beige),
@@ -169,7 +171,7 @@ html.kn-ready .page-wrapper {
 .background-color-beige,
 .section_product-overview.background-color-beige,
 .section_results.background-color-beige,
-.section_support-crealo.background-color-beige,
+.section_support-kn.background-color-beige,
 .section_support-you.background-color-beige,
 .section_support-platform.background-color-beige,
 .section_nomenclature.background-color-beige,
@@ -214,7 +216,7 @@ html.kn-ready .page-wrapper {
 
 /* White product band — beige on analytics cards (customs brokers two-up, etc.) */
 .section_product-overview:not(.background-color-beige) .product_grid.is_analytics.is_two-up .product-overview_grid.is_analytics.is_vertical {
-  background-color: var(--kn-surface-beige, var(--crealo--4-beige, #fcf6ef));
+  background-color: var(--kn-surface-beige, var(--kn--4-beige, #fcf6ef));
   border-radius: 12px;
   overflow: clip;
 }
@@ -261,8 +263,8 @@ html.kn-ready .page-wrapper {
   }
 }
 
-/* Homepage + Crealo-style hero: card pair + wide slot (Webflow 2-col) */
-.section_hero .hero_image-grid:not(.gestion-des-cessions-page) {
+/* Homepage + legacy template-style hero: card pair + wide slot (Webflow 2-col) */
+.section_hero .hero_image-grid:not(.kn-hero-fullbleed) {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1rem, 2.5vw, 1.75rem);
@@ -318,7 +320,7 @@ html.kn-ready .page-wrapper {
   background: transparent;
 }
 
-.section_hero .hero_image-grid:not(.gestion-des-cessions-page) .hero-home-lottie-placeholder {
+.section_hero .hero_image-grid:not(.kn-hero-fullbleed) .hero-home-lottie-placeholder {
   width: 100%;
   min-height: 23rem;
   height: 100%;
@@ -334,13 +336,13 @@ html.kn-ready .page-wrapper {
   background: transparent;
 }
 
-.section_hero .hero_image-grid:not(.gestion-des-cessions-page) > .hero-home-lottie-placeholder.is-slot-3 {
+.section_hero .hero_image-grid:not(.kn-hero-fullbleed) > .hero-home-lottie-placeholder.is-slot-3 {
   min-height: 0;
   height: auto;
   align-self: stretch;
 }
 
-.section_hero .hero_image-grid:not(.gestion-des-cessions-page) > .hero-home-lottie-placeholder.is-slot-3.has-photo {
+.section_hero .hero_image-grid:not(.kn-hero-fullbleed) > .hero-home-lottie-placeholder.is-slot-3.has-photo {
   position: relative;
   display: block;
   width: 100%;
@@ -352,7 +354,7 @@ html.kn-ready .page-wrapper {
   background: transparent;
 }
 
-.section_hero .hero_image-grid:not(.gestion-des-cessions-page) > .hero-home-lottie-placeholder.is-slot-3.has-photo .hero-home-hero-photo {
+.section_hero .hero_image-grid:not(.kn-hero-fullbleed) > .hero-home-lottie-placeholder.is-slot-3.has-photo .hero-home-hero-photo {
   position: absolute;
   inset: 0;
   display: block;
@@ -365,7 +367,7 @@ html.kn-ready .page-wrapper {
   object-position: center center;
 }
 
-.section_hero .hero_image-grid:not(.gestion-des-cessions-page) .hero-home-lottie-placeholder.has-photo {
+.section_hero .hero_image-grid:not(.kn-hero-fullbleed) .hero-home-lottie-placeholder.has-photo {
   padding: 0;
   overflow: hidden;
   background: transparent;
@@ -388,7 +390,7 @@ html.kn-ready .page-wrapper {
 
 /* Homepage hero cards — stack outer grid on tablet; pair stays 2-up */
 @media screen and (max-width: 991px) {
-  .section_hero .hero_image-grid:not(.gestion-des-cessions-page) {
+  .section_hero .hero_image-grid:not(.kn-hero-fullbleed) {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto;
     gap: clamp(0.75rem, 2vw, 1.25rem);
@@ -400,7 +402,7 @@ html.kn-ready .page-wrapper {
     margin-inline: auto;
   }
 
-  .section_hero .hero_image-grid:not(.gestion-des-cessions-page) > .hero-home-lottie-placeholder.is-slot-3 {
+  .section_hero .hero_image-grid:not(.kn-hero-fullbleed) > .hero-home-lottie-placeholder.is-slot-3 {
     min-height: clamp(12rem, 38vw, 18rem);
     max-width: 36rem;
     margin-inline: auto;
@@ -416,11 +418,11 @@ html.kn-ready .page-wrapper {
 }
 
 /* Why KlearNow / ABI tile — raster pattern (replaces inline SVG) */
-.hero-why-crealo_image.is_kn-pattern {
+.hero-why-kn_image.is_kn-pattern {
   overflow: hidden;
 }
 
-.hero-why-crealo_image.is_kn-pattern:not(.is_margin) .hero-why-crealo_pattern-img {
+.hero-why-kn_image.is_kn-pattern:not(.is_margin) .hero-why-kn_pattern-img {
   display: block;
   width: 100%;
   height: 100%;
@@ -429,7 +431,7 @@ html.kn-ready .page-wrapper {
   mix-blend-mode: lighten;
 }
 
-.hero-why-crealo_image.is_kn-pattern.is_margin .hero-why-crealo_pattern-img {
+.hero-why-kn_image.is_kn-pattern.is_margin .hero-why-kn_pattern-img {
   display: block;
   width: auto;
   height: 100%;
@@ -438,31 +440,31 @@ html.kn-ready .page-wrapper {
   object-position: 100% 50%;
 }
 
-/* Slot 3 pattern — flush to top of image band (drop Crealo is_margin offset) */
-.hero-why-crealo_item.is_3 .hero-why-crealo_image-container {
+/* Slot 3 pattern — flush to top of image band (drop legacy template is_margin offset) */
+.hero-why-kn_item.is_3 .hero-why-kn_image-container {
   align-items: flex-start;
   justify-content: flex-end;
 }
 
-.hero-why-crealo_item.is_3 .hero-why-crealo_image.is_kn-pattern.is_margin {
+.hero-why-kn_item.is_3 .hero-why-kn_image.is_kn-pattern.is_margin {
   margin-top: 0;
 }
 
-.hero-why-crealo_item.is_3 .hero-why-crealo_pattern-img {
+.hero-why-kn_item.is_3 .hero-why-kn_pattern-img {
   object-position: 100% 0;
 }
 
 /* Slot 1 pattern — top-right on brown tile; lighten drops black plate */
-.hero-why-crealo_item.is_1 .hero-why-crealo_image-container {
+.hero-why-kn_item.is_1 .hero-why-kn_image-container {
   align-items: flex-start;
   justify-content: flex-end;
 }
 
-.hero-why-crealo_item.is_1 .hero-why-crealo_image.is_kn-pattern.is_margin {
+.hero-why-kn_item.is_1 .hero-why-kn_image.is_kn-pattern.is_margin {
   margin-top: 0;
 }
 
-.hero-why-crealo_item.is_1 .hero-why-crealo_pattern-img {
+.hero-why-kn_item.is_1 .hero-why-kn_pattern-img {
   object-position: 100% 0;
   mix-blend-mode: lighten;
 }
@@ -580,7 +582,7 @@ html.kn-ready .page-wrapper {
 }
 
 /* Homepage “You'll only hear about the exceptions.” card tint — also solution CTA band */
-.support-crealo_grid .support-crealo_item,
+.support-kn_grid .support-kn_item,
 .solution_cta {
   background-color: color-mix(in srgb, var(--kn-primary) 10%, transparent);
   border-radius: 12px;
@@ -681,6 +683,181 @@ html.kn-ready .page-wrapper {
   padding-top: var(--kn-optical-gap);
 }
 
+/* Product “How it works” — KlearHub timeline (shared with KlearData) */
+.main-wrapper .section_product-overview.is-how-it-works {
+  background-color: #fff;
+}
+
+.section_product-overview.is-how-it-works .kh-hiw_head {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 45rem;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.section_product-overview.is-how-it-works .kh-hiw_head .heading-description,
+.section_product-overview.is-how-it-works .kh-hiw_head .heading-flex {
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+.section_product-overview.is-how-it-works .kh-hiw_head .heading-style-h2 {
+  text-align: left;
+  white-space: normal;
+  text-wrap: balance;
+  margin-top: 0.25rem;
+  line-height: 1.12;
+}
+
+.section_product-overview.is-how-it-works .support-platform_eyebrow {
+  color: #496ff0;
+}
+
+.kh-hiw_steps {
+  --kh-hiw-brand: #496ff0;
+  --kh-hiw-brand-soft: color-mix(in srgb, var(--kh-hiw-brand) 14%, #fff);
+  --kh-hiw-hl-line: color-mix(in srgb, var(--kh-hiw-brand) 28%, #d4d8e4);
+  --kh-hiw-hl: color-mix(in srgb, var(--kh-hiw-brand) 22%, transparent);
+  --kh-hiw-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --kh-hiw-dot-duration: 10s;
+  list-style: none;
+  margin: 2.75rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  position: relative;
+}
+
+.kh-hiw_steps::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--kh-hiw-brand-soft),
+    var(--kh-hiw-hl-line),
+    var(--kh-hiw-brand-soft)
+  );
+}
+
+.kh-hiw_steps::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 12px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--kh-hiw-brand);
+  box-shadow: 0 0 0 4px var(--kh-hiw-hl);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .kh-hiw_steps[data-inview]::after {
+    animation: kh-hiw-step-run var(--kh-hiw-dot-duration) var(--kh-hiw-ease) infinite;
+  }
+
+  :root[data-page-hidden] .kh-hiw_steps::after {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes kh-hiw-step-run {
+  0% {
+    opacity: 0;
+    left: 12px;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    left: calc(100% - 22px);
+  }
+}
+
+.kh-hiw_step {
+  position: relative;
+  padding-top: 2.5rem;
+  margin: 0;
+}
+
+.kh-hiw_step-n {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--kh-hiw-brand) 88%, #1a1a2e);
+  background: #fff;
+  border: 1px solid var(--kh-hiw-hl-line);
+  border-radius: 50%;
+}
+
+.kh-hiw_step h3 {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--kn-text, #1a1a1a);
+}
+
+.kh-hiw_step p {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--kn-text, #2d2d2d) 62%, #888);
+}
+
+.kh-hiw_step-copy {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--kn-text, #2d2d2d) 62%, #888);
+}
+
+@media screen and (max-width: 991px) {
+  .kh-hiw_steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.375rem;
+  }
+
+  .kh-hiw_steps::before {
+    width: 2px;
+    height: auto;
+    top: 12px;
+    bottom: 12px;
+    left: 15px;
+    right: auto;
+  }
+
+  .kh-hiw_steps::after {
+    display: none;
+  }
+
+  .kh-hiw_step {
+    padding: 0 0 0 3.25rem;
+  }
+}
+
 /* Testimonials header: standard medium unless a Rule 1 adjacency sets optical tight */
 .section_testimonials .padding-section-medium.padding-top {
   padding-top: var(--kn-section-standard-medium);
@@ -752,7 +929,7 @@ html.kn-ready .page-wrapper {
   max-width: 100%;
 }
 
-/* Operation "When to use" carousel — dot nav for full-width sliders only (not Crealo 31rem track) */
+/* Operation "When to use" carousel — dot nav for full-width sliders only (not legacy template 31rem track) */
 .section_how-switch:not(.is-freight-forwarders-how-switch) .how-switch_slider .slide-nav-5.w-slider-nav {
   display: flex !important;
   justify-content: center;
@@ -780,7 +957,7 @@ html.kn-ready .page-wrapper {
   border-radius: 999px;
 }
 
-/* Freight forwarders — Crealo obligation-reddition how-switch carousel (31rem × 36rem cards) */
+/* Freight forwarders — legacy template obligation-reddition how-switch carousel (31rem × 36rem cards) */
 .section_how-switch.is-freight-forwarders-how-switch .how-switch_slider.w-slider {
   display: flex !important;
   flex-flow: row;
@@ -859,7 +1036,7 @@ html.kn-ready .page-wrapper {
   text-wrap: balance;
 }
 
-/* Crealo obligation-reddition track — arrows only, no dot pagination */
+/* legacy template obligation-reddition track — arrows only, no dot pagination */
 .section_how-switch.is-freight-forwarders-how-switch .how-switch_slider .slide-nav-5.w-slider-nav,
 .section_how-switch.is-freight-forwarders-how-switch .how-switch_slider .w-slider-nav {
   display: none !important;
@@ -903,6 +1080,42 @@ html.kn-ready .page-wrapper {
 
 .testimonial_container.is-testimonial-static > .w-dyn-list .w-dyn-item:not(:first-child) {
   display: none;
+}
+
+/* CMS source list — keep in DOM for clones; never show alongside the slider */
+.testimonial_container.is-slider-ready > .w-dyn-list {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Testimonials — one card per view; Webflow default widths caused half-slide peek */
+.testimonial_container.is-slider-ready .testimonial_slider {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.testimonial_container.is-slider-ready .testimonial_slider .w-slider-mask {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.testimonial_container.is-slider-ready .testimonial_slide.w-slide {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.testimonial_container.is-slider-ready .w-slider-nav {
+  margin-top: 1.25rem;
 }
 
 /* Contact page — primary action is the form; never show duplicate footer CTA band */
@@ -1120,6 +1333,42 @@ body.kn-full-translate-busy .locale-nav-item {
   overflow: hidden;
 }
 
+.section_hero.background-color-white:has(.kn-home-hero-stage) {
+  overflow: visible;
+}
+
+.section_hero.background-color-white:has(.kn-home-hero-stage) .hero_image,
+.section_hero.background-color-white:has(.kn-home-hero-stage) .hero_container,
+.section_hero.background-color-white:has(.kn-home-hero-stage) .hero_image-grid.kn-hero-fullbleed {
+  overflow: visible;
+}
+
+.section_hero .kn-home-hero-stage.hero_image-container {
+  overflow: visible;
+  background: transparent;
+  border: none;
+  border-radius: var(--kn-button-radius, 12px);
+}
+
+/* Homepage hero — clip dashboard PNG + match site card radius (float layer stays outside) */
+.section_hero .kn-home-hero-shell.kn-home-hero-overlay--media {
+  border-radius: var(--kn-button-radius, 12px);
+}
+
+.section_hero .kn-home-hero-overlay__bg {
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.section_hero .kn-home-hero-overlay__bg-img {
+  border-radius: inherit;
+}
+
+.section_hero .kn-home-hero-overlay__scene--float .hero-visual .file {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
 /* Extra hero dot layer only on product/operation earth-dot heroes (avoid triple grid with page dots) */
 .section_hero.background-color-white:has(.hero_background-image.is-earth-dots)::after {
   content: "";
@@ -1160,6 +1409,16 @@ body.kn-full-translate-busy .locale-nav-item {
   padding-bottom: 3rem;
 }
 
+/* Homepage dashboard hero — extra space between copy/ticker and media (+50% vs 3rem) */
+.section_hero:has(.kn-home-hero-stage) .hero_padding:not(.padding-bottom-none) {
+  padding-bottom: 4.5rem;
+}
+
+/* Homepage — dashboard media → logo strip (+50% vs 2rem margin-top) */
+.section_hero:has(.kn-home-hero-stage) + .section_customer-logo.is_homepage {
+  margin-top: 3rem;
+}
+
 .section_hero .hero_padding,
 .section_hero .hero_text,
 .section_hero .container-large {
@@ -1179,14 +1438,14 @@ body.kn-full-translate-busy .locale-nav-item {
 }
 
 /* Product + operation heroes — fixed aspect at every breakpoint (stable crop) */
-.section_hero .hero_image-grid.gestion-des-cessions-page {
+.section_hero .hero_image-grid.kn-hero-fullbleed {
   width: 100%;
   height: auto;
   min-height: 0;
   aspect-ratio: var(--kn-hero-media-aspect);
 }
 
-.section_hero .hero_image-grid.gestion-des-cessions-page.is-full-width-media {
+.section_hero .hero_image-grid.kn-hero-fullbleed.is-full-width-media {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   max-width: 100%;
@@ -1204,7 +1463,7 @@ body.kn-full-translate-busy .locale-nav-item {
   display: none !important;
 }
 
-.section_hero .hero_image-grid.gestion-des-cessions-page .hero_image-item.is-1 {
+.section_hero .hero_image-grid.kn-hero-fullbleed .hero_image-item.is-1 {
   height: 100%;
 }
 
@@ -1280,18 +1539,18 @@ body.kn-full-translate-busy .locale-nav-item {
   border-radius: inherit;
 }
 
-.section_hero .hero_image-grid.gestion-des-cessions-page .hero_image-item.is-full-width,
-.section_hero .hero_image-grid.gestion-des-cessions-page .hero-industries_image-placeholder.optype-hero-visual {
+.section_hero .hero_image-grid.kn-hero-fullbleed .hero_image-item.is-full-width,
+.section_hero .hero_image-grid.kn-hero-fullbleed .hero-industries_image-placeholder.optype-hero-visual {
   min-height: 0;
 }
 
-.section_hero .hero_image-grid.gestion-des-cessions-page .hero_image-item,
-.section_hero .hero_image-grid.gestion-des-cessions-page .hero_image-layer {
+.section_hero .hero_image-grid.kn-hero-fullbleed .hero_image-item,
+.section_hero .hero_image-grid.kn-hero-fullbleed .hero_image-layer {
   background: transparent !important;
   background-image: none !important;
 }
 
-.section_hero .hero_image-grid.gestion-des-cessions-page img.hero_image-container {
+.section_hero .hero_image-grid.kn-hero-fullbleed img.hero_image-container {
   display: none !important;
 }
 
@@ -1439,6 +1698,201 @@ body.kn-full-translate-busy .locale-nav-item {
   .hero_live-ticker-dot,
   .hero_live-ticker-num.is-tick {
     animation: none !important;
+  }
+}
+
+/* Compliance coverage grid — anchor title + description to bottom of tile */
+.section_results .hero-why-kn_grid .hero-why-kn_item[class*="results-stat-pos-"] {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-end;
+  grid-template-rows: unset;
+  grid-template-columns: unset;
+}
+
+.section_results .hero-why-kn_grid .hero-why-kn_item[class*="results-stat-pos-"] .hero-why-kn_text-container {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  margin-top: auto;
+  height: auto !important;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+
+.section_results .hero-why-kn_grid .hero-why-kn_item[class*="results-stat-pos-"] .hero-why-kn_text-container .heading-style-h2 {
+  margin-bottom: 0.75rem;
+}
+
+/* Results stat tiles (KlearData etc.) — text-only cards, no illustration slot */
+.section_results .hero-why-kn_grid .results-stat-illustration {
+  display: none !important;
+}
+
+/* ——— Sitewide responsive (Webflow grid gaps · all marketing pages) ——— */
+.main-wrapper {
+  overflow-x: clip;
+}
+
+@media screen and (max-width: 991px) {
+  .services_grid:not(.is_industries) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: none !important;
+    grid-auto-rows: auto;
+    grid-auto-flow: row;
+  }
+
+  .services_grid:not(.is_industries) > .services_item,
+  .services_grid:not(.is_industries) > a.services_item,
+  #w-node-ebee08c1-053e-ecd4-3312-47a35dfcf60f-8237db56,
+  #w-node-ebee08c1-053e-ecd4-3312-47a35dfcf629-8237db56 {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    grid-area: auto !important;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .compliance_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: none !important;
+  }
+
+  .compliance_grid > * {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+
+  .support-you_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas: none !important;
+  }
+
+  .support-you_grid > .support-you_item {
+    grid-column: 1 / -1 !important;
+    min-width: 0;
+  }
+
+  .product_grid,
+  .product-overview_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-column-gap: clamp(1rem, 3vw, 1.5rem);
+    grid-row-gap: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .footer_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .nomenclature_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .latest-blog_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .testimonials_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+    place-items: stretch;
+  }
+
+  .testimonial_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .testimonial_image-container {
+    min-height: clamp(12rem, 42vw, 18rem) !important;
+    max-height: none !important;
+  }
+
+  .hero-why-kn_grid:not(.kn-agents-grid) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .hero-why-kn_grid:not(.kn-agents-grid) > .hero-why-kn_item,
+  .hero-why-kn_grid:not(.kn-agents-grid) [class*="results-stat-pos-"] {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+
+  .section_platform-metrics .platform-metrics_grid.is-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section_platform-metrics .platform-metrics_grid.is-3 {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: none;
+  }
+
+  .heading-description.version-features-7 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+  }
+
+  .heading-description.version-features-7 > .text-size-regular {
+    align-self: flex-start;
+    max-width: min(36rem, 100%);
+  }
+
+  .support-kn_grid .support-kn_item {
+    min-width: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .compliance_grid,
+  .support-you_grid,
+  .product_grid,
+  .product-overview_grid,
+  .services_grid:not(.is_industries),
+  .footer_grid,
+  .nomenclature_grid,
+  .latest-blog_grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .testimonial_text-container {
+    border-top-left-radius: var(--kn-button-radius);
+    border-top-right-radius: var(--kn-button-radius);
+    border-bottom-left-radius: 0;
+  }
+
+  .testimonial_image-container {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: var(--kn-button-radius);
+    border-bottom-right-radius: var(--kn-button-radius);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .section_platform-metrics .platform-metrics_grid.is-5 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero_live-ticker {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 14px;
+    padding: 0.5rem 0.65rem;
+  }
+
+  .hero_live-ticker-body {
+    text-align: center;
   }
 }
 

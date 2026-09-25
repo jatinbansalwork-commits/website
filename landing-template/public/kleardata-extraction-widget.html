@@ -1,0 +1,88 @@
+<div class="kd-ex-widget" data-kd-ex-widget>
+  <div class="kd-ex-panel is-active" data-kd-ex-panel="upload">
+    <div class="kd-ex-upload-body">
+      <input type="file" data-kd-ex-file hidden accept=".pdf,.png,.jpg,.jpeg,.webp,.tif,.tiff,.doc,.docx,.xls,.xlsx" />
+      <button type="button" class="kd-ex-upload-trigger" data-kd-ex-upload-trigger aria-label="Upload a document">
+        <span class="kd-ex-upload-drop">
+          <span class="kd-ex-upload-label">UPLOAD NOW</span>
+          <svg class="kd-ex-upload-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 16V4m0 0L8 8m4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </button>
+      <p class="kd-ex-error" data-kd-ex-error hidden role="alert"></p>
+      <div class="kd-ex-samples-wrap">
+        <p class="kd-ex-samples-hint">Don&rsquo;t have a document? Try one of our samples.</p>
+        <div class="kd-ex-samples">
+          <button type="button" class="kd-ex-sample" data-kd-ex-sample="invoice">
+            <svg class="kd-ex-sample-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.2"/><path d="M10 1v3h3M5 6h6M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Invoice
+          </button>
+          <button type="button" class="kd-ex-sample" data-kd-ex-sample="contract">
+            <svg class="kd-ex-sample-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.2"/><path d="M10 1v3h3M5 6h6M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Contract
+          </button>
+          <button type="button" class="kd-ex-sample" data-kd-ex-sample="bank-statement">
+            <svg class="kd-ex-sample-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.2"/><path d="M10 1v3h3M5 6h6M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Bank Statement
+          </button>
+          <button type="button" class="kd-ex-sample" data-kd-ex-sample="w2">
+            <svg class="kd-ex-sample-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.2"/><path d="M10 1v3h3M5 6h6M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            W2
+          </button>
+          <button type="button" class="kd-ex-sample" data-kd-ex-sample="expense">
+            <svg class="kd-ex-sample-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.2"/><path d="M10 1v3h3M5 6h6M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Expense
+          </button>
+          <button type="button" class="kd-ex-sample" data-kd-ex-sample="payslip">
+            <svg class="kd-ex-sample-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.2"/><path d="M10 1v3h3M5 6h6M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Payslip
+          </button>
+          <button type="button" class="kd-ex-sample" data-kd-ex-sample="us-driver-license">
+            <svg class="kd-ex-sample-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.2"/><path d="M10 1v3h3M5 6h6M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            US Driver License
+          </button>
+        </div>
+      </div>
+    </div>
+    <footer class="kd-ex-footer">
+      <div class="kd-ex-footer-copy">
+        <p class="kd-ex-footer-title">We prioritize data security over everything else.</p>
+        <p class="kd-ex-footer-text">Your data is encrypted in transit and at rest on enterprise cloud infrastructure. KlearNow maintains ISO 27001 certification and GDPR-aligned privacy controls.</p>
+      </div>
+      <div class="kd-ex-badges" aria-hidden="true">
+        <span class="kd-ex-badge">ISO 27001</span>
+        <span class="kd-ex-badge">GDPR aligned</span>
+        <span class="kd-ex-badge">SOC 2</span>
+      </div>
+    </footer>
+  </div>
+
+  <div class="kd-ex-panel" data-kd-ex-panel="loading" aria-hidden="true">
+    <div class="kd-ex-loading">
+      <div class="kd-ex-spinner" aria-hidden="true"></div>
+      <p class="kd-ex-loader-title">Document AI wizardry in progress</p>
+      <p class="kd-ex-loader-text" data-kd-ex-loader-text>Reading document&hellip;</p>
+    </div>
+  </div>
+
+  <div class="kd-ex-panel" data-kd-ex-panel="results" aria-hidden="true">
+    <div class="kd-ex-results">
+      <div class="kd-ex-results-bar">
+        <h3 class="kd-ex-results-title" data-kd-ex-results-title>Extracted fields</h3>
+        <button type="button" class="kd-ex-back" data-kd-ex-back>Upload another</button>
+      </div>
+      <div class="kd-ex-results-split">
+        <div class="kd-ex-preview">
+          <img data-kd-ex-preview alt="" width="480" height="640" />
+        </div>
+        <div class="kd-ex-fields-wrap">
+          <p class="kd-ex-fields-head">Extracted data</p>
+          <div class="kd-ex-fields" data-kd-ex-fields></div>
+        </div>
+      </div>
+      <p class="kd-ex-results-cta">Want this on your trade documents? <a href="/talk-to-klear.html">Talk to Klear</a></p>
+    </div>
+  </div>
+</div>

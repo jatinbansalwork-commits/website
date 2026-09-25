@@ -68,7 +68,7 @@ REPLACEMENTS = [
     ("alt=\"bastien crealo\"", 'alt="KlearNow team member"'),
 ]
 
-# Case-sensitive word "Crealo" in text (avoid touching CSS class tokens like hero-why-crealo)
+# Case-sensitive word "Crealo" in visible text (class tokens use hero-why-kn / support-kn)
 CREALO_WORD = re.compile(r"\bCrealo\b")
 
 ROYALTY_META = (

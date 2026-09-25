@@ -2,7 +2,7 @@
   'use strict';
 
   /** Bump when public assets or boot behavior changes. Keep in sync with ?v= on script tags in HTML. */
-  var ASSET_VERSION = '20261114';
+  var ASSET_VERSION = '20261116';
   var html = document.documentElement;
 
   var KN_FONT_ASSETS = [
@@ -1083,7 +1083,20 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     stripFinsweetCmssliderAttrs(document);
+    wireBookDemoCalendlyLinks(document);
   });
+
+  var KLEARNOW_CALENDLY_URL = 'https://calendly.com/klearnow/demo';
+
+  function wireBookDemoCalendlyLinks(root) {
+    var scope = root && root.querySelectorAll ? root : document;
+    scope.querySelectorAll('.calendly-trigger, [data-group="book-demo"]').forEach(function (link) {
+      link.href = KLEARNOW_CALENDLY_URL;
+      link.setAttribute('data-calendly-url', KLEARNOW_CALENDLY_URL);
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+  }
 
   window.KlearBoot = {
     version: ASSET_VERSION,

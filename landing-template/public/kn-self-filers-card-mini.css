@@ -1,4 +1,6 @@
 /* Services grid mini UIs — Docsumo-inspired (235px slot only) */
+@import url("./kn-motion-polish.css");
+
 .services_grid .services_animation-container.is-self-filers-visual,
 .services_grid .services_animation-container.is-importers-visual,
 .services_grid .services_animation-container.is-customs-brokers-visual,
@@ -16,11 +18,11 @@
   --kn-pl-burgundy: #572331;
   --kn-pl-amber: #b13200;
   --kn-pl-cream: #fdf6ee;
-  --kn-pl-ink: #2d2d2d;
+  --kn-pl-ink: var(--kn-ink);
   --kn-sf-ink: var(--kn-pl-ink);
-  --kn-sf-ink-2: color-mix(in srgb, var(--kn-pl-ink) 72%, transparent);
-  --kn-sf-ink-3: color-mix(in srgb, var(--kn-pl-ink) 58%, transparent);
-  --kn-sf-line: #0f111717;
+  --kn-sf-ink-2: var(--kn-ink-soft);
+  --kn-sf-ink-3: var(--kn-ink-muted);
+  --kn-sf-line: var(--kn-line-subtle);
   --kn-sf-surface: #fff;
   --kn-sf-surface-2: var(--kn-pl-cream);
   --kn-sf-brand: var(--kn-pl-blue);

@@ -64,7 +64,7 @@
       '!important}' +
       'html,body,.body{font-family:' +
       sans +
-      '!important;color:#2d2d2d}' +
+      '!important;color:var(--kn-ink,#0f1117)}' +
       textSel +
       '{font-family:var(--kn-fonts--text)!important}' +
       headSel +

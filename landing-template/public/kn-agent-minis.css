@@ -1,4 +1,5 @@
 /* KlearNow — operating-problem grid agent minis (KlearHub product page) */
+@import url("./kn-motion-polish.css");
 
 .kn-agent-card__visual-frame {
   box-sizing: border-box;
@@ -8,8 +9,8 @@
   flex: 1 1 auto;
   min-width: 0;
   min-height: 0;
-  padding: 8px 10px;
-  background: #fff;
+  padding: 7px 9px;
+  background: transparent;
   border: 0;
   overflow: hidden;
   display: flex;
@@ -63,7 +64,7 @@
 
 /* Agent grid — override legacy 2-row hero-why-kn templates (KlearData, etc.) */
 .hero-why-kn_grid.kn-agents-grid {
-  display: grid;
+  display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: auto !important;
   gap: 1.25rem;
@@ -90,6 +91,7 @@
   grid-template-rows: none !important;
   place-items: unset;
   place-content: stretch;
+  min-width: 0;
   min-height: 0 !important;
   height: 100%;
   overflow: visible;
@@ -102,6 +104,8 @@
   align-items: stretch;
   gap: 1rem;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   flex: 1 1 auto;
   min-height: 23.25rem;
   height: 100%;
@@ -110,25 +114,40 @@
 .hero-why-kn_grid.kn-agents-grid .kn-agent-card__head {
   flex: 0 0 auto;
   min-height: 7.5rem;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .hero-why-kn_grid.kn-agents-grid .kn-agent-card__title {
   min-height: 0;
+  max-width: 100%;
   line-height: 1.3;
-}
-
-.hero-why-kn_grid.kn-agents-grid .kn-agent-card--blue .kn-agent-card__title,
-.hero-why-kn_grid.kn-agents-grid .kn-agent-card--amber .kn-agent-card__title {
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+  font-size: clamp(1.0625rem, 0.45vw + 0.95rem, 1.25rem);
+  font-weight: 500;
+  color: var(--kn-ink);
 }
 
 .hero-why-kn_grid.kn-agents-grid .kn-agent-card__body {
   min-height: 4.125rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hero-why-kn_grid.kn-agents-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 991px) {
   .hero-why-kn_grid.kn-agents-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .hero-why-kn_grid.kn-agents-grid .kn-agent-card {

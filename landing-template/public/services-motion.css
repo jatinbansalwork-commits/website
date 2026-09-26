@@ -1,10 +1,11 @@
 /* Homepage “Who we serve” — compact Docsumo-style motion scenes */
+@import url("./kn-motion-polish.css");
 
 :root {
   --kn-svc-loop: 7.4s;
   --kn-svc-blue: #496ff0;
   --kn-svc-cream: #fdf6ee;
-  --kn-svc-ink: #2d2d2d;
+  --kn-svc-ink: var(--kn-ink);
   --kn-svc-ok: #0b7a52;
   --kn-svc-ok-bg: #e2f5ec;
   --kn-svc-warn: #b13200;

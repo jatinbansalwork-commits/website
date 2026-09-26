@@ -1,11 +1,13 @@
 /* ——— KlearNow motion scenes — one shell (homepage, trade stack, product pages) ——— */
+@import url("./kn-motion-polish.css");
+
 :root {
   --kn-motion-loop-ms: 7400;
   --kn-pl-blue: #496ff0;
   --kn-pl-burgundy: #572331;
   --kn-pl-amber: #b13200;
   --kn-pl-cream: #fdf6ee;
-  --kn-pl-ink: #2d2d2d;
+  --kn-pl-ink: var(--kn-ink);
   --kn-motion-scale: clamp(8px, min(2.08cqi, 3.85cqh), 11.5px);
 }
 
@@ -30,18 +32,18 @@
   max-width: 100%;
   height: 100%;
   --kd-ease: cubic-bezier(0.22, 0.7, 0.28, 1);
-  --kd-ink: var(--kn-pl-ink);
-  --kd-ink-2: color-mix(in srgb, var(--kn-pl-ink) 72%, transparent);
-  --kd-ink-3: color-mix(in srgb, var(--kn-pl-ink) 58%, transparent);
-  --kd-line: #0f111717;
-  --kd-line-2: #0f111729;
+  --kd-ink: var(--kn-ink);
+  --kd-ink-2: var(--kn-ink-soft);
+  --kd-ink-3: var(--kn-ink-muted);
+  --kd-line: var(--kn-line-subtle);
+  --kd-line-2: var(--kn-line);
   --kd-surface: #fff;
   --kd-surface-2: var(--kn-pl-cream);
   --kd-bg-2: color-mix(in srgb, var(--kn-pl-cream) 55%, #fff);
   --kd-brand: var(--kn-pl-blue);
   --kd-brand-soft: color-mix(in srgb, var(--kn-pl-blue) 14%, var(--kn-pl-cream));
   --kd-brand-ink: var(--kn-pl-blue);
-  --kd-r-lg: 16px;
+  --kd-r-lg: var(--kn-button-radius, 12px);
   --kd-shadow-hero: none;
   --kd-shadow-case: none;
   --kd-ok: #0b7a52;
@@ -76,6 +78,8 @@
   min-width: 0;
   height: 100%;
   min-height: 0;
+  border-radius: inherit;
+  overflow: hidden;
   font-family: Manrope, ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-size: var(--kn-scene-scale, var(--kn-motion-scale));
   letter-spacing: -0.012em;
@@ -91,6 +95,8 @@
   padding: 0.85em 1.15em;
   border-bottom: 1px solid var(--kd-line);
   background: var(--kd-surface-2);
+  border-top-left-radius: var(--kd-r-lg);
+  border-top-right-radius: var(--kd-r-lg);
   font-family: var(--kd-mono);
   font-size: 0.88em;
   color: var(--kd-ink-3);
@@ -2874,12 +2880,21 @@
 }
 
 .support-kn_grid .kn-product-scene-slot,
-.support-kn_grid [data-kn-scene-slot] {
+.support-kn_grid [data-kn-scene-slot],
+.support-kn_grid [data-kn-scene-mount] {
   min-height: 0;
   height: 100%;
   align-self: stretch;
-  border-radius: 16px;
+  border-radius: var(--kn-button-radius, 12px);
   overflow: hidden;
+  isolation: isolate;
+}
+
+.support-kn_grid [data-kn-scene-mount] > :is(.support-platform_image, .kd-collect-scene, .kh-verify-scene, .km-analyze-scene),
+.support-kn_grid [data-kn-scene-slot] > :is(.support-platform_image, .kd-collect-scene, .kh-verify-scene, .km-analyze-scene) {
+  border-radius: inherit;
+  height: 100%;
+  min-height: 100%;
 }
 
 .support-kn_grid .support-kn_item {
@@ -2971,13 +2986,13 @@
   animation-play-state: paused;
 }
 
-/* ——— KlearHub product trio palette (#496FF0 · #572331 · #B13200 · #FDF6EE · #2D2D2D) ——— */
+/* ——— KlearHub product trio palette (#496FF0 · #572331 · #B13200 · #FDF6EE · #0f1117) ——— */
 .section_support-platform {
   --kn-pl-blue: #496ff0;
   --kn-pl-burgundy: #572331;
   --kn-pl-amber: #b13200;
   --kn-pl-cream: #fdf6ee;
-  --kn-pl-ink: #2d2d2d;
+  --kn-pl-ink: var(--kn-ink);
 }
 
 .section_support-platform .support-platform_image.kd-collect-scene,
@@ -3699,7 +3714,7 @@
   font-family: Manrope, ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-size: clamp(8.5px, 1.95cqi, 11px);
   letter-spacing: -0.02em;
-  color: #0f1117;
+  color: var(--kn-ink);
   background: #fff;
   border: 1px solid #0f111712;
   border-radius: 18px;
@@ -3744,7 +3759,7 @@
   border: 1px solid #0f111712;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.74em;
-  color: #0f11179e;
+  color: var(--kn-ink-muted);
   max-width: min(100%, 18em);
 }
 
@@ -3781,7 +3796,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #0f11179e;
+  color: var(--kn-ink-muted);
 }
 
 .kn-he-split__case-title {
@@ -3789,19 +3804,19 @@
   font-size: 1.05em;
   font-weight: 700;
   line-height: 1.25;
-  color: #0f1117;
+  color: var(--kn-ink);
 }
 
 .kn-he-split__case-lead {
   margin: 0 0 0.65em;
   font-size: 0.82em;
   line-height: 1.45;
-  color: #0f1117b3;
+  color: var(--kn-ink-soft);
   max-width: 52em;
 }
 
 .kn-he-split__case-lead strong {
-  color: #0f1117;
+  color: var(--kn-ink);
   font-weight: 700;
 }
 
@@ -3818,7 +3833,7 @@
   border-radius: 999px;
   font-size: 0.68em;
   font-weight: 600;
-  color: #0f1117b3;
+  color: var(--kn-ink-soft);
   background: #fff;
   border: 1px solid #0f111712;
   white-space: nowrap;
@@ -3829,11 +3844,11 @@
   flex-wrap: wrap;
   gap: 0.45em 0.65em;
   font-size: 0.72em;
-  color: #0f11179e;
+  color: var(--kn-ink-muted);
 }
 
 .kn-he-split__metric b {
-  color: #0f1117;
+  color: var(--kn-ink);
   font-weight: 800;
 }
 
@@ -3888,12 +3903,12 @@
 .kn-he-split__pane-copy b {
   font-size: 0.82em;
   font-weight: 700;
-  color: #0f1117;
+  color: var(--kn-ink);
 }
 
 .kn-he-split__pane-copy small {
   font-size: 0.72em;
-  color: #0f11179e;
+  color: var(--kn-ink-muted);
   line-height: 1.35;
 }
 
@@ -4002,14 +4017,14 @@
   font-size: 0.76em;
   font-weight: 700;
   line-height: 1.35;
-  color: #0f1117;
+  color: var(--kn-ink);
 }
 
 .kn-he-email__line {
   margin: 0 0 0.35em;
   font-size: 0.72em;
   line-height: 1.4;
-  color: #0f11179e;
+  color: var(--kn-ink-muted);
 }
 
 .kn-he-email__atts {
@@ -4031,7 +4046,7 @@
 .kn-he-email__more {
   margin: 0.15em 0 0;
   font-size: 0.68em;
-  color: #0f11179e;
+  color: var(--kn-ink-muted);
   font-style: italic;
 }
 
@@ -4087,7 +4102,7 @@
 }
 
 .kn-he-entry__check-label {
-  color: #0f1117;
+  color: var(--kn-ink);
   font-weight: 500;
 }
 
@@ -4112,7 +4127,7 @@
 
 .kn-he-entry__foot-note {
   font-size: 0.68em;
-  color: #0f11179e;
+  color: var(--kn-ink-muted);
   line-height: 1.4;
 }
 

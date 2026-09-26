@@ -18,11 +18,11 @@
   --ds-bg-surface: #f3f2ec;
   --ds-bg-elevated: #fff;
   --ds-bg-elevated-2: #f7f6f2;
-  --ds-text-primary: #0f1117;
-  --ds-text-secondary: #0f1117b3;
-  --ds-text-tertiary: #0f11179e;
-  --ds-border-subtle: #0f111717;
-  --ds-border-default: #0f111729;
+  --ds-text-primary: var(--kn-ink);
+  --ds-text-secondary: var(--kn-ink-soft);
+  --ds-text-tertiary: var(--kn-ink-muted);
+  --ds-border-subtle: var(--kn-line-subtle);
+  --ds-border-default: var(--kn-line);
   --ds-brand-primary: #4d61fc;
   --ds-brand-deep: #3a4ee8;
   --ds-brand-soft: #eceeff;

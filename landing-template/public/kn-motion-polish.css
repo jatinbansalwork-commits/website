@@ -1,0 +1,585 @@
+/* KlearNow — shared tokens + polish for agent minis, service motion, and product scenes */
+@import url("./klearnow-neutrals.css");
+
+:root {
+  --kn-mini-ease: cubic-bezier(0.22, 0.7, 0.28, 1);
+  --kn-mini-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --kn-mini-loop: 3.5s;
+  --kn-pl-blue: #496ff0;
+  --kn-pl-burgundy: #572331;
+  --kn-pl-amber: #b13200;
+  --kn-pl-cream: #fdf6ee;
+  --kn-pl-ink: var(--kn-ink);
+  --kn-mini-ink: var(--kn-ink);
+  --kn-mini-ink-muted: var(--kn-ink-muted);
+  --kn-mini-ink-soft: var(--kn-ink-faint);
+  --kn-mini-line: var(--kn-line-subtle);
+  --kn-mini-radius-shell: 10px;
+  --kn-mini-radius-row: 8px;
+  --kn-mini-radius-chip: 6px;
+  --kn-mini-row-h: 34px;
+  --kn-mini-shadow-row:
+    0 1px 2px rgba(15, 17, 23, 0.05),
+    0 0 0 1px rgba(15, 17, 23, 0.028);
+  --kn-mini-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  --kn-mini-font: Manrope, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --kn-mini-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --kn-mini-bg-pattern:
+    radial-gradient(circle at 1px 1px, rgba(15, 17, 23, 0.042) 1px, transparent 0) 0 0 / 11px 11px;
+  --kn-ok: #0f8a5f;
+  --kn-ok-bg: #e2f5ec;
+  --kn-ok-border: #abdfc2;
+}
+
+/* ——— Agent card visual shell ——— */
+.kn-agent-card__visual-frame {
+  position: relative;
+  isolation: isolate;
+  background:
+    var(--kn-mini-bg-pattern),
+    linear-gradient(
+      168deg,
+      #fff 0%,
+      color-mix(in srgb, var(--kn-accent, var(--kn-pl-blue)) 5%, #fff) 55%,
+      color-mix(in srgb, var(--kn-accent, var(--kn-pl-blue)) 9%, #fff) 100%
+    );
+  border-radius: var(--kn-mini-radius-shell);
+  box-shadow: var(--kn-mini-shadow-inset);
+}
+
+.kn-agent-card__visual {
+  box-shadow:
+    0 1px 2px rgba(15, 17, 23, 0.04),
+    0 10px 28px -18px color-mix(in srgb, var(--kn-accent, var(--kn-pl-blue)) 35%, transparent);
+}
+
+/* ——— Mini canvas (all agent-grid illustrations) ——— */
+.kn-agent-card__anim > :is(
+    .kn-ema-mini,
+    .kn-csd-mini,
+    .kn-dca-mini,
+    .kn-dea-mini,
+    .kn-dva-mini,
+    .kn-cma-mini,
+    .kn-wfa-mini,
+    .kn-mt-global-mini,
+    .kn-mt-pea-mini,
+    .kn-mt-int-mini,
+    .kn-kh-split-mini,
+    .kn-kh-broker-mini,
+    .kn-kd-intake-mini,
+    .kn-kd-provenance-mini,
+    .kn-kd-selffiler-mini,
+    .kn-kh-trail-mini,
+    .kn-kh-filer-mini,
+    .kn-kh-inbox-mini
+  ) {
+  font-family: var(--kn-mini-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.012em;
+  color: var(--kn-mini-ink);
+}
+
+/* ——— Unified row chrome ——— */
+.kn-agent-card :is(
+    .kn-ema-row,
+    .kn-kh-split-row,
+    .kn-kh-broker-row,
+    .kn-kd-intake-row,
+    .kn-kd-provenance-row,
+    .kn-kh-trail-row,
+    .kn-kh-filer-row,
+    .kn-kh-inbox-row,
+    .kn-kd-selffiler-row,
+    .kn-dva-row,
+    .kn-mt-global-status,
+    .kn-wfa-node
+  ) {
+  min-height: var(--kn-mini-row-h);
+  border: 1px solid var(--kn-mini-line);
+  border-radius: var(--kn-mini-radius-row);
+  box-shadow: var(--kn-mini-shadow-row);
+  transition:
+    background-color 0.35s var(--kn-mini-ease),
+    border-color 0.35s var(--kn-mini-ease);
+}
+
+.kn-agent-card :is(
+    .kn-kd-intake-row--validate,
+    .kn-kh-broker-row--corr,
+    .kn-kd-provenance-row--doc,
+    .kn-kd-selffiler-row--docs,
+    .kn-kh-filer-row--entry,
+    .kn-kh-trail-row--event,
+    .kn-kh-split-row--duty,
+    .kn-dva-r2
+  ) {
+  border-left: 2px solid color-mix(in srgb, var(--kn-accent, var(--kn-pl-blue)) 45%, transparent);
+  padding-left: 9px;
+}
+
+/* ——— Unified status chips ——— */
+.kn-agent-card :is(.kn-kd-intake-chip--validated, .kn-kh-broker-chip--filed, .kn-kh-filer-chip--active) {
+  background: var(--kn-ok-bg);
+  color: var(--kn-ok);
+  border-color: var(--kn-ok-border);
+}
+
+.kn-agent-card :is(
+    .kn-kd-intake-chip,
+    .kn-kh-broker-chip,
+    .kn-kh-filer-chip,
+    .kn-kh-trail-chip,
+    .kn-kd-provenance-chip,
+    .kn-kd-selffiler-chip,
+    .kn-kh-split-chip,
+    .kn-kh-inbox-chip,
+    .kn-dea-chip,
+    .kn-dca-chip,
+    .kn-dva-chip,
+    .kn-ema-tag
+  ) {
+  border-radius: var(--kn-mini-radius-chip);
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.65) inset;
+}
+
+/* ——— Mini headers (kicker + meta) ——— */
+.kn-agent-card :is(
+    .kn-kd-intake-head,
+    .kn-kh-broker-head,
+    .kn-kh-filer-head,
+    .kn-kh-trail-head,
+    .kn-kd-provenance-head,
+    .kn-kd-selffiler-head,
+    .kn-kh-inbox-head,
+    .kn-mt-global-head
+  ) {
+  padding-bottom: 1px;
+  border-bottom: 1px solid color-mix(in srgb, var(--kn-mini-line) 80%, transparent);
+  margin-bottom: 1px;
+}
+
+.kn-agent-card :is(
+    .kn-kd-intake-kicker,
+    .kn-kh-broker-kicker,
+    .kn-kh-filer-kicker,
+    .kn-kh-trail-kicker,
+    .kn-kd-provenance-kicker,
+    .kn-kd-selffiler-kicker
+  ) {
+  letter-spacing: -0.02em;
+}
+
+.kn-agent-card :is(
+    .kn-kd-intake-label,
+    .kn-kh-broker-label,
+    .kn-kh-filer-label,
+    .kn-kd-selffiler-label
+  ) {
+  font-family: var(--kn-mini-mono);
+  font-size: 10px;
+}
+
+.kn-agent-card :is(
+    .kn-kd-intake-foot,
+    .kn-kh-broker-foot,
+    .kn-kh-filer-foot,
+    .kn-kd-selffiler-foot
+  ) {
+  margin-top: 2px;
+  padding-top: 4px;
+  border-top: 1px dashed color-mix(in srgb, var(--kn-mini-line) 90%, transparent);
+  line-height: 1.35;
+}
+
+/* ——— Multi-agent workflow — accent-themed ——— */
+.kn-agent-card .kn-wfa-mini {
+  --kn-wfa-lit: var(--kn-accent, var(--kn-pl-blue));
+  --kn-wfa-lit-soft: color-mix(in srgb, var(--kn-wfa-lit) 12%, #fff);
+  gap: 7px;
+  padding: 6px 8px;
+}
+
+.kn-agent-card .kn-wfa-node {
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: -0.01em;
+}
+
+.kn-agent-card .kn-wfa-d {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--kn-wfa-lit) 25%, transparent);
+}
+
+.kn-agent-card .kn-wfa-n1 .kn-wfa-d {
+  animation: knWfaDotLit var(--kn-mini-loop) steps(1) infinite;
+}
+
+.kn-agent-card .kn-wfa-n2 .kn-wfa-d {
+  animation: knWfaDotLit var(--kn-mini-loop) steps(1) infinite 1.05s;
+}
+
+.kn-agent-card .kn-wfa-n3 .kn-wfa-d {
+  animation: knWfaDotLit var(--kn-mini-loop) steps(1) infinite 2.1s;
+}
+
+.kn-agent-card .kn-wfa-n1 {
+  animation: knWfaNodeAct var(--kn-mini-loop) steps(1) infinite !important;
+}
+
+.kn-agent-card .kn-wfa-n2 {
+  animation: knWfaNodeAct var(--kn-mini-loop) steps(1) infinite 1.05s !important;
+}
+
+.kn-agent-card .kn-wfa-n3 {
+  animation: knWfaNodeAct var(--kn-mini-loop) steps(1) infinite 2.1s !important;
+}
+
+.kn-agent-card .kn-wfa-n1 .kn-wfa-d,
+.kn-agent-card .kn-wfa-n2 .kn-wfa-d,
+.kn-agent-card .kn-wfa-n3 .kn-wfa-d {
+  animation-duration: var(--kn-mini-loop) !important;
+}
+
+@keyframes knWfaDotLit {
+  0%,
+  32% {
+    background: var(--kn-wfa-lit);
+  }
+  33%,
+  100% {
+    background: rgba(15, 17, 23, 0.18);
+  }
+}
+
+@keyframes knWfaNodeAct {
+  0%,
+  32% {
+    border-color: color-mix(in srgb, var(--kn-wfa-lit) 42%, rgba(15, 17, 23, 0.06));
+    background: var(--kn-wfa-lit-soft);
+    box-shadow:
+      var(--kn-mini-shadow-row),
+      0 0 0 1px color-mix(in srgb, var(--kn-wfa-lit) 12%, transparent);
+  }
+  33%,
+  100% {
+    border-color: var(--kn-mini-line);
+    background: #fff;
+    box-shadow: var(--kn-mini-shadow-row);
+  }
+}
+
+/* ——— Product / trade-stack scenes (shared window chrome) ——— */
+:where(
+    .support-platform_image.kd-collect-scene,
+    .support-platform_image.kh-verify-scene,
+    .support-platform_image.kh-global-scene,
+    .support-platform_image.km-analyze-scene,
+    .support-platform_image.kh-classify-scene,
+    .kn-he-case[data-kn-product-scene]
+  ) {
+  box-shadow:
+    0 1px 2px rgba(15, 17, 23, 0.04),
+    0 14px 36px -22px rgba(15, 17, 23, 0.14);
+}
+
+.kd-scene-bar,
+.kn-svc-bar {
+  backdrop-filter: blur(6px);
+}
+
+/* ——— Homepage service minis ——— */
+.services_grid .services_image-placeholder.kn-svc-motion {
+  border-radius: var(--kn-mini-radius-shell);
+  box-shadow:
+    0 1px 2px rgba(15, 17, 23, 0.04),
+    0 12px 32px -20px rgba(15, 17, 23, 0.14);
+}
+
+.services_grid :is(
+    .is-self-filers-visual,
+    .is-importers-visual,
+    .is-customs-brokers-visual,
+    .is-freight-forwarders-visual
+  )
+  .kn-sf-mini {
+  border-radius: var(--kn-mini-radius-shell);
+  box-shadow:
+    0 1px 2px rgba(15, 17, 23, 0.05),
+    0 14px 34px -22px color-mix(in srgb, var(--kn-sf-brand, var(--kn-pl-blue)) 32%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kn-agent-card .kn-wfa-n1,
+  .kn-agent-card .kn-wfa-n2,
+  .kn-agent-card .kn-wfa-n3,
+  .kn-agent-card .kn-wfa-n1 .kn-wfa-d,
+  .kn-agent-card .kn-wfa-n2 .kn-wfa-d,
+  .kn-agent-card .kn-wfa-n3 .kn-wfa-d {
+    animation: none !important;
+  }
+
+  .kn-agent-card .kn-wfa-n1 {
+    border-color: color-mix(in srgb, var(--kn-accent, var(--kn-pl-blue)) 42%, rgba(15, 17, 23, 0.06));
+    background: color-mix(in srgb, var(--kn-accent, var(--kn-pl-blue)) 10%, #fff);
+  }
+
+  .kn-agent-card .kn-wfa-n1 .kn-wfa-d {
+    background: var(--kn-accent, var(--kn-pl-blue));
+  }
+}
+
+/* =============================================================================
+   Level 2 — motion scenes + visible minis (homepage + product pages)
+   ============================================================================= */
+
+:root {
+  --kn-scene-shadow:
+    0 1px 2px rgba(15, 17, 23, 0.05),
+    0 16px 40px -24px rgba(15, 17, 23, 0.16),
+    0 0 0 1px rgba(15, 17, 23, 0.04);
+  --kn-scene-inner-ring: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+}
+
+/* ——— Trade-stack & product motion shells ——— */
+:where(
+    .support-platform_image.kd-collect-scene,
+    .support-platform_image.kh-verify-scene,
+    .support-platform_image.kh-global-scene,
+    .support-platform_image.km-analyze-scene,
+    .support-platform_image.kh-classify-scene,
+    .kn-he-case[data-kn-product-scene]
+  ) {
+  box-shadow: var(--kn-scene-shadow);
+  border-color: color-mix(in srgb, var(--kd-brand, var(--kn-pl-blue)) 14%, rgba(15, 17, 23, 0.08));
+}
+
+:where(
+    .support-platform_image.kd-collect-scene,
+    .support-platform_image.kh-verify-scene,
+    .support-platform_image.km-analyze-scene
+  )::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: var(--kn-scene-inner-ring);
+  z-index: 4;
+}
+
+.kd-scene-bar {
+  position: relative;
+  z-index: 2;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.65) inset,
+    0 1px 0 color-mix(in srgb, var(--kd-line, var(--kn-mini-line)) 90%, transparent);
+}
+
+.kd-sb-dots i,
+.kn-svc-dots i,
+.kn-sf-mini-lights i {
+  box-shadow:
+    inset 0 -1px 0 rgba(15, 17, 23, 0.12),
+    0 0 0 0.5px rgba(15, 17, 23, 0.06);
+}
+
+.kd-scene-body {
+  background:
+    radial-gradient(ellipse 85% 70% at 78% 18%, color-mix(in srgb, var(--kd-brand, var(--kn-pl-blue)) 9%, transparent), transparent 62%),
+    radial-gradient(circle at 1px 1px, rgba(15, 17, 23, 0.045) 1px, transparent 0) 0 0 / 16px 16px,
+    linear-gradient(180deg, #fff 0%, color-mix(in srgb, var(--kd-surface-2, var(--kn-pl-cream)) 28%, #fff) 100%);
+}
+
+.kd-src,
+.kd-case-card {
+  transition:
+    transform 0.45s var(--kn-mini-ease),
+    box-shadow 0.45s var(--kn-mini-ease),
+    border-color 0.45s var(--kn-mini-ease),
+    background 0.45s var(--kn-mini-ease);
+}
+
+[data-kn-product-scene][data-inview] [data-kn-focus-row].is-active.kd-src,
+[data-kd-collect-scene][data-inview] [data-kn-focus-row].is-active.kd-src {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--kd-brand, var(--kn-pl-blue)) 32%, var(--kd-line, var(--kn-mini-line)));
+  box-shadow:
+    0 4px 14px -8px color-mix(in srgb, var(--kd-brand, var(--kn-pl-blue)) 35%, transparent),
+    var(--kd-shadow-xs, var(--kn-mini-shadow-row));
+}
+
+[data-kn-product-scene][data-inview] .kd-lane-node-end,
+[data-kd-collect-scene][data-inview] .kd-lane-node-end {
+  transition: transform 0.35s var(--kn-mini-ease), box-shadow 0.35s var(--kn-mini-ease);
+}
+
+[data-kn-product-scene][data-inview] [data-kn-focus-row].is-active ~ .kd-lane .kd-lane-node-end,
+[data-kd-collect-scene][data-inview] [data-kn-focus-row].is-active ~ .kd-lane .kd-lane-node-end {
+  animation: knSceneNodePulse 1.6s var(--kn-mini-ease-soft) infinite;
+}
+
+@keyframes knSceneNodePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--kd-brand, var(--kn-pl-blue)) 0%, transparent);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--kd-brand, var(--kn-pl-blue)) 18%, transparent);
+  }
+}
+
+.kd-sb-agent,
+.kd-case-summary,
+.kn-svc-agent {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+.kd-case-card {
+  border: 1px solid color-mix(in srgb, var(--kd-brand, var(--kn-pl-blue)) 12%, var(--kd-line, var(--kn-mini-line)));
+  box-shadow: var(--kd-shadow-sm, var(--kn-mini-shadow-row));
+}
+
+.kd-case-card li {
+  border-radius: 6px;
+}
+
+/* ——— Agent card visible minis (product grids) ——— */
+.kn-agent-card__visual-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.72),
+    inset 0 -12px 24px -20px color-mix(in srgb, var(--kn-accent, var(--kn-pl-blue)) 8%, transparent);
+  z-index: 1;
+}
+
+.kn-agent-card__anim {
+  z-index: 2;
+}
+
+.kn-agent-card__anim > :is(.kn-kd-intake-mini, .kn-kh-broker-mini, .kn-wfa-mini, .kn-kd-provenance-mini) {
+  filter: saturate(1.02);
+}
+
+.kn-agent-card :is(.kn-kd-intake-meta, .kn-kh-broker-meta, .kn-kd-selffiler-meta) {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--kn-mini-ink-soft);
+}
+
+.kn-agent-card :is(.kn-kd-intake-kicker, .kn-kh-broker-kicker) {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Subtle “live” pulse on highlighted mini rows (CSS-only; motion respects reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .kn-agent-card :is(
+      .kn-kd-intake-row--validate,
+      .kn-kh-broker-row--corr,
+      .kn-kd-provenance-row--doc,
+      .kn-kd-selffiler-row--docs
+    ) {
+    animation: knMiniRowGlow var(--kn-mini-loop) var(--kn-mini-ease-soft) infinite;
+  }
+}
+
+@keyframes knMiniRowGlow {
+  0%,
+  38% {
+    box-shadow: var(--kn-mini-shadow-row);
+  }
+  52%,
+  78% {
+    box-shadow:
+      var(--kn-mini-shadow-row),
+      0 0 0 1px color-mix(in srgb, var(--kn-accent, var(--kn-pl-blue)) 14%, transparent),
+      0 6px 16px -12px color-mix(in srgb, var(--kn-accent, var(--kn-pl-blue)) 22%, transparent);
+  }
+  100% {
+    box-shadow: var(--kn-mini-shadow-row);
+  }
+}
+
+.kn-agent-card--blue {
+  --kn-mini-row-glow: var(--kn-pl-blue);
+}
+
+.kn-agent-card--coral {
+  --kn-mini-row-glow: var(--kn-pl-burgundy);
+}
+
+.kn-agent-card--amber {
+  --kn-mini-row-glow: var(--kn-pl-amber);
+}
+
+/* ——— Homepage “Who we serve” motion cards ——— */
+.kn-svc-scene {
+  background:
+    radial-gradient(ellipse 90% 65% at 12% 0%, color-mix(in srgb, var(--kn-svc-blue) 7%, transparent), transparent 55%),
+    radial-gradient(circle at 1px 1px, rgba(15, 17, 23, 0.045) 1px, transparent 0) 0 0 / 14px 14px,
+    linear-gradient(180deg, #fff 0%, var(--kn-svc-cream) 130%);
+}
+
+.kn-svc-body :is(.kn-svc-email, .kn-svc-field, .kn-svc-page, .kn-svc-entry) {
+  box-shadow: var(--kn-mini-shadow-row);
+  border-radius: var(--kn-mini-radius-row);
+  transition:
+    transform 0.4s var(--kn-mini-ease),
+    box-shadow 0.4s var(--kn-mini-ease);
+}
+
+.services_grid .kn-svc-motion[data-inview] :is(.kn-svc-email, .kn-svc-field):focus-within {
+  transform: translateY(-1px);
+  box-shadow:
+    var(--kn-mini-shadow-row),
+    0 8px 18px -14px color-mix(in srgb, var(--kn-svc-blue) 28%, transparent);
+}
+
+/* ——— Self-filers / op-type service minis ——— */
+.services_grid :is(
+    .is-self-filers-visual,
+    .is-importers-visual,
+    .is-customs-brokers-visual,
+    .is-freight-forwarders-visual
+  )
+  .kn-sf-mini-stage {
+  background:
+    radial-gradient(circle at 1px 1px, rgba(15, 17, 23, 0.04) 1px, transparent 0) 0 0 / 12px 12px,
+    linear-gradient(180deg, #fff 0%, color-mix(in srgb, var(--kn-sf-surface-2, var(--kn-pl-cream)) 35%, #fff) 100%);
+}
+
+.services_grid .kn-sf-mini-fields li,
+.services_grid .kn-sf-mini-page {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.65) inset;
+}
+
+/* Product cross-sell scene slot */
+.section_product-overview.background-color-beige .kn-product-scene-slot > :is(.kd-collect-scene, .kh-verify-scene, .km-analyze-scene) {
+  box-shadow: var(--kn-scene-shadow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kn-agent-card :is(
+      .kn-kd-intake-row--validate,
+      .kn-kh-broker-row--corr,
+      .kn-kd-provenance-row--doc,
+      .kn-kd-selffiler-row--docs
+    ) {
+    animation: none !important;
+  }
+
+  [data-kn-product-scene][data-inview] [data-kn-focus-row].is-active.kd-src {
+    transform: none;
+  }
+}

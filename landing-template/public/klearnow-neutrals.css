@@ -1,0 +1,39 @@
+/**
+ * KlearNow neutral ink scale — single source for text greys, borders, dark surfaces.
+ * Import from klearnow-spacing.css and kn-motion-polish.css (loads before page overrides).
+ */
+
+:root {
+  /* Base */
+  --kn-ink: #0f1117;
+
+  /* Text hierarchy (derived — do not add new grey hex for marketing UI) */
+  --kn-ink-soft: color-mix(in srgb, var(--kn-ink) 72%, transparent);
+  --kn-ink-muted: color-mix(in srgb, var(--kn-ink) 58%, transparent);
+  --kn-ink-faint: color-mix(in srgb, var(--kn-ink) 42%, transparent);
+
+  /* Lines & fills on light surfaces */
+  --kn-line-subtle: color-mix(in srgb, var(--kn-ink) 9%, transparent);
+  --kn-line: color-mix(in srgb, var(--kn-ink) 16%, transparent);
+
+  /* Dark bands (testimonials, metrics) */
+  --kn-surface-inverse: var(--kn-ink);
+
+  /* Aliases — use these in components, not raw hex */
+  --kn-text: var(--kn-ink);
+  --kn--1-black: var(--kn-ink);
+  --kn-pl-ink: var(--kn-ink);
+  --kn-svc-ink: var(--kn-ink);
+  --kn-mini-ink: var(--kn-ink);
+  --kn-mini-ink-muted: var(--kn-ink-muted);
+  --kn-mini-ink-soft: var(--kn-ink-faint);
+  --kn-mini-line: var(--kn-line-subtle);
+  --kd-ink: var(--kn-ink);
+  --kd-ink-2: var(--kn-ink-soft);
+  --kd-ink-3: var(--kn-ink-muted);
+  --ds-text-primary: var(--kn-ink);
+  --ds-text-secondary: var(--kn-ink-soft);
+  --ds-text-tertiary: var(--kn-ink-muted);
+  --ds-border-subtle: var(--kn-line-subtle);
+  --ds-border-default: var(--kn-line);
+}

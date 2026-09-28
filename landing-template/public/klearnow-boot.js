@@ -2,7 +2,7 @@
   'use strict';
 
   /** Bump when public assets or boot behavior changes. Keep in sync with ?v= on script tags in HTML. */
-  var ASSET_VERSION = '20261291';
+  var ASSET_VERSION = '20261292';
   var html = document.documentElement;
 
   var KN_FONT_ASSETS = [
@@ -1264,7 +1264,7 @@
   /**
    * Temporary nav lock. Operation Type stays visible as a dropdown, but its
    * pages do not open. Empty links stay inert. Product pages, Why KlearNow,
-   * the demo card, and Calendly remain usable.
+   * Talk to Klear, the demo card, and Calendly remain usable.
    */
   function lockUnreleasedLinks(root) {
     if (!document.getElementById('kn-nav-lock-style')) {
@@ -1319,6 +1319,7 @@
       path === '/product/klearhub.html' ||
       path === '/product/managed-trade.html' ||
       path === '/why-klearnow.html' ||
+      path === '/talk-to-klear.html' ||
       path === '/'
     );
   }
@@ -1331,7 +1332,6 @@
     var href = (link.getAttribute('href') || '').trim();
     if (href === '' || href === '#' || href === '/#') return true;
     if (/\/operation-type\//.test(href)) return true;
-    if (/\/talk-to-klear\.html/.test(href)) return true;
     if (/\/blog(?:-post)?\.html/.test(href)) return true;
     return !!link.closest('.fs-styleguide-nav, .nav_main_component, .section_footer, .footer_container');
   }

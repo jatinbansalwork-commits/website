@@ -2,7 +2,7 @@
   'use strict';
 
   /** Bump when public assets or boot behavior changes. Keep in sync with ?v= on script tags in HTML. */
-  var ASSET_VERSION = '20261272';
+  var ASSET_VERSION = '20261291';
   var html = document.documentElement;
 
   var KN_FONT_ASSETS = [
@@ -1246,6 +1246,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     stripFinsweetCmssliderAttrs(document);
     wireBookDemoCalendlyLinks(document);
+    lockUnreleasedLinks(document);
   });
 
   var KLEARNOW_CALENDLY_URL = 'https://calendly.com/klearnow/demo';
@@ -1258,6 +1259,81 @@
       link.setAttribute('target', '_blank');
       link.setAttribute('rel', 'noopener noreferrer');
     });
+  }
+
+  /**
+   * Temporary nav lock. Operation Type stays visible as a dropdown, but its
+   * pages do not open. Empty links stay inert. Product pages, Why KlearNow,
+   * the demo card, and Calendly remain usable.
+   */
+  function lockUnreleasedLinks(root) {
+    if (!document.getElementById('kn-nav-lock-style')) {
+      var style = document.createElement('style');
+      style.id = 'kn-nav-lock-style';
+      style.textContent =
+        'a.is-kn-disabled{cursor:not-allowed!important;opacity:.4;pointer-events:none!important}' +
+        'a.is-kn-disabled:hover{text-decoration:none!important}';
+      (document.head || document.documentElement).appendChild(style);
+    }
+
+    var scope = root && root.querySelectorAll ? root : document;
+    scope.querySelectorAll('a[href]').forEach(function (link) {
+      if (linkIsReleased(link)) return;
+      if (!linkShouldLock(link)) return;
+      link.classList.add('is-kn-disabled');
+      link.setAttribute('aria-disabled', 'true');
+      link.setAttribute('tabindex', '-1');
+      if (!link.getAttribute('data-kn-locked-href')) {
+        link.setAttribute('data-kn-locked-href', link.getAttribute('href') || '');
+      }
+      link.addEventListener(
+        'click',
+        function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+        },
+        true
+      );
+    });
+  }
+
+  function linkPathname(href) {
+    try {
+      return new URL(href, window.location.origin).pathname.replace(/\/+$/, '') || '/';
+    } catch (err) {
+      return '';
+    }
+  }
+
+  function linkIsReleased(link) {
+    var href = (link.getAttribute('href') || '').trim();
+    if (href === '' || href === '#' || href === '/#') return false;
+    if (link.closest('.locale-nav-dropdown, .locale-element')) return true;
+    if (link.classList.contains('nav_main_logo-link') || link.classList.contains('footer_logo-link')) return true;
+    if (link.classList.contains('calendly-trigger') || link.getAttribute('data-group') === 'book-demo') return true;
+    if (link.closest('[data-modal-hash="demo"], .fs_modal-2_button, .fs_modal-2_button-2')) return true;
+    if (/calendly\.com/i.test(href)) return true;
+    var path = linkPathname(href);
+    return (
+      path === '/product/kleardata.html' ||
+      path === '/product/klearhub.html' ||
+      path === '/product/managed-trade.html' ||
+      path === '/why-klearnow.html' ||
+      path === '/'
+    );
+  }
+
+  function linkShouldLock(link) {
+    if (link.closest('.locale-nav-dropdown, .locale-element')) return false;
+    if (link.closest('.w-slider-arrow, .w-slider-nav, .load-more-button, .w-pagination-wrapper, .w-tab-link')) {
+      return false;
+    }
+    var href = (link.getAttribute('href') || '').trim();
+    if (href === '' || href === '#' || href === '/#') return true;
+    if (/\/operation-type\//.test(href)) return true;
+    if (/\/talk-to-klear\.html/.test(href)) return true;
+    if (/\/blog(?:-post)?\.html/.test(href)) return true;
+    return !!link.closest('.fs-styleguide-nav, .nav_main_component, .section_footer, .footer_container');
   }
 
   window.KlearBoot = {

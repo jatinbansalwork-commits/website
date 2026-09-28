@@ -8,7 +8,7 @@
 .main-wrapper .section_platform-metrics,
 .section_platform-metrics,
 .kn-page-tail {
-  --kn-metrics-bg: var(--kn-text, #282e38);
+  --kn-metrics-bg: var(--kn-surface-inverse);
   --kn-metrics-ink: #fff;
   --kn-metrics-aurora-a: var(--kn-primary, #506ee8);
   --kn-metrics-aurora-b: var(--kn-primary-hover, #3f59d4);

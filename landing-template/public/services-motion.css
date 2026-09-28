@@ -1,10 +1,11 @@
-/* Homepage “Who we serve” — compact Docsumo-style motion scenes */
+/* Homepage “Who we serve” — compact KlearNow motion scenes */
+@import url("./kn-motion-polish.css");
 
 :root {
   --kn-svc-loop: 7.4s;
-  --kn-svc-blue: #496ff0;
+  --kn-svc-blue: var(--kn-primary, #506ee8);
   --kn-svc-cream: #fdf6ee;
-  --kn-svc-ink: #2d2d2d;
+  --kn-svc-ink: var(--kn-ink);
   --kn-svc-ok: #0b7a52;
   --kn-svc-ok-bg: #e2f5ec;
   --kn-svc-warn: #b13200;
@@ -23,9 +24,9 @@
   flex-direction: column;
   min-height: 260px;
   max-height: 260px;
-  box-shadow:
-    0 1px 2px rgba(15, 17, 23, 0.04),
-    0 8px 24px -16px rgba(15, 17, 23, 0.12);
+  box-shadow: var(--kn-mini-shell-outer);
+  border-color: var(--kn-mini-stage-line);
+  border-radius: 16px;
 }
 
 .services_grid .services_image-placeholder.kn-svc-motion::before {
@@ -38,14 +39,13 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  font-family: Manrope, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--kn-mini-font);
   font-size: clamp(9.5px, 3.05cqi, 11.5px);
   color: var(--kn-svc-ink);
   letter-spacing: -0.012em;
   -webkit-font-smoothing: antialiased;
-  background:
-    radial-gradient(circle at 1px 1px, rgba(15, 17, 23, 0.055) 1px, transparent 0) 0 0 / 14px 14px,
-    linear-gradient(180deg, #fff 0%, var(--kn-svc-cream) 140%);
+  background-color: #fff;
+  background-image: var(--kn-mini-bg-pattern);
 }
 
 .kn-svc-bar {

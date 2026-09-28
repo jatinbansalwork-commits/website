@@ -1,5 +1,5 @@
 /**
- * Marketing pages — Docsumo-style section backgrounds (KlearNow brand tokens)
+ * Marketing pages — KlearNow section backgrounds
  * Scoped to .page-wrapper (in-flow) + body.locale-en direct section bands (homepage tail).
  */
 
@@ -61,7 +61,6 @@ body.locale-en > div[class*="section_"] > .padding-global,
 .page-wrapper .section_results:not(.background-color-beige), body.locale-en > .section_results:not(.background-color-beige),
 .page-wrapper .section_results.version-features:not(.background-color-beige), body.locale-en > .section_results.version-features:not(.background-color-beige),
 .page-wrapper .section_nomenclature, body.locale-en > .section_nomenclature,
-.page-wrapper .section_product-overview.background-color-beige, body.locale-en > .section_product-overview.background-color-beige,
 .page-wrapper .section_support-you.background-color-beige, body.locale-en > .section_support-you.background-color-beige,
 .page-wrapper .section_results.background-color-beige, body.locale-en > .section_results.background-color-beige,
 .page-wrapper .section_support-you:not(.background-color-beige), body.locale-en > .section_support-you:not(.background-color-beige),
@@ -79,7 +78,6 @@ body.locale-en > div[class*="section_"] > .padding-global,
 .page-wrapper .section_results:not(.background-color-beige)::before, body.locale-en > .section_results:not(.background-color-beige)::before,
 .page-wrapper .section_results.version-features:not(.background-color-beige)::before, body.locale-en > .section_results.version-features:not(.background-color-beige)::before,
 .page-wrapper .section_nomenclature::before, body.locale-en > .section_nomenclature::before,
-.page-wrapper .section_product-overview.background-color-beige::before, body.locale-en > .section_product-overview.background-color-beige::before,
 .page-wrapper .section_support-you.background-color-beige::before, body.locale-en > .section_support-you.background-color-beige::before,
 .page-wrapper .section_results.background-color-beige::before, body.locale-en > .section_results.background-color-beige::before,
 .page-wrapper .section_support-you:not(.background-color-beige)::before, body.locale-en > .section_support-you:not(.background-color-beige)::before,
@@ -92,7 +90,6 @@ body.locale-en > div[class*="section_"] > .padding-global,
 .page-wrapper .section_results:not(.background-color-beige)::after, body.locale-en > .section_results:not(.background-color-beige)::after,
 .page-wrapper .section_results.version-features:not(.background-color-beige)::after, body.locale-en > .section_results.version-features:not(.background-color-beige)::after,
 .page-wrapper .section_nomenclature::after, body.locale-en > .section_nomenclature::after,
-.page-wrapper .section_product-overview.background-color-beige::after, body.locale-en > .section_product-overview.background-color-beige::after,
 .page-wrapper .section_support-you.background-color-beige::after, body.locale-en > .section_support-you.background-color-beige::after,
 .page-wrapper .section_results.background-color-beige::after, body.locale-en > .section_results.background-color-beige::after,
 .page-wrapper .section_support-you:not(.background-color-beige)::after, body.locale-en > .section_support-you:not(.background-color-beige)::after,
@@ -173,7 +170,6 @@ body.locale-en > div[class*="section_"] > .padding-global,
 
 /* Warm (beige bands + nomenclature) */
 .page-wrapper .section_nomenclature::before, body.locale-en > .section_nomenclature::before,
-.page-wrapper .section_product-overview.background-color-beige::before, body.locale-en > .section_product-overview.background-color-beige::before,
 .page-wrapper .section_support-you.background-color-beige::before, body.locale-en > .section_support-you.background-color-beige::before,
 .page-wrapper .section_results.background-color-beige::before, body.locale-en > .section_results.background-color-beige::before {
   background:
@@ -182,7 +178,6 @@ body.locale-en > div[class*="section_"] > .padding-global,
 }
 
 .page-wrapper .section_nomenclature::after, body.locale-en > .section_nomenclature::after,
-.page-wrapper .section_product-overview.background-color-beige::after, body.locale-en > .section_product-overview.background-color-beige::after,
 .page-wrapper .section_support-you.background-color-beige::after, body.locale-en > .section_support-you.background-color-beige::after,
 .page-wrapper .section_results.background-color-beige::after, body.locale-en > .section_results.background-color-beige::after {
   background-image: radial-gradient(
@@ -192,6 +187,20 @@ body.locale-en > div[class*="section_"] > .padding-global,
   );
   background-size: 26px 26px;
   opacity: 0.2;
+}
+
+/* Product ecosystem beige bands — flat fill (no corner wash / dot grid) */
+.page-wrapper .section_product-overview.background-color-beige,
+body.locale-en > .section_product-overview.background-color-beige {
+  background-image: none;
+}
+
+.page-wrapper .section_product-overview.background-color-beige::before,
+.page-wrapper .section_product-overview.background-color-beige::after,
+body.locale-en > .section_product-overview.background-color-beige::before,
+body.locale-en > .section_product-overview.background-color-beige::after {
+  content: none;
+  display: none;
 }
 
 /* Blog band */

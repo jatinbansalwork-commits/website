@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Phase 1: internal Crealo/Docsumo fingerprints → KlearNow names (no copy/layout changes)."""
+"""Phase 1: internal legacy fingerprints → KlearNow names (no copy/layout changes)."""
 from __future__ import annotations
 
 import re
@@ -42,8 +42,8 @@ REPLACEMENTS: list[tuple[str, str]] = [
 COMMENT_FIXES: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"\bCrealo\b"), "legacy template"),
     (re.compile(r"\bcrealo\b"), "legacy template"),
-    (re.compile(r"\bDocsumo\b"), "stage-scene"),
-    (re.compile(r"\bdocsumo\b"), "stage-scene"),
+    (re.compile(r"\bDocsumo\b"), "KlearNow"),
+    (re.compile(r"\bdocsumo\b"), "KlearNow"),
     (re.compile(r"docsumo\.com"), "reference UI"),
 ]
 

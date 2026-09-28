@@ -1,19 +1,18 @@
 /**
- * KlearNow — section spacing (2 rules only)
+ * KlearNow — section spacing (content rhythm)
  *
- * RULE 2 — STANDARD SPACING
- *   Each section’s inner band uses one vertical scale (Webflow padding-section-*).
- *   Values are the single source of truth below — do not hardcode rem in page HTML.
+ * Content sections use one band: 80px above the header and 80px below the
+ * cards, illustration, or last paragraph. Both sides stay, so the gap from
+ * one section’s content to the next label is about 160px.
  *
- * RULE 1 — OPTICAL SPACING
- *   When section B follows section A, B’s top band uses OPTICAL (not full standard top)
- *   so the gap between content does not feel doubled (A bottom + B top).
- *   Default optical: 3rem. Tight optical (beige stacks, testimonials): 2.5rem.
- *   Exceptions: first section after logo strip uses standard medium top (5rem).
+ * Inside the header: label → heading 12px, heading → paragraph 16px,
+ * paragraph → cards / illustration 48px.
+ * Card grids use a 16px gap. In-card title → body is 6px.
  *
  * Load after klearnow-site.min.css.
  */
 
+@import url("/klearnow-neutrals.css");
 @import url("/section-gradients.css");
 @import url("/platform-metrics-aurora.css");
 
@@ -31,21 +30,29 @@
   --kn--2-blue: var(--kn-primary);
   --kn-bg--bg-color: #fff;
 
-  /* Rule 2 — standard section padding (top & bottom unless Rule 1 overrides top) */
+  /* KlearNow content band — 80px above the header and 80px below the cards */
+  --kn-section-band: 5rem;
   --kn-section-standard-large: 7rem;
-  --kn-section-standard-medium: 5rem;
-  --kn-section-standard-small: 3rem;
+  --kn-section-standard-medium: var(--kn-section-band);
+  --kn-section-standard-small: var(--kn-section-band);
   --kn-section-standard-xxsmall: 1rem;
 
-  /* Rule 1 — optical gap (stacked sections) */
-  --kn-section-optical: 3rem;
-  --kn-section-optical-tight: 2.5rem;
+  /* Legacy names now follow the same 80px band */
+  --kn-section-optical: var(--kn-section-band);
+  --kn-section-optical-tight: var(--kn-section-band);
+  --kn-optical-gap: var(--kn-section-band);
+  --kn-optical-gap-tight: var(--kn-section-band);
+  --kn-section-between: var(--kn-section-band);
 
-  /* Legacy aliases (use --kn-section-* in new code) */
-  --kn-optical-gap: var(--kn-section-optical);
-  --kn-optical-gap-tight: var(--kn-section-optical-tight);
-
-  --kn-heading-stack-gap: 0.75rem;
+  /* Label → heading 12px. Heading → paragraph adds 4px on top of that (16px). */
+  --kn-heading-label-gap: 0.75rem;
+  --kn-heading-lede-gap: 1rem;
+  --kn-heading-stack-gap: var(--kn-heading-label-gap);
+  /* Paragraph → cards, motion, or image */
+  --kn-heading-to-content: 3rem;
+  /* Gap between cards. Title → body copy inside a card. */
+  --kn-card-gap: 1rem;
+  --kn-card-title-gap: 0.375rem;
   /* Operation/product hero band — design target 837×460 (aspect-ratio is source of truth) */
   --kn-hero-media-height: 28.75rem;
   --kn-hero-media-aspect: 837 / 460;
@@ -59,6 +66,26 @@
 html,
 body {
   font-family: var(--kn-fonts--text) !important;
+  color: var(--kn-ink);
+}
+
+/* Webflow grey utilities → neutral scale */
+.text-color-black,
+.heading-style-h2.text-color-black,
+.text-size-regular.text-color-black,
+.text-size-small.text-color-black {
+  color: var(--kn-ink) !important;
+}
+
+.text-color-grey,
+.text-size-regular.text-color-grey,
+.text-size-tiny.text-color-grey,
+.icon-1x1-xmedium.is_navbar-icons.is_grey {
+  color: var(--kn-ink-muted) !important;
+}
+
+.contact_form-field.is_dropdown {
+  color: var(--kn-ink-muted) !important;
 }
 
 :is(
@@ -142,6 +169,17 @@ body {
 .page-wrapper > :is(.nav_main_component, main, .section_footer, .fs-styleguide-nav) {
   position: relative;
   z-index: 1;
+}
+
+/* Fixed nav bar is opaque; backdrop must not paint a white band over dark tail sections */
+#kn-nav-backdrop {
+  background-color: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+body {
+  background-color: var(--kn-surface-white);
 }
 
 /* Boot: legacy template loads visible; avoid blank flash (inline overrides removed sitewide) */
@@ -234,14 +272,14 @@ html.kn-ready .page-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.875rem;
+  gap: var(--kn-heading-label-gap);
 }
 
 .section_product-overview.background-color-beige .advantages_subheading {
   max-width: 42rem;
   margin: 0 auto;
   line-height: 1.55;
-  color: color-mix(in srgb, var(--kn-text) 72%, transparent);
+  color: var(--kn-ink-soft);
 }
 
 .section_product-overview.background-color-beige .product-overview_grid {
@@ -552,6 +590,163 @@ html.kn-ready .page-wrapper {
   margin: 0;
 }
 
+/* Heading → paragraph is 16px (12px stack gap + 4px). Paragraphs do not add a bottom margin. */
+.services_heading > :is(p, .text-size-regular, .text-size-medium),
+.heading-description > :is(p, .text-size-regular, .text-size-medium),
+.support-you_heading > :is(p, .text-size-regular, .text-size-medium),
+.product-overview_heading > :is(p, .text-size-regular, .text-size-medium),
+.nomenclature_heading > :is(p, .text-size-regular, .text-size-medium),
+.advantages_heading-description > :is(p, .advantages_subheading, .text-size-regular, .text-size-medium),
+.testimonials-text > :is(p, .text-size-small-6, .text-size-regular, .text-size-medium) {
+  margin-top: calc(var(--kn-heading-lede-gap) - var(--kn-heading-label-gap)) !important;
+  margin-bottom: 0 !important;
+}
+
+/* One gap after label → heading → subheading, before cards, motion, or image */
+.main-wrapper .services_grid,
+.main-wrapper .support-kn_grid,
+.main-wrapper .nomenclature_grid,
+.main-wrapper .latest-blog_grid,
+.main-wrapper .section_product-overview.is-how-it-works .kh-hiw_steps {
+  margin-top: var(--kn-heading-to-content);
+}
+
+.main-wrapper .services_heading + .spacer-large,
+.main-wrapper .heading-description + .spacer-large,
+.main-wrapper .support-you_heading + .spacer-large,
+.main-wrapper .product-overview_heading + .spacer-large {
+  padding-top: var(--kn-heading-to-content);
+}
+
+/* KlearNow content band: 80px above the header, 80px below the cards.
+   The next section adds its own 80px, so the gap between sections is 160px. */
+:is(.main-wrapper, .kn-locale-pane) :is(
+  .section_platform-metrics,
+  .section_services,
+  .section_support-platform,
+  .section_results,
+  .section_support-you,
+  .section_product-overview,
+  .section_nomenclature,
+  .section_latest-blog,
+  .section_product-detailled,
+  .section_testimonials,
+  .section_how-switch,
+  .section_solution,
+  .section_kn,
+  .section_faq,
+  .section_before-after,
+  .section_all-blog-post,
+  .kn-ds-where-time
+) [class*="padding-section"] {
+  padding-top: var(--kn-section-band) !important;
+  padding-bottom: var(--kn-section-band) !important;
+}
+
+/* Heading band ends before a spacer. The spacer is the 48px to the cards.
+   The 80px under the cards sits on the section, not between the heading and the spacer. */
+:is(.main-wrapper, .kn-locale-pane) :is(
+  .section_platform-metrics,
+  .section_services,
+  .section_support-platform,
+  .section_results,
+  .section_support-you,
+  .section_product-overview,
+  .section_nomenclature,
+  .section_latest-blog,
+  .section_product-detailled,
+  .section_testimonials,
+  .section_how-switch,
+  .section_solution,
+  .section_kn,
+  .section_faq,
+  .section_before-after,
+  .section_all-blog-post,
+  .kn-ds-where-time
+) [class*="padding-section"]:has(+ .spacer-large) {
+  padding-bottom: 0 !important;
+}
+
+:is(.main-wrapper, .kn-locale-pane) > :is(
+  .section_platform-metrics,
+  .section_services,
+  .section_support-platform,
+  .section_results,
+  .section_support-you,
+  .section_product-overview,
+  .section_nomenclature,
+  .section_latest-blog,
+  .section_product-detailled,
+  .section_how-switch,
+  .section_solution,
+  .section_kn,
+  .section_faq,
+  .section_before-after,
+  .section_all-blog-post,
+  .kn-ds-where-time
+):has([class*="padding-section"] + .spacer-large),
+:is(.main-wrapper, .kn-locale-pane) .kn-page-tail > .section_testimonials:has([class*="padding-section"] + .spacer-large) {
+  padding-bottom: var(--kn-section-band) !important;
+}
+
+/* One beige block split across two sections: the second half is the cards, not a new header. */
+:is(.main-wrapper, .kn-locale-pane) > .section_product-overview.background-color-beige:has(.product-overview_heading):has(+ .section_product-overview.background-color-beige) [class*="padding-section"] {
+  padding-bottom: 0 !important;
+}
+
+:is(.main-wrapper, .kn-locale-pane) > .section_product-overview.background-color-beige:has(.product-overview_heading) + .section_product-overview.background-color-beige [class*="padding-section"] {
+  padding-top: var(--kn-heading-to-content) !important;
+}
+
+/* Testimonials are split into a heading band and a card band.
+   The 80px stays on the outer edges. The intro-to-quote gap is 48px. */
+:is(.main-wrapper, .kn-locale-pane) .section_testimonials .padding-section-medium.padding-top {
+  padding-top: var(--kn-section-band) !important;
+  padding-bottom: 0 !important;
+}
+
+:is(.main-wrapper, .kn-locale-pane) .section_testimonials .padding-section-medium.padding-bottom {
+  padding-top: 0 !important;
+  padding-bottom: var(--kn-section-band) !important;
+}
+
+:is(.main-wrapper, .kn-locale-pane) .section_testimonials .testimonial_container {
+  margin-top: var(--kn-heading-to-content) !important;
+}
+
+/* Card grids and the copy under a card title */
+:is(.main-wrapper, .kn-locale-pane) :is(
+  .services_grid,
+  .support-you_grid,
+  .support-kn_grid,
+  .nomenclature_grid,
+  .hero-why-kn_grid,
+  .latest-blog_grid
+) {
+  gap: var(--kn-card-gap) !important;
+}
+
+:is(.main-wrapper, .kn-locale-pane) :is(
+  .services_text-flex,
+  .hero-why-kn_text-container,
+  .nomenclature_text-container
+) > :is(h2, h3, h4, .heading-style-h2, .heading-style-h3, .heading-style-h4, .nomenclature_heading-text) {
+  margin-bottom: var(--kn-card-title-gap);
+}
+
+:is(.main-wrapper, .kn-locale-pane) :is(
+  .services_text-flex,
+  .hero-why-kn_text-container,
+  .nomenclature_text-container
+) > :is(p, .text-size-small, .text-size-regular, .text-size-medium) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.section_product-overview.background-color-beige:has(+ .section_product-overview.background-color-beige) .product-overview_heading {
+  margin-bottom: 0;
+}
+
 /* Operation-type: title + body split (version-features-7 grid) — keep icon aligned with copy */
 .section_results.version-features.is-freight-audience .services_heading.version-features-5 {
   align-items: flex-start;
@@ -581,8 +776,12 @@ html.kn-ready .page-wrapper {
   }
 }
 
-/* Homepage “You'll only hear about the exceptions.” card tint — also solution CTA band */
-.support-kn_grid .support-kn_item,
+/* Homepage trade-stack rows (KlearData / Klearhub / Managed Trade) */
+.support-kn_grid .support-kn_item {
+  background-color: var(--kn-surface-beige);
+  border-radius: 12px;
+}
+
 .solution_cta {
   background-color: color-mix(in srgb, var(--kn-primary) 10%, transparent);
   border-radius: 12px;
@@ -598,8 +797,8 @@ html.kn-ready .page-wrapper {
 
 /* Operation “How it works” bento — even gutters + card padding */
 .section_support-you .support-you_grid {
-  column-gap: 1.5rem;
-  row-gap: 1.5rem;
+  column-gap: var(--kn-card-gap);
+  row-gap: var(--kn-card-gap);
   align-items: stretch;
 }
 
@@ -723,7 +922,7 @@ html.kn-ready .page-wrapper {
   --kh-hiw-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --kh-hiw-dot-duration: 10s;
   list-style: none;
-  margin: 2.75rem 0 0;
+  margin: var(--kn-heading-to-content) 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -817,21 +1016,21 @@ html.kn-ready .page-wrapper {
   font-size: 1.0625rem;
   font-weight: 600;
   line-height: 1.3;
-  color: var(--kn-text, #1a1a1a);
+  color: var(--kn-ink);
 }
 
 .kh-hiw_step p {
   margin: 0.5rem 0 0;
   font-size: 0.9rem;
   line-height: 1.45;
-  color: color-mix(in srgb, var(--kn-text, #2d2d2d) 62%, #888);
+  color: var(--kn-ink-muted);
 }
 
 .kh-hiw_step-copy {
   margin: 0;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: color-mix(in srgb, var(--kn-text, #2d2d2d) 62%, #888);
+  color: var(--kn-ink-muted);
 }
 
 @media screen and (max-width: 991px) {
@@ -943,7 +1142,7 @@ html.kn-ready .page-wrapper {
 }
 
 .section_how-switch .how-switch_slider .w-slider-dot {
-  background-color: rgba(45, 45, 45, 0.25);
+  background-color: var(--kn-ink-faint);
   width: 8px;
   height: 8px;
   margin: 0 4px;
@@ -951,7 +1150,7 @@ html.kn-ready .page-wrapper {
 }
 
 .section_how-switch .how-switch_slider .w-slider-dot.w-active {
-  background-color: #2d2d2d;
+  background-color: var(--kn-ink);
   width: 56px;
   height: 8px;
   border-radius: 999px;
@@ -1194,7 +1393,7 @@ html[lang="en"] .fs_modal-2_popup-2.w--open {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--kn-text, #2d2d2d) 52%, #fff);
+  color: var(--kn-ink-soft);
 }
 
 .fs_modal-2_content form.is_demo .contact_form-field-2.w-input {
@@ -1205,7 +1404,7 @@ html[lang="en"] .fs_modal-2_popup-2.w--open {
   border-radius: 0.625rem;
   border: 1px solid #dfe1e7;
   background: #fff;
-  color: var(--kn-text, #2d2d2d);
+  color: var(--kn-ink);
   font-size: 0.875rem;
   line-height: 1.4;
   box-shadow: none;
@@ -1243,7 +1442,7 @@ html[lang="en"] .fs_modal-2_popup-2.w--open {
   margin: 0;
   font-size: 0.75rem;
   line-height: 1.45;
-  color: color-mix(in srgb, var(--kn-text, #2d2d2d) 62%, #fff);
+  color: var(--kn-ink-muted);
 }
 
 .fs_modal-2_content form.is_demo .contact_form-checklist-field-link {
@@ -1409,9 +1608,13 @@ body.kn-full-translate-busy .locale-nav-item {
   padding-bottom: 3rem;
 }
 
-/* Homepage dashboard hero — extra space between copy/ticker and media (+50% vs 3rem) */
+/* Homepage dashboard hero — space between copy/ticker and media (avoid large white band) */
 .section_hero:has(.kn-home-hero-stage) .hero_padding:not(.padding-bottom-none) {
-  padding-bottom: 4.5rem;
+  padding-bottom: 2.75rem;
+}
+
+.section_hero:has(.kn-home-hero-stage) .container-large.hero_image {
+  margin-top: 0;
 }
 
 /* Homepage — dashboard media → logo strip (+50% vs 2rem margin-top) */
@@ -1724,7 +1927,7 @@ body.kn-full-translate-busy .locale-nav-item {
 }
 
 .section_results .hero-why-kn_grid .hero-why-kn_item[class*="results-stat-pos-"] .hero-why-kn_text-container .heading-style-h2 {
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--kn-card-title-gap);
 }
 
 /* Results stat tiles (KlearData etc.) — text-only cards, no illustration slot */

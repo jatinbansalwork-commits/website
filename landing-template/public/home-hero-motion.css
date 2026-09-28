@@ -21,18 +21,20 @@
   --ds-text-primary: var(--kn-ink);
   --ds-text-secondary: var(--kn-ink-soft);
   --ds-text-tertiary: var(--kn-ink-muted);
-  --ds-border-subtle: var(--kn-line-subtle);
-  --ds-border-default: var(--kn-line);
-  --ds-brand-primary: #4d61fc;
-  --ds-brand-deep: #3a4ee8;
-  --ds-brand-soft: #eceeff;
-  --ds-brand-ink: #3346d8;
-  --ds-brand-secondary: #2f80ed;
+  --ds-border-subtle: rgba(15, 17, 23, 0.09);
+  --ds-border-default: rgba(15, 17, 23, 0.16);
+  --ds-ink-muted: rgba(15, 17, 23, 0.62);
+  --ds-brand-primary: var(--kn-primary, #506ee8);
+  --ds-brand-deep: var(--kn-primary-hover, #3f59d4);
+  --ds-brand-soft: var(--kn-primary-soft, color-mix(in srgb, var(--kn-primary, #506ee8) 12%, #fff));
+  --ds-brand-ink: var(--kn-primary, #506ee8);
+  --ds-brand-secondary: var(--kn-primary, #506ee8);
   --ds-on-brand: #fff;
-  --ds-success-fg: #0b7a52;
-  --ds-success-bg: #e2f5ec;
-  --ds-warning-fg: #b45309;
-  --ds-warning-bg: #fef3c7;
+  --ds-success-fg: rgb(11, 122, 82);
+  --ds-success-bg: rgb(226, 245, 236);
+  --ds-success-accent: rgb(48, 184, 137);
+  --ds-warning-fg: rgb(153, 102, 0);
+  --ds-warning-bg: rgb(255, 248, 222);
   --bg: var(--ds-bg-page);
   --bg-2: var(--ds-bg-surface);
   --surface: var(--ds-bg-elevated);
@@ -55,10 +57,16 @@
   --glass: #fff;
   --r-lg: 16px;
   --ease: cubic-bezier(0.22, 0.7, 0.28, 1);
-  --grad-b: #7f8cff;
-  --shadow-hero: 0 1px 2px #0f11170d, 0 30px 70px -28px #3a4ee861;
-  --sans: Manrope, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --grad-b: color-mix(in srgb, var(--kn-primary, #506ee8) 72%, #fff);
+  --shadow-hero:
+    0 1px 2px 0 rgba(15, 17, 23, 0.06),
+    0 36px 80px -30px color-mix(in srgb, var(--kn-primary, #506ee8) 45%, transparent),
+    0 12px 28px -18px rgba(15, 17, 23, 0.2);
+  --shadow-chip:
+    0 12px 30px -14px color-mix(in srgb, var(--kn-primary, #506ee8) 50%, transparent),
+    0 2px 6px -2px rgba(15, 17, 23, 0.12);
+  --sans: var(--kn-fonts--text, Manrope, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   position: relative;
   width: 27rem;
   max-width: none;
@@ -104,7 +112,7 @@
   animation: 6s ease-in-out infinite bob;
   display: flex;
   position: absolute;
-  box-shadow: 0 10px 28px -14px #3a4ee873;
+  box-shadow: 0 10px 28px -14px color-mix(in srgb, var(--brand-deep) 45%, transparent);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }

@@ -2,7 +2,7 @@
   'use strict';
 
   /** Bump when public assets or boot behavior changes. Keep in sync with ?v= on script tags in HTML. */
-  var ASSET_VERSION = '20261150';
+  var ASSET_VERSION = '20261272';
   var html = document.documentElement;
 
   var KN_FONT_ASSETS = [
@@ -645,21 +645,32 @@
       .trim();
   }
 
+  function injectStylesheet(id, href) {
+    if (document.getElementById(id)) return;
+    var link = document.createElement('link');
+    link.id = id;
+    link.rel = 'stylesheet';
+    link.href = withVersion(href);
+    document.head.appendChild(link);
+  }
+
   function ensureSceneStylesheet() {
-    if (!document.querySelector('[data-kn-scene-slot]')) return;
-    if (!document.getElementById('kn-scene-styles')) {
-      var link = document.createElement('link');
-      link.id = 'kn-scene-styles';
-      link.rel = 'stylesheet';
-      link.href = withVersion('/kleardata-collect-scene.css');
-      document.head.appendChild(link);
+    if (!document.querySelector('[data-kn-scene-slot], [data-kn-scene-mount]')) return;
+    injectStylesheet('kn-scene-styles', '/kleardata-collect-scene.css');
+    if (document.querySelector('[data-kn-scene="home-hero"]')) {
+      injectStylesheet('kn-hero-motion-styles', '/home-hero-motion.css');
     }
-    if (document.querySelector('[data-kn-scene="home-hero"]') && !document.getElementById('kn-hero-motion-styles')) {
-      var heroLink = document.createElement('link');
-      heroLink.id = 'kn-hero-motion-styles';
-      heroLink.rel = 'stylesheet';
-      heroLink.href = withVersion('/home-hero-motion.css');
-      document.head.appendChild(heroLink);
+  }
+
+  function ensureMiniStylesheets() {
+    if (document.querySelector('.kn-sf-mini')) {
+      injectStylesheet('kn-sf-mini-styles', '/kn-self-filers-card-mini.css');
+    }
+    if (document.querySelector('.kn-svc-motion')) {
+      injectStylesheet('kn-svc-motion-styles', '/services-motion.css');
+    }
+    if (document.querySelector('.kn-agent-card, .kn-agents-grid')) {
+      injectStylesheet('kn-agent-minis-styles', '/kn-agent-minis.css');
     }
   }
 
@@ -917,11 +928,44 @@
   }
 
   /**
+   * Webflow sometimes hoists marketing sections onto body (siblings of .page-wrapper).
+   * That breaks main padding, page-tail wrapping, and shows white bands under the fixed nav.
+   */
+  function reunifyPageSections() {
+    var main = document.querySelector('main.main-wrapper');
+    var pageWrapper = document.querySelector('.page-wrapper');
+    if (!main || !pageWrapper) return false;
+
+    var moved = false;
+    var node = pageWrapper.nextElementSibling;
+    while (node) {
+      var next = node.nextElementSibling;
+      if (node.tagName === 'SCRIPT') break;
+
+      var className = node.className;
+      if (typeof className !== 'string') className = '';
+      var isPageSection =
+        /\bsection_/.test(className) ||
+        /\bkn-page-tail\b/.test(className) ||
+        /\bkn-locale-pane\b/.test(className);
+
+      if (isPageSection) {
+        main.appendChild(node);
+        moved = true;
+      }
+      node = next;
+    }
+    return moved;
+  }
+
+  /**
    * One shared dark tail background: testimonials + CTA + footer stay separate in the DOM
    * but sit inside .kn-page-tail for a single gradient / aurora (sitewide).
    */
   function wrapPageTail() {
     if (document.querySelector('.kn-page-tail')) return;
+
+    reunifyPageSections();
 
     var start = document.querySelector('.section_testimonials') || document.querySelector('.section_cta');
     var footer = document.querySelector('.section_footer');
@@ -948,6 +992,7 @@
   /** Wrap tail + mount brand aurora on every marketing page (CSS via klearnow-spacing imports). */
   function initSectionGradients() {
     if (!document.querySelector('.section_footer')) return;
+    reunifyPageSections();
     wrapPageTail();
     mountBrandAuroraLayer('.kn-page-tail');
     mountBrandAuroraLayer('.section_platform-metrics');
@@ -1005,6 +1050,32 @@
             slot.innerHTML = html;
             slot.dataset.knSceneMounted = '1';
             slot.classList.remove('product-overview_image-placeholder', 'support-you_image-placeholder');
+          })
+      );
+    });
+    return Promise.all(tasks);
+  }
+
+  /** Homepage trade-stack cards — fetch scene HTML from data-kn-scene-src into [data-kn-scene-mount]. */
+  function mountSceneMountPoints() {
+    var mounts = document.querySelectorAll('[data-kn-scene-mount][data-kn-scene-src]');
+    if (!mounts.length) return Promise.resolve();
+    ensureSceneStylesheet();
+    var tasks = [];
+    mounts.forEach(function (mount) {
+      if (mount.dataset.knSceneMountLoaded === '1') return;
+      var src = mount.getAttribute('data-kn-scene-src');
+      if (!src) return;
+      tasks.push(
+        fetch(withVersion(src), { credentials: 'same-origin' })
+          .then(function (res) {
+            if (!res.ok) throw new Error('Scene mount failed: ' + src);
+            return res.text();
+          })
+          .then(stripFragmentComments)
+          .then(function (html) {
+            mount.innerHTML = html;
+            mount.dataset.knSceneMountLoaded = '1';
           })
       );
     });
@@ -1098,6 +1169,7 @@
   function finishBoot() {
     resetUiState();
     syncNavHeight();
+    ensureMiniStylesheets();
     bustLocalAssets();
     initSectionGradients();
     initTestimonialSlider();
@@ -1106,9 +1178,10 @@
 
     initPlatformMetricsBand();
 
-    mountSceneSlots()
+    Promise.all([mountSceneSlots(), mountSceneMountPoints()])
       .catch(function () {})
       .then(function () {
+        bustLocalAssets();
         initHeroVisualScenes();
         initProductStackScenes();
 
@@ -1160,6 +1233,7 @@
 
   window.Webflow = window.Webflow || [];
   window.Webflow.push(function () {
+    initSectionGradients();
     initTestimonialSlider();
     scheduleHowSwitchSliders();
   });

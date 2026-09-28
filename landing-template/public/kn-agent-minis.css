@@ -9,9 +9,7 @@
   flex: 1 1 auto;
   min-width: 0;
   min-height: 0;
-  padding: 7px 9px;
-  background: transparent;
-  border: 0;
+  padding: 8px 10px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -25,6 +23,30 @@
   width: 100%;
   height: 100%;
   min-height: 0;
+}
+
+/* Mini canvases: dot grid shows through the frame (homepage scene parity) */
+.kn-agent-card__anim > :is(
+    .kn-ema-mini,
+    .kn-csd-mini,
+    .kn-dca-mini,
+    .kn-dea-mini,
+    .kn-dva-mini,
+    .kn-cma-mini,
+    .kn-wfa-mini,
+    .kn-mt-global-mini,
+    .kn-mt-pea-mini,
+    .kn-mt-int-mini,
+    .kn-kh-split-mini,
+    .kn-kh-broker-mini,
+    .kn-kd-intake-mini,
+    .kn-kd-provenance-mini,
+    .kn-kd-selffiler-mini,
+    .kn-kh-trail-mini,
+    .kn-kh-filer-mini,
+    .kn-kh-inbox-mini
+  ) {
+  background: transparent;
 }
 
 /* Center canvas in frame (all 6 cards) */
@@ -60,6 +82,9 @@
 .hero-why-kn_grid.kn-agents-grid .kn-agent-card__visual {
   flex-direction: column;
   align-items: stretch;
+  padding: 5px;
+  border-radius: 14px;
+  background-color: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 4%, #fff);
 }
 
 /* Agent grid — override legacy 2-row hero-why-kn templates (KlearData, etc.) */
@@ -201,7 +226,7 @@
   width: 22px;
   height: 22px;
   border-radius: 999px;
-  background: #efeafe;
+  background: color-mix(in srgb, var(--kn-primary, #506ee8) 12%, #fff);
   flex-shrink: 0;
 }
 
@@ -231,8 +256,8 @@
   border-radius: 5px;
   font-size: 10px;
   font-weight: 600;
-  background: #efeafe;
-  color: #5b47d9;
+  background: color-mix(in srgb, var(--kn-primary, #506ee8) 12%, #fff);
+  color: var(--kn-primary, #506ee8);
   border: 1px solid rgba(91, 71, 217, 0.3);
   opacity: 0;
   transform: scale(0.6);
@@ -297,7 +322,7 @@
   font-size: 10px;
   font-weight: 700;
   color: rgba(15, 17, 23, 0.82);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
 }
 
 .kn-kh-split-row--duty {
@@ -326,8 +351,8 @@
   }
   52%,
   82% {
-    background: color-mix(in srgb, var(--kn-accent, #5b47d9) 7%, #fff);
-    border-color: color-mix(in srgb, var(--kn-accent, #5b47d9) 22%, rgba(15, 17, 23, 0.06));
+    background: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 7%, #fff);
+    border-color: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 22%, rgba(15, 17, 23, 0.06));
   }
   100% {
     background: #fff;
@@ -361,10 +386,10 @@
   align-items: stretch;
   justify-content: center;
   gap: 7px;
-  padding: 10px 12px;
+  padding: 8px 10px;
   box-sizing: border-box;
-  border-radius: 12px;
-  background: #fff;
+  border-radius: 10px;
+  background: transparent;
   overflow: hidden;
 }
 
@@ -378,8 +403,9 @@
 }
 
 .kn-kh-broker-kicker {
+  font-family: var(--kn-mini-font-headings);
   font-weight: 700;
-  color: rgba(15, 17, 23, 0.78);
+  color: var(--kn-ink-soft);
 }
 
 .kn-kh-broker-meta {
@@ -395,10 +421,6 @@
   gap: 8px;
   height: 34px;
   padding: 0 10px;
-  background: #fff;
-  border: 1px solid rgba(15, 17, 23, 0.06);
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(15, 17, 23, 0.05);
 }
 
 .kn-kh-broker-label {
@@ -425,21 +447,21 @@
 }
 
 .kn-kh-broker-chip--filed {
-  background: #e2f5ec;
-  color: #0f8a5f;
-  border-color: #abdfc2;
+  background: var(--kn-ok-bg);
+  color: var(--kn-ok);
+  border-color: var(--kn-ok-border);
 }
 
 .kn-kh-broker-chip--sent {
-  background: color-mix(in srgb, var(--kn-accent, #5b47d9) 10%, #fff);
-  color: var(--kn-accent, #5b47d9);
-  border-color: color-mix(in srgb, var(--kn-accent, #5b47d9) 28%, transparent);
+  background: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 10%, #fff);
+  color: var(--kn-accent, var(--kn-primary, #506ee8));
+  border-color: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 28%, transparent);
 }
 
 .kn-kh-broker-chip--ready {
-  background: #eef2ff;
-  color: #4338ca;
-  border-color: #c7d2fe;
+  background: var(--kn-primary-soft, color-mix(in srgb, var(--kn-primary, #506ee8) 12%, #fff));
+  color: var(--kn-primary, #506ee8);
+  border-color: var(--kn-primary-border, color-mix(in srgb, var(--kn-primary, #506ee8) 28%, transparent));
 }
 
 .kn-kh-broker-row--corr {
@@ -465,8 +487,8 @@
   }
   52%,
   82% {
-    background: color-mix(in srgb, var(--kn-accent, #5b47d9) 6%, #fff);
-    border-color: color-mix(in srgb, var(--kn-accent, #5b47d9) 20%, rgba(15, 17, 23, 0.06));
+    background: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 6%, #fff);
+    border-color: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 20%, rgba(15, 17, 23, 0.06));
   }
   100% {
     background: #fff;
@@ -486,10 +508,10 @@
   align-items: stretch;
   justify-content: center;
   gap: 7px;
-  padding: 10px 12px;
+  padding: 8px 10px;
   box-sizing: border-box;
-  border-radius: 12px;
-  background: #fff;
+  border-radius: 10px;
+  background: transparent;
   overflow: hidden;
 }
 
@@ -503,8 +525,9 @@
 }
 
 .kn-kd-intake-kicker {
+  font-family: var(--kn-mini-font-headings);
   font-weight: 700;
-  color: rgba(15, 17, 23, 0.78);
+  color: var(--kn-ink-soft);
 }
 
 .kn-kd-intake-meta {
@@ -521,10 +544,6 @@
   gap: 8px;
   height: 34px;
   padding: 0 10px;
-  background: #fff;
-  border: 1px solid rgba(15, 17, 23, 0.06);
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(15, 17, 23, 0.05);
   min-width: 0;
 }
 
@@ -534,7 +553,7 @@
   font-size: 10px;
   font-weight: 600;
   color: rgba(15, 17, 23, 0.68);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -553,21 +572,21 @@
 }
 
 .kn-kd-intake-chip--parsed {
-  background: color-mix(in srgb, var(--kn-accent, #496ff0) 10%, #fff);
-  color: var(--kn-accent, #496ff0);
-  border-color: color-mix(in srgb, var(--kn-accent, #496ff0) 28%, transparent);
+  background: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 10%, #fff);
+  color: var(--kn-accent, var(--kn-primary, #506ee8));
+  border-color: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 28%, transparent);
 }
 
 .kn-kd-intake-chip--validated {
-  background: #e2f5ec;
-  color: #0f8a5f;
-  border-color: #abdfc2;
+  background: var(--kn-ok-bg);
+  color: var(--kn-ok);
+  border-color: var(--kn-ok-border);
 }
 
 .kn-kd-intake-chip--ready {
-  background: #eef2ff;
-  color: #4338ca;
-  border-color: #c7d2fe;
+  background: var(--kn-primary-soft, color-mix(in srgb, var(--kn-primary, #506ee8) 12%, #fff));
+  color: var(--kn-primary, #506ee8);
+  border-color: var(--kn-primary-border, color-mix(in srgb, var(--kn-primary, #506ee8) 28%, transparent));
 }
 
 .kn-kd-intake-row--validate {
@@ -593,8 +612,8 @@
   }
   52%,
   82% {
-    background: color-mix(in srgb, var(--kn-accent, #496ff0) 6%, #fff);
-    border-color: color-mix(in srgb, var(--kn-accent, #496ff0) 20%, rgba(15, 17, 23, 0.06));
+    background: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 6%, #fff);
+    border-color: color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 20%, rgba(15, 17, 23, 0.06));
   }
   100% {
     background: #fff;
@@ -645,7 +664,7 @@
 .kn-kd-provenance-kicker {
   font-weight: 700;
   color: rgba(15, 17, 23, 0.78);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
 }
 
 .kn-kd-provenance-meta {
@@ -687,7 +706,7 @@
   font-size: 10px;
   font-weight: 700;
   color: rgba(15, 17, 23, 0.82);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -797,7 +816,7 @@
   font-size: 10px;
   font-weight: 600;
   color: rgba(15, 17, 23, 0.68);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -816,9 +835,9 @@
 }
 
 .kn-kd-selffiler-chip--yours {
-  background: #e2f5ec;
-  color: #0f8a5f;
-  border-color: #abdfc2;
+  background: var(--kn-ok-bg);
+  color: var(--kn-ok);
+  border-color: var(--kn-ok-border);
 }
 
 .kn-kd-selffiler-chip--ready {
@@ -890,7 +909,7 @@
 .kn-kh-trail-kicker {
   font-weight: 700;
   color: rgba(15, 17, 23, 0.78);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
 }
 
 .kn-kh-trail-meta {
@@ -931,7 +950,7 @@
   font-size: 10px;
   font-weight: 700;
   color: rgba(15, 17, 23, 0.82);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -959,7 +978,7 @@
   border-radius: 6px;
   font-size: 10px;
   font-weight: 600;
-  color: #0f8a5f;
+  color: var(--kn-ok);
   background: #e2f5ec;
   border: 1px solid #abdfc2;
 }
@@ -1044,7 +1063,7 @@
   font-size: 10px;
   font-weight: 600;
   color: rgba(15, 17, 23, 0.68);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1063,9 +1082,9 @@
 }
 
 .kn-kh-filer-chip--active {
-  background: #e2f5ec;
-  color: #0f8a5f;
-  border-color: #abdfc2;
+  background: var(--kn-ok-bg);
+  color: var(--kn-ok);
+  border-color: var(--kn-ok-border);
 }
 
 .kn-kh-filer-chip--ready {
@@ -1172,7 +1191,7 @@
 }
 
 .kn-kh-inbox-file {
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
   font-size: 10px;
   font-weight: 600;
   color: rgba(15, 17, 23, 0.78);
@@ -1276,9 +1295,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid #5b47d9;
+  border: 1.5px solid var(--kn-primary, #506ee8);
   background: #fff;
-  color: #5b47d9;
+  color: var(--kn-primary, #506ee8);
   border-radius: 8px;
 }
 
@@ -1293,8 +1312,8 @@
   font-size: 10px;
   font-weight: 600;
   border: 1px solid rgba(91, 71, 217, 0.3);
-  background: #efeafe;
-  color: #5b47d9;
+  background: color-mix(in srgb, var(--kn-primary, #506ee8) 12%, #fff);
+  color: var(--kn-primary, #506ee8);
   white-space: nowrap;
 }
 
@@ -1305,7 +1324,7 @@
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: #5b47d9;
+  background: var(--kn-primary, #506ee8);
   opacity: 0;
   pointer-events: none;
 }
@@ -1442,7 +1461,7 @@
 }
 
 .kn-dca-raw {
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
   font-size: 11px;
   color: rgba(15, 17, 23, 0.55);
   animation: khDsDcaHide 3.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -1464,7 +1483,7 @@
   font-size: 10px;
   font-weight: 600;
   background: #e2f5ec;
-  color: #0f8a5f;
+  color: var(--kn-ok);
   border: 1px solid #abdfc2;
   opacity: 0;
   animation: khDsDcaShow 3.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -1553,7 +1572,7 @@
   font-size: 9px;
   font-weight: 600;
   background: #e2f5ec;
-  color: #0f8a5f;
+  color: var(--kn-ok);
   border: 1px solid #abdfc2;
 }
 
@@ -1588,9 +1607,9 @@
   padding: 2px 6px;
   font-size: 10px;
   font-weight: 600;
-  color: #5b47d9;
-  background: #efeafe;
-  border: 1.5px solid #5b47d9;
+  color: var(--kn-primary, #506ee8);
+  background: color-mix(in srgb, var(--kn-primary, #506ee8) 12%, #fff);
+  border: 1.5px solid var(--kn-primary, #506ee8);
   border-radius: 5px;
   animation: khDsDeaPulse 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -1646,7 +1665,7 @@
 
 .kn-dva-amt {
   margin-left: auto;
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
   font-size: 11px;
   color: rgba(15, 17, 23, 0.72);
 }
@@ -1667,9 +1686,9 @@
 }
 
 .kn-dva-pass {
-  background: #e2f5ec;
-  color: #0f8a5f;
-  border-color: #abdfc2;
+  background: var(--kn-ok-bg);
+  color: var(--kn-ok);
+  border-color: var(--kn-ok-border);
   opacity: 0;
   animation: khDsDvaShow 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -1751,10 +1770,10 @@
   align-items: center;
   justify-content: center;
   gap: 3px;
-  border: 1.5px solid #5b47d9;
+  border: 1.5px solid var(--kn-primary, #506ee8);
   border-radius: 8px;
-  background: #efeafe;
-  color: #5b47d9;
+  background: color-mix(in srgb, var(--kn-primary, #506ee8) 12%, #fff);
+  color: var(--kn-primary, #506ee8);
   transform: none;
   opacity: 1;
   animation: none;
@@ -1850,8 +1869,8 @@
 
 .kn-mt-global-flag.is-lit {
   box-shadow:
-    0 0 0 2px color-mix(in srgb, var(--kn-accent, #5b47d9) 55%, #fff),
-    0 0 0 1px color-mix(in srgb, var(--kn-accent, #5b47d9) 40%, transparent);
+    0 0 0 2px color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 55%, #fff),
+    0 0 0 1px color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 40%, transparent);
 }
 
 .kn-mt-global-flag--us {
@@ -1878,8 +1897,8 @@
   0%,
   18% {
     box-shadow:
-      0 0 0 2px color-mix(in srgb, var(--kn-accent, #5b47d9) 55%, #fff),
-      0 0 0 1px color-mix(in srgb, var(--kn-accent, #5b47d9) 40%, transparent);
+      0 0 0 2px color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 55%, #fff),
+      0 0 0 1px color-mix(in srgb, var(--kn-accent, var(--kn-primary, #506ee8)) 40%, transparent);
   }
   19%,
   100% {
@@ -1913,7 +1932,7 @@
 
 .kn-mt-global-line b {
   font-weight: 700;
-  color: var(--kn-accent, #5b47d9);
+  color: var(--kn-accent, var(--kn-primary, #506ee8));
 }
 
 .kn-mt-global-line--1 {
@@ -2009,7 +2028,7 @@
 }
 
 .kn-mt-pea-val {
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--kn-mini-mono);
   font-size: 11px;
   font-weight: 600;
   color: rgba(15, 17, 23, 0.78);
@@ -2027,9 +2046,9 @@
 }
 
 .kn-mt-pea-chip--pass {
-  background: #e2f5ec;
-  color: #0f8a5f;
-  border-color: #abdfc2;
+  background: var(--kn-ok-bg);
+  color: var(--kn-ok);
+  border-color: var(--kn-ok-border);
 }
 
 .kn-mt-pea-row--psc {
@@ -2047,9 +2066,9 @@
 }
 
 .kn-mt-pea-chip--refund {
-  background: #e2f5ec;
-  color: #0f8a5f;
-  border-color: #abdfc2;
+  background: var(--kn-ok-bg);
+  color: var(--kn-ok);
+  border-color: var(--kn-ok-border);
   animation: knMtPeaRefundPop 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite 1.1s;
 }
 
@@ -2074,7 +2093,7 @@
   }
   68%,
   88% {
-    border-color: color-mix(in srgb, #0f8a5f 35%, rgba(15, 17, 23, 0.06));
+    border-color: color-mix(in srgb, var(--kn-ok) 35%, rgba(15, 17, 23, 0.06));
   }
   100% {
     border-color: rgba(15, 17, 23, 0.06);
@@ -2307,7 +2326,7 @@
 @keyframes khDsWfaLit {
   0%,
   33% {
-    background: #5b47d9;
+    background: var(--kn-primary, #506ee8);
   }
   34%,
   100% {
@@ -2318,8 +2337,8 @@
 @keyframes khDsWfaAct {
   0%,
   33% {
-    border-color: #5b47d9;
-    background: #efeafe;
+    border-color: var(--kn-primary, #506ee8);
+    background: color-mix(in srgb, var(--kn-primary, #506ee8) 12%, #fff);
   }
   34%,
   100% {
@@ -2387,6 +2406,11 @@
   }
 }
 
+/* Mini UI accents follow card theme (KlearHub brand on grid 1) */
+.kn-agent-card--blue .kn-csd-folder,
+.kn-agent-card--blue .kn-csd-dot,
+.kn-agent-card--blue .kn-csd-chip {
+  border-color: color-mix(in srgb, var(--kn-accent) 55%, var(--kn-primary, #506ee8));
 /* Mini UI accents follow card theme (KlearHub brand on grid 1) */
 .kn-agent-card--blue .kn-csd-folder,
 .kn-agent-card--blue .kn-csd-dot,
@@ -2560,10 +2584,17 @@
   }
 
   .kn-kh-split-chip {
+  .kn-kh-inbox-chip {
     opacity: 1;
-    transform: none;
     animation: none;
   }
+}
+
+/* Canvas sits on dot-grid frame (trade-stack / hero scene parity) */
+.kn-agent-card__visual-frame .kn-agent-card__anim > [class$="-mini"] {
+  background: transparent;
+  border: none;
+  box-shadow: none;
 
   .kn-kh-inbox-chip {
     opacity: 1;

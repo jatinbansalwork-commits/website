@@ -1,0 +1,349 @@
+/* KlearHub data advantage — scoped styles */
+#data-advantage.kn-ds-where-time {
+  --brand: var(--kn-primary, #506ee8);
+  --brand-soft: color-mix(in srgb, var(--kn-primary, #506ee8) 12%, #fff);
+  --brand-ink: var(--kn-primary, #506ee8);
+  --ink: var(--kn-ink, #0f1117);
+  --ink-2: color-mix(in srgb, var(--kn-ink, #0f1117) 70%, transparent);
+  --ink-3: color-mix(in srgb, var(--kn-ink, #0f1117) 62%, transparent);
+  --surface: #fff;
+  --surface-2: #f7f6f2;
+  --line: color-mix(in srgb, var(--kn-ink, #0f1117) 9%, transparent);
+  --line-2: color-mix(in srgb, var(--kn-ink, #0f1117) 16%, transparent);
+  --hl: color-mix(in srgb, var(--kn-primary, #506ee8) 14%, transparent);
+  --hl-line: color-mix(in srgb, var(--kn-primary, #506ee8) 55%, transparent);
+  --ok: var(--kn-motion-ok, #0b7a52);
+  --ok-bg: #e2f5ec;
+  --warn: #b45309;
+  --warn-bg: #fef3c7;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --ease: cubic-bezier(0.22, 0.7, 0.28, 1);
+  --shadow: 0 1px 2px rgba(15, 17, 23, 0.04), 0 18px 40px -18px rgba(15, 17, 23, 0.18);
+  --bg: #fafaf7;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  color: var(--ink);
+}
+
+#data-advantage.kn-ds-where-time .kn-ds-where-time__pad {
+  padding-top: var(--kn-section-band, 5rem);
+  padding-bottom: var(--kn-section-band, 5rem);
+}
+
+#data-advantage.kn-ds-where-time .wrap {
+  max-width: 75rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+#data-advantage.kn-ds-where-time .s-head {
+  max-width: 45rem;
+  margin-bottom: var(--kn-heading-to-content, 3rem);
+}
+
+#data-advantage.kn-ds-where-time .s-head .label {
+  display: block;
+  font-family: var(--mono);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--brand-ink);
+}
+
+#data-advantage.kn-ds-where-time .s-head .heading-style-h2 {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  font-family: var(--kn-fonts--headings, Ratio, Manrope, sans-serif);
+  font-weight: 400;
+  letter-spacing: -0.75px;
+  line-height: 1;
+  color: var(--kn-ink, #0f1117);
+  text-align: left;
+}
+
+#data-advantage.kn-ds-where-time .kn-ds-where-lede,
+#data-advantage.kn-ds-where-time .s-head p {
+  color: var(--kn-ink-soft, var(--ink-2));
+  max-width: 42rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-family: var(--kn-fonts--text, Manrope, sans-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+#data-advantage.kn-ds-where-time ul.ohard {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--kn-card-gap, 1rem);
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#data-advantage.kn-ds-where-time .ohard-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  border-radius: 1.125rem;
+  flex-direction: column;
+  grid-column: span 2;
+  display: flex;
+  overflow: hidden;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#data-advantage.kn-ds-where-time .ohard-card.is-wide {
+  grid-column: span 3;
+}
+
+#data-advantage.kn-ds-where-time .ohard-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+
+#data-advantage.kn-ds-where-time .oart {
+  background:
+    radial-gradient(60% 80% at 50% 100%, var(--hl), transparent 70%),
+    var(--surface-2);
+  border-bottom: 1px solid var(--line);
+  place-items: center;
+  height: 10.625rem;
+  min-height: 10.625rem;
+  max-height: 10.625rem;
+  display: grid;
+  position: relative;
+  overflow: hidden;
+  flex: none;
+}
+
+#data-advantage.kn-ds-where-time .ohard-card .oart {
+  height: 10.625rem;
+}
+
+#data-advantage.kn-ds-where-time .oart svg {
+  width: 100%;
+  max-width: 17.5rem;
+  height: auto;
+  max-height: calc(100% - 0.5rem);
+  transition: transform 0.45s var(--ease);
+  padding: 0.625rem 0;
+  overflow: visible;
+  display: block;
+}
+
+#data-advantage.kn-ds-where-time .ohard-card:hover .oart svg {
+  transform: translateY(-3px) scale(1.03);
+}
+
+#data-advantage.kn-ds-where-time .oart--photo {
+  background:
+    radial-gradient(60% 80% at 50% 100%, var(--hl), transparent 70%),
+    var(--surface-2);
+}
+
+#data-advantage.kn-ds-where-time .oart-photo-ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(72%, 14rem);
+  height: min(68%, 5.5rem);
+  border-radius: 0.75rem;
+  border: 1px dashed color-mix(in srgb, var(--brand) 35%, var(--line));
+  background: color-mix(in srgb, var(--brand-soft) 55%, #fff);
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#data-advantage.kn-ds-where-time .ohard-body {
+  padding: 1rem 1.25rem 1.25rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#data-advantage.kn-ds-where-time .ohard-chip {
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  font-family: var(--mono);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.1875rem 0.5625rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  display: inline-flex;
+}
+
+#data-advantage.kn-ds-where-time .ohard-body h3 {
+  letter-spacing: -0.02em;
+  margin: 0.625rem 0 0;
+  font-size: 1.125rem;
+  font-weight: 650;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+#data-advantage.kn-ds-where-time .ohard-body p {
+  color: var(--ink-2);
+  margin: 0.375rem 0 0;
+  font-size: 0.90625rem;
+  line-height: 1.5;
+}
+
+/* SVG art — explicit fills so Webflow svg rules cannot black out rects */
+#data-advantage.kn-ds-where-time .oart .oa-sheet,
+#data-advantage.kn-ds-where-time .oart .oa-env,
+#data-advantage.kn-ds-where-time .oart .oa-table {
+  fill: #fff;
+  stroke: var(--line-2);
+  stroke-width: 1;
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-ln {
+  fill: var(--line-2);
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-hl {
+  fill: var(--brand-soft);
+  stroke: var(--hl-line);
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-wire {
+  fill: none;
+  stroke: var(--hl-line);
+  stroke-width: 1.6;
+  stroke-dasharray: 3 4;
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-arrow {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-mono {
+  font-family: var(--mono);
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-label {
+  fill: var(--ink-2);
+  font-size: 8.5px;
+  font-weight: 600;
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-tab-a {
+  fill: #273cdd;
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-tab-b {
+  fill: #0f6b62;
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-tab-c {
+  fill: #8a2c56;
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-slot {
+  fill: var(--brand-soft);
+  stroke: var(--hl-line);
+  stroke-dasharray: 3 3;
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-slot.is-done {
+  fill: #fff;
+  stroke: var(--ok);
+  stroke-dasharray: none;
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-okdot {
+  fill: var(--ok);
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-flagdot {
+  fill: var(--warn);
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-wire.is-warn {
+  stroke: var(--warn);
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-dupe-sheet {
+  stroke: var(--warn);
+  stroke-dasharray: 4 3;
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-pill-warn rect {
+  fill: var(--warn-bg);
+  stroke: color-mix(in srgb, var(--warn) 35%, transparent);
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-pill-warn text {
+  fill: var(--warn);
+  font: 600 10.5px var(--mono);
+}
+
+#data-advantage.kn-ds-where-time .oart .oa-row.is-flag .oa-rowbg {
+  fill: var(--warn-bg);
+}
+
+/* Section rhythm vs Where it fits */
+.section_product-overview.background-color-beige:has(+ #data-advantage.kn-ds-where-time) .padding-section-medium,
+.section_results.version-features:has(+ #data-advantage.kn-ds-where-time) .padding-section-large {
+  padding-bottom: 2.5rem;
+}
+
+#data-advantage.kn-ds-where-time + .section_product-overview.background-color-beige .padding-section-medium {
+  padding-top: 2.5rem;
+}
+
+@media (max-width: 1080px) {
+  #data-advantage.kn-ds-where-time ul.ohard {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #data-advantage.kn-ds-where-time .ohard-card,
+  #data-advantage.kn-ds-where-time .ohard-card.is-wide {
+    grid-column: span 1;
+  }
+
+  #data-advantage.kn-ds-where-time .ohard-card:last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  #data-advantage.kn-ds-where-time ul.ohard {
+    grid-template-columns: 1fr;
+  }
+
+  #data-advantage.kn-ds-where-time .ohard-card:last-child {
+    grid-column: span 1;
+  }
+
+  #data-advantage.kn-ds-where-time .kn-ds-where-lede,
+  #data-advantage.kn-ds-where-time .s-head p {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #data-advantage.kn-ds-where-time .ohard-card,
+  #data-advantage.kn-ds-where-time .oart svg {
+    transition: none;
+  }
+
+  #data-advantage.kn-ds-where-time .ohard-card:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,272 @@
+/* How to choose checklist — KlearNow tokens (product pages) */
+.kn-ds-checklist {
+  --kn-htc-bg: var(--kn-background, #fafaf7);
+  --kn-htc-band: color-mix(in srgb, var(--kn-primary, #506ee8) 16%, #e8ecf9);
+  --kn-htc-band-ink: color-mix(in srgb, var(--kn-primary, #506ee8) 72%, #0f1117);
+  --kn-htc-line: color-mix(in srgb, var(--kn-ink, #0f1117) 9%, transparent);
+  --kn-htc-surface: #fff;
+  --kn-htc-ink: var(--kn-ink, #0f1117);
+  --kn-htc-ink-2: color-mix(in srgb, var(--kn-ink, #0f1117) 70%, transparent);
+  --kn-htc-shadow: 0 1px 2px rgba(15, 17, 23, 0.04), 0 18px 40px -18px rgba(15, 17, 23, 0.18);
+  --kn-htc-ease: cubic-bezier(0.22, 0.7, 0.28, 1);
+  --kn-htc-fade: clamp(40px, 6vw, 96px);
+  background:
+    linear-gradient(
+      180deg,
+      var(--kn-htc-bg) 0,
+      color-mix(in srgb, var(--kn-htc-bg) 0%, transparent) var(--kn-htc-fade),
+      color-mix(in srgb, var(--kn-htc-bg) 0%, transparent) calc(100% - var(--kn-htc-fade)),
+      var(--kn-htc-bg) 100%
+    ),
+    radial-gradient(50% 70% at 0% 0%, color-mix(in srgb, var(--kn-htc-band) 85%, transparent), transparent 72%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--kn-htc-band) 62%, var(--kn-htc-bg)),
+      color-mix(in srgb, var(--kn-htc-band) 38%, var(--kn-htc-bg))
+    );
+}
+
+.kn-ds-checklist .kn-htc-wrap {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.kn-ds-checklist .kn-htc-head {
+  max-width: 45rem;
+  margin-bottom: 1.5rem;
+}
+
+.kn-ds-checklist .kn-htc-label {
+  display: block;
+  color: var(--kn-htc-band-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.kn-ds-checklist .kn-htc-head .heading-style-h2 {
+  letter-spacing: -0.035em;
+  margin-top: 0.75rem;
+  font-size: clamp(1.875rem, 3.6vw, 2.75rem);
+  line-height: 1.08;
+  color: var(--kn-htc-ink);
+}
+
+.kn-ds-checklist .kn-htc-lede {
+  color: var(--kn-htc-ink-2);
+  max-width: 60ch;
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.kn-ds-checklist .kn-htc-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--kn-htc-cols, 4), minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kn-ds-checklist .kn-htc-card {
+  background: var(--kn-htc-surface);
+  border: 1px solid var(--kn-htc-line);
+  isolation: isolate;
+  border-radius: 18px;
+  padding: 1.125rem 1.125rem 0.375rem;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.3s var(--kn-htc-ease),
+    box-shadow 0.3s var(--kn-htc-ease),
+    border-color 0.3s var(--kn-htc-ease);
+}
+
+.kn-ds-checklist .kn-htc-card::before {
+  content: "";
+  z-index: -1;
+  background: radial-gradient(var(--kn-htc-a-tint), transparent 70%);
+  border-radius: 50%;
+  width: 170px;
+  height: 170px;
+  position: absolute;
+  top: -60px;
+  right: -60px;
+}
+
+.kn-ds-checklist .kn-htc-card:hover {
+  box-shadow: var(--kn-htc-shadow);
+  border-color: var(--kn-htc-a-line);
+  transform: translateY(-3px);
+}
+
+.kn-ds-checklist .kn-htc-card--blue {
+  --kn-htc-a-tint: color-mix(in srgb, var(--kn-primary, #506ee8) 14%, #fff);
+  --kn-htc-a-line: color-mix(in srgb, var(--kn-primary, #506ee8) 28%, #fff);
+  --kn-htc-a-bg: color-mix(in srgb, var(--kn-primary, #506ee8) 8%, #fff);
+  --kn-htc-a-ink: var(--kn-primary, #506ee8);
+}
+
+.kn-ds-checklist .kn-htc-card--rose {
+  --kn-htc-a-tint: #ecdde3;
+  --kn-htc-a-line: #e3cdd6;
+  --kn-htc-a-bg: #f6ecf0;
+  --kn-htc-a-ink: #572331;
+}
+
+.kn-ds-checklist .kn-htc-card--amber {
+  --kn-htc-a-tint: #fbe3c8;
+  --kn-htc-a-line: #f8ca98;
+  --kn-htc-a-bg: #fdefe0;
+  --kn-htc-a-ink: #b13200;
+}
+
+.kn-ds-checklist .kn-htc-card--teal {
+  --kn-htc-a-tint: #cfe8e5;
+  --kn-htc-a-line: #a9d6d0;
+  --kn-htc-a-bg: #e0f0ee;
+  --kn-htc-a-ink: #0f6b62;
+}
+
+.kn-ds-checklist .kn-htc-card-head {
+  border-bottom: 1px solid var(--kn-htc-line);
+  align-items: center;
+  gap: 0.625rem;
+  padding-bottom: 0.75rem;
+  display: flex;
+}
+
+.kn-ds-checklist .kn-htc-card-ic {
+  background: var(--kn-htc-a-bg);
+  width: 36px;
+  height: 36px;
+  color: var(--kn-htc-a-ink);
+  box-shadow: inset 0 0 0 1px var(--kn-htc-a-line);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.kn-ds-checklist .kn-htc-card-ic svg {
+  display: block;
+}
+
+.kn-ds-checklist .kn-htc-card-head h3 {
+  letter-spacing: -0.01em;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin: 0;
+  font-weight: 600;
+  color: var(--kn-htc-ink);
+}
+
+.kn-ds-checklist .kn-htc-count {
+  background: var(--kn-htc-a-bg);
+  min-width: 26px;
+  color: var(--kn-htc-a-ink);
+  text-align: center;
+  border-radius: 999px;
+  margin-left: auto;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.kn-ds-checklist .kn-htc-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kn-ds-checklist .kn-htc-items li {
+  border-top: 1px dashed var(--kn-htc-line);
+  gap: 0.625rem;
+  padding: 0.75rem 0;
+  display: flex;
+}
+
+.kn-ds-checklist .kn-htc-items li:first-child {
+  border-top: 0;
+}
+
+.kn-ds-checklist .kn-htc-items b {
+  color: var(--kn-htc-ink);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  display: block;
+}
+
+.kn-ds-checklist .kn-htc-items small {
+  color: var(--kn-htc-ink-2);
+  margin-top: 3px;
+  font-size: 0.84375rem;
+  line-height: 1.45;
+  display: block;
+  font-weight: 400;
+}
+
+.kn-ds-checklist .kn-htc-tick {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.kn-ds-checklist .kn-htc-tick rect {
+  fill: var(--kn-htc-a-ink);
+}
+
+.kn-ds-checklist .kn-htc-tick path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 991px) {
+  .kn-ds-checklist .kn-htc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .kn-ds-checklist .kn-htc-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kn-ds-checklist .kn-htc-card {
+    transition: none;
+  }
+
+  .kn-ds-checklist .kn-htc-card:hover {
+    transform: none;
+  }
+}
+
+/* Product page placement (KlearHub — above “Where it fits”) */
+.section_results.kn-ds-checklist {
+  margin: 0;
+  border: none;
+}
+
+.section_results.kn-ds-checklist.is-kh-how-to-choose {
+  --kn-htc-bg: #fdf6ee;
+}
+
+.section_support-you + .section_results.kn-ds-checklist .padding-section-large {
+  padding-top: var(--kn-optical-gap, 3.5rem);
+  padding-bottom: var(--kn-optical-gap, 3.5rem);
+}
+
+.section_results.kn-ds-checklist + .section_product-overview.background-color-beige .padding-section-medium {
+  padding-top: clamp(2rem, 4vw, 3rem);
+}

@@ -36,4 +36,13 @@
   --ds-text-tertiary: var(--kn-ink-muted);
   --ds-border-subtle: var(--kn-line-subtle);
   --ds-border-default: var(--kn-line);
+
+  /* Motion / stage UI (shared with trade-stack scenes + minis) */
+  --kn-motion-ok: #0b7a52;
+  --kn-motion-ok-bg: #e2f5ec;
+  --kn-motion-ok-border: color-mix(in srgb, var(--kn-motion-ok) 28%, transparent);
+  --kn-motion-warn: #b13200;
+  --kn-motion-surface: #fff;
+  --kn-motion-cream: #fdf6ee;
+  --kn-motion-dot: color-mix(in srgb, var(--kn-ink) 10%, transparent);
 }

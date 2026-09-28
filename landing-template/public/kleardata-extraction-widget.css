@@ -1,6 +1,6 @@
 /* KlearData — self-hosted extraction demo */
 .kd-ex-widget {
-  --kd-ex-primary: #4d61fc;
+  --kd-ex-primary: var(--kn-primary, #506ee8);
   --kd-ex-border: #d0d2d6;
   --kd-ex-bg: #f5f8ff;
   --kd-ex-text: var(--kn-ink, #0f1117);

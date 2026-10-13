@@ -1,0 +1,136 @@
+.rules {
+  display: grid;
+  gap: 28px;
+  margin: 8px 0 36px;
+}
+
+.rules h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.rule-list {
+  margin: 0 0 16px;
+  padding-left: 18px;
+  color: var(--surface-text-gray-subtle);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.rule-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.rule-label {
+  margin: 0 0 8px;
+  color: var(--surface-text-gray-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.kn-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.kn-button:disabled {
+  cursor: not-allowed;
+}
+
+.kn-button:focus-visible,
+.kn-icon-button:focus-visible {
+  outline: 2px solid var(--interactive-border-primary-default);
+  outline-offset: 2px;
+}
+
+.kn-icon {
+  display: block;
+  flex: none;
+}
+
+.kn-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--interactive-icon-gray-normal);
+}
+
+.kn-icon-button:disabled {
+  cursor: not-allowed;
+  color: var(--interactive-icon-gray-disabled);
+}
+
+.kn-stage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--surface-background-primary-intense);
+}
+
+.icon-scale {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: end;
+}
+
+.icon-scale figure {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--surface-icon-gray-normal);
+}
+
+.icon-scale figcaption {
+  color: var(--surface-text-gray-muted);
+  font-size: 12px;
+}
+
+.icon-colors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px 16px;
+}
+
+.icon-colors figure {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.icon-colors figcaption {
+  color: var(--surface-text-gray-muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.icon-contrast {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--surface-background-primary-intense);
+}

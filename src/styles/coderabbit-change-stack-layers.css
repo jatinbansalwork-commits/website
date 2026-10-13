@@ -1,0 +1,464 @@
+/* Change Stack “Visualize the impact across layers” — homepage (light marketing surface) */
+
+.cr-change-stack-layers-clone:not(.cr-change-stack-layers-clone--ready) {
+  visibility: hidden;
+  min-height: 32rem;
+}
+
+.cr-change-stack-layers-clone--ready {
+  visibility: visible;
+}
+
+.cr-change-stack-layers-section {
+  color-scheme: light;
+  width: 100%;
+  background: #ffffff;
+}
+
+.cr-change-stack-layers-clone {
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+  --font-cui-sans: var(--font-sans);
+  --home-hero-page-bg: #ffffff;
+  --home-hero-page-bg-rgb: 255 255 255;
+  --cr-cui-app: #f8fafc;
+  --cr-cui-surface: #ffffff;
+  --cr-cui-raised: #f1f5f9;
+  --cr-cui-border: #e2e8f0;
+  --cr-cui-border-subtle: #e2e8f0;
+  --cr-cui-text: #0f172a;
+  --cr-cui-text-secondary: #475569;
+  --cr-cui-text-tertiary: #64748b;
+  --color-cui-mauve-1: #ffffff;
+  --color-cui-mauve-2: #f8fafc;
+  --color-cui-mauve-3: #f1f5f9;
+  --color-cui-mauve-4: #e2e8f0;
+  --color-cui-mauve-11: #475569;
+  --color-cui-mauve-12: #0f172a;
+  --background-color-cui-base-0: #ffffff;
+  --background-color-cui-base-1: #ffffff;
+  --background-color-cui-base-2: #f1f5f9;
+  --background-color-cui-neutral: #f1f5f9;
+  --background-color-cui-neutral-subtle: #f8fafc;
+  --border-color-cui-neutral: #e2e8f0;
+  --border-color-cui-neutral-strong: #cbd5e1;
+  --text-color-cui-primary: #0f172a;
+  --text-color-cui-secondary: #475569;
+  --text-color-cui-tertiary: #64748b;
+  --ring-color-cui-focus: #00405c;
+  width: 100%;
+}
+
+.cr-change-stack-layers-clone > .container {
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 48rem) {
+  .cr-change-stack-layers-clone > .container {
+    padding-bottom: 8rem;
+  }
+}
+
+.cr-change-stack-layers-section .text-cui-primary {
+  color: #0f172a;
+}
+
+.cr-change-stack-layers-section .text-cui-secondary {
+  color: #475569;
+}
+
+/* Static walkthrough: product preview + feature rail only (no scroll-morph GitHub/Triage band) */
+.cr-change-stack-layers-clone .ChangeStackSyncAnimation-module__mn0tNa__commentsSlot,
+.cr-change-stack-layers-clone .ChangeStackSyncAnimation-module__mn0tNa__scrollTrack,
+.cr-change-stack-layers-clone section[aria-labelledby='change-stack-outcomes-title'] {
+  display: none !important;
+}
+
+.cr-change-stack-layers-clone .SyncScene-module__zw2N_G__heroRoot {
+  background: transparent;
+}
+
+.cr-change-stack-layers-clone .ChangeStackSyncAnimation-module__mn0tNa__travel {
+  visibility: visible !important;
+}
+
+.cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__walkthroughImage {
+  border: 0.0625rem solid var(--border-color-cui-neutral);
+  background: #fafaf7;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  aspect-ratio: 8 / 5;
+}
+
+/* Docsumo-style product preview — no nested CodeRabbit filing stack chrome */
+.cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__walkthroughScreen
+  .HomeHero-module__cJy2da__reviewStackScreen.cr-change-stack-docsumo-shell {
+  position: relative;
+  height: 100%;
+  min-height: 100%;
+  background: #fafaf7;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stages--fullbleed {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 0 !important;
+  height: 100%;
+  width: 100%;
+}
+
+.cr-change-stack-layers-clone
+  .cr-change-stack-focus-stages--fullbleed
+  .cr-change-stack-workflow-stage
+  .cr-docsumo-workflow-root
+  .wb {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  height: 100%;
+}
+
+.cr-change-stack-layers-clone
+  .cr-change-stack-focus-stages--fullbleed
+  .cr-change-stack-workflow-stage
+  .wb-body {
+  min-height: 0 !important;
+}
+
+.cr-change-stack-layers-clone
+  .cr-change-stack-focus-stages--fullbleed
+  .cr-docsumo-workflow-root
+  .wb-body {
+  min-height: 0 !important;
+  height: 100%;
+}
+
+.cr-change-stack-layers-clone
+  .cr-change-stack-focus-stages--fullbleed
+  .cr-docsumo-workflow-root
+  .wb-graph {
+  flex: 1;
+  min-height: 0;
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+.cr-change-stack-layers-clone
+  .cr-change-stack-focus-stages--fullbleed
+  .cr-agent-collect-illust {
+  position: absolute;
+  inset: 0;
+  --stage-fit-inset: 0;
+  --stage-design-w: 100%;
+  --stage-design-h: 100%;
+}
+
+.cr-change-stack-layers-clone
+  .cr-change-stack-focus-stages--fullbleed
+  .cr-agent-collect-illust__fit,
+.cr-change-stack-layers-clone
+  .cr-change-stack-focus-stages--fullbleed
+  .cr-agent-collect-illust__stage-host {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  transform: none !important;
+}
+
+@media (min-width: 48rem) {
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__walkthroughImage {
+    box-shadow: 0 1.5rem 4rem rgb(15 23 42 / 8%);
+  }
+}
+
+/* Feature rail: active step dark, others dull (CodeRabbit walkthrough) */
+@media (min-width: 48rem) {
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__feature {
+    --feature-opacity: 0.62;
+    --feature-offset: 0.25rem;
+  }
+
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__feature[data-selected='true'] {
+    --feature-opacity: 1;
+    --feature-offset: 0;
+  }
+
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__feature h3,
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__feature p {
+    opacity: var(--feature-opacity) !important;
+    transform: translateY(var(--feature-offset));
+    transition:
+      opacity 0.44s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.2s ease;
+  }
+
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__feature[data-selected='true'] h3,
+  .cr-change-stack-layers-clone
+    .ChangeStackProductEvidence-module__8lvVya__feature[data-selected='true']
+    .ChangeStackProductEvidence-module__8lvVya__featureControl {
+    color: var(--text-color-cui-primary) !important;
+  }
+
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__feature[data-selected='false'] h3,
+  .cr-change-stack-layers-clone
+    .ChangeStackProductEvidence-module__8lvVya__feature[data-selected='false']
+    .ChangeStackProductEvidence-module__8lvVya__featureControl {
+    color: #94a3b8 !important;
+  }
+
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__feature[data-selected='true'] p {
+    color: var(--text-color-cui-secondary);
+  }
+
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__feature[data-selected='false'] p {
+    color: #94a3b8;
+  }
+}
+
+@media (min-width: 48rem) and (prefers-reduced-motion: reduce) {
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__feature h3,
+  .cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__feature p {
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* Docsumo-style stages inside the filing-stack dashboard (same chrome, swapped center panel) */
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage[hidden] {
+  display: none !important;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage .stage-scene {
+  display: flex;
+  flex-direction: column;
+  min-height: 0 !important;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.375rem;
+  box-shadow: var(--shadow-hero, 0 1px 2px rgb(15 23 42 / 4%));
+  overflow: hidden;
+}
+
+/* Hide CodeRabbit PR activity — center column is Docsumo product stages */
+.cr-change-stack-layers-clone [data-review-panel='context'] {
+  display: none !important;
+}
+
+.cr-change-stack-layers-clone
+  [data-review-panel='content']
+  .HomeHero-module__cJy2da__reviewStackCenterColumn {
+  min-height: 0;
+  background: #eef2f6;
+}
+
+.cr-change-stack-layers-clone
+  [data-review-panel='content']
+  .HomeHero-module__cJy2da__reviewStackCenterColumn {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+/* CodeRabbit overview stays in the DOM for sync CSS — hide it so Docsumo/workflow stages fill the column */
+.cr-change-stack-layers-clone
+  [data-review-panel='content']
+  .HomeHero-module__cJy2da__reviewStackCenterColumn
+  > .h-full.min-h-0:not(.cr-change-stack-focus-stages) {
+  display: none !important;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stages {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem 0.625rem 0.625rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage .scene-bar {
+  display: flex;
+  flex-shrink: 0;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--line, #dbe3ec);
+  background: var(--surface, #fff);
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage .scene-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 12px 14px 14px;
+  overflow: hidden;
+}
+
+/*
+ * CodeRabbit’s walkthrough CSS defaults chrome to ~15% opacity and only ramps it
+ * during the scroll-sync sequence. On the homepage static clone, keep the filing
+ * stack fully visible and highlight sidebar rows per feature focus.
+ */
+.cr-change-stack-layers-clone .ChangeStackProductEvidence-module__8lvVya__walkthroughScreen [data-review-panel],
+.cr-change-stack-layers-clone
+  .ChangeStackProductEvidence-module__8lvVya__walkthroughScreen
+  [aria-label='Pull request toolbar'],
+.cr-change-stack-layers-clone
+  .ChangeStackProductEvidence-module__8lvVya__walkthroughScreen
+  [data-review-sidebar-header],
+.cr-change-stack-layers-clone
+  .ChangeStackProductEvidence-module__8lvVya__walkthroughScreen
+  [data-review-sidebar-items]
+  > * {
+  --panel-opacity: 1 !important;
+  --sidebar-item-opacity: 1 !important;
+  opacity: 1 !important;
+}
+
+/* Docsumo workflow editor — cohorts rail (“Every document in…”) */
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage.cr-change-stack-workflow-stage {
+  position: relative;
+  inset: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-workflow-stage .cr-docsumo-workflow-root {
+  --brand: #00405c;
+  --brand-ink: #00405c;
+  --brand-soft: rgb(0 64 92 / 12%);
+  --brand-deep: #003347;
+  --ds-brand-primary: #00405c;
+  --ds-brand-ink: #00405c;
+  --ds-brand-soft: rgb(0 64 92 / 12%);
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-workflow-stage .wb-body {
+  min-height: 0 !important;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-workflow-stage .wb-graph {
+  min-height: 12rem;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-workflow-stage .wb-av {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cr-change-stack-layers-clone
+  .cr-change-stack-workflow-stage
+  .wb-msg.agent
+  li:not([data-on])
+  .wb-tick {
+  background: transparent;
+  animation: none;
+  border-color: var(--line-2);
+  color: transparent;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-workflow-stage .wb-body {
+  min-height: 0 !important;
+  height: 100%;
+}
+
+/* Docsumo stages: use hero scaling inside the center column (not absolute hero overlay) */
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage.cr-agent-collect-illust {
+  position: relative;
+  inset: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  padding: 0;
+  overflow: hidden;
+  --stage-design-h: 520px;
+  --stage-design-w: 680px;
+  --stage-fit-inset: 4px;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage .cr-agent-collect-illust__fit {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  height: 100%;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage .cr-agent-collect-illust__stage-host {
+  margin: 0 auto;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-ghost {
+  display: none !important;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-lane {
+  opacity: 0.35;
+}
+
+.cr-change-stack-layers-clone .ReviewStackOverview-module__B8AkPG__contentScroll {
+  display: none !important;
+}
+
+/* Docsumo product stages — pinned end-state inside the filing dashboard */
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .scene-body > .sc,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .ag-collect,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .ag-verify,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .ag-analyze,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-src,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-case,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-list li,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-miss,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-mail,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-pages,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-pages i,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agv-docs,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agv-doc,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agv-f,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agv-lines,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agv-panel,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agv-c,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agv-sum,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agn-chart,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agn-side,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agn-kpi,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agn-sum,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agn-done,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .pill,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .ag-w {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agv-st .spin,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-st .spin,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .sb-st .spin {
+  display: none !important;
+}
+
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agv-st .ag-dot,
+.cr-change-stack-layers-clone .cr-change-stack-focus-stage:not([hidden]) .agc-st .ag-dot {
+  opacity: 1 !important;
+}

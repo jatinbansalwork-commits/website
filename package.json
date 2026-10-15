@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "dev:marketing-site": "vite marketing-site",
-    "build": "tsc --noEmit && vite build",
-    "build:marketing-site": "vite build marketing-site",
-    "preview": "vite preview",
-    "preview:marketing-site": "vite preview marketing-site"
+    "dev": "vite marketing-site",
+    "dev:react": "vite",
+    "build": "vite build marketing-site",
+    "build:react": "tsc --noEmit && vite build",
+    "preview": "vite preview marketing-site",
+    "preview:react": "vite preview",
+    "dev:landing-template": "npm run dev --prefix landing-template",
+    "build:landing-template": "npm run build --prefix landing-template"
   },
   "dependencies": {
     "@fontsource/geist-mono": "^5.3.0",

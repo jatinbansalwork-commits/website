@@ -36,15 +36,17 @@
 }
 
 .hero__planet {
-  --planet-scale: 1.3;
+  /* Sized to fit inside .hero__art overflow clip — 1.3 scale was cropping top/right */
+  --planet-scale: 1;
   position: absolute;
   top: 50%;
-  left: 70%;
-  width: calc(76% * var(--planet-scale));
-  height: calc(100% * var(--planet-scale));
-  transform: translate(-50%, -50%);
+  right: clamp(-4%, -2vw, 0%);
+  left: auto;
+  width: min(52vw, 640px);
+  height: min(100%, 720px);
+  transform: translateY(-50%);
   background: var(--bg) url("./assets/klearnow/home-earth-poster.webp") center /
-    cover no-repeat;
+    contain no-repeat;
   overflow: hidden;
 }
 
@@ -176,8 +178,13 @@
   }
 
   .hero__planet {
+    right: auto;
     left: 50%;
-    width: calc(100% * var(--planet-scale));
+    width: min(100%, 420px);
+    height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    background-size: contain;
   }
 
   .hero__sub {

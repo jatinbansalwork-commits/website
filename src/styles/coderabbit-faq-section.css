@@ -1,0 +1,79 @@
+/* FAQ above footer — same surface as .cr-footer, Klear orange accents */
+
+.cr-faq-section {
+  width: 100%;
+  color-scheme: light;
+  background: var(--surface-background-gray-subtle);
+  color: var(--surface-text-gray-normal);
+  font-family: var(--font-sans);
+
+  /* Klear semantic orange (colors.ts orange.strong / intense) */
+  --cr-faq-orange: hsla(35, 100%, 48%, 1);
+  --cr-faq-orange-hover: hsla(35, 92%, 59%, 1);
+  --cr-faq-orange-emphasis: hsla(34, 94%, 35%, 1);
+
+  --background-color-cui-base-1: var(--surface-background-gray-subtle);
+  --text-color-cui-primary: var(--surface-text-gray-normal);
+  --text-color-cui-secondary: var(--surface-text-gray-muted);
+  --text-color-cui-tertiary: var(--surface-text-gray-subtle);
+  --border-color-cui-neutral: var(--surface-border-gray-muted);
+}
+
+.cr-footer > .cr-faq-section {
+  margin-top: 0;
+}
+
+.cr-faq-section-clone > .container,
+.cr-faq-section #faq.bg-cui-base-1 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  background-color: var(--surface-background-gray-subtle) !important;
+}
+
+.cr-faq-section-clone .text-neutral-0,
+.cr-faq-section-clone h2 {
+  color: var(--surface-text-gray-normal) !important;
+}
+
+.cr-faq-section-clone button.text-cui-primary,
+.cr-faq-section-clone button .font-heading,
+.cr-faq-section-clone button:hover,
+.cr-faq-section-clone button[aria-expanded='true'],
+.cr-faq-section-clone button[aria-expanded='true'] .font-heading,
+.cr-faq-section-clone button.hover\:text-orange-400:hover {
+  color: var(--surface-text-gray-normal) !important;
+}
+
+.cr-faq-section-clone .text-cui-secondary,
+.cr-faq-section-clone .prose {
+  color: var(--surface-text-gray-muted) !important;
+}
+
+.cr-faq-section-clone .text-cui-tertiary {
+  color: var(--surface-text-gray-subtle) !important;
+}
+
+.cr-faq-section-clone li {
+  border-color: color-mix(in srgb, var(--surface-border-gray-muted) 65%, transparent) !important;
+}
+
+.cr-faq-section-clone button [class*='group-hover:text-orange'],
+.cr-faq-section-clone button svg {
+  color: var(--surface-icon-gray-muted);
+}
+
+.cr-faq-section-clone button:hover svg,
+.cr-faq-section-clone button:hover [class*='group-hover:text-orange'],
+.cr-faq-section-clone button[aria-expanded='true'] svg,
+.cr-faq-section-clone button[aria-expanded='true'] [class*='group-hover:text-orange'] {
+  color: var(--cr-faq-orange) !important;
+}
+
+.cr-faq-section-clone button:focus-visible {
+  outline-color: var(--cr-faq-orange);
+}
+
+.cr-faq-section-clone .cr-faq-editorial-note {
+  color: var(--cr-faq-orange);
+  font-style: normal;
+}

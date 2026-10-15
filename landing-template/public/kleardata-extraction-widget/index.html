@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KlearData document extraction demo</title>
+    <script>
+      (function () {
+        var prefix = "/kleardata-extraction-widget";
+        var path = location.pathname;
+        if (path.indexOf(prefix) !== 0) return;
+        var rest = path.slice(prefix.length) || "/";
+        if (/index\.html$/i.test(path)) {
+          history.replaceState(
+            null,
+            "",
+            prefix + "/" + location.search + location.hash
+          );
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-C4FBpJ7n.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B_s46dbG.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

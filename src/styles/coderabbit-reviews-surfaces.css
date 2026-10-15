@@ -1,0 +1,150 @@
+/* CodeRabbit “Reviews across every surface” — homepage placement above triage bento */
+
+.cr-reviews-surfaces-clone:not(.cr-reviews-surfaces-clone--ready) {
+  visibility: hidden;
+  min-height: 28rem;
+}
+
+.cr-reviews-surfaces-clone--ready {
+  visibility: visible;
+}
+
+.cr-reviews-surfaces-section {
+  color-scheme: dark;
+}
+
+.cr-reviews-surfaces-clone {
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+  width: 100%;
+}
+
+/* Snapshot container has mt-24/md:mt-32 only — balance with space below */
+.cr-reviews-surfaces-clone > .container {
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 48rem) {
+  .cr-reviews-surfaces-clone > .container {
+    padding-bottom: 8rem;
+  }
+}
+
+.cr-reviews-surfaces__heading {
+  margin-top: 0;
+}
+
+/* Match hero intro: title left, lede right (aligned to bottom on large screens) */
+.cr-reviews-surfaces-clone .cr-reviews-surfaces__header {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+  text-align: left;
+}
+
+.cr-reviews-surfaces-clone .cr-reviews-surfaces__header > p {
+  margin: 0;
+  max-width: 28rem;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: #65616a;
+}
+
+@media (min-width: 48rem) {
+  .cr-reviews-surfaces-clone .cr-reviews-surfaces__header {
+    grid-template-columns: minmax(0, 1.5fr) minmax(15rem, 0.85fr);
+    gap: 2.5rem;
+  }
+
+  .cr-reviews-surfaces-clone .cr-reviews-surfaces__header > p {
+    max-width: none;
+  }
+}
+
+@media (min-width: 64rem) {
+  .cr-reviews-surfaces-clone .cr-reviews-surfaces__header {
+    grid-template-columns: minmax(0, 1.75fr) minmax(20rem, 0.8fr);
+    gap: 4rem;
+  }
+
+  .cr-reviews-surfaces-clone .cr-reviews-surfaces__header > p {
+    align-self: end;
+  }
+}
+
+.cr-reviews-surfaces-clone .SurfacesVisual-module__y_ILJq__surfaceIcon {
+  display: none !important;
+}
+
+.cr-reviews-surfaces-clone .SurfacesVisual-module__y_ILJq__surfaceCaption {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.cr-reviews-surfaces-clone .SurfacesVisual-module__y_ILJq__surfaceCaption > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  gap: 0.25rem;
+}
+
+.cr-reviews-surfaces__cta-mount {
+  display: block;
+}
+
+.cr-reviews-surfaces__tertiary {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm-size, 14px);
+  line-height: 1.35;
+  font-weight: 500;
+  color: #00405c;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.cr-reviews-surfaces__tertiary:hover {
+  color: #002a3d;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.cr-reviews-surfaces__tertiary:focus-visible {
+  outline: 2px solid #00405c;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.cr-reviews-surfaces-clone
+  .SurfacesVisual-module__y_ILJq__surfaceItem
+  > .cr-surfaces-visual-mount {
+  block-size: 14rem;
+  inline-size: 100%;
+  min-block-size: 14rem;
+  position: relative;
+}
+
+.cr-reviews-surfaces-clone .cr-surfaces-visual-mount canvas {
+  display: block;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+@media (max-width: 47.99rem) {
+  .cr-reviews-surfaces-clone .cr-surfaces-visual-mount {
+    block-size: 14rem;
+  }
+}
+
+/* Surface icons — neutral line art to match B&W canvases */
+.cr-reviews-surfaces-clone .SurfacesVisual-module__y_ILJq__surfaceIcon {
+  color: #1a181d;
+  border-color: #65616a;
+}

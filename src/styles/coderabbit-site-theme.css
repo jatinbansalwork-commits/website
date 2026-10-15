@@ -1,0 +1,151 @@
+/* Single CodeRabbit marketing palette — no light/dark mode switch */
+
+:root {
+  color-scheme: dark;
+
+  /* CodeRabbit neutrals (ResourceBoard / homepage dark) */
+  --cr-cui-app: #121014;
+  --cr-cui-surface: #1a181d;
+  --cr-cui-raised: #232127;
+  --cr-cui-border: #322f37;
+  --cr-cui-border-subtle: #27242b;
+  --cr-cui-text: #efedf0;
+  --cr-cui-text-secondary: #b5b2b9;
+  --cr-cui-text-tertiary: #8d8792;
+  --cr-cui-accent: #f04006;
+  /* Primary CTAs — lifted cerulean (Klear blue family, readable on #121014) */
+  --cr-cui-brand: #1a8fc9;
+  --cr-cui-brand-hover: #3ba8dc;
+  --cr-cui-brand-deep: #1680b8;
+
+  /* Klear360 semantic → CodeRabbit */
+  --surface-background-gray-subtle: var(--cr-cui-app);
+  --surface-background-gray-moderate: var(--cr-cui-surface);
+  --surface-background-gray-intense: var(--cr-cui-raised);
+  --surface-border-gray-normal: var(--cr-cui-border);
+  --surface-border-gray-subtle: var(--cr-cui-border-subtle);
+  --surface-border-gray-muted: rgb(255 255 255 / 0.08);
+  --surface-text-gray-normal: var(--cr-cui-text);
+  --surface-text-gray-subtle: var(--cr-cui-text-secondary);
+  --surface-text-gray-muted: var(--cr-cui-text-tertiary);
+  --surface-text-gray-disabled: rgb(141 135 146 / 0.48);
+  --surface-text-primary-normal: var(--cr-cui-text);
+  --surface-icon-gray-normal: var(--cr-cui-text);
+  --surface-icon-gray-muted: var(--cr-cui-text-tertiary);
+
+  --interactive-background-primary-default: var(--cr-cui-brand);
+  --interactive-background-primary-highlighted: var(--cr-cui-brand-hover);
+  --interactive-background-primary-hover: var(--cr-cui-brand-hover);
+  --interactive-border-primary-default: var(--cr-cui-brand);
+  --interactive-text-primary-onPrimary: #ffffff;
+
+  /* Cloned CodeRabbit UI (Tailwind CUI tokens) */
+  --color-cui-mauve-1: var(--cr-cui-app);
+  --color-cui-mauve-2: var(--cr-cui-surface);
+  --color-cui-mauve-3: var(--cr-cui-raised);
+  --color-cui-mauve-4: #2b2830;
+  --color-cui-mauve-11: var(--cr-cui-text-secondary);
+  --color-cui-mauve-12: var(--cr-cui-text);
+  --background-color-cui-base-0: var(--cr-cui-surface);
+  --background-color-cui-base-1: var(--cr-cui-raised);
+  --background-color-cui-base-2: #2b2830;
+  --border-color-cui-neutral: var(--cr-cui-border);
+  --text-color-cui-primary: var(--cr-cui-text);
+  --text-color-cui-secondary: var(--cr-cui-text-secondary);
+  --text-color-cui-tertiary: var(--cr-cui-text-tertiary);
+  --text-color-cui-accent: var(--cr-cui-accent);
+  --color-cui-accent: var(--cr-cui-accent);
+  --text-color-neutral-0: var(--cr-cui-text);
+}
+
+html,
+body,
+#root {
+  background-color: var(--cr-cui-app);
+  color: var(--cr-cui-text);
+}
+
+/* Site chrome uses chrome.css + data-klear360-color-scheme — do not override header logo here. */
+
+.cr-footer-inner {
+  background: var(--cr-cui-app);
+  border-top: 1px solid var(--cr-cui-border-subtle);
+}
+
+.cr-footer {
+  color: var(--cr-cui-text);
+}
+
+/* Chrome — single dark nav (no data-klear360-color-scheme toggle) */
+.cr-resources-card {
+  background: var(--cr-cui-raised);
+  border-color: var(--cr-cui-border);
+}
+
+.cr-resources-card a {
+  color: var(--cr-cui-text);
+}
+
+.cr-resources-card a:hover,
+.cr-resources-card a:focus-visible {
+  background: rgb(255 255 255 / 0.06);
+}
+
+.cr-nav-menu-link-desc {
+  color: var(--cr-cui-text-tertiary);
+}
+
+.cr-header .cr-login {
+  color: var(--cr-cui-text-secondary);
+}
+
+.cr-mobile a,
+.cr-mobile-products {
+  color: var(--cr-cui-text);
+}
+
+.cr-ask {
+  color: var(--cr-cui-text);
+  border-color: var(--cr-cui-border);
+}
+
+.cr-trial {
+  background: var(--cr-cui-brand);
+  border-color: var(--cr-cui-brand);
+  color: #fff;
+}
+
+.cr-trial:hover {
+  background: var(--cr-cui-brand-hover);
+  border-color: var(--cr-cui-brand-hover);
+}
+
+.cr-footer-address,
+.cr-footer-heading,
+.cr-footer-link,
+.cr-footer-base > p,
+.cr-footer-legal-link,
+.cr-newsletter form > p {
+  color: var(--cr-cui-text-secondary);
+}
+
+.cr-footer-link:hover,
+.cr-footer-legal-link:hover {
+  color: var(--cr-cui-text);
+}
+
+.cr-footer-social {
+  color: var(--cr-cui-text-tertiary);
+}
+
+.cr-footer-social:hover {
+  color: var(--cr-cui-text);
+}
+
+.cr-newsletter input::placeholder {
+  color: var(--cr-cui-text-tertiary);
+}
+
+.cr-wordmark {
+  color: var(--cr-cui-text);
+}

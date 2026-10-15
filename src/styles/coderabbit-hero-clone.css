@@ -1,0 +1,481 @@
+/* Klear overrides — base HeroFeatureCards + preview CSS is bundled locally (see HeroFeatureCards.tsx). */
+
+/* Avoid FOUC: hide unstyled snapshot until mount + local CSS have run (useLayoutEffect). */
+.cr-coderabbit-feature-clone:not(.cr-coderabbit-feature-clone--ready) {
+  visibility: hidden;
+  min-height: 38rem;
+}
+
+.cr-coderabbit-feature-clone--ready {
+  visibility: visible;
+}
+
+.cr-coderabbit-feature-clone {
+  color-scheme: light;
+  --cr-home-hero-feature-backdrop: #00405c;
+  --cr-home-hero-card-active: #ffffff;
+  --cr-home-hero-card-inactive: #ffffff;
+  --hero-screen-border: #cbd5e1;
+  --color-cui-mauve-1: lab(4.9349% 1.26021 -1.99696);
+  --color-cui-mauve-3: #e2e8f0;
+  --color-cui-mauve-5: #cbd5e1;
+  --color-cui-mauve-8: #94a3b8;
+  --color-cui-mauve-9: #64748b;
+  --color-cui-mauve-11: #475569;
+  --color-cui-mauve-12: #0f172a;
+  --coderabbit-color-bar-orange: #00405c;
+  --background-color-cui-base-0: lab(4.9349% 1.26021 -1.99696);
+  --home-hero-button-bg: rgb(43 40 47);
+  --home-hero-button-border: rgb(58 54 62);
+  --home-hero-button-text: #f4f1f5;
+  --home-hero-rabbit: #00405c;
+  --home-hero-rabbit-mark: #fff;
+  --home-hero-shadow-color: 18 16 20;
+  --home-hero-prioritize-light: 0 64 92;
+  --home-hero-understand-light: 82 196 125;
+  --home-hero-review-light: 255 87 10;
+  --home-hero-secure-light: 0 64 92;
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Hack', ui-monospace, monospace;
+  width: 100%;
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__featureBackdrop {
+  z-index: -1;
+  top: 3.25rem;
+  background: var(--cr-home-hero-feature-backdrop);
+}
+
+.cr-coderabbit-feature-clone .PriorityQueuePreview-module__9NEAjq__repositoryIcon {
+  display: none;
+}
+
+/* Triage avatars are swapped to KlearNow icon via branding — hide the corner stack in Entry preview */
+.cr-coderabbit-feature-clone .PriorityQueuePreview-module__9NEAjq__reviewers {
+  display: none;
+}
+
+.cr-coderabbit-feature-clone .HomeHero-module__cJy2da__rabbitAvatar,
+.cr-coderabbit-feature-clone .HomeHero-module__cJy2da__miniRabbitAvatar {
+  display: none;
+}
+
+/* Pre-Entry (review) — ghost panel uses CodeRabbit mark img in snapshot */
+.cr-coderabbit-feature-clone
+  [data-feature='review']
+  .HeroFeatureCards-module__QnOXea__reviewSideSkeletonLogo {
+  display: none;
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__cards,
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__mobileControls {
+  position: relative;
+  z-index: 1;
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__card {
+  background: #ffffff;
+  color: var(--color-cui-mauve-12);
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__card[data-active='true'],
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__card[data-active='false'] {
+  background: #ffffff;
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__cardProgressTrack {
+  background: #e2e8f0;
+}
+
+/* Preview wells — soft tint on white cards (matches hero page bg family) */
+.cr-coderabbit-feature-clone {
+  --cr-feature-preview-bg: #f1f5f9;
+  --cr-feature-preview-bg-muted: #e8eef4;
+  --cr-feature-preview-border: #dbe3ec;
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__placeholder {
+  --background-color-cui-base-0: var(--cr-feature-preview-bg);
+  --background-color-cui-base-1: #ffffff;
+  --border-color-cui-neutral: var(--cr-feature-preview-border);
+  --text-color-cui-primary: #0f172a;
+  --text-color-cui-secondary: #475569;
+  --text-color-cui-tertiary: #64748b;
+  background: var(--cr-feature-preview-bg);
+  border-color: var(--cr-feature-preview-border);
+  filter: none;
+  opacity: 1;
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__card[data-active='false'] .HeroFeatureCards-module__QnOXea__placeholder {
+  opacity: 0.65;
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__prioritizeGraphic,
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__understandGraphic,
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__secureGraphic,
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__reviewCommentViewport,
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__reviewCommentStatic {
+  background: var(--cr-feature-preview-bg);
+}
+
+.cr-coderabbit-feature-clone .PriorityQueuePreview-module__9NEAjq__board {
+  background: var(--cr-feature-preview-bg);
+}
+
+.cr-coderabbit-feature-clone .HomeHero-module__cJy2da__githubReviewComment,
+.cr-coderabbit-feature-clone .HomeHero-module__cJy2da__commentModule {
+  background: color-mix(in srgb, var(--cr-feature-preview-bg) 88%, #ffffff);
+  border-color: var(--cr-feature-preview-border);
+}
+
+.cr-coderabbit-feature-clone .HomeHero-module__cJy2da__githubReviewBody,
+.cr-coderabbit-feature-clone .HomeHero-module__cJy2da__githubReviewMarkdown {
+  background: transparent;
+}
+
+.cr-coderabbit-feature-clone
+  .HomeHero-module__cJy2da__staticCommentPreview
+  .HomeHero-module__cJy2da__githubReviewComment
+  .HomeHero-module__cJy2da__commentCard {
+  box-shadow: none;
+  border: 1px solid var(--cr-feature-preview-border);
+  background: #ffffff;
+}
+
+.cr-coderabbit-feature-clone
+  .HomeHero-module__cJy2da__githubReviewComment
+  .HomeHero-module__cJy2da__commentHeader {
+  border-bottom: 1px solid var(--cr-feature-preview-border);
+  background: #ffffff;
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__playbackButton,
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__mobileButton {
+  border-color: rgb(255 255 255 / 0.35);
+  background: rgb(255 255 255 / 0.12);
+  color: #fff;
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__playbackButton:hover,
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__playbackButton:focus-visible,
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__mobileButton:hover,
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__mobileButton:focus-visible {
+  background: rgb(255 255 255 / 0.22);
+  border-color: rgb(255 255 255 / 0.55);
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__root {
+  margin-top: 7rem;
+  padding-bottom: 4rem;
+  overflow: visible;
+}
+
+.cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__cards {
+  overflow: visible;
+}
+
+@media (max-width: 63.999rem) {
+  .cr-coderabbit-feature-clone .HeroFeatureCards-module__QnOXea__root {
+    margin-top: 4.5rem;
+  }
+}
+
+.cr-coderabbit-feature-clone {
+  overflow-x: visible;
+  max-width: 100%;
+}
+
+/* Agents tab — exception routing headline (Klear trade copy) */
+.cr-coderabbit-feature-clone [data-feature='secure'] [class*='healthLabel'],
+.cr-coderabbit-feature-clone [data-feature='secure'] h2,
+.cr-coderabbit-feature-clone [data-feature='secure'] [class*='HealthTitle'] {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Post-Entry (understand) — hide Layers/Files sidebar tabs; copy lives in stack panel */
+.cr-coderabbit-feature-clone [data-feature='understand'] [data-review-sidebar-header='true'] {
+  display: none;
+}
+
+/* Post-Entry stack toolbar — no GitHub repo / PR chrome (copy set in klearFeaturePreviewCopy) */
+.cr-coderabbit-feature-clone
+  [data-feature='understand']
+  .HomeHero-module__cJy2da__reviewStackToolbar
+  svg[viewBox='0 0 24 24'] {
+  display: none;
+}
+
+/* Post-Entry center column — light logistics panel instead of dark PR diff */
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__reviewStackCenterColumn main {
+  background: var(--cr-feature-preview-bg);
+}
+
+.cr-coderabbit-feature-clone
+  [data-feature='understand']
+  .HomeHero-module__cJy2da__reviewStackCenterColumn
+  section[aria-label='Release milestone updates'],
+.cr-coderabbit-feature-clone
+  [data-feature='understand']
+  .HomeHero-module__cJy2da__reviewStackCenterColumn
+  section[aria-label='Layer file review stack'] {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 14rem;
+  background: var(--cr-feature-preview-bg) !important;
+}
+
+.cr-coderabbit-feature-clone
+  [data-feature='understand']
+  .HomeHero-module__cJy2da__reviewStackCenterColumn
+  article
+  > div[class*='201e24'],
+.cr-coderabbit-feature-clone
+  [data-feature='understand']
+  .HomeHero-module__cJy2da__reviewStackCenterColumn
+  article
+  > div[class*='332f39']:first-of-type {
+  background: #ffffff !important;
+  border-color: var(--cr-feature-preview-border) !important;
+  color: #0f172a;
+}
+
+.cr-coderabbit-feature-clone
+  [data-feature='understand']
+  .HomeHero-module__cJy2da__reviewStackCenterColumn
+  [data-pierre-file-icon] {
+  background: #e8eef4 !important;
+  color: #00405c !important;
+  border-radius: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  font-family: var(--font-sans), sans-serif;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .cr-klear-trade-detail {
+  flex: 1 1 auto;
+  background: var(--cr-feature-preview-bg);
+  padding: 1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: #475569;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .cr-klear-trade-detail__heading {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #00405c;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .cr-klear-trade-detail__row {
+  position: relative;
+  padding-left: 1rem;
+  color: #0f172a;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .cr-klear-trade-detail__row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 999px;
+  background: #00405c;
+}
+
+/* Post-Entry (03) — full light KlearNow panel (override CodeRabbit dark stack UI) */
+.cr-coderabbit-feature-clone [data-feature='understand'] .HeroFeatureCards-module__QnOXea__understandGraphic,
+.cr-coderabbit-feature-clone [data-feature='understand'] .HeroFeatureCards-module__QnOXea__understandGraphicImage,
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__reviewStackScreen {
+  --color-cui-mauve-1: #f1f5f9;
+  --color-cui-mauve-2: #ffffff;
+  --color-cui-mauve-3: #e8eef4;
+  --color-cui-mauve-5: #dbe3ec;
+  --color-cui-mauve-8: #94a3b8;
+  --color-cui-mauve-9: #64748b;
+  --color-cui-mauve-11: #475569;
+  --color-cui-mauve-12: #0f172a;
+  --background-color-cui-base-0: #f1f5f9;
+  --background-color-cui-base-1: #ffffff;
+  --background-color-cui-base-2: #f8fafc;
+  --border-color-cui-neutral: #dbe3ec;
+  --text-color-cui-primary: #0f172a;
+  --text-color-cui-secondary: #475569;
+  --text-color-cui-tertiary: #64748b;
+  --home-hero-page-bg-rgb: 241 245 249;
+  background: #ffffff !important;
+  color: #0f172a;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__reviewStackSidebar,
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__reviewStackCenterColumn,
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__reviewStackRightSidebar {
+  background: #f8fafc !important;
+}
+
+/* Sidebar nav: label + status chip — avoid clipping "Overview" to "O" */
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__reviewStackSidebar .min-w-0.flex-1 > .flex.min-w-0.items-center.justify-between {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__reviewStackSidebar [title='Overview'] {
+  white-space: nowrap;
+}
+
+/* Post-Entry layer list — tighter title + status chips in sidebar */
+.cr-coderabbit-feature-clone
+  [data-feature='understand']
+  .HomeHero-module__cJy2da__layerRowHoverTarget
+  .font-semibold.text-cui-primary {
+  font-size: 0.6875rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.cr-coderabbit-feature-clone
+  [data-feature='understand']
+  .HomeHero-module__cJy2da__layerRowHoverTarget
+  span.inline-flex.rounded-md.font-medium {
+  font-size: 0.5625rem;
+  line-height: 1.2;
+  padding: 0.0625rem 0.375rem;
+}
+
+/* Entry queue cards — shipment title + tag/priority chips */
+.cr-coderabbit-feature-clone [data-feature='prioritize'] .PriorityQueuePreview-module__9NEAjq__title {
+  font-size: 0.6875rem;
+  line-height: 1.3;
+}
+
+.cr-coderabbit-feature-clone [data-feature='prioritize'] .PriorityQueuePreview-module__9NEAjq__tag,
+.cr-coderabbit-feature-clone [data-feature='prioritize'] .PriorityQueuePreview-module__9NEAjq__priority {
+  font-size: 0.5625rem;
+  line-height: 1.2;
+  padding: 0.0625rem 0.3125rem;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__reviewStackToolbar {
+  background: #ffffff !important;
+  border-color: #dbe3ec !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='201e24'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='1c1a20'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='24212a'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='25232a'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='2a2830'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='2b2a33'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='2c2931'] {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='f0eaf2'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='b6b0bb'] {
+  color: #0f172a !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='332f39'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='34303a'] {
+  border-color: #dbe3ec !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='85808c'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='aaa3ae'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='b5afba'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='bbb6c2'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='d6d0d7'],
+.cr-coderabbit-feature-clone [data-feature='understand'] .text-gray-300,
+.cr-coderabbit-feature-clone [data-feature='understand'] .text-gray-50 {
+  color: #64748b !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__layerHoverCard {
+  background: #ffffff !important;
+  border: 1px solid #dbe3ec !important;
+  box-shadow: 0 10px 28px rgb(15 23 42 / 10%);
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__layerHoverCard h3 {
+  color: #0f172a !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__layerHoverDescription {
+  color: #475569 !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__layerHoverCard .bg-neutral-800,
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__layerHoverCard [class*='neutral-800'] {
+  background: #e8eef4 !important;
+  border-color: #dbe3ec !important;
+  color: #00405c !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .font-mono {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] code,
+.cr-coderabbit-feature-clone [data-feature='understand'] code span {
+  color: #334155 !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='ff7a92'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='ff8f98'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='65e6a6'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='f87171'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='fb923c'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='93c5fd'] {
+  color: #475569 !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .bg-cui-neutral {
+  background: #e8eef4 !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .bg-cui-base-2,
+.cr-coderabbit-feature-clone [data-feature='understand'] .hover\:bg-cui-base-2:hover {
+  background: #ffffff !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .border-cui-neutral {
+  border-color: #dbe3ec !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='focus-visible:outline-[#f04006]'] {
+  outline-color: #00405c !important;
+}
+
+/* Post-Entry — hide hover tooltips + context rail (clipped dark UI on card edge) */
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__layerHoverCard,
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__reviewStackRightSidebar {
+  display: none !important;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] .HomeHero-module__cJy2da__reviewStackScreen {
+  overflow: hidden;
+}
+
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='242129'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='403946'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='151319'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='18161c'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='302d36'],
+.cr-coderabbit-feature-clone [data-feature='understand'] [class*='302c35'] {
+  background-color: #ffffff !important;
+  background: #f8fafc !important;
+  border-color: #dbe3ec !important;
+  color: #475569 !important;
+}

@@ -1,0 +1,563 @@
+/* CodeRabbit “Agent for Slack” workflow stack — placeholder clone */
+
+.cr-agent-slack-section {
+  color-scheme: light;
+  width: 100%;
+  padding-block: 4rem 5rem;
+  background: transparent;
+  color: #1a181d;
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+
+  /* Align panel visuals with hero feature preview wells */
+  --cr-feature-preview-bg: #f1f5f9;
+  --cr-feature-preview-bg-muted: #e8eef4;
+  --cr-feature-preview-border: #dbe3ec;
+  --cr-merge-accent: #00405c;
+  --cr-merge-success: #52c47d;
+}
+
+@media (min-width: 48rem) {
+  .cr-agent-slack-section {
+    padding-block: 5rem 6rem;
+  }
+}
+
+.cr-agent-slack-section__header {
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 48rem) {
+  .cr-agent-slack-section__header {
+    margin-bottom: 3rem;
+  }
+}
+
+.cr-agent-slack-section__eyebrow {
+  margin: 0 0 1rem;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--interactive-background-primary-default, #00405c);
+}
+
+.cr-agent-slack-section__heading {
+  margin: 0;
+  max-width: min(28rem, 100%);
+  text-wrap: balance;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #1a181d;
+}
+
+.cr-agent-slack-section__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cr-agent-slack-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border: 1px solid #e3e0e6;
+  border-radius: 0.375rem;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+@media (min-width: 64rem) {
+  .cr-agent-slack-panel {
+    grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .cr-agent-slack-panel__copy {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .cr-agent-slack-panel__divider {
+    grid-column: 2;
+    grid-row: 1;
+    display: block;
+  }
+
+  .cr-agent-slack-panel__visual {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  /* Illustration left, copy right */
+  .cr-agent-slack-panel--mirrored .cr-agent-slack-panel__visual {
+    grid-column: 1;
+  }
+
+  .cr-agent-slack-panel--mirrored .cr-agent-slack-panel__copy {
+    grid-column: 3;
+  }
+}
+
+/* Mirror CodeRabbit: animation left, copy right (same 50/50 panel width) */
+.cr-agent-slack-panel--mirrored .cr-agent-slack-panel__visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 85% 75% at 100% 50%,
+    rgb(240 64 6 / 0.14),
+    transparent 58%
+  );
+}
+
+.cr-agent-slack-panel--mirrored .cr-agent-slack-illust {
+  z-index: 1;
+}
+
+.cr-agent-slack-panel__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 1.5rem 2.5rem;
+}
+
+@media (min-width: 48rem) {
+  .cr-agent-slack-panel__copy {
+    padding: 2.5rem 2.5rem 3rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .cr-agent-slack-panel__copy {
+    padding: 3rem 3.5rem;
+  }
+}
+
+.cr-agent-slack-panel__label {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  font-weight: 500;
+  color: var(--interactive-background-primary-default, #00405c);
+}
+
+.cr-agent-slack-panel__title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.375rem, 2.5vw, 2rem);
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #1a181d;
+}
+
+.cr-agent-slack-panel__description {
+  margin: 0 0 1.75rem;
+  max-width: 32rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #65616a;
+}
+
+.cr-agent-slack-panel__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.cr-agent-slack-panel__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: #8d8792;
+}
+
+.cr-agent-slack-panel__list li.is-active {
+  color: #1a181d;
+}
+
+.cr-agent-slack-panel__bullet {
+  width: 0.625rem;
+  height: 0.625rem;
+  margin-top: 0.35rem;
+  border-radius: 0.125rem;
+  background: #c4bfc8;
+  flex-shrink: 0;
+}
+
+.cr-agent-slack-panel__list li.is-active .cr-agent-slack-panel__bullet {
+  background: #f04006;
+}
+
+.cr-agent-slack-panel__line {
+  min-width: 0;
+}
+
+.cr-agent-slack-panel__term {
+  font-weight: 500;
+  color: inherit;
+}
+
+.cr-agent-slack-panel__sep {
+  margin-inline: 0.35rem;
+  color: #6b6570;
+}
+
+.cr-agent-slack-panel__detail {
+  color: #8d8792;
+}
+
+.cr-agent-slack-panel__list li.is-active .cr-agent-slack-panel__detail {
+  color: #65616a;
+}
+
+.cr-agent-slack-panel__divider {
+  display: none;
+  background: #e3e0e6;
+  width: 1px;
+  min-height: 100%;
+}
+
+.cr-agent-slack-panel__visual {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  height: 16rem;
+  min-height: 16rem;
+  max-height: 16rem;
+  background: #151318;
+  overflow: hidden;
+}
+
+.cr-agent-slack-panel__visual--collect {
+  /* Match Collect stage aspect ratio so scale is consistent in stacked layouts */
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: 707 / 572;
+}
+
+@media (max-width: 63.99rem) {
+  .cr-agent-slack-panel--mirrored .cr-agent-slack-panel__visual {
+    order: -1;
+  }
+}
+
+@media (min-width: 64rem) {
+  .cr-agent-slack-panel__visual {
+    height: 22rem;
+    min-height: 22rem;
+    max-height: 22rem;
+  }
+
+  .cr-agent-slack-panel__visual--collect {
+    height: 34rem;
+    min-height: 34rem;
+    max-height: 34rem;
+    aspect-ratio: auto;
+  }
+}
+
+/* Empty slot — drop illustrations or static art here later */
+.cr-agent-slack-panel__visual-slot {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.cr-agent-slack-panel__visual-slot .cr-agent-slack-illust {
+  position: absolute;
+  inset: 0;
+}
+
+/* Context illustration */
+.cr-agent-slack-illust {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cr-agent-slack-illust__dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgb(255 255 255 / 0.14) 1px, transparent 1px);
+  background-size: 14px 14px;
+  opacity: 0.35;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, #000 20%, transparent 75%);
+}
+
+.cr-agent-slack-illust__axis {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: min(22rem, 72%);
+  width: 12rem;
+  padding-block: 0.5rem;
+}
+
+.cr-agent-slack-illust__axis::before {
+  content: '';
+  position: absolute;
+  top: 2.5rem;
+  bottom: 2.5rem;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    to bottom,
+    rgb(255 255 255 / 0.38) 0,
+    rgb(255 255 255 / 0.38) 5px,
+    transparent 5px,
+    transparent 11px
+  );
+  background-size: 1px 11px;
+}
+
+.cr-agent-slack-illust__node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.cr-agent-slack-illust__cloud {
+  width: 1.75rem;
+  height: 1.125rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.9);
+  box-shadow:
+    -0.45rem 0.15rem 0 -0.15rem rgb(255 255 255 / 0.85),
+    0.45rem 0.1rem 0 -0.1rem rgb(255 255 255 / 0.85);
+}
+
+.cr-agent-slack-illust__aws {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgb(255 255 255 / 0.92);
+  text-transform: lowercase;
+}
+
+/* Panel 1 — same preview well as hero feature cards */
+.cr-agent-slack-panel__visual--collect {
+  background: var(--cr-feature-preview-bg, #f1f5f9);
+}
+
+.cr-agent-slack-illust__feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(35 33 39 / 0.92);
+  min-width: 7.5rem;
+}
+
+.cr-agent-slack-illust__count {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 0.8125rem;
+  color: #efedf0;
+}
+
+.cr-agent-slack-illust__feed-label {
+  font-size: 0.6875rem;
+  color: #b5b2b9;
+}
+
+.cr-agent-slack-illust__hub {
+  position: relative;
+  width: 5.5rem;
+  height: 5.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.cr-agent-slack-illust__hub-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgb(255 255 255 / 0.28);
+  transform-origin: 50% 50%;
+}
+
+.cr-agent-slack-illust__hub-ring--outer {
+  inset: 0;
+}
+
+.cr-agent-slack-illust__hub-ring--inner {
+  inset: 0.65rem;
+}
+
+.cr-agent-slack-illust__hub-mark {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: #efedf0;
+  box-shadow: 0 0 0 4px rgb(26 24 29 / 0.9);
+  mask-image: radial-gradient(circle at 50% 58%, transparent 38%, #000 39%);
+}
+
+/* Motion — placeholder clone of CodeRabbit context visual (edit per panel later) */
+.cr-agent-slack-illust__flow {
+  position: absolute;
+  top: 2.5rem;
+  bottom: 2.5rem;
+  left: 50%;
+  width: 0.375rem;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.cr-agent-slack-illust--running .cr-agent-slack-illust__flow {
+  opacity: 1;
+}
+
+.cr-agent-slack-illust--running .cr-agent-slack-illust__flow::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 0.375rem;
+  height: 0.375rem;
+  margin-left: -0.1875rem;
+  border-radius: 50%;
+  background: #f04006;
+  box-shadow: 0 0 0.625rem rgb(240 64 6 / 0.55);
+  animation: cr-agent-slack-flow-travel 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: calc(var(--illust-phase, 0) * -1.2s);
+}
+
+.cr-agent-slack-illust--running .cr-agent-slack-illust__hub-ring--outer {
+  animation: cr-agent-slack-ring-spin 36s linear infinite;
+  animation-delay: calc(var(--illust-phase, 0) * -4s);
+}
+
+.cr-agent-slack-illust--running .cr-agent-slack-illust__hub-ring--inner {
+  animation: cr-agent-slack-ring-spin-reverse 24s linear infinite;
+  animation-delay: calc(var(--illust-phase, 0) * -3s);
+}
+
+.cr-agent-slack-illust--running .cr-agent-slack-illust__hub-mark {
+  animation: cr-agent-slack-hub-pulse 2.8s ease-in-out infinite;
+  animation-delay: calc(var(--illust-phase, 0) * -0.8s);
+}
+
+.cr-agent-slack-illust--running .cr-agent-slack-illust__dots {
+  animation: cr-agent-slack-dots-breathe 8s ease-in-out infinite;
+  animation-delay: calc(var(--illust-phase, 0) * -2s);
+}
+
+.cr-agent-slack-illust--running .cr-agent-slack-illust__axis::before {
+  animation: cr-agent-slack-axis-dash 1.4s linear infinite;
+}
+
+.cr-agent-slack-illust__node.is-pulse .cr-agent-slack-illust__feed {
+  border-color: rgb(240 64 6 / 0.45);
+  box-shadow: 0 0 1rem rgb(240 64 6 / 0.12);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.cr-agent-slack-illust__count {
+  transition: color 0.25s ease;
+}
+
+.cr-agent-slack-illust__node.is-pulse .cr-agent-slack-illust__count {
+  color: #fff;
+}
+
+@keyframes cr-agent-slack-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cr-agent-slack-ring-spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes cr-agent-slack-hub-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgb(26 24 29 / 0.9);
+  }
+
+  50% {
+    transform: scale(1.04);
+    box-shadow:
+      0 0 0 4px rgb(26 24 29 / 0.9),
+      0 0 1.25rem rgb(255 255 255 / 0.12);
+  }
+}
+
+@keyframes cr-agent-slack-flow-travel {
+  0%,
+  8% {
+    top: 0;
+    opacity: 0;
+  }
+
+  14% {
+    opacity: 1;
+  }
+
+  86% {
+    opacity: 1;
+  }
+
+  92%,
+  100% {
+    top: calc(100% - 0.375rem);
+    opacity: 0;
+  }
+}
+
+@keyframes cr-agent-slack-dots-breathe {
+  0%,
+  100% {
+    opacity: 0.32;
+  }
+
+  50% {
+    opacity: 0.42;
+  }
+}
+
+@keyframes cr-agent-slack-axis-dash {
+  to {
+    background-position: 0 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cr-agent-slack-illust--running .cr-agent-slack-illust__hub-ring--outer,
+  .cr-agent-slack-illust--running .cr-agent-slack-illust__hub-ring--inner,
+  .cr-agent-slack-illust--running .cr-agent-slack-illust__hub-mark,
+  .cr-agent-slack-illust--running .cr-agent-slack-illust__dots,
+  .cr-agent-slack-illust--running .cr-agent-slack-illust__flow::after,
+  .cr-agent-slack-illust--running .cr-agent-slack-illust__axis::before {
+    animation: none !important;
+  }
+}

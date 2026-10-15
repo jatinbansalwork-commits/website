@@ -107,7 +107,10 @@ function readThemeColors() {
 }
 
 function mountLiveDither(el) {
-  const src = el.getAttribute("data-live-dither");
+  let src = el.getAttribute("data-live-dither");
+  if (src?.startsWith("./")) {
+    src = new URL(src, window.location.href).pathname;
+  }
   if (!src) return;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -242,6 +245,9 @@ function mountLiveDither(el) {
     gl.uniform2f(uTexRes, image.naturalWidth, image.naturalHeight);
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
+  });
+  image.addEventListener("error", () => {
+    console.warn("[live-dither] texture failed to load:", src);
   });
 
   const startTime = performance.now();

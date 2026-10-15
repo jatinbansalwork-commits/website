@@ -9,6 +9,8 @@
 
 GitHub **`main`** → one Vercel project on this repo → **`marketing-site`**. That is the canonical live site.
 
+**Production URL:** https://website-steel-seven-82.vercel.app/
+
 ## Other apps (not production unless you configure Vercel separately)
 
 | App | Path | Local dev |
@@ -25,7 +27,8 @@ In [Vercel Dashboard](https://vercel.com/dashboard):
 
 1. Keep **one** project linked to `jatinbansalwork-commits/website` with root directory **`.`** (repository root).
 2. **Delete** or disconnect Git on duplicate projects (e.g. `landing-template-flame`, old `website-steel-*` imports).
-3. Set **Production Domain** on the kept project (e.g. `jatinbansalwork-commits-website.vercel.app`).
-4. Redeploy **Production** after merging `vercel.json` changes on `main`.
+3. Set **Production Domain** on the kept project to **`website-steel-seven-82.vercel.app`** (or add it as primary if it is a deployment alias).
+4. Optional: redirect other `*.vercel.app` hostnames to this URL in **Domains → Redirect**.
+5. Redeploy **Production** after merging `vercel.json` changes on `main`.
 
 Preview deployment URLs will still appear per commit; ignore them for “the” site—use the production domain only.

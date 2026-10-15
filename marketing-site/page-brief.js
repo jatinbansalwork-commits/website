@@ -1,4 +1,4 @@
-/** Legency page-brief: roll title on scroll into view */
+/** KlearNow page-brief: roll title on scroll into view */
 
 function initPageBriefRollTitle() {
   const title = document.querySelector(".page-brief__title[data-page-brief-roll]");

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const AgentDocsumoStageIllustration = ({
+const AgentWorkflowStageIllustration = ({
   html,
   stage = 'collect',
 }: {
@@ -63,4 +63,4 @@ const AgentDocsumoStageIllustration = ({
   );
 };
 
-export default AgentDocsumoStageIllustration;
+export default AgentWorkflowStageIllustration;

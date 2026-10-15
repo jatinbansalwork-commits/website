@@ -1,8 +1,8 @@
-import AgentDocsumoStageIllustration from './AgentDocsumoStageIllustration';
-import collectStageHtml from './docsumo-collect-stage.html?raw';
+import AgentWorkflowStageIllustration from './AgentWorkflowStageIllustration';
+import collectStageHtml from './workflow-collect-stage.html?raw';
 
 const AgentCollectIllustration = () => (
-  <AgentDocsumoStageIllustration html={collectStageHtml} stage="collect" />
+  <AgentWorkflowStageIllustration html={collectStageHtml} stage="collect" />
 );
 
 export default AgentCollectIllustration;

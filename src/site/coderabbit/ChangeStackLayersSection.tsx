@@ -4,8 +4,8 @@ import { mountChangeStackLayersClone } from './changeStackLayersClone';
 import '../../styles/coderabbit-hero-bundle.css';
 import '../../styles/coderabbit-change-stack-sync-chunk.css';
 import '../../styles/coderabbit-change-stack-layers.css';
-import '../../styles/docsumo-stage-collect-scoped.css';
-import '../../styles/docsumo-workflow-editor-scoped.css';
+import '../../styles/stage-collect-scoped.css';
+import '../../styles/workflow-editor-scoped.css';
 
 const ChangeStackLayersSection = () => {
   const hostRef = useRef<HTMLDivElement>(null);

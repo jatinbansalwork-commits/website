@@ -1,11 +1,11 @@
-/* Legency homepage hero stage (adapted) */
+/* KlearNow homepage hero stage (adapted) */
 
-.hero.hero--legency {
+.hero.hero--home {
   padding: 0;
   overflow: hidden;
 }
 
-.hero.hero--legency .hero-bg {
+.hero.hero--home .hero-bg {
   z-index: 0;
 }
 

@@ -1,4 +1,4 @@
-/* Scoped Docsumo stage-scene (Collect) — source: docsumo.com #stage-scene */
+/* Scoped KlearNow stage-scene (Collect) — source: klearnow.ai #stage-scene */
 .cr-agent-collect-illust {
   --cr-feature-preview-bg: #f1f5f9;
   --cr-feature-preview-border: #dbe3ec;
@@ -28,9 +28,9 @@
   --shadow-hero: 0 1px 2px rgb(15 23 42 / 4%), 0 18px 40px -18px rgb(15 23 42 / 0.12);
   --r-lg: 0.375rem;
   --pop: cubic-bezier(0.26, 0.53, 0.74, 1.48);
-  /* Docsumo stage-scene design size — scale only, never reflow */
+  /* KlearNow stage-scene design size — scale only, never reflow */
   --stage-design-w: 707px;
-  /* Slightly taller than Docsumo 545px so bottom cards + shadows are not clipped */
+  /* Slightly taller than KlearNow 545px so bottom cards + shadows are not clipped */
   --stage-design-h: 572px;
   --stage-fit-inset: 10px;
   position: absolute;

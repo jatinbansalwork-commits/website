@@ -1,4 +1,4 @@
-/** Legency-style load / in-site navigation transition (no GSAP). */
+/** KlearNow load / in-site navigation transition (no GSAP). */
 
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

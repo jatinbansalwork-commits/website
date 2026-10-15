@@ -1,4 +1,4 @@
-/** Legency-style live Bayer dither (WebGL2), adapted for this site. */
+/** KlearNow live Bayer dither (WebGL2), adapted for this site. */
 
 const BAYER_GLSL = `
 const float BAYER[64] = float[64](

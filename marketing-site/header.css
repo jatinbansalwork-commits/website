@@ -1,4 +1,4 @@
-/* Legency-style floating header (tsnav + bubble CTA) */
+/* KlearNow floating header (tsnav + bubble CTA) */
 
 :root {
   --header-blue: var(--primary, #003f5b);
@@ -665,7 +665,7 @@
   pointer-events: auto;
 }
 
-/* Bubble arrow CTA — one interaction model site-wide (Legency) */
+/* Bubble arrow CTA — one interaction model site-wide (KlearNow) */
 .btn-bubble-arrow {
   --btn-bg: var(--header-blue);
   --btn-text: var(--header-white);

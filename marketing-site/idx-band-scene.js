@@ -1,4 +1,4 @@
-/** Animated idx-stats band — Legency-style live dither (lazy-mounted). */
+/** Animated idx-stats band — KlearNow live dither (lazy-mounted). */
 
 import { mountLiveDither } from "./live-dither.js";
 

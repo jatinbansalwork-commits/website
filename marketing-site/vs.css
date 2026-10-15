@@ -1,4 +1,4 @@
-/* Legency-style tool vs agency comparison (aeo-agency / vs block) */
+/* KlearNow tool vs agency comparison (aeo-agency / vs block) */
 
 .section.vs {
   padding-block: clamp(4rem, 8vw, 7rem);
@@ -52,7 +52,7 @@
   color: #000;
 }
 
-/* Legency icon-chip (scoped — do not reuse tiers .icon-chip--bare rules) */
+/* KlearNow icon-chip (scoped — do not reuse tiers .icon-chip--bare rules) */
 .vs .icon-chip {
   display: grid;
   flex-shrink: 0;
@@ -109,7 +109,7 @@
   background: #000;
 }
 
-/* Secondary-hero glow — smooth primary asset, right side only (Legency layout) */
+/* Secondary-hero glow — smooth primary asset, right side only (KlearNow layout) */
 .vs__card--strong .vs__scene {
   position: absolute;
   inset: 0;

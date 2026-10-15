@@ -1,4 +1,4 @@
-/** Legency ctaband — roll heading on scroll into view */
+/** KlearNow ctaband — roll heading on scroll into view */
 
 function initCtabandRollTitle() {
   const title = document.querySelector(".ctaband__heading[data-cta-roll]");

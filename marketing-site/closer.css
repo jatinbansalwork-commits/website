@@ -1,4 +1,4 @@
-/* Legency pre-footer closer — ring text, dither, CTA */
+/* KlearNow pre-footer closer — ring text, dither, CTA */
 
 .closer {
   position: relative;
@@ -46,7 +46,7 @@
   opacity: 0.34;
 }
 
-/* Circular “Get in touch -” ring (Legency closer) */
+/* Circular “Get in touch -” ring (KlearNow closer) */
 .closer__ring {
   position: absolute;
   top: 12%;

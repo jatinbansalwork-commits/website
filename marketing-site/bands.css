@@ -1,4 +1,4 @@
-/* Turnaround bands — legency-style timeline + cards */
+/* Turnaround bands — KlearNow timeline + cards */
 
 .section.bands {
   padding-block: clamp(4rem, 8vw, 7rem);
@@ -163,7 +163,7 @@
   color: var(--bands-muted);
 }
 
-/* List rows — aligned to legency scope__checks (icon chip + copy) */
+/* List rows — aligned to KlearNow scope__checks (icon chip + copy) */
 .bands__card-list.scope__checks {
   --scope-check-size: 22px;
   --scope-check-green: #5cff8a;

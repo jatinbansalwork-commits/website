@@ -1,4 +1,4 @@
-/** Legency-style nav book dither (procedural WebGL2). */
+/** KlearNow nav book dither (procedural WebGL2). */
 
 const BAYER = `
 const float BAYER[64] = float[64](

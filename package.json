@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:docsumo-bg": "vite docsumo-bg",
+    "dev:marketing-site": "vite marketing-site",
     "build": "tsc --noEmit && vite build",
-    "build:docsumo-bg": "vite build docsumo-bg",
+    "build:marketing-site": "vite build marketing-site",
     "preview": "vite preview",
-    "preview:docsumo-bg": "vite preview docsumo-bg"
+    "preview:marketing-site": "vite preview marketing-site"
   },
   "dependencies": {
     "@fontsource/geist-mono": "^5.3.0",

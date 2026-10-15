@@ -1,4 +1,4 @@
-/* Timeline rot — legency-style “Real Cost” section */
+/* Timeline rot — KlearNow “Real Cost” section */
 
 .section.rot {
   padding-block: clamp(4rem, 8vw, 7rem);
@@ -81,7 +81,7 @@
   background: var(--primary, #003f5b);
 }
 
-/* Legency rot__px stage progression */
+/* KlearNow rot__px stage progression */
 .rot__viz[data-stage="2"] span:nth-child(5) {
   background: var(--rot-viz-mid);
 }

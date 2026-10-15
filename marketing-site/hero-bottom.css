@@ -1,4 +1,4 @@
-/* Legency-style hero proof + client logos */
+/* KlearNow hero proof + client logos */
 
 .hero__bottom {
   position: relative;
@@ -167,7 +167,7 @@
   }
 }
 
-/* Platform at scale — Legency idx-stats band (ai-visibility-index) */
+/* Platform at scale — KlearNow idx-stats band (ai-visibility-index) */
 .hero__platform-scale {
   margin-top: clamp(24px, 3vw, 40px);
 }

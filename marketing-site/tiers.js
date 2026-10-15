@@ -1,4 +1,4 @@
-/** Legency tiers: mobile accordion + title entrance */
+/** KlearNow tiers: mobile accordion + title entrance */
 
 function initTierCards() {
   const cards = document.querySelectorAll("[data-tier-card]");

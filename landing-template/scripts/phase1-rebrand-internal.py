@@ -2,7 +2,6 @@
 """Phase 1: internal legacy fingerprints → KlearNow names (no copy/layout changes)."""
 from __future__ import annotations
 
-import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -11,40 +10,32 @@ SKIP_PARTS = {"node_modules", "kleardata-extraction-widget"}
 
 # Order matters: longer / specific tokens first.
 REPLACEMENTS: list[tuple[str, str]] = [
-    ("section_crealo", "section_kn"),
-    ("why-crealo_page", "why-klearnow_page"),
-    ("is_crealo", "is_kn"),
-    ("crealo_text-container", "kn_text-container"),
-    ("crealo_text-flex", "kn_text-flex"),
-    ("crealo_grid", "kn_grid"),
-    ("crealo_icon", "kn_icon"),
-    ("crealo_image", "kn_image"),
-    ("crealo_item", "kn_item"),
     ("gestion-des-cessions-page", "kn-hero-fullbleed"),
-    ("hero-why-crealo", "hero-why-kn"),
-    ("section_support-crealo", "section_support-kn"),
-    ("support-crealo", "support-kn"),
-    ("--crealo-fonts--", "--kn-fonts--"),
-    ("--crealo-bg--", "--kn-bg--"),
-    ("--crealo--", "--kn--"),
-    ("v2-5-crealo", "v2-5-kn"),
-    ("isFreightCrealoHowSwitchSlider", "isFreightHowSwitchSlider"),
-    ("normalizeCrealoHowSwitchSlider", "normalizeFreightHowSwitchSlider"),
+    ("hero-why-legacy-export", "hero-why-kn"),
+    ("section_support-legacy-export", "section_support-kn"),
+    ("support-legacy-export", "support-kn"),
+    ("--legacy-export-fonts--", "--kn-fonts--"),
+    ("--legacy-export-bg--", "--kn-bg--"),
+    ("--legacy-export--", "--kn--"),
+    ("v2-5-legacy-export", "v2-5-kn"),
+    ("isFreightsiteHowSwitchSlider", "isFreightHowSwitchSlider"),
+    ("normalizesiteHowSwitchSlider", "normalizeFreightHowSwitchSlider"),
     ("product-accountability-footer", "product-kleardata-footer"),
-    ("kn-hero-docsumo-styles", "kn-hero-motion-styles"),
-    ("home-hero-docsumo.css", "home-hero-motion.css"),
-    ("kh-docsumo-agent-minis.css", "kn-agent-minis.css"),
+    ("kn-hero-workflow-styles", "kn-hero-motion-styles"),
+    ("home-hero-workflow.css", "home-hero-motion.css"),
+    ("kh-workflow-agent-minis.css", "kn-agent-minis.css"),
     ("kh-agent-minis.css", "kn-agent-minis.css"),
     ("kh-ds-", "kn-"),
-    ("fix_customer_logo_crealo", "fix_customer_logo_legacy"),
-]
-
-COMMENT_FIXES: list[tuple[re.Pattern[str], str]] = [
-    (re.compile(r"\bCrealo\b"), "legacy template"),
-    (re.compile(r"\bcrealo\b"), "legacy template"),
-    (re.compile(r"\bDocsumo\b"), "KlearNow"),
-    (re.compile(r"\bdocsumo\b"), "KlearNow"),
-    (re.compile(r"docsumo\.com"), "reference UI"),
+    ("fix_customer_logo_legacy", "fix_customer_logo_kn"),
+    ("section_legacy-export", "section_kn"),
+    ("why-legacy-export_page", "why-klearnow_page"),
+    ("is_legacy-export", "is_kn"),
+    ("legacy-export_text-container", "kn_text-container"),
+    ("legacy-export_text-flex", "kn_text-flex"),
+    ("legacy-export_grid", "kn_grid"),
+    ("legacy-export_icon", "kn_icon"),
+    ("legacy-export_image", "kn_image"),
+    ("legacy-export_item", "kn_item"),
 ]
 
 TEXT_EXTENSIONS = {".html", ".css", ".js", ".py"}
@@ -61,14 +52,9 @@ def should_process(path: Path) -> bool:
 
 
 def transform(text: str, path: Path) -> str:
+    del path  # reserved for path-specific rules
     for old, new in REPLACEMENTS:
         text = text.replace(old, new)
-
-    # Sanitizer keeps URL literals containing "crealo" — do not rewrite those strings.
-    if path.name != "sanitize-brand-evidence.py":
-        for pat, repl in COMMENT_FIXES:
-            text = pat.sub(repl, text)
-
     return text
 
 

@@ -1,6 +1,6 @@
-import cohortsWorkflowStageHtml from './docsumo-workflow-cohorts-stage.html?raw';
-import verifyStageHtml from './docsumo-verify-stage.html?raw';
-import analyzeStageHtml from './docsumo-analyze-stage.html?raw';
+import cohortsWorkflowStageHtml from './workflow-cohorts-stage.html?raw';
+import verifyStageHtml from './workflow-verify-stage.html?raw';
+import analyzeStageHtml from './workflow-analyze-stage.html?raw';
 
 export type ChangeStackFocusId = 'cohorts' | 'layers' | 'architecture';
 
@@ -81,7 +81,7 @@ export const mountChangeStackWalkthroughStages = (host: HTMLElement): (() => voi
 
   repairSidebarLabels(screen);
 
-  stack.classList.add('cr-change-stack-docsumo-shell');
+  stack.classList.add('cr-change-stack-product-shell');
   stack.querySelector<HTMLElement>(':scope > .grid')?.setAttribute('hidden', '');
 
   const mount = document.createElement('div');
@@ -151,7 +151,7 @@ export const mountChangeStackWalkthroughStages = (host: HTMLElement): (() => voi
     observer.disconnect();
     reduced.removeEventListener('change', onReducedMotionChange);
     mount.remove();
-    stack.classList.remove('cr-change-stack-docsumo-shell');
+    stack.classList.remove('cr-change-stack-product-shell');
     stack.querySelector<HTMLElement>(':scope > .grid')?.removeAttribute('hidden');
   };
 };

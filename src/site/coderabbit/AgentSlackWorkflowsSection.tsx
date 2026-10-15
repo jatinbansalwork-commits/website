@@ -7,7 +7,7 @@ import {
   type AgentSlackPanelCopy,
 } from './agentSlackWorkflowsCopy';
 import '../../styles/coderabbit-triage-bundle.css';
-import '../../styles/docsumo-stage-collect-scoped.css';
+import '../../styles/stage-collect-scoped.css';
 import '../../styles/coderabbit-agent-slack-workflows.css';
 
 /** Same width/padding as reviews-surfaces + merge-automation snapshots */

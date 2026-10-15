@@ -47,7 +47,6 @@ void main() {
   float wave = u_ripple * 0.6 * sin(d * 16.0 - u_time * 3.2) * exp(-d * 2.2);
   vec2 dir = d > 0.0001 ? (q - m) / d : vec2(0.0);
   tuv += dir * wave * 0.012;
-  tuv.y = 1.0 - tuv.y;
   float lum = dot(texture(u_tex, clamp(tuv, 0.0, 1.0)).rgb, vec3(0.299, 0.587, 0.114));
   float grain = fract(sin(dot(cell, vec2(12.9898, 78.233))) * 43758.5453) * 0.07;
   if (u_light > 0.5) {

@@ -1,0 +1,10 @@
+<svg width="156" height="56" viewBox="0 0 156 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SOC 2">
+  <rect width="156" height="56" rx="1" fill="#FFFFFF"/>
+  <rect x="0.5" y="0.5" width="155" height="55" rx="0.5" stroke="#E7E5E4"/>
+  <text x="12" y="16" fill="#292524" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700">bsi.</text>
+  <text x="12" y="28" fill="#44403C" font-family="Arial, Helvetica, sans-serif" font-size="6.5" font-weight="600">ISO/IEC 27001</text>
+  <text x="12" y="38" fill="#57534E" font-family="Arial, Helvetica, sans-serif" font-size="5.5">Information Security</text>
+  <text x="12" y="47" fill="#57534E" font-family="Arial, Helvetica, sans-serif" font-size="5.5">Management</text>
+  <rect x="118" y="10" width="28" height="36" rx="1" stroke="#A8A29E" stroke-width="0.75" fill="none"/>
+  <text x="132" y="32" text-anchor="middle" fill="#78716C" font-family="Arial, Helvetica, sans-serif" font-size="5">ISO</text>
+</svg>

@@ -1,0 +1,152 @@
+/* Legency-style tool vs agency comparison (aeo-agency / vs block) */
+
+.section.vs {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.vs {
+  background: var(--surface, #fff);
+  color: var(--ink, #0f1117);
+  font-family: var(--t-font-body, "PP Frama Text", "Helvetica Neue", Arial, sans-serif);
+  letter-spacing: -0.02em;
+}
+
+.vs__head {
+  max-width: 38rem;
+  margin-bottom: clamp(2rem, 4vw, 2.5rem);
+  text-align: start;
+}
+
+.vs .label {
+  display: block;
+  margin: 0 0 1rem;
+  font-family: var(--t-font-title, "PP Frama", "Helvetica Neue", Arial, sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  text-transform: none;
+  color: var(--primary, #003f5b);
+}
+
+.vs__heading {
+  margin: 0 0 1.25rem;
+  font-family: var(--t-font-title, "PP Frama", "Helvetica Neue", Arial, sans-serif);
+  font-size: clamp(1.85rem, 3.2vw, 2.3125rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+}
+
+.vs__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.vs__card {
+  border-radius: 12px;
+  padding: 2.5rem;
+  background: #f2f2f2;
+  color: #000;
+}
+
+/* Legency icon-chip (scoped — do not reuse tiers .icon-chip--bare rules) */
+.vs .icon-chip {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: var(--icon-chip-size, 38px);
+  height: var(--icon-chip-size, 38px);
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.vs .icon-chip svg {
+  display: block;
+  width: 58%;
+  height: 58%;
+}
+
+.vs .icon-chip--muted {
+  color: rgb(32 29 29 / 55%);
+  background: rgb(32 29 29 / 6%);
+  border: 1px solid rgb(32 29 29 / 10%);
+}
+
+.vs .icon-chip--on-dark {
+  color: #fff;
+  background: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(255 255 255 / 28%);
+}
+
+.vs__card h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--t-font-title, "PP Frama", "Helvetica Neue", Arial, sans-serif);
+  font-size: 1.3203rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.vs__card p {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.vs__foot {
+  margin-bottom: 0;
+  opacity: 0.7;
+}
+
+.vs__card--strong {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+  color: #fff;
+  background: #000;
+}
+
+/* Secondary-hero glow — smooth primary asset, right side only (Legency layout) */
+.vs__card--strong .vs__scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 36%,
+    rgb(0 0 0 / 22%) 46%,
+    rgb(0 0 0 / 72%) 56%,
+    #000 66%
+  );
+}
+
+.vs__card--strong .vs__scene img {
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 88%;
+  height: auto;
+  min-height: 128%;
+  max-width: none;
+  object-fit: cover;
+  object-position: right center;
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.vs__card--strong > :not(.vs__scene) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (width <= 900px) {
+  .vs__grid {
+    grid-template-columns: 1fr;
+  }
+}

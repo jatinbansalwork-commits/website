@@ -1,0 +1,93 @@
+/* Docsumo.com design tokens (extracted from live site CSS) */
+:root {
+  color-scheme: light;
+
+  /* Page & surfaces */
+  --ds-bg-page: #fafaf7;
+  --ds-bg-surface: #f3f2ec;
+  --ds-bg-elevated: #ffffff;
+  --ds-bg-elevated-2: #f7f6f2;
+
+  /* Text */
+  --ds-text-primary: #0f1117;
+  --ds-text-secondary: #0f1117b3;
+  --ds-text-tertiary: #0f11179e;
+
+  /* Borders */
+  --ds-border-subtle: #0f111717;
+  --ds-border-default: #0f111729;
+
+  /* Brand */
+  --primary: #003f5b;
+  --klear-book-bg: #060415;
+  --ds-brand-primary: var(--primary);
+  --ds-brand-deep: #004862;
+  --ds-brand-soft: #e6f3f7;
+  --ds-brand-ink: #004558;
+  --ds-brand-secondary: #007499;
+  --ds-on-brand: #ffffff;
+
+  /* Semantic */
+  --ds-success-fg: #0b7a52;
+  --ds-success-bg: #e2f5ec;
+  --ds-warning-fg: #b45309;
+  --ds-warning-bg: #fef3c7;
+
+  /* Aliases used across layout */
+  --bg: var(--ds-bg-page);
+  --bg-2: var(--ds-bg-surface);
+  --surface: var(--ds-bg-elevated);
+  --surface-2: var(--ds-bg-elevated-2);
+  --ink: var(--ds-text-primary);
+  --ink-2: var(--ds-text-secondary);
+  --ink-3: var(--ds-text-tertiary);
+  --line: var(--ds-border-subtle);
+  --line-2: var(--ds-border-default);
+  --brand: var(--ds-brand-primary);
+  --brand-deep: var(--ds-brand-deep);
+  --brand-soft: var(--ds-brand-soft);
+  --brand-ink: var(--ds-brand-ink);
+  --brand-2: var(--ds-brand-secondary);
+  --on-brand: var(--ds-on-brand);
+
+  /* Gradients (headline / UI accents) */
+  --grad-a: var(--primary);
+  --grad-b: #007499;
+  --grad-c: #0091b2;
+  --hl-a: var(--primary);
+  --hl-b: #004862;
+  --hl-c: #0088a8;
+
+  /* Section accent palettes */
+  --acc-blue-bg: #eff1f9;
+  --acc-blue-tint: #e0e4f4;
+  --acc-blue-line: #cdd4ed;
+  --acc-blue-ink: #273cdd;
+  --acc-teal-bg: #e0f0ee;
+  --acc-teal-tint: #cfe8e5;
+  --acc-teal-line: #a9d6d0;
+  --acc-teal-ink: #0f6b62;
+  --acc-green-bg: #ecf4e0;
+  --acc-green-tint: #e0edcd;
+  --acc-green-line: #c9e0a8;
+  --acc-green-ink: #3f6212;
+  --acc-amber-bg: #fdefe0;
+  --acc-amber-tint: #fbe3c8;
+  --acc-amber-line: #f8ca98;
+  --acc-amber-ink: #9a4a0b;
+  --acc-rose-bg: #f6ecf0;
+  --acc-rose-tint: #ecdde3;
+  --acc-rose-line: #e3cdd6;
+  --acc-rose-ink: #8a2c56;
+  --acc-sky-bg: #e6f2f8;
+  --acc-sky-tint: #d3e7f2;
+  --acc-sky-line: #afd2e6;
+  --acc-sky-ink: #0b6394;
+
+  /* Misc */
+  --glass: #ffffffb8;
+  --foot-bg: #fbfcff;
+  --shadow-hero: 0 1px 2px #0f11170d, 0 30px 70px -28px #003f5b61;
+  --sans: Geist, "Geist Fallback", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Arial, sans-serif;
+}

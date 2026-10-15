@@ -1,0 +1,12 @@
+{
+  "name": "docsumo-bg-site",
+  "private": true,
+  "scripts": {
+    "dev": "vite docsumo-bg",
+    "build": "vite build docsumo-bg",
+    "preview": "vite preview docsumo-bg"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}

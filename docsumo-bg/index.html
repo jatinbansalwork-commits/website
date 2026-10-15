@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Klearnow.AI</title>
+    <link rel="stylesheet" href="./background.css" />
+    <link rel="stylesheet" href="./transition.css" />
+    <link rel="stylesheet" href="./header.css" />
+    <link rel="stylesheet" href="./hero-legency.css" />
+    <link rel="stylesheet" href="./hero-bottom.css" />
+    <link rel="preload" href="./assets/fonts/PPFrama-Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./assets/fonts/PPFramaText-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="./tiers.css" />
+    <link rel="stylesheet" href="./ctaband.css" />
+    <link rel="stylesheet" href="./bands.css" />
+    <link rel="stylesheet" href="./services.css" />
+    <link rel="stylesheet" href="./rot.css" />
+    <link rel="stylesheet" href="./footer.css" />
+    <link rel="stylesheet" href="./closer.css" />
+    <link rel="stylesheet" href="./assist-kn-type.css" />
+    <link rel="stylesheet" href="./assist-panel.css" />
+    <link rel="stylesheet" href="./assist-thread-messages.css" />
+    <style>
+      .wrap {
+        width: min(1120px, calc(100% - 48px));
+        margin-inline: auto;
+      }
+      html.nav-open {
+        overflow: hidden;
+      }
+      .section {
+        padding-block: clamp(64px, 10vw, 120px);
+      }
+      .label {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-3);
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="transition" aria-hidden="true"></div>
+    <div class="page">
+      <nav
+        class="tsnav"
+        data-twostep-nav
+        data-nav-status="not-active"
+        aria-label="Main"
+      >
+        <div
+          class="tsnav__bg"
+          data-nav-toggle="close"
+          aria-hidden="true"
+        ></div>
+        <div class="tsnav__wrap">
+          <div class="tsnav__width">
+            <div class="tsnav__bar">
+              <div class="tsnav__back" aria-hidden="true">
+                <div class="tsnav__back-bg"></div>
+              </div>
+              <div class="tsnav__top">
+                <a class="tsnav__logo" href="/" aria-label="KlearNow home">
+                  <img
+                    class="tsnav__logo-img"
+                    src="./assets/klearnow-logo-horizontal-primary.svg"
+                    alt=""
+                    width="500"
+                    height="108"
+                  />
+                </a>
+                <button
+                  class="tsnav__toggle"
+                  type="button"
+                  data-nav-toggle="toggle"
+                  aria-expanded="false"
+                  aria-controls="nav-panel"
+                  aria-label="Open menu"
+                >
+                  <span class="tsnav__toggle-icon" aria-hidden="true">
+                    <i class="tsnav__toggle-bar"></i>
+                    <i class="tsnav__toggle-bar"></i>
+                  </span>
+                  <span class="tsnav__toggle-words" aria-hidden="true">
+                    <span class="tsnav__toggle-word tsnav__toggle-word--menu"
+                      >Menu</span
+                    >
+                    <span class="tsnav__toggle-word tsnav__toggle-word--close"
+                      >Close</span
+                    >
+                  </span>
+                </button>
+                <div class="tsnav__top-line" aria-hidden="true"></div>
+              </div>
+              <div class="tsnav__bottom" id="nav-panel">
+                <div class="tsnav__bottom-overflow">
+                  <div class="tsnav__bottom-inner">
+                    <div class="tsnav__row">
+                      <div class="tsnav__col tsnav__col--info">
+                        <p class="tsnav__eyebrow tsnav__eyebrow--site" aria-hidden="true">
+                          Site
+                        </p>
+                        <ul class="tsnav__ul">
+                          <li><a class="tsnav__li" href="/">Home</a></li>
+                          <li>
+                            <a class="tsnav__li" href="#post-entry-audit">Post-Entry Audit</a>
+                          </li>
+                          <li>
+                            <a class="tsnav__li" href="#tariff-calculator">Tariff Calculator</a>
+                          </li>
+                          <li>
+                            <a class="tsnav__li" href="#coverage">Coverage</a>
+                          </li>
+                          <li><a class="tsnav__li" href="#blog">Blog</a></li>
+                          <li>
+                            <a class="tsnav__li" href="#resources">Resources</a>
+                          </li>
+                          <li>
+                            <a class="tsnav__li" href="#get-in-touch">Get in touch</a>
+                          </li>
+                        </ul>
+                        <div class="tsnav__social">
+                          <a
+                            href="https://www.linkedin.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                          >
+                            <img
+                              src="./assets/clients/linkedin.svg"
+                              alt=""
+                              width="44"
+                              height="44"
+                            />
+                          </a>
+                        </div>
+                      </div>
+                      <div class="tsnav__col tsnav__col--services">
+                        <p class="tsnav__eyebrow tsnav__eyebrow--services" aria-hidden="true">
+                          Services
+                        </p>
+                        <button
+                          type="button"
+                          class="tsnav__acc-head"
+                          aria-expanded="false"
+                          aria-controls="nav-services"
+                          data-nav-services-toggle
+                        >
+                          <span>Services</span>
+                          <span class="tsnav__acc-chip" aria-hidden="true">
+                            <i></i><i></i>
+                          </span>
+                        </button>
+                        <div class="tsnav__acc" id="nav-services">
+                          <div class="tsnav__acc-clip">
+                            <div class="tsnav__services-row">
+                              <div class="tsnav__groups">
+                                <div class="tsnav__group">
+                                  <span class="tsnav__group-label">Products</span>
+                                  <ul class="tsnav__group-list">
+                                    <li>
+                                      <a class="tsnav__link" href="#klear-data">
+                                        <span class="tsnav__link-title">KlearData</span>
+                                        <span class="tsnav__link-blurb"
+                                          >Turn every document into filing-ready data</span
+                                        >
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a class="tsnav__link" href="#klear-hub">
+                                        <span class="tsnav__link-title">KlearHub</span>
+                                        <span class="tsnav__link-blurb"
+                                          >The software gathering trade compliance data globally</span
+                                        >
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a class="tsnav__link" href="#managed-trade">
+                                        <span class="tsnav__link-title">Managed Trade</span>
+                                        <span class="tsnav__link-blurb"
+                                          >Our licensed brokers run it for you</span
+                                        >
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="tsnav__group">
+                                  <span class="tsnav__group-label">Operations type</span>
+                                  <ul class="tsnav__group-list">
+                                    <li>
+                                      <a class="tsnav__link" href="#freight-forwarders">
+                                        <span class="tsnav__link-title">Freight Forwarders</span>
+                                        <span class="tsnav__link-blurb"
+                                          >AI-driven clearance workflows</span
+                                        >
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a class="tsnav__link" href="#customs-brokers">
+                                        <span class="tsnav__link-title">Customs Brokers</span>
+                                        <span class="tsnav__link-blurb"
+                                          >File faster, fewer errors</span
+                                        >
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a class="tsnav__link" href="#trade-compliance">
+                                        <span class="tsnav__link-title">Trade Compliance</span>
+                                        <span class="tsnav__link-blurb"
+                                          >Real-time import visibility</span
+                                        >
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a class="tsnav__link" href="#self-filers">
+                                        <span class="tsnav__link-title">Self Filers</span>
+                                        <span class="tsnav__link-blurb"
+                                          >Clean data, faster filing</span
+                                        >
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                              <a
+                                class="tsnav__book"
+                                href="#get-in-touch"
+                                aria-label="Ask Klear — Let’s talk about your next priorities."
+                              >
+                                <canvas
+                                  class="tsnav__book-dither"
+                                  data-nav-dither
+                                  aria-hidden="true"
+                                ></canvas>
+                                <p class="tsnav__book-title">
+                                  Let&rsquo;s talk about your next priorities.
+                                </p>
+                                <div class="tsnav__book-cta">
+                                  <span
+                                    class="btn-bubble-arrow btn-bubble-arrow--blue"
+                                    aria-hidden="true"
+                                  >
+                                    <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="100%"
+                                        class="btn-bubble-arrow__arrow-svg"
+                                      >
+                                        <polyline
+                                          points="18 8 18 18 8 18"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          stroke-miterlimit="10"
+                                          stroke-width="1.5"
+                                        ></polyline>
+                                        <line
+                                          x1="18"
+                                          y1="18"
+                                          x2="5"
+                                          y2="5"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          stroke-miterlimit="10"
+                                          stroke-width="1.5"
+                                        ></line>
+                                      </svg>
+                                    </div>
+                                    <div class="btn-bubble-arrow__content">
+                                      <span class="btn-bubble-arrow__content-text"
+                                        >Ask Klear</span
+                                      >
+                                    </div>
+                                    <div
+                                      class="btn-bubble-arrow__arrow is--duplicate"
+                                      aria-hidden="true"
+                                    >
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="100%"
+                                        class="btn-bubble-arrow__arrow-svg"
+                                      >
+                                        <polyline
+                                          points="18 8 18 18 8 18"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          stroke-miterlimit="10"
+                                          stroke-width="1.5"
+                                        ></polyline>
+                                        <line
+                                          x1="18"
+                                          y1="18"
+                                          x2="5"
+                                          y2="5"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          stroke-miterlimit="10"
+                                          stroke-width="1.5"
+                                        ></line>
+                                      </svg>
+                                    </div>
+                                  </span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tsnav__mobile-cta">
+                      <a
+                        class="btn-bubble-arrow btn-bubble-arrow--blue"
+                        href="#get-in-touch"
+                      >
+                        <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            width="100%"
+                            class="btn-bubble-arrow__arrow-svg"
+                          >
+                            <polyline
+                              points="18 8 18 18 8 18"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-miterlimit="10"
+                              stroke-width="1.5"
+                            ></polyline>
+                            <line
+                              x1="18"
+                              y1="18"
+                              x2="5"
+                              y2="5"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-miterlimit="10"
+                              stroke-width="1.5"
+                            ></line>
+                          </svg>
+                        </div>
+                        <div class="btn-bubble-arrow__content">
+                          <span class="btn-bubble-arrow__content-text"
+                            >Request for demo</span
+                          >
+                        </div>
+                        <div
+                          class="btn-bubble-arrow__arrow is--duplicate"
+                          aria-hidden="true"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            width="100%"
+                            class="btn-bubble-arrow__arrow-svg"
+                          >
+                            <polyline
+                              points="18 8 18 18 8 18"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-miterlimit="10"
+                              stroke-width="1.5"
+                            ></polyline>
+                            <line
+                              x1="18"
+                              y1="18"
+                              x2="5"
+                              y2="5"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-miterlimit="10"
+                              stroke-width="1.5"
+                            ></line>
+                          </svg>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tsnav__cta">
+            <a
+              class="btn-bubble-arrow btn-bubble-arrow--blue"
+              href="#get-in-touch"
+            >
+              <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="100%"
+                  class="btn-bubble-arrow__arrow-svg"
+                >
+                  <polyline
+                    points="18 8 18 18 8 18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                  ></polyline>
+                  <line
+                    x1="18"
+                    y1="18"
+                    x2="5"
+                    y2="5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                  ></line>
+                </svg>
+              </div>
+              <div class="btn-bubble-arrow__content">
+                <span class="btn-bubble-arrow__content-text"
+                  >Request for demo</span
+                >
+              </div>
+              <div
+                class="btn-bubble-arrow__arrow is--duplicate"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="100%"
+                  class="btn-bubble-arrow__arrow-svg"
+                >
+                  <polyline
+                    points="18 8 18 18 8 18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                  ></polyline>
+                  <line
+                    x1="18"
+                    y1="18"
+                    x2="5"
+                    y2="5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                  ></line>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="hero hero--legency">
+        <div class="hero-bg" aria-hidden="true">
+          <div class="hero-glow"></div>
+          <div class="hero-grid"></div>
+        </div>
+        <div class="hero__stage" data-live-dither-host>
+          <div class="hero__art" aria-hidden="true">
+            <div
+              class="hero__planet"
+              data-live-dither="./assets/klearnow/home-earth.webp"
+              data-live-dither-theme="light"
+            ></div>
+          </div>
+          <div class="container hero__inner">
+            <p class="hero__eyebrow">
+              <span class="hero__eyebrow-rule" aria-hidden="true"></span>
+              AI-native trade intelligence
+            </p>
+            <h1 class="hero__title">
+              Trade rules<br />
+              change weekly.<br />
+              <span class="hero__title-accent">Your data already knows.</span>
+            </h1>
+            <p class="hero__sub">
+              KlearNow turns every filing into structured intelligence — then
+              clears customs autonomously. Your team touches only the
+              exceptions.
+            </p>
+          </div>
+        </div>
+        <div class="hero__bottom">
+          <div class="container hero__bottom-inner">
+            <div class="hero__proof">
+              <p class="hero__proof-label">
+                What it was worth to importers last year
+              </p>
+              <ul class="hero__proof-list">
+                <li class="hero__proof-item">
+                  <p class="hero__proof-stat">$51.7M</p>
+                  <p class="hero__proof-desc">Sec 301 tariffs avoided</p>
+                </li>
+                <li class="hero__proof-item">
+                  <p class="hero__proof-stat">$49.5M</p>
+                  <p class="hero__proof-desc">Sec 232 tariffs avoided</p>
+                </li>
+                <li class="hero__proof-item">
+                  <p class="hero__proof-stat">$1.331B+</p>
+                  <p class="hero__proof-desc">IEEPA tariffs avoided</p>
+                </li>
+              </ul>
+              <div class="hero__proof-cta">
+                <a
+                  class="btn-bubble-arrow btn-bubble-arrow--blue"
+                  href="#get-in-touch"
+                >
+                  <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="100%"
+                      class="btn-bubble-arrow__arrow-svg"
+                    >
+                      <polyline
+                        points="18 8 18 18 8 18"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-miterlimit="10"
+                        stroke-width="1.5"
+                      ></polyline>
+                      <line
+                        x1="18"
+                        y1="18"
+                        x2="5"
+                        y2="5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-miterlimit="10"
+                        stroke-width="1.5"
+                      ></line>
+                    </svg>
+                  </div>
+                  <div class="btn-bubble-arrow__content">
+                    <span class="btn-bubble-arrow__content-text">Ask Klear a Question</span>
+                  </div>
+                  <div
+                    class="btn-bubble-arrow__arrow is--duplicate"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="100%"
+                      class="btn-bubble-arrow__arrow-svg"
+                    >
+                      <polyline
+                        points="18 8 18 18 8 18"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-miterlimit="10"
+                        stroke-width="1.5"
+                      ></polyline>
+                      <line
+                        x1="18"
+                        y1="18"
+                        x2="5"
+                        y2="5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-miterlimit="10"
+                        stroke-width="1.5"
+                      ></line>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="hero__clients">
+              <p class="hero__clients-heading">
+                Trusted by the teams that keep global trade moving
+              </p>
+              <ul class="hero__clients-logos">
+                <li>
+                  <img
+                    src="./assets/clients/target.svg"
+                    alt="Target"
+                    width="160"
+                    height="40"
+                    loading="lazy"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="./assets/clients/basf.svg"
+                    alt="BASF"
+                    width="160"
+                    height="40"
+                    loading="lazy"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="./assets/clients/subaru.svg"
+                    alt="Subaru"
+                    width="160"
+                    height="40"
+                    loading="lazy"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="./assets/clients/wayfair.svg"
+                    alt="Wayfair"
+                    width="160"
+                    height="40"
+                    loading="lazy"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="./assets/clients/hershey.svg"
+                    alt="Hershey"
+                    width="160"
+                    height="40"
+                    loading="lazy"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="./assets/clients/deringer.png"
+                    alt="Deringer"
+                    width="160"
+                    height="40"
+                    loading="lazy"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="./assets/clients/thyssenkrupp.svg"
+                    alt="ThyssenKrupp"
+                    width="160"
+                    height="40"
+                    loading="lazy"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="./assets/clients/panasonic.svg"
+                    alt="Panasonic"
+                    width="160"
+                    height="40"
+                    loading="lazy"
+                  />
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="container hero__platform-scale">
+            <div class="idx-stats" aria-label="The platform at scale">
+              <div class="band-scene" aria-hidden="true" data-idx-band-scene></div>
+              <div class="idx-stat">
+                <span class="idx-stat__figure">26M+</span>
+                <span class="idx-stat__label">Documents processed by AI</span>
+              </div>
+              <div class="idx-stat">
+                <span class="idx-stat__figure">&gt;98%</span>
+                <span class="idx-stat__label">Extraction accuracy</span>
+              </div>
+              <div class="idx-stat">
+                <span class="idx-stat__figure">$88.3B</span>
+                <span class="idx-stat__label">Total value processed through the platform</span>
+              </div>
+              <div class="idx-stat">
+                <span class="idx-stat__figure">80+</span>
+                <span class="idx-stat__label">Countries supported by KlearNow products</span>
+              </div>
+              <div class="idx-stat">
+                <span class="idx-stat__figure">5</span>
+                <span class="idx-stat__label">Countries with direct customs connection</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <main>
+        <section class="section tiers" id="retainers">
+          <div class="container">
+            <div class="tiers__head">
+              <span class="label">THE KLEARNOW ECOSYSTEM</span>
+              <h2
+                class="tiers__title"
+                data-tier-roll="Three layers.|One connected trade system."
+              ></h2>
+              <p class="tiers__intro">
+                KlearData powers KlearPlatform, which enables KlearServices. Each layer builds on
+                the one below &mdash; a single coherent system, not a stack of disconnected tools.
+              </p>
+            </div>
+            <div class="tiers__grid">
+              <article class="tier" data-tier-card>
+                <div class="tier__head">
+                  <span class="tier__chip">Foundation</span>
+                  <span class="tier__plus" aria-hidden="true"></span>
+                </div>
+                <h3 class="tier__title">
+                  <button type="button" class="tier__toggle" data-tier-toggle aria-expanded="true">
+                    Every filing becomes intelligence.
+                  </button>
+                </h3>
+                <div class="tier__body">
+                  <p class="tier__lead">What's included:</p>
+                  <ul class="tier__list">
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12V18c0 2.2 3.1 4 7 4s7-1.8 7-4v-6"/><path d="M5 6v6c0 2.2 3.1 4 7 4s7-1.8 7-4V6"/><ellipse cx="12" cy="6" rx="7" ry="2.5"/></svg></span
+                      >
+                      Data ingestion &amp; normalization
+                    </li>
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16V11M12 16V8M16 16v-3"/></svg></span
+                      >
+                      Tariff &amp; duty intelligence
+                    </li>
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v16H8z"/><path d="M10 8h4M10 12h4M10 16h2"/><path d="M12 2v2M12 20v2"/></svg></span
+                      >
+                      Classification &amp; trade-program data
+                    </li>
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M7 15l3-3 3 2 4-5"/></svg></span
+                      >
+                      Supplier &amp; product-level insight
+                    </li>
+                  </ul>
+                  <p class="tier__note">
+                    Fragmented customs, shipment, classification, duty, supplier and compliance data
+                    &mdash; ingested, normalized and made queryable. This is the layer nobody else
+                    has, because nobody else files.
+                  </p>
+                  <div class="tier__cta">
+                  <a class="btn-bubble-arrow btn-bubble-arrow--blue" href="#get-in-touch">
+                    <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" class="btn-bubble-arrow__arrow-svg">
+                        <polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></polyline>
+                        <line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></line>
+                      </svg>
+                    </div>
+                    <div class="btn-bubble-arrow__content">
+                      <span class="btn-bubble-arrow__content-text">Explore</span>
+                    </div>
+                    <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" class="btn-bubble-arrow__arrow-svg">
+                        <polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></polyline>
+                        <line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></line>
+                      </svg>
+                    </div>
+                  </a>
+                  </div>
+
+                </div>
+              </article>
+              <article class="tier" data-tier-card>
+                <div class="tier__head">
+                  <span class="tier__chip">Operating layer</span>
+                  <span class="tier__plus" aria-hidden="true"></span>
+                </div>
+                <h3 class="tier__title">
+                  <button type="button" class="tier__toggle" data-tier-toggle aria-expanded="true">
+                    One platform. Every import decision.
+                  </button>
+                </h3>
+                <div class="tier__body">
+                  <p class="tier__lead">Everything in Foundation, plus:</p>
+                  <ul class="tier__list">
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7Z"/></svg></span
+                      >
+                      Autonomous clearance &amp; filing
+                    </li>
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10Z"/><circle cx="12" cy="11" r="2"/><path d="M4 20c2-3 5-5 8-5s6 2 8 5"/></svg></span
+                      >
+                      Track &amp; trace + drayage
+                    </li>
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M7 16l3-5 3 3 5-7"/><circle cx="18" cy="6" r="2"/></svg></span
+                      >
+                      Exposure &amp; landed-cost analytics
+                    </li>
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3"/><path d="M6 20v-1a6 6 0 0 1 12 0v1"/><path d="M16 7l2-2M19 8l-1 1"/></svg></span
+                      >
+                      Exception-only human review
+                    </li>
+                  </ul>
+                  <p class="tier__note">
+                    Connected workflows, visibility, analytics and control across import operations
+                    &mdash; with KlearAssist reading the data and doing the work. Exceptions route
+                    to your team; everything else clears itself.
+                  </p>
+                  <div class="tier__cta">
+                  <a class="btn-bubble-arrow btn-bubble-arrow--blue" href="#get-in-touch">
+                    <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" class="btn-bubble-arrow__arrow-svg">
+                        <polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></polyline>
+                        <line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></line>
+                      </svg>
+                    </div>
+                    <div class="btn-bubble-arrow__content">
+                      <span class="btn-bubble-arrow__content-text">Explore</span>
+                    </div>
+                    <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" class="btn-bubble-arrow__arrow-svg">
+                        <polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></polyline>
+                        <line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></line>
+                      </svg>
+                    </div>
+                  </a>
+                  </div>
+
+                </div>
+              </article>
+              <article class="tier tier--dark" data-tier-card>
+                <div class="tier__video" aria-hidden="true">
+                  <canvas data-nav-dither data-dither-mode="visible" aria-hidden="true"></canvas>
+                </div>
+                <div class="tier__head">
+                  <span class="tier__chip">Execution layer</span>
+                  <span class="tier__plus" aria-hidden="true"></span>
+                </div>
+                <h3 class="tier__title">
+                  <button type="button" class="tier__toggle" data-tier-toggle aria-expanded="true">
+                    Licensed brokerage, run by the machine.
+                  </button>
+                </h3>
+                <div class="tier__body">
+                  <p class="tier__lead">Everything in the Operating layer, plus:</p>
+                  <ul class="tier__list">
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.8 4 6.1 4 9s-1.5 6.2-4 9"/><path d="M12 3c-2.5 2.8-4 6.1-4 9s1.5 6.2 4 9"/></svg></span
+                      >
+                      US &amp; global customs brokerage
+                    </li>
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7l-4-4Z"/><path d="M14 3v4h4"/><path d="M9 13h4M9 17h6"/><circle cx="15.5" cy="15.5" r="2.5"/><path d="m17.5 17.5 1.5 1.5"/></svg></span
+                      >
+                      Post-entry audit &amp; duty recovery
+                    </li>
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v6c0 5 3.5 7.7 8 8.9 4.5-1.2 8-3.9 8-8.9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></span
+                      >
+                      Managed trade compliance
+                    </li>
+                    <li>
+                      <span class="icon-chip icon-chip--bare" style="--icon-chip-size:22px" aria-hidden="true"
+                        ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h1l2-4h11l2 4h1"/><path d="M5 13v5a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-5"/><path d="M7 13V9h10v4"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></svg></span
+                      >
+                      Drayage &amp; delivery execution
+                    </li>
+                  </ul>
+                  <p class="tier__note">
+                    Technology-enabled customs, brokerage and managed trade services delivered at
+                    scale. Our own licensed team operates on the same data &mdash; which is why we
+                    can price and clear like software, not headcount.
+                  </p>
+                  <div class="tier__cta">
+                  <a class="btn-bubble-arrow btn-bubble-arrow--blue" href="#get-in-touch">
+                    <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" class="btn-bubble-arrow__arrow-svg">
+                        <polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></polyline>
+                        <line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></line>
+                      </svg>
+                    </div>
+                    <div class="btn-bubble-arrow__content">
+                      <span class="btn-bubble-arrow__content-text">Explore</span>
+                    </div>
+                    <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" class="btn-bubble-arrow__arrow-svg">
+                        <polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></polyline>
+                        <line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"></line>
+                      </svg>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="ctaband" aria-labelledby="ctaband-heading">
+          <div class="ctaband__scene" aria-hidden="true">
+            <canvas data-nav-dither data-dither-mode="visible"></canvas>
+          </div>
+          <div class="container ctaband__inner">
+            <div class="ctaband__text">
+              <span class="label label--on-dark">The Agent</span>
+              <h2
+                id="ctaband-heading"
+                class="ctaband__heading"
+                data-cta-roll="The work runs itself.|You do the judgment."
+              ></h2>
+              <p class="ctaband__body">
+                KlearAssist reads the data, applies live CBP rules and executes — clearance, audit,
+                drayage, recovery. What it can't decide alone comes back to you with context and a
+                recommendation.
+              </p>
+            </div>
+            <div class="ctaband__side">
+              <ul class="ctaband__points">
+                <li>Capture - Every document, ingested — invoices, BOLs, MAWBs, email.</li>
+                <li>Clear - Classified, validated, filed with CBP in minutes.</li>
+                <li>Exceptions - Only what needs a human reaches your team.</li>
+              </ul>
+              <div class="ctaband__actions">
+                <a class="btn-bubble-arrow btn-bubble-arrow--white" href="#get-in-touch">
+                  <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="100%"
+                      class="btn-bubble-arrow__arrow-svg"
+                    >
+                      <polyline
+                        points="18 8 18 18 8 18"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-miterlimit="10"
+                        stroke-width="1.5"
+                      ></polyline>
+                      <line
+                        x1="18"
+                        y1="18"
+                        x2="5"
+                        y2="5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-miterlimit="10"
+                        stroke-width="1.5"
+                      ></line>
+                    </svg>
+                  </div>
+                  <div class="btn-bubble-arrow__content">
+                    <span class="btn-bubble-arrow__content-text">Ask Klear</span>
+                  </div>
+                  <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="100%"
+                      class="btn-bubble-arrow__arrow-svg"
+                    >
+                      <polyline
+                        points="18 8 18 18 8 18"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-miterlimit="10"
+                        stroke-width="1.5"
+                      ></polyline>
+                      <line
+                        x1="18"
+                        y1="18"
+                        x2="5"
+                        y2="5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-miterlimit="10"
+                        stroke-width="1.5"
+                      ></line>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="container ctaband__assist">
+            <div class="assist-kn-shell" aria-labelledby="marketing-agent-greeting">
+              <div class="assist-kn-shell__frame">
+                <header
+                  class="agentic-thread__header marketing-thread__header kn-header kn-header--medium kn-header--no-divider"
+                  id="marketing-agent-thread-header"
+                >
+                  <div class="agentic-thread__header-bar">
+                    <div class="kn-header__copy agentic-thread__header-main marketing-thread__header-main">
+                      <span class="marketing-thread__mark" aria-hidden="true">
+                        <svg class="klear-assistant-mark" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true"><use href="#klear-assist-ray" /></svg>
+                      </span>
+                      <div class="marketing-thread__title-block">
+                        <p class="type-caption-sm marketing-thread__eyebrow">Klear Agent · Marketing demo</p>
+                        <h2
+                          class="type-heading-sm type-weight-medium agentic-thread__title marketing-thread__title"
+                          id="marketing-agent-thread-title"
+                        >
+                          AI trade analyst · powered by KlearData
+                        </h2>
+                      </div>
+                    </div>
+                    <div class="kn-header__trailing marketing-thread__trailing">
+                      <span class="marketing-thread__ztr kn-badge kn-badge--ztr-active" role="status" aria-label="ZTR active">
+                        <span class="marketing-thread__ztr-dot" aria-hidden="true"></span>
+                        <span class="kn-badge__label">ZTR ACTIVE</span>
+                      </span>
+                    </div>
+                  </div>
+                </header>
+                <div class="agentic-thread__main assist-kn-shell__main">
+                  <div class="agentic-thread__chat-col assist-kn-shell__chat-col">
+                    <div class="agentic-thread__pane">
+                      <svg class="visually-hidden" aria-hidden="true" focusable="false" width="0" height="0">
+                        <defs>
+                          <symbol id="klear-assist-ray" viewBox="0 0 24 24">
+                            <path
+                              fill="currentColor"
+                              d="M3 3H7.5H9.74999L12 12L14.25 3H16.5H21V7.5V9.75L12 12L21 14.25V16.5V21H16.5H14.25L12 12L9.74999 21H7.5H3V16.5V14.25L12 12L3 9.75V7.5V3Z"
+                            />
+                          </symbol>
+                        </defs>
+                      </svg>
+                      <div class="kn-agent-entry agentic-chat-empty" id="marketing-agent-entry">
+                        <div class="kn-agent-entry__main agentic-chat-empty__main">
+                          <div class="kn-agent-entry__hero agentic-home__hero">
+                            <h1
+                              class="type-display-sm type-weight-medium kn-agent-entry__greeting agentic-home__greeting"
+                              id="marketing-agent-greeting"
+                            >
+                              Ask anything about your trade data
+                            </h1>
+                          </div>
+                          <p class="type-body-md kn-agent-entry__sub agentic-home__sub" id="marketing-agent-sub">
+                            How can I help you with customs today?
+                          </p>
+                          <div
+                            class="kn-agent-entry__pills agentic-home__pills"
+                            id="marketing-agent-cards"
+                          ></div>
+                        </div>
+                      </div>
+                      <div
+                        class="agentic-thread__messages assist-kn-shell__messages"
+                        id="marketing-agent-messages"
+                        hidden
+                      ></div>
+                    </div>
+
+                    <div
+                      class="kn-chat-input kn-chat-input--lg agentic-thread__composer assist-kn-shell__composer"
+                      data-kn-component="chat-input"
+                    >
+                      <input
+                        class="visually-hidden"
+                        type="file"
+                        accept=".jpg,.jpeg,.png,.pdf,.xlsx"
+                        multiple
+                        data-chat-file-input
+                        tabindex="-1"
+                        aria-hidden="true"
+                      />
+                      <div
+                        class="agentic-home__error kn-chat-input__error"
+                        id="marketing-agent-composer-error"
+                        data-agentic-error
+                        role="alert"
+                        hidden
+                      >
+                        <p
+                          class="type-body-sm agentic-home__error-text kn-chat-input__error-text"
+                          data-agentic-error-text
+                          id="marketing-agent-composer-error-text"
+                        ></p>
+                        <button
+                          type="button"
+                          class="agentic-home__error-dismiss kn-chat-input__error-dismiss icon-btn"
+                          data-agentic-error-dismiss
+                          aria-label="Dismiss error"
+                        >
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                        </button>
+                      </div>
+                    <form
+                      class="agentic-home__composer agentic-home__composer--lg kn-chat-input__card"
+                      id="marketing-agent-form"
+                    >
+                      <div class="kn-chat-input__files-host" data-chat-files-host>
+                        <div class="kn-chat-input__files" data-chat-files></div>
+                      </div>
+                      <label class="visually-hidden" for="marketing-agent-input"
+                        >Ask Klear Agent about your entries, shipments, or compliance</label
+                      >
+                      <div class="agentic-home__field kn-chat-input__field">
+                        <textarea
+                          class="agentic-home__input kn-chat-input__control type-body-md"
+                          id="marketing-agent-input"
+                          rows="2"
+                          placeholder="Ask about HTS, tariffs, FTA, CBP regulations, or CATAIR codes…"
+                          data-placeholder-empty="Ask about HTS, tariffs, FTA, CBP regulations, or CATAIR codes…"
+                          data-placeholder-followup="Ask a follow-up…"
+                          autocomplete="off"
+                          aria-multiline="true"
+                        ></textarea>
+                        <span
+                          class="agentic-home__ghost kn-chat-input__ghost type-body-md"
+                          id="marketing-agent-ghost"
+                          data-chat-ghost
+                          aria-hidden="true"
+                        >
+                          <span class="kn-chat-input__ghost-stage">
+                            <span
+                              class="agentic-home__ghost-text kn-chat-input__ghost-text"
+                              id="marketing-agent-ghost-text"
+                              data-chat-ghost-text
+                            ></span>
+                            <span
+                              class="agentic-home__ghost-text kn-chat-input__ghost-text kn-chat-input__ghost-text--out"
+                              data-chat-ghost-out
+                              aria-hidden="true"
+                            ></span>
+                          </span>
+                        </span>
+                      </div>
+                      <div class="agentic-home__composer-bar kn-chat-input__actions">
+                        <button
+                          class="kn-link agentic-home__attach kn-chat-input__attach type-body-md"
+                          type="button"
+                          data-chat-upload
+                        >
+                          <svg class="kn-chat-input__attach-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                          Upload file
+                        </button>
+                        <button class="agentic-home__send kn-chat-input__submit" type="submit" aria-label="Submit" disabled>
+                          <svg class="kn-chat-input__icon kn-chat-input__icon--send" viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+                            <path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section bands" aria-labelledby="bands-heading">
+          <div class="container">
+            <div class="zhead">
+              <div class="bands__head">
+                <span class="bands__label">Fragmented → Connected</span>
+                <h2 id="bands-heading" class="bands__title">
+                  Manual customs is already dead. Most importers just haven&rsquo;t gotten the death
+                  certificate.
+                </h2>
+              </div>
+            </div>
+            <div class="bands__track" aria-hidden="true">
+              <div class="bands__track-line"></div>
+              <div class="bands__track-dots">
+                <span class="bands__track-dot bands__track-dot--red"></span>
+                <span class="bands__track-dot bands__track-dot--green"></span>
+              </div>
+            </div>
+            <div class="bands__grid">
+              <article class="bands__card bands__card--same-day">
+                <p class="bands__card-label">Before Klearnow</p>
+                <ul class="bands__card-list scope__checks bands__card-body">
+                  <li class="bands__check-item">
+                    <span class="bands__check-mark bands__check-mark--negative" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M8 8l8 8M16 8l-8 8"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </span>
+                    <span class="bands__check-copy">Data scattered across brokers, spreadsheets, portals &amp; email</span>
+                  </li>
+                  <li class="bands__check-item">
+                    <span class="bands__check-mark bands__check-mark--negative" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M8 8l8 8M16 8l-8 8"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </span>
+                    <span class="bands__check-copy">A person assigned to every single entry</span>
+                  </li>
+                  <li class="bands__check-item">
+                    <span class="bands__check-mark bands__check-mark--negative" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M8 8l8 8M16 8l-8 8"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </span>
+                    <span class="bands__check-copy">Compliance that reacts after the rule changed</span>
+                  </li>
+                  <li class="bands__check-item">
+                    <span class="bands__check-mark bands__check-mark--negative" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M8 8l8 8M16 8l-8 8"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </span>
+                    <span class="bands__check-copy">Duty exposure discovered in the quarterly close</span>
+                  </li>
+                  <li class="bands__check-item">
+                    <span class="bands__check-mark bands__check-mark--negative" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M8 8l8 8M16 8l-8 8"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </span>
+                    <span class="bands__check-copy">Multiple disconnected service providers</span>
+                  </li>
+                </ul>
+              </article>
+              <article class="bands__card bands__card--days">
+                <p class="bands__card-label">With Klearnow</p>
+                <ul class="bands__card-list scope__checks bands__card-body">
+                  <li class="bands__check-item">
+                    <span class="bands__check-mark bands__check-mark--positive" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M6 12.5 9.5 15.5 18 8"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    <span class="bands__check-copy">One connected source of trade intelligence</span>
+                  </li>
+                  <li class="bands__check-item">
+                    <span class="bands__check-mark bands__check-mark--positive" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M6 12.5 9.5 15.5 18 8"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    <span class="bands__check-copy">Entries that clear themselves — 92% zero-touch</span>
+                  </li>
+                  <li class="bands__check-item">
+                    <span class="bands__check-mark bands__check-mark--positive" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M6 12.5 9.5 15.5 18 8"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    <span class="bands__check-copy">Compliance monitored against rules as they change</span>
+                  </li>
+                  <li class="bands__check-item">
+                    <span class="bands__check-mark bands__check-mark--positive" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M6 12.5 9.5 15.5 18 8"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    <span class="bands__check-copy">Exposure and recovery surfaced the day it appears</span>
+                  </li>
+                  <li class="bands__check-item">
+                    <span class="bands__check-mark bands__check-mark--positive" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M6 12.5 9.5 15.5 18 8"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    <span class="bands__check-copy">One operator across data, platform and brokerage</span>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section klear-services" id="services" aria-labelledby="services-title">
+          <div class="container">
+            <header class="klear-services__head">
+              <span class="klear-services__label">FROM THE ENTRY LINE</span>
+              <h2 id="services-title" class="klear-services__title">
+                Everyone else recaps the news. We read the filing.
+              </h2>
+              <p class="klear-services__intro">
+                One post a week, one real thing the border taught us. Because we file the entries, we
+                can show what actually happened &mdash; not what a press release said would happen.
+              </p>
+            </header>
+            <div class="klear-services__grid">
+              <article class="klear-services__card">
+                <div class="klear-services__card-top">
+                  <p class="klear-services__card-eyebrow">This week at the border</p>
+                </div>
+                <h3 class="klear-services__card-title">A &ldquo;simple&rdquo; auto part became a landmine.</h3>
+                <p class="klear-services__card-desc">
+                  232 and 301 stacked on HTS 8708.29, then CBP error 794 on submission. Static rule
+                  tables never saw it coming.
+                </p>
+                <p class="klear-services__card-link">What the filing showed</p>
+                <p class="klear-services__card-sub">3 rate stacks on one line</p>
+              </article>
+              <article class="klear-services__card">
+                <div class="klear-services__card-top">
+                  <p class="klear-services__card-eyebrow">Manual Math</p>
+                </div>
+                <h3 class="klear-services__card-title">What IEEPA refunds cost you by hand.</h3>
+                <p class="klear-services__card-desc">
+                  Reconciling CAPE refunds manually versus structured entry data that already knows
+                  what&rsquo;s owed on every line.
+                </p>
+                <p class="klear-services__card-link">What the filing showed</p>
+                <p class="klear-services__card-sub">$862K sitting unclaimed</p>
+              </article>
+              <article class="klear-services__card">
+                <div class="klear-services__card-top">
+                  <p class="klear-services__card-eyebrow">Myth VS. Filing</p>
+                </div>
+                <h3 class="klear-services__card-title">Our broker&rsquo;s got compliance handled.</h3>
+                <p class="klear-services__card-desc">
+                  What the entry data says about how often manual classification drifts once tariff
+                  rules start changing weekly.
+                </p>
+                <p class="klear-services__card-link">What the filing showed</p>
+                <p class="klear-services__card-sub">Drift on 1 in 9 lines</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section rot" aria-labelledby="rot-title">
+          <div class="container">
+            <div class="rot__head">
+              <div class="rot__head-main">
+                <span class="rot__label">WHO WE SERVE</span>
+                <h2 id="rot-title" class="rot__title">
+                  Built for the teams moving world trade forwards
+                </h2>
+              </div>
+            </div>
+            <div class="rot__timeline">
+              <article class="rot__step rot__step--1">
+                <div class="rot__viz" data-stage="1" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h3 class="rot__step-title">Customs brokers</h3>
+                <p class="rot__step-text">
+                  File more entries without hiring more people. Your licensed team reviews exceptions,
+                  not everything.
+                </p>
+              </article>
+              <article class="rot__step rot__step--4">
+                <div class="rot__viz" data-stage="2" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h3 class="rot__step-title">Freight forwarders &amp; 3PLs</h3>
+                <p class="rot__step-text">
+                  Digitize clearance and drayage, and give your customers visibility you don&rsquo;t
+                  have to chase.
+                </p>
+              </article>
+              <article class="rot__step rot__step--8">
+                <div class="rot__viz" data-stage="3" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h3 class="rot__step-title">Enterprise importers</h3>
+                <p class="rot__step-text">
+                  Visibility, control and duty savings across every supplier, product, broker and trade
+                  program.
+                </p>
+              </article>
+              <article class="rot__step rot__step--12 rot__step--bad">
+                <div class="rot__viz" data-stage="4" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h3 class="rot__step-title">Finance &amp; executive</h3>
+                <p class="rot__step-text">
+                  Duty spend, tariff exposure, landed cost and recovery — in numbers your CFO can act on.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="site-footer">
+        <section class="closer" id="get-in-touch" aria-labelledby="closer-heading">
+          <div class="closer__scene" aria-hidden="true">
+            <canvas data-nav-dither data-dither-mode="visible"></canvas>
+          </div>
+          <svg class="closer__ring" viewBox="0 0 1200 1200" aria-hidden="true">
+            <g class="closer__ring-spin">
+              <defs>
+                <path
+                  id="closer-ring-path"
+                  d="M 600,600 m -520,0 a 520,520 0 1,1 1040,0 a 520,520 0 1,1 -1040,0"
+                />
+              </defs>
+              <text>
+                <textPath
+                  href="#closer-ring-path"
+                  textLength="3267"
+                  lengthAdjust="spacing"
+                >
+                  Request for Demo - Request for Demo - Request for Demo - Request for Demo - Request for Demo - Request for Demo -
+                </textPath>
+              </text>
+            </g>
+          </svg>
+          <div class="closer__content">
+            <h2 id="closer-heading" class="closer__title">
+              See What your own filings already know
+            </h2>
+            <p class="closer__copy">
+              Thirty minutes, your data, live KlearAssist. We'll show you the exposure and recovery
+              sitting in entries you've already filed.
+            </p>
+            <a class="btn-bubble-arrow btn-bubble-arrow--white" href="#get-in-touch">
+              <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="100%"
+                  class="btn-bubble-arrow__arrow-svg"
+                >
+                  <polyline
+                    points="18 8 18 18 8 18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                  ></polyline>
+                  <line
+                    x1="18"
+                    y1="18"
+                    x2="5"
+                    y2="5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                  ></line>
+                </svg>
+              </div>
+              <div class="btn-bubble-arrow__content">
+                <span class="btn-bubble-arrow__content-text">Request for Demo</span>
+              </div>
+              <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="100%"
+                  class="btn-bubble-arrow__arrow-svg"
+                >
+                  <polyline
+                    points="18 8 18 18 8 18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                  ></polyline>
+                  <line
+                    x1="18"
+                    y1="18"
+                    x2="5"
+                    y2="5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                  ></line>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      <footer class="section_footer" aria-label="Site footer">
+        <div class="padding-global">
+          <div class="footer__grid">
+            <div class="footer__brand-col">
+              <a href="/" aria-label="KlearNow home">
+                <img
+                  class="footer__logo"
+                  src="./assets/klearnow-logo-horizontal-primary.svg"
+                  alt="KlearNow"
+                  width="500"
+                  height="108"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <address class="footer__address">
+                <span class="footer__address-line">999 W Taylor Street, Suite A,</span>
+                <span class="footer__address-line">San Jose, CA 95126, USA</span>
+              </address>
+              <ul class="footer__social">
+                <li>
+                  <a href="#" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path
+                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.56V9h3.554v11.452z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <nav class="footer__col" aria-label="Resources">
+              <h2 class="footer__col-title">Resources</h2>
+              <ul class="footer__links">
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Videos</a></li>
+                <li><a href="#">Webinars</a></li>
+                <li><a href="#">Case studies</a></li>
+              </ul>
+            </nav>
+            <nav class="footer__col" aria-label="Our Products">
+              <h2 class="footer__col-title">Our Products</h2>
+              <ul class="footer__links">
+                <li><a href="#">KlearData</a></li>
+                <li><a href="#">KlearHub</a></li>
+                <li><a href="#">Managed Trade</a></li>
+              </ul>
+            </nav>
+            <nav class="footer__col" aria-label="Company">
+              <h2 class="footer__col-title">Company</h2>
+              <ul class="footer__links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Customs Brokers</a></li>
+                <li><a href="#">Technology Partners</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="footer__container-bottom">
+          <div class="padding-global footer__bottom-inner">
+            <div class="footer__bottom-bar">
+              <p class="footer__copy">&copy; KlearNow 2026. All Rights Reserved.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      </div>
+    </div>
+    <script type="module" src="./transition.js"></script>
+    <script type="module" src="./header.js"></script>
+    <script type="module" src="./tiers.js"></script>
+    <script type="module" src="./ctaband.js"></script>
+    <script src="./vendor/marketing-composer-files.js"></script>
+    <script src="./vendor/kn-next-actions.js"></script>
+    <script src="./vendor/klear-agent-ghost-autocomplete.js"></script>
+    <script type="module" src="./assist-panel.js"></script>
+    <script type="module" src="./live-dither.js"></script>
+    <script type="module" src="./idx-band-scene.js"></script>
+  </body>
+</html>

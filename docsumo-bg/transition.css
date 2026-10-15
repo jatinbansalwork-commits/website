@@ -1,0 +1,40 @@
+/* Legency-style page transition (grid dissolve) — KlearNow primary */
+
+.transition {
+  z-index: 100;
+  display: grid;
+  grid-template-columns: repeat(40, 1fr);
+  position: fixed;
+  inset: 0;
+  background: var(--primary, #003f5b);
+  pointer-events: none;
+}
+
+.transition-block {
+  aspect-ratio: 1;
+  width: 100%;
+  background: var(--primary, #003f5b);
+  opacity: 1;
+}
+
+html.is-transitioning {
+  overflow: hidden;
+}
+
+@media (width <= 767px) {
+  .transition {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (width <= 479px) {
+  .transition {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transition {
+    display: none !important;
+  }
+}

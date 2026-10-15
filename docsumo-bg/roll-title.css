@@ -1,0 +1,51 @@
+/* Legency roll-in section headings (shared) */
+
+.roll-title .roll-line {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  line-height: 1.8;
+  margin-bottom: -0.65em;
+  text-align: start;
+}
+
+.roll-title .roll-letter {
+  position: relative;
+  display: inline-block;
+  line-height: 1.8;
+}
+
+.roll-title .roll-char {
+  position: relative;
+  display: inline-block;
+  line-height: 1.8;
+}
+
+.roll-title .roll-char--twin {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+}
+
+.roll-title.is-rolled .roll-char {
+  transition: transform 0.65s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+.roll-title.is-rolled .roll-letter:nth-child(odd) .roll-char:not(.roll-char--twin) {
+  transform: translateY(100%);
+}
+
+.roll-title.is-rolled .roll-letter:nth-child(odd) .roll-char--twin {
+  transform: translateY(100%);
+}
+
+.tiers__title.roll-title .roll-line {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roll-title .roll-char,
+  .roll-title .roll-char--twin {
+    transform: none !important;
+  }
+}

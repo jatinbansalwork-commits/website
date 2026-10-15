@@ -1,0 +1,186 @@
+/* Legency Media — ctaband CTA strip */
+
+.ctaband {
+  position: relative;
+  overflow: clip;
+  padding-top: clamp(4rem, 8vw, 8rem);
+  padding-bottom: clamp(4rem, 8vw, 8rem);
+  background: var(--klear-book-bg, #060415);
+  color: var(--header-white, #fff);
+  font-family: var(--t-font-body, "PP Frama Text", "Helvetica Neue", Arial, sans-serif);
+  letter-spacing: -0.02em;
+}
+
+.ctaband__scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Match Execution layer tier — book wash over dither */
+.ctaband__scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--klear-book-bg, #060415);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ctaband__scene canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.ctaband__scene canvas.is-live {
+  opacity: 0.34;
+}
+
+.ctaband__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 4rem;
+  align-items: start;
+}
+
+.ctaband .label.label--on-dark {
+  color: var(--header-white, #fff);
+  opacity: 0.85;
+  font-family: var(--t-font-title, "PP Frama", "Helvetica Neue", Arial, sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.ctaband__heading {
+  max-width: 18ch;
+  margin: 0.75rem 0 1.5rem;
+  font-family: var(--t-font-title, "PP Frama", "Helvetica Neue", Arial, sans-serif);
+  font-size: clamp(2.25rem, 3.76vw, 4.0625rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.ctaband__heading .roll-line {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  line-height: 1.8;
+  margin-bottom: -0.65em;
+  text-align: start;
+}
+
+.ctaband__heading .roll-letter {
+  position: relative;
+  display: inline-block;
+  line-height: 1.8;
+}
+
+.ctaband__heading .roll-char {
+  position: relative;
+  display: inline-block;
+  line-height: 1.8;
+}
+
+.ctaband__heading .roll-char--twin {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+}
+
+.ctaband__heading.is-rolled .roll-char {
+  transition: transform 0.65s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+.ctaband__heading.is-rolled .roll-letter:nth-child(odd) .roll-char:not(.roll-char--twin) {
+  transform: translateY(100%);
+}
+
+.ctaband__heading.is-rolled .roll-letter:nth-child(odd) .roll-char--twin {
+  transform: translateY(100%);
+}
+
+.ctaband__body {
+  max-width: 48ch;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  opacity: 0.85;
+}
+
+.ctaband__points {
+  display: grid;
+  gap: 1rem;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.ctaband__points li {
+  position: relative;
+  max-width: 46ch;
+  padding-left: 1.7em;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.ctaband__points li::before {
+  content: "";
+  position: absolute;
+  top: 0.42em;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: #9bff60;
+}
+
+.ctaband__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ctaband__quiet {
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgb(255 255 255 / 40%);
+  font-size: 1rem;
+  opacity: 0.8;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.25s;
+}
+
+.ctaband__quiet:hover,
+.ctaband__quiet:focus-visible {
+  opacity: 1;
+}
+
+@media (width <= 900px) {
+  .ctaband__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaband__heading .roll-char,
+  .ctaband__heading .roll-char--twin {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .ctaband__quiet {
+    transition: none;
+  }
+}

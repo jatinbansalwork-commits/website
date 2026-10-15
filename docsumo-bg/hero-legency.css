@@ -1,0 +1,191 @@
+/* Legency homepage hero stage (adapted) */
+
+.hero.hero--legency {
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero.hero--legency .hero-bg {
+  z-index: 0;
+}
+
+.hero__stage {
+  position: relative;
+  isolation: isolate;
+  display: flow-root;
+}
+
+.hero__art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  --planet-fade-start: 18%;
+  --planet-fade-end: 88%;
+  mask-image: linear-gradient(
+    110deg,
+    transparent var(--planet-fade-start),
+    #000 var(--planet-fade-end)
+  );
+  -webkit-mask-image: linear-gradient(
+    110deg,
+    transparent var(--planet-fade-start),
+    #000 var(--planet-fade-end)
+  );
+}
+
+.hero__planet {
+  --planet-scale: 1.3;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  width: calc(76% * var(--planet-scale));
+  height: calc(100% * var(--planet-scale));
+  transform: translate(-50%, -50%);
+  background: var(--bg) url("./assets/klearnow/home-earth-poster.webp") center /
+    cover no-repeat;
+  overflow: hidden;
+}
+
+.hero__planet .live-dither__canvas {
+  opacity: 0;
+  pointer-events: none;
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s;
+}
+
+.hero__planet .live-dither__canvas.is-live {
+  opacity: 1;
+}
+
+.hero__planet.is-live {
+  background-image: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--header-max-w, 1728px);
+  padding-inline: var(--header-pad-x, clamp(20px, 2.9vw, 50px));
+  margin-inline: auto;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-top: clamp(140px, 12vw, 167px);
+  padding-bottom: clamp(72px, 9vw, 130px);
+}
+
+@media (width >= 901px) {
+  .hero__inner {
+    min-height: clamp(681px, 65vh, 820px);
+  }
+}
+
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0 0 1.25rem;
+  font-family: var(--header-font-body);
+  font-size: clamp(0.6875rem, 0.78vw, 0.8125rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--brand, #003f5b);
+}
+
+.hero__eyebrow-rule {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.85;
+}
+
+.hero__title {
+  margin: 0;
+  max-width: 24ch;
+  font-family: var(--header-font-body);
+  font-size: clamp(2.9rem, 5.05vw, 5.44rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.hero__title-accent {
+  color: var(--brand, #003f5b);
+}
+
+.hero__sub {
+  max-width: 46ch;
+  margin: 1.5rem 0 0;
+  font-family: var(--header-font-body);
+  font-size: clamp(1.05rem, 1.22vw, 1.3125rem);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--ink-2);
+}
+
+.hero__sub a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hero__sub a:hover {
+  color: var(--brand, #003f5b);
+}
+
+@media (width >= 901px) and (width <= 1200px) {
+  .hero__art {
+    --planet-fade-start: 28%;
+    --planet-fade-end: 92%;
+  }
+}
+
+@media (width >= 901px) and (width <= 1000px) {
+  .hero__art {
+    --planet-fade-start: 36%;
+    --planet-fade-end: 94%;
+  }
+}
+
+@media (width <= 900px) {
+  .hero__stage {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__art {
+    position: relative;
+    flex: 0 0 auto;
+    order: 1;
+    width: 100%;
+    height: clamp(230px, 37vw, 380px);
+    --planet-fade-start: 0%;
+    --planet-fade-end: 58%;
+  }
+
+  .hero__planet {
+    left: 50%;
+    width: calc(100% * var(--planet-scale));
+  }
+
+  .hero__sub {
+    margin-bottom: 2.5rem;
+  }
+
+  .hero__title {
+    max-width: none;
+  }
+}
+

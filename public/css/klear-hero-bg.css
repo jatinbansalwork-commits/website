@@ -1,0 +1,51 @@
+/* marketing-site/background.css — homepage hero wash only */
+
+.mirrored-root section.hero.hero--home {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  background: var(--bg, #fafaf7);
+}
+
+.mirrored-root section.hero.hero--home .hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mirrored-root section.hero.hero--home .hero-glow {
+  position: absolute;
+  inset: -40px;
+  background:
+    radial-gradient(
+      40% 50% at 18% 18%,
+      color-mix(in srgb, var(--brand) 16%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      30% 40% at 70% 80%,
+      color-mix(in srgb, var(--brand-2) 12%, transparent),
+      transparent 70%
+    );
+}
+
+.mirrored-root section.hero.hero--home .hero-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background-image: radial-gradient(var(--line-2) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(60% 70% at 20% 30%, #000, transparent 75%);
+  -webkit-mask-image: radial-gradient(60% 70% at 20% 30%, #000, transparent 75%);
+}
+
+.mirrored-root section.hero.hero--home .hero-grid {
+  opacity: 0;
+}
+
+.mirrored-root section.hero.hero--home .hero__stage {
+  position: relative;
+  z-index: 1;
+}

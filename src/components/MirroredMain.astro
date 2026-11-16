@@ -1,0 +1,959 @@
+---
+import type { MirrorManifest } from '../lib/mirror-types';
+import {
+  isKlearSvcHeroEarthMirror,
+  isKlearProductOrOperationMirror,
+  isKlearOperationMirror,
+} from '../data/klear-nav-urls';
+import { stripLegencyReferences } from '../lib/brand';
+import { stripPartnerBadges } from '../lib/strip-partner-badges';
+import {
+  patchCaseStudyGalleryTrimExtraCards,
+  patchCaseStudyGalleryFilters,
+  patchCaseStudyGalleryHeroLabel,
+  patchCaseStudyGalleryHeroTitle,
+  patchCaseStudyGalleryRemoveCardIdentity,
+  patchCaseStudyGalleryRemoveCardStatsAndStatus,
+  patchCaseStudyGalleryCardTags,
+  patchCaseStudyGalleryCardTitles,
+  patchCaseStudyGalleryCardSummaries,
+  patchCaseStudyVisualPlaceholder,
+  patchCaseStudyDetailRemoveHeroFigcaption,
+  patchCaseStudyDetailCoverageTag,
+  patchCaseStudyDetailHeroTitle,
+  patchCaseStudyDetailRemoveHeroStats,
+  patchCaseStudyDetailRemoveSideCardTop,
+  patchCaseStudyDetailSideCardText,
+  patchCaseStudyDetailChallengeBody,
+  patchCaseStudyDetailRemoveChallengeTitle,
+  patchCaseStudyDetailRemoveSolutionTitle,
+  patchCaseStudyDetailSolutionSection,
+  patchCaseStudyDetailAppendSolutionCards,
+  patchCaseStudyDetailRemoveOutcomeSection,
+  patchCaseStudyGalleryCardCta,
+  patchCaseStudyGalleryProjectCount,
+} from '../lib/case-studies-gallery';
+import {
+  patchCaseStudyDetailToBlogLayout,
+  patchCaseStudyIndexToBlogLayout,
+} from '../lib/case-study-blog-layout';
+import {
+  patchHeroEarthDither,
+  patchAboutHeroEarthDither,
+  patchAboutHeroTitle,
+  removeAboutHeroSub,
+  removeAboutHeroLabel,
+  removeAboutHeroCta,
+  patchAboutCredsList,
+  hideAboutCredsIntro,
+  swapAboutCredsColumns,
+  patchAboutSeparatesStory,
+  patchAboutBlogteaserTitle,
+  patchAboutBlogteaserYoutube,
+  removeAboutQuoteSection,
+  patchAboutLeadershipSection,
+  moveAboutBlogteaserAfterSeparates,
+  insertCareersLeaksBeforeJoin,
+  patchTierDarkDither,
+  replaceQuoteSliderWithAgent,
+  insertTurnaroundBandsAfterQuote,
+  insertAstroServicesAfterBands,
+  insertRotSectionAfterEntryLine,
+  removeGreviewsSection,
+  removeCasesSection,
+  removeTeamSection,
+  collapseSeparatesToSingleStep,
+  patchSeparatesDemoBlurbTwoLines,
+  removeBlogteaserSection,
+  patchKlearSvcHeroEarth,
+  patchKlearSvcHeroCta,
+  removeKlearDataSvcHeroLabel,
+  patchKlearDataSvcHeroTitle,
+  removeCustomBrokersSvcHeroLabel,
+  patchCustomBrokersSvcHeroTitle,
+  patchCustomBrokersSvcHeroCta,
+  patchCustomBrokersSvcHeroSub,
+  insertCustomBrokersScopeAfterHero,
+  insertTradeComplianceScopeAfterHero,
+  patchTradeComplianceSvcHeroTitle,
+  patchTradeComplianceSvcHeroSub,
+  patchCustomBrokersScopeHowItWorksBand,
+  patchTradeComplianceScopeHowItWorksBand,
+  removeTradeComplianceFoundationLabel,
+  patchTradeComplianceFoundationHeading,
+  removeTradeComplianceFoundationMachineReadabilityCard,
+  patchTradeComplianceFoundationCards,
+  insertTradeComplianceLeaksAfterFoundation,
+  insertTradeComplianceDpAltBeforeLeaks,
+  removeTradeComplianceDpAltSub,
+  patchTradeComplianceDpAltHeading,
+  patchTradeComplianceDpAltCards,
+  removeTradeComplianceDpAltCardBodies,
+  patchTradeComplianceLeaksHead,
+  patchTradeComplianceLeaksSteps,
+  removeTradeComplianceLeaksExtraSteps,
+  removeTradeComplianceRotSection,
+  insertTradeComplianceVsAfterFoundation,
+  patchTradeComplianceVsCards,
+  patchTradeComplianceVsIcons,
+  patchCustomBrokersFoundationHeading,
+  patchCustomBrokersRegressHeading,
+  removeCustomBrokersRegressLabel,
+  removeCustomBrokersRegressFoot,
+  removeCustomBrokersRegressThirdPartyCard,
+  removeCustomBrokersFoundationLabel,
+  removeCustomBrokersNotdoLabel,
+  patchCustomBrokersNotdoBand,
+  removeCustomBrokersNotdoFourthCard,
+  patchCustomBrokersFoundationCards,
+  patchCustomBrokersFoundationCardIcons,
+  insertCustomBrokersVsAfterFoundation,
+  patchCustomBrokersVsCards,
+  patchCustomBrokersVsIcons,
+  removeCustomBrokersLegencyVsBand,
+  removeCustomBrokersQsetSections,
+  removeCustomBrokersLegencySplitStabilitySections,
+  removeCustomBrokersEvoSections,
+  patchFreightForwardersSvcHeroTitle,
+  patchFreightForwardersSvcHeroCta,
+  patchFreightForwardersSvcHeroSub,
+  replaceSelfFilersAstroHeroWithOperationSvcHero,
+  patchPrivacyPolicyContent,
+  patchGetInTouchEnquiryHeading,
+  patchGetInTouchEnquiryFormHeading,
+  patchGetInTouchEnquirySummary,
+  removeGetInTouchEnquiryProof,
+  removeGetInTouchEnquiryCall,
+  insertGetInTouchEnquiryChannels,
+  patchGetInTouchEnquiryContinueLabel,
+  removeGetInTouchEnquiryStepCount,
+  removeGetInTouchEnquirySteps,
+  patchGetInTouchEnquiryConsentLabel,
+  insertGetInTouchEnquiryExtraDetailsFields,
+  patchSelfFilersSvcHeroTitle,
+  patchSelfFilersSvcHeroSub,
+  patchSelfFilersSvcHeroCta,
+  insertSelfFilersScopeAfterHero,
+  patchSelfFilersScopeHowItWorksBand,
+  insertSelfFilersFoundationAfterHero,
+  removeSelfFilersFoundationEfficiencyCard,
+  patchSelfFilersFoundationHeading,
+  patchSelfFilersFoundationCards,
+  patchSelfFilersFoundationCardIcons,
+  insertSelfFilersVsAfterFoundation,
+  patchSelfFilersVsCards,
+  patchSelfFilersVsIcons,
+  insertSelfFilersIdealImportersDpAltAfterVs,
+  insertSelfFilersLeaksAfterIdealImporters,
+  insertSelfFilersRegressAfterIdealImporters,
+  removeSelfFilersAstroCloseSection,
+  removeSelfFilersAstroFaqSection,
+  removeSelfFilersAstroApplicationsSection,
+  removeSelfFilersAstroProcessSection,
+  removeSelfFilersAstroWebsitesSection,
+  removeSelfFilersAstroVisibilitySection,
+  removeSelfFilersAstroServicesSection,
+  patchSelfFilersAstroDitherLogos,
+  patchSelfFilersLegencyBrandAssets,
+  removeFreightForwardersAiVisibilityBrief,
+  removeFreightForwardersWebflowAeoBrief,
+  removeFreightForwardersEvoSection,
+  removeFreightForwardersTwoSurfacesDpSection,
+  removeFreightForwardersClosingDpSection,
+  insertFreightForwardersLeaksBeforeCaseband,
+  insertFreightForwardersHomeServicesRepeatBeforeLeaks,
+  patchFreightForwardersHomeServicesRepeatTitle,
+  patchFreightForwardersHomeServicesRepeatSub,
+  patchFreightForwardersHomeServicesRepeatCards,
+  patchFreightForwardersHomeServicesRepeatCardIcons,
+  removeFreightForwardersHomeServicesRepeat2Section,
+  patchFreightForwardersLeaksHead,
+  patchFreightForwardersLeaksSteps,
+  removeFreightForwardersLeaksExtraSteps,
+  removeFreightForwardersFoundationLabel,
+  patchFreightForwardersFoundationHeading,
+  patchFreightForwardersFoundationCard1Title,
+  patchFreightForwardersFoundationCard1Body,
+  patchFreightForwardersFoundationCard2Title,
+  patchFreightForwardersFoundationCard2Body,
+  patchFreightForwardersFoundationCard3Title,
+  patchFreightForwardersFoundationCard3Body,
+  patchFreightForwardersFoundationCard4Title,
+  patchFreightForwardersFoundationCard4Body,
+  patchFreightForwardersFoundationCardIcons,
+  duplicateFreightForwardersFoundationBeforeDpAlt,
+  patchFreightForwardersFoundation2Heading,
+  patchFreightForwardersFoundation2Card1Title,
+  patchFreightForwardersFoundation2CardCopy,
+  insertFreightForwardersRotAfterFoundation,
+  insertFreightForwardersVsAfterRot,
+  patchFreightForwardersVsCards,
+  patchFreightForwardersVsIcons,
+  patchFreightForwardersRotHeading,
+  removeFreightForwardersRotIntro,
+  patchFreightForwardersRotSteps,
+  patchFreightForwardersDpAltHeading,
+  patchFreightForwardersDpAltFoot,
+  patchFreightForwardersDpAltCards,
+  swapFreightForwardersDpAltFootAndCards,
+  nestFreightForwardersDpAltFootInHead,
+  swapFreightForwardersDpAltAndHomeServicesRepeat,
+  patchKlearHubSvcHeroLabel,
+  patchKlearHubSvcHeroTitle,
+  patchKlearHubSvcHeroSub,
+  patchKlearHubSvcHeroCta,
+  patchManagedTradeSvcHeroLabel,
+  patchManagedTradeSvcHeroTitle,
+  patchManagedTradeSvcHeroSub,
+  removeManagedTradeMigrationPlanningBrief,
+  removeManagedTradeEvoSection,
+  removeManagedTradeFaqSection,
+  removeManagedTradeTradeComparisonSection,
+  removeManagedTradeMigrationTrafficRiskSection,
+  patchManagedTradeMigrationContentDpHeading,
+  patchManagedTradeMigrationContentDpSub,
+  removeManagedTradeMigrationContentLabel,
+  patchManagedTradeMigrationContentCard1Title,
+  patchManagedTradeMigrationContentCard1Body,
+  patchManagedTradeMigrationContentCard2Body,
+  patchManagedTradeMigrationContentCard3Body,
+  patchManagedTradeMigrationContentCard2Title,
+  patchManagedTradeMigrationContentCard3Title,
+  patchManagedTradeMigrationContentCardsThreeColumn,
+  insertManagedTradeHomeServicesAfterMigration,
+  patchManagedTradeHomeServicesLabel,
+  patchManagedTradeHomeServicesTitle,
+  patchManagedTradeHomeServicesSub,
+  removeManagedTradeHomeServicesExtraCards,
+  insertKlearHubRotSectionAfterHomeServices,
+  insertKlearHubScopeSectionAfterRot,
+  removeManagedTradeHomeServicesRepeatLabel,
+  patchManagedTradeHomeServicesRepeatTitle,
+  removeManagedTradeHomeServicesRepeatSub,
+  removeManagedTradeHomeServicesRepeatExtraCards,
+  patchManagedTradeHomeServicesRepeatCard1Title,
+  patchManagedTradeHomeServicesRepeatCard1Body,
+  patchManagedTradeHomeServicesRepeatCard2Title,
+  patchManagedTradeHomeServicesRepeatCard2Body,
+  patchManagedTradeHomeServicesRepeatCard3Title,
+  patchManagedTradeHomeServicesRepeatCard3Body,
+  patchManagedTradeHomeServicesRepeatCardIcons,
+  patchManagedTradeRotHeading,
+  patchManagedTradeRotStep1Body,
+  patchManagedTradeRotStep1Label,
+  patchManagedTradeRotStep2Label,
+  patchManagedTradeRotStep2Body,
+  patchManagedTradeRotStep3Label,
+  patchManagedTradeRotStep4Label,
+  patchManagedTradeRotStep4Body,
+  patchManagedTradeScopeFeeStep1,
+  patchManagedTradeScopeFeeStep2,
+  patchManagedTradeScopeFeeStep3,
+  removeManagedTradeRotIntro,
+  patchManagedTradeHomeServicesCard1Title,
+  patchManagedTradeHomeServicesCard1Label,
+  patchManagedTradeHomeServicesCard1Body,
+  patchManagedTradeHomeServicesCard2Title,
+  patchManagedTradeHomeServicesCard2Body,
+  patchManagedTradeHomeServicesCard2Label,
+  patchManagedTradeHomeServicesCard3Title,
+  patchManagedTradeHomeServicesCard3Body,
+  patchManagedTradeHomeServicesCard3Label,
+  patchManagedTradeHomeServicesCard4Title,
+  patchManagedTradeHomeServicesCard4Body,
+  patchManagedTradeHomeServicesCard4Label,
+  patchManagedTradeHomeServicesCard5Title,
+  patchManagedTradeHomeServicesCard5Body,
+  patchManagedTradeHomeServicesCard5Label,
+  patchManagedTradeHomeServicesCard6Label,
+  patchManagedTradeHomeServicesCard6Title,
+  patchManagedTradeHomeServicesCard6Body,
+  patchManagedTradeHomeServicesCardIcons,
+  patchManagedTradeFoundationLabel,
+  patchManagedTradeFoundationHeading,
+  patchManagedTradeFoundationCard1Title,
+  patchManagedTradeFoundationCard1Body,
+  patchManagedTradeFoundationCard2Title,
+  patchManagedTradeFoundationCard2Body,
+  patchManagedTradeFoundationCard3Title,
+  patchManagedTradeFoundationCard3Body,
+  patchManagedTradeFoundationCardIcons,
+  applyKlearProductClosingStack,
+  removeKlearHubFoundationNamedTeamCard,
+  removeKlearDataSvcHeroProof,
+  patchKlearDataSvcHeroSub,
+  patchKlearDataSvcHeroCta,
+  removeKlearDataEvoSection,
+  removeKlearDataEnterpriseDpSection,
+  patchKlearDataDpBudgetLabel,
+  removeKlearDataDpFoot,
+  removeKlearDataDpBudgetCard3,
+  replaceKlearDataDpBudgetCardsWithServiceChoices,
+  insertKlearDataFeeBeforeDpAlt,
+  removeKlearDataDpAltSection,
+  patchKlearDataFoundationLabel,
+  patchKlearDataFoundationHeading,
+  patchKlearDataFoundationCard1Title,
+  patchKlearDataFoundationCard1Body,
+  patchKlearDataFoundationCard2Title,
+  patchKlearDataFoundationCard2Body,
+  patchKlearDataFoundationCard3Title,
+  patchKlearDataFoundationCard3Body,
+  patchKlearDataFoundationCardIcons,
+  insertKlearHubLeaksAfterOperatingProblem,
+  removeKlearHubLeaksStep6,
+  removeKlearHubLeaksLabel,
+  removeKlearHubLeaksSub,
+  patchKlearHubLeaksHeading,
+  patchKlearHubLeaksStep1,
+  patchKlearHubLeaksStep2,
+  patchKlearHubLeaksStep3,
+  patchKlearHubLeaksStep4,
+  patchKlearHubLeaksStep5,
+  patchKlearHubDpHead,
+  patchKlearDataCasebandHeading,
+  patchKlearDataCasebandText,
+  removeKlearDataCasebandChip,
+  removeKlearDataFaqSection,
+  removeKlearDataCtabandSection,
+  removeKlearHubBuildSection,
+  removeKlearHubShapeSection,
+  removeKlearHubTurnaroundBandsSection,
+  removeKlearHubScopeGrid,
+  removeKlearHubScopeZhead,
+  patchKlearHubScopeFeeHeading,
+  removeKlearHubScopeFeeTiers,
+  removeKlearHubScopeFeeStep4,
+  patchKlearHubScopeFeeStep1,
+  patchKlearHubScopeFeeStep2,
+  patchKlearHubScopeFeeStep3,
+  duplicateKlearHubHomeServicesAfterScope,
+  patchKlearHubHomeServicesRepeatLabel,
+  patchKlearHubHomeServicesRepeatTitle,
+  removeKlearHubHomeServicesRepeatSub,
+  removeKlearHubHomeServicesRepeatExtraCards,
+  patchKlearHubHomeServicesRepeatCard1Title,
+  patchKlearHubHomeServicesRepeatCard1Body,
+  patchKlearHubHomeServicesRepeatCard2Title,
+  patchKlearHubHomeServicesRepeatCard2Body,
+  patchKlearHubHomeServicesRepeatCard3Title,
+  patchKlearHubHomeServicesRepeatCard3Body,
+  removeKlearHubHomeServicesRepeatDividers,
+  removeKlearHubHomeServicesRepeatCardLabels,
+  patchKlearHubHomeServicesRepeatCardIcons,
+  removeKlearHubRotFixStrip,
+  removeKlearHubRotLabel,
+  patchKlearHubRotHeading,
+  patchKlearHubRotIntro,
+  removeKlearHubRotPxGrids,
+  patchKlearHubRotStep1Label,
+  patchKlearHubRotStep2Label,
+  patchKlearHubRotStep3Label,
+  patchKlearHubRotStep4Label,
+  patchKlearHubRotStep1Body,
+  patchKlearHubRotStep2Body,
+  patchKlearHubRotStep3Body,
+  removeKlearHubBlueflameCasebandSection,
+  insertKlearHubKlearDataFoundationAfterHero,
+  removeKlearHubLegencyFoundationSection,
+  insertKlearHubHomeServicesAfterFoundation,
+  patchKlearHubHomeServicesLabel,
+  patchKlearHubHomeServicesTitle,
+  patchKlearHubHomeServicesSub,
+  appendKlearHubHomeServicesCards,
+  patchKlearHubHomeServicesExtraCards,
+  patchKlearHubHomeServicesCard1Label,
+  patchKlearHubHomeServicesCard2Title,
+  patchKlearHubHomeServicesCard2Body,
+  patchKlearHubHomeServicesCard2Label,
+  patchKlearHubHomeServicesCard3Title,
+  patchKlearHubHomeServicesCard3Body,
+  patchKlearHubHomeServicesCard3Label,
+  patchKlearHubHomeServicesCard4Title,
+  patchKlearHubHomeServicesCard4Body,
+  patchKlearHubHomeServicesCard4Label,
+  patchKlearHubHomeServicesCard5Title,
+  patchKlearHubHomeServicesCard5Body,
+  patchKlearHubHomeServicesCard5Label,
+  patchKlearHubHomeServicesCard6Title,
+  patchKlearHubHomeServicesCard6Body,
+  patchKlearHubHomeServicesCard6Label,
+  patchKlearHubHomeServicesCardIcons,
+  patchKlearHubHomeServicesCard1Title,
+  patchKlearHubHomeServicesCard1Body,
+  patchKlearHubFoundationLabel,
+  patchKlearHubFoundationHeading,
+  patchKlearHubFoundationSub,
+  patchKlearHubFoundationCard1Title,
+  patchKlearHubFoundationCard2Title,
+  patchKlearHubFoundationCard3Title,
+  patchKlearHubFoundationCard1Body,
+  patchKlearHubFoundationCard2Body,
+  patchKlearHubFoundationCard3Body,
+  patchKlearHubFoundationCardIcons,
+  patchKlearHubFoundationBareIconChips,
+  insertKlearDataLeaksAfterFoundation,
+  insertKlearDataEntryLineAfterLeaks,
+  insertKlearDataVsAfterEntryLine,
+  duplicateKlearDataFoundationBeforeFeeBand,
+  patchKlearDataFoundation2Heading,
+  removeKlearDataFoundation2Label,
+  patchKlearDataFoundation2Sub,
+  patchKlearDataFoundation2Card1Title,
+  patchKlearDataFoundation2Card1Body,
+  patchKlearDataFoundation2Card2Title,
+  patchKlearDataFoundation2Card2Body,
+  patchKlearDataFoundation2Card3Title,
+  patchKlearDataFoundation2Card3Body,
+} from '../lib/marketing-agent-home';
+
+interface Props {
+  manifest: MirrorManifest;
+  pagePath?: string;
+}
+
+const { manifest, pagePath } = Astro.props;
+const usesKlearSvcEarth = isKlearSvcHeroEarthMirror(manifest.slug);
+let mainHtml = stripPartnerBadges(manifest.mainHtml);
+if (manifest.slug === 'case-studies') {
+  mainHtml = patchCaseStudyGalleryTrimExtraCards(mainHtml);
+  mainHtml = patchCaseStudyGalleryHeroLabel(mainHtml);
+  mainHtml = patchCaseStudyGalleryHeroTitle(mainHtml);
+  mainHtml = patchCaseStudyGalleryFilters(mainHtml);
+  mainHtml = patchCaseStudyGalleryRemoveCardIdentity(mainHtml);
+  mainHtml = patchCaseStudyGalleryRemoveCardStatsAndStatus(mainHtml);
+  mainHtml = patchCaseStudyGalleryCardTags(mainHtml);
+  mainHtml = patchCaseStudyGalleryCardTitles(mainHtml);
+  mainHtml = patchCaseStudyGalleryCardSummaries(mainHtml);
+  mainHtml = patchCaseStudyVisualPlaceholder(mainHtml);
+  mainHtml = patchCaseStudyGalleryCardCta(mainHtml);
+  mainHtml = patchCaseStudyGalleryProjectCount(mainHtml);
+  mainHtml = removeKlearDataCtabandSection(mainHtml);
+  mainHtml = patchCaseStudyIndexToBlogLayout(mainHtml);
+}
+if (manifest.kind === 'case-study') {
+  mainHtml = patchCaseStudyDetailHeroTitle(mainHtml, manifest.slug);
+  mainHtml = patchCaseStudyDetailRemoveHeroStats(mainHtml);
+  mainHtml = patchCaseStudyDetailRemoveSideCardTop(mainHtml);
+  mainHtml = patchCaseStudyDetailSideCardText(mainHtml, manifest.slug);
+  mainHtml = patchCaseStudyDetailRemoveChallengeTitle(mainHtml);
+  mainHtml = patchCaseStudyDetailRemoveSolutionTitle(mainHtml);
+  mainHtml = patchCaseStudyDetailSolutionSection(mainHtml, manifest.slug);
+  mainHtml = patchCaseStudyDetailAppendSolutionCards(mainHtml, manifest.slug);
+  mainHtml = patchCaseStudyDetailRemoveOutcomeSection(mainHtml);
+  mainHtml = patchCaseStudyDetailChallengeBody(mainHtml, manifest.slug);
+  mainHtml = patchCaseStudyVisualPlaceholder(mainHtml);
+  mainHtml = patchCaseStudyDetailRemoveHeroFigcaption(mainHtml);
+  mainHtml = patchCaseStudyDetailCoverageTag(mainHtml, manifest.slug);
+  mainHtml = patchCaseStudyDetailToBlogLayout(mainHtml);
+}
+if (manifest.slug === 'services__astro-agency') {
+  mainHtml = replaceSelfFilersAstroHeroWithOperationSvcHero(mainHtml);
+  mainHtml = removeKlearDataSvcHeroLabel(mainHtml);
+  mainHtml = patchSelfFilersSvcHeroTitle(mainHtml);
+  mainHtml = patchSelfFilersSvcHeroSub(mainHtml);
+  mainHtml = patchSelfFilersSvcHeroCta(mainHtml);
+  mainHtml = insertSelfFilersScopeAfterHero(mainHtml);
+  mainHtml = patchSelfFilersScopeHowItWorksBand(mainHtml);
+  mainHtml = insertSelfFilersFoundationAfterHero(mainHtml);
+  mainHtml = removeSelfFilersFoundationEfficiencyCard(mainHtml);
+  mainHtml = patchSelfFilersFoundationHeading(mainHtml);
+  mainHtml = patchSelfFilersFoundationCards(mainHtml);
+  mainHtml = patchSelfFilersFoundationCardIcons(mainHtml);
+  mainHtml = insertSelfFilersVsAfterFoundation(mainHtml);
+  mainHtml = patchSelfFilersVsCards(mainHtml);
+  mainHtml = patchSelfFilersVsIcons(mainHtml);
+  mainHtml = insertSelfFilersIdealImportersDpAltAfterVs(mainHtml);
+  mainHtml = insertSelfFilersLeaksAfterIdealImporters(mainHtml);
+  mainHtml = insertSelfFilersRegressAfterIdealImporters(mainHtml);
+  mainHtml = removeSelfFilersAstroCloseSection(mainHtml);
+  mainHtml = removeSelfFilersAstroFaqSection(mainHtml);
+  mainHtml = removeSelfFilersAstroApplicationsSection(mainHtml);
+  mainHtml = removeSelfFilersAstroProcessSection(mainHtml);
+  mainHtml = removeSelfFilersAstroWebsitesSection(mainHtml);
+  mainHtml = removeSelfFilersAstroVisibilitySection(mainHtml);
+  mainHtml = removeSelfFilersAstroServicesSection(mainHtml);
+  mainHtml = patchSelfFilersAstroDitherLogos(mainHtml);
+  mainHtml = patchSelfFilersLegencyBrandAssets(mainHtml);
+}
+if (manifest.slug === 'privacy') {
+  mainHtml = patchPrivacyPolicyContent(mainHtml);
+}
+if (manifest.slug === 'careers') {
+  mainHtml = insertCareersLeaksBeforeJoin(mainHtml);
+}
+if (manifest.slug === 'get-in-touch') {
+  mainHtml = patchGetInTouchEnquiryHeading(mainHtml);
+  mainHtml = patchGetInTouchEnquiryFormHeading(mainHtml);
+  mainHtml = patchGetInTouchEnquirySummary(mainHtml);
+  mainHtml = removeGetInTouchEnquiryCall(mainHtml);
+  mainHtml = removeGetInTouchEnquiryProof(mainHtml);
+  mainHtml = insertGetInTouchEnquiryChannels(mainHtml);
+  mainHtml = patchGetInTouchEnquiryContinueLabel(mainHtml);
+  mainHtml = removeGetInTouchEnquiryStepCount(mainHtml);
+  mainHtml = removeGetInTouchEnquirySteps(mainHtml);
+  mainHtml = patchGetInTouchEnquiryConsentLabel(mainHtml);
+  mainHtml = insertGetInTouchEnquiryExtraDetailsFields(mainHtml);
+}
+if (usesKlearSvcEarth) {
+  mainHtml = patchKlearSvcHeroEarth(mainHtml);
+}
+if (manifest.slug === 'services__wordpress-to-webflow-migration') {
+  mainHtml = patchManagedTradeSvcHeroLabel(mainHtml);
+  mainHtml = patchManagedTradeSvcHeroTitle(mainHtml);
+  mainHtml = patchManagedTradeSvcHeroSub(mainHtml);
+  mainHtml = removeManagedTradeMigrationPlanningBrief(mainHtml);
+  mainHtml = removeManagedTradeEvoSection(mainHtml);
+  mainHtml = removeManagedTradeFaqSection(mainHtml);
+  mainHtml = removeManagedTradeTradeComparisonSection(mainHtml);
+  mainHtml = removeManagedTradeMigrationTrafficRiskSection(mainHtml);
+  mainHtml = patchManagedTradeMigrationContentDpHeading(mainHtml);
+  mainHtml = patchManagedTradeMigrationContentDpSub(mainHtml);
+  mainHtml = removeManagedTradeMigrationContentLabel(mainHtml);
+  mainHtml = patchManagedTradeMigrationContentCard1Title(mainHtml);
+  mainHtml = patchManagedTradeMigrationContentCard1Body(mainHtml);
+  mainHtml = patchManagedTradeMigrationContentCard2Title(mainHtml);
+  mainHtml = patchManagedTradeMigrationContentCard2Body(mainHtml);
+  mainHtml = patchManagedTradeMigrationContentCard3Title(mainHtml);
+  mainHtml = patchManagedTradeMigrationContentCard3Body(mainHtml);
+  mainHtml = patchManagedTradeMigrationContentCardsThreeColumn(mainHtml);
+  mainHtml = insertManagedTradeHomeServicesAfterMigration(mainHtml);
+  mainHtml = patchKlearHubHomeServicesLabel(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesLabel(mainHtml);
+  mainHtml = patchKlearHubHomeServicesTitle(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesTitle(mainHtml);
+  mainHtml = patchKlearHubHomeServicesSub(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesSub(mainHtml);
+  mainHtml = appendKlearHubHomeServicesCards(mainHtml);
+  mainHtml = patchKlearHubHomeServicesExtraCards(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard1Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard1Body(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard1Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard1Label(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard1Label(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard1Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard2Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard2Body(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard2Title(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard2Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard2Label(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard2Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard3Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard3Body(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard3Title(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard3Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard3Label(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard3Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard4Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard4Body(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard4Title(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard4Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard4Label(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard4Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard5Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard5Body(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard5Title(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard5Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard5Label(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard5Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard6Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard6Body(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard6Title(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard6Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard6Label(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCard6Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCardIcons(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesCardIcons(mainHtml);
+  mainHtml = removeManagedTradeHomeServicesExtraCards(mainHtml);
+  mainHtml = insertKlearHubRotSectionAfterHomeServices(mainHtml);
+  mainHtml = insertKlearHubScopeSectionAfterRot(mainHtml);
+  mainHtml = removeKlearHubScopeGrid(mainHtml);
+  mainHtml = removeKlearHubScopeZhead(mainHtml);
+  mainHtml = patchKlearHubScopeFeeHeading(mainHtml);
+  mainHtml = removeKlearHubScopeFeeTiers(mainHtml);
+  mainHtml = removeKlearHubScopeFeeStep4(mainHtml);
+  mainHtml = patchKlearHubScopeFeeStep1(mainHtml);
+  mainHtml = patchKlearHubScopeFeeStep2(mainHtml);
+  mainHtml = patchKlearHubScopeFeeStep3(mainHtml);
+  mainHtml = patchManagedTradeScopeFeeStep1(mainHtml);
+  mainHtml = patchManagedTradeScopeFeeStep2(mainHtml);
+  mainHtml = patchManagedTradeScopeFeeStep3(mainHtml);
+  mainHtml = duplicateKlearHubHomeServicesAfterScope(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatLabel(mainHtml);
+  mainHtml = removeManagedTradeHomeServicesRepeatLabel(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatTitle(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesRepeatTitle(mainHtml);
+  mainHtml = removeKlearHubHomeServicesRepeatSub(mainHtml);
+  mainHtml = removeManagedTradeHomeServicesRepeatSub(mainHtml);
+  mainHtml = removeKlearHubHomeServicesRepeatExtraCards(mainHtml);
+  mainHtml = removeManagedTradeHomeServicesRepeatExtraCards(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard1Title(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesRepeatCard1Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard1Body(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesRepeatCard1Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard2Title(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesRepeatCard2Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard2Body(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesRepeatCard2Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard3Title(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesRepeatCard3Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard3Body(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesRepeatCard3Body(mainHtml);
+  mainHtml = removeKlearHubHomeServicesRepeatDividers(mainHtml);
+  mainHtml = removeKlearHubHomeServicesRepeatCardLabels(mainHtml);
+  mainHtml = patchManagedTradeHomeServicesRepeatCardIcons(mainHtml);
+  mainHtml = removeKlearHubRotFixStrip(mainHtml);
+  mainHtml = removeKlearHubRotLabel(mainHtml);
+  mainHtml = patchKlearHubRotHeading(mainHtml);
+  mainHtml = patchManagedTradeRotHeading(mainHtml);
+  mainHtml = patchKlearHubRotIntro(mainHtml);
+  mainHtml = removeManagedTradeRotIntro(mainHtml);
+  mainHtml = removeKlearHubRotPxGrids(mainHtml);
+  mainHtml = patchKlearHubRotStep1Label(mainHtml);
+  mainHtml = patchKlearHubRotStep2Label(mainHtml);
+  mainHtml = patchKlearHubRotStep3Label(mainHtml);
+  mainHtml = patchKlearHubRotStep4Label(mainHtml);
+  mainHtml = patchManagedTradeRotStep1Label(mainHtml);
+  mainHtml = patchManagedTradeRotStep2Label(mainHtml);
+  mainHtml = patchManagedTradeRotStep3Label(mainHtml);
+  mainHtml = patchManagedTradeRotStep4Label(mainHtml);
+  mainHtml = patchKlearHubRotStep1Body(mainHtml);
+  mainHtml = patchManagedTradeRotStep1Body(mainHtml);
+  mainHtml = patchKlearHubRotStep2Body(mainHtml);
+  mainHtml = patchManagedTradeRotStep2Body(mainHtml);
+  mainHtml = patchKlearHubRotStep3Body(mainHtml);
+  mainHtml = patchManagedTradeRotStep4Body(mainHtml);
+  mainHtml = patchManagedTradeFoundationLabel(mainHtml);
+  mainHtml = patchManagedTradeFoundationHeading(mainHtml);
+  mainHtml = patchManagedTradeFoundationCard1Title(mainHtml);
+  mainHtml = patchManagedTradeFoundationCard1Body(mainHtml);
+  mainHtml = patchManagedTradeFoundationCard2Title(mainHtml);
+  mainHtml = patchManagedTradeFoundationCard2Body(mainHtml);
+  mainHtml = patchManagedTradeFoundationCard3Title(mainHtml);
+  mainHtml = patchManagedTradeFoundationCard3Body(mainHtml);
+  mainHtml = patchManagedTradeFoundationCardIcons(mainHtml);
+}
+if (manifest.slug === 'services__search-ai-visibility') {
+  mainHtml = removeKlearDataSvcHeroLabel(mainHtml);
+  mainHtml = patchFreightForwardersSvcHeroTitle(mainHtml);
+  mainHtml = patchFreightForwardersSvcHeroSub(mainHtml);
+  mainHtml = patchFreightForwardersSvcHeroCta(mainHtml);
+  mainHtml = removeFreightForwardersAiVisibilityBrief(mainHtml);
+  mainHtml = removeFreightForwardersWebflowAeoBrief(mainHtml);
+  mainHtml = removeFreightForwardersEvoSection(mainHtml);
+  mainHtml = removeFreightForwardersTwoSurfacesDpSection(mainHtml);
+  mainHtml = removeFreightForwardersFoundationLabel(mainHtml);
+  mainHtml = patchFreightForwardersFoundationHeading(mainHtml);
+  mainHtml = patchFreightForwardersFoundationCard1Title(mainHtml);
+  mainHtml = patchFreightForwardersFoundationCard1Body(mainHtml);
+  mainHtml = patchFreightForwardersFoundationCard2Title(mainHtml);
+  mainHtml = patchFreightForwardersFoundationCard2Body(mainHtml);
+  mainHtml = patchFreightForwardersFoundationCard3Title(mainHtml);
+  mainHtml = patchFreightForwardersFoundationCard3Body(mainHtml);
+  mainHtml = patchFreightForwardersFoundationCard4Title(mainHtml);
+  mainHtml = patchFreightForwardersFoundationCard4Body(mainHtml);
+  mainHtml = patchFreightForwardersFoundationCardIcons(mainHtml);
+  mainHtml = insertFreightForwardersRotAfterFoundation(mainHtml);
+  mainHtml = removeKlearHubRotFixStrip(mainHtml);
+  mainHtml = removeKlearHubRotLabel(mainHtml);
+  mainHtml = patchKlearHubRotHeading(mainHtml);
+  mainHtml = patchKlearHubRotIntro(mainHtml);
+  mainHtml = removeKlearHubRotPxGrids(mainHtml);
+  mainHtml = patchKlearHubRotStep1Label(mainHtml);
+  mainHtml = patchKlearHubRotStep2Label(mainHtml);
+  mainHtml = patchKlearHubRotStep3Label(mainHtml);
+  mainHtml = patchKlearHubRotStep4Label(mainHtml);
+  mainHtml = patchFreightForwardersRotHeading(mainHtml);
+  mainHtml = removeFreightForwardersRotIntro(mainHtml);
+  mainHtml = patchFreightForwardersRotSteps(mainHtml);
+  mainHtml = insertFreightForwardersVsAfterRot(mainHtml);
+  mainHtml = patchFreightForwardersVsCards(mainHtml);
+  mainHtml = patchFreightForwardersVsIcons(mainHtml);
+  mainHtml = duplicateFreightForwardersFoundationBeforeDpAlt(mainHtml);
+  mainHtml = removeFreightForwardersFoundationLabel(mainHtml);
+  mainHtml = patchFreightForwardersFoundation2Heading(mainHtml);
+  mainHtml = patchFreightForwardersFoundation2Card1Title(mainHtml);
+  mainHtml = patchFreightForwardersFoundation2CardCopy(mainHtml);
+  mainHtml = patchFreightForwardersDpAltHeading(mainHtml);
+  mainHtml = patchFreightForwardersDpAltFoot(mainHtml);
+  mainHtml = patchFreightForwardersDpAltCards(mainHtml);
+  mainHtml = swapFreightForwardersDpAltFootAndCards(mainHtml);
+  mainHtml = nestFreightForwardersDpAltFootInHead(mainHtml);
+}
+if (manifest.slug === 'services__webflow-support') {
+  mainHtml = patchKlearHubSvcHeroLabel(mainHtml);
+  mainHtml = patchKlearHubSvcHeroTitle(mainHtml);
+  mainHtml = patchKlearHubSvcHeroSub(mainHtml);
+  mainHtml = patchKlearHubSvcHeroCta(mainHtml);
+  mainHtml = insertKlearHubKlearDataFoundationAfterHero(mainHtml);
+  mainHtml = removeKlearHubLegencyFoundationSection(mainHtml);
+  mainHtml = patchKlearHubFoundationLabel(mainHtml);
+  mainHtml = patchKlearHubFoundationHeading(mainHtml);
+  mainHtml = patchKlearHubFoundationSub(mainHtml);
+  mainHtml = patchKlearHubFoundationCard1Title(mainHtml);
+  mainHtml = patchKlearHubFoundationCard1Body(mainHtml);
+  mainHtml = patchKlearHubFoundationCard2Title(mainHtml);
+  mainHtml = patchKlearHubFoundationCard2Body(mainHtml);
+  mainHtml = patchKlearHubFoundationCard3Title(mainHtml);
+  mainHtml = patchKlearHubFoundationCard3Body(mainHtml);
+  mainHtml = patchKlearHubFoundationCardIcons(mainHtml);
+  mainHtml = patchKlearHubFoundationBareIconChips(mainHtml);
+  mainHtml = insertKlearHubHomeServicesAfterFoundation(mainHtml);
+  mainHtml = patchKlearHubHomeServicesLabel(mainHtml);
+  mainHtml = patchKlearHubHomeServicesTitle(mainHtml);
+  mainHtml = patchKlearHubHomeServicesSub(mainHtml);
+  mainHtml = appendKlearHubHomeServicesCards(mainHtml);
+  mainHtml = patchKlearHubHomeServicesExtraCards(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard1Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard1Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard1Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard2Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard2Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard2Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard3Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard3Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard3Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard4Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard4Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard4Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard5Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard5Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard5Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard6Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard6Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCard6Label(mainHtml);
+  mainHtml = patchKlearHubHomeServicesCardIcons(mainHtml);
+  mainHtml = removeKlearHubFoundationNamedTeamCard(mainHtml);
+  mainHtml = removeKlearDataEvoSection(mainHtml);
+  mainHtml = removeKlearDataFaqSection(mainHtml);
+  mainHtml = removeKlearHubBuildSection(mainHtml);
+  mainHtml = removeKlearHubShapeSection(mainHtml);
+  mainHtml = removeKlearHubTurnaroundBandsSection(mainHtml);
+  mainHtml = removeKlearHubScopeGrid(mainHtml);
+  mainHtml = removeKlearHubScopeZhead(mainHtml);
+  mainHtml = patchKlearHubScopeFeeHeading(mainHtml);
+  mainHtml = removeKlearHubScopeFeeTiers(mainHtml);
+  mainHtml = removeKlearHubScopeFeeStep4(mainHtml);
+  mainHtml = patchKlearHubScopeFeeStep1(mainHtml);
+  mainHtml = patchKlearHubScopeFeeStep2(mainHtml);
+  mainHtml = patchKlearHubScopeFeeStep3(mainHtml);
+  mainHtml = duplicateKlearHubHomeServicesAfterScope(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatLabel(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatTitle(mainHtml);
+  mainHtml = removeKlearHubHomeServicesRepeatSub(mainHtml);
+  mainHtml = removeKlearHubHomeServicesRepeatExtraCards(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard1Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard1Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard2Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard2Body(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard3Title(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCard3Body(mainHtml);
+  mainHtml = insertKlearHubLeaksAfterOperatingProblem(mainHtml);
+  mainHtml = removeKlearHubLeaksStep6(mainHtml);
+  mainHtml = removeKlearHubLeaksLabel(mainHtml);
+  mainHtml = removeKlearHubLeaksSub(mainHtml);
+  mainHtml = patchKlearHubLeaksHeading(mainHtml);
+  mainHtml = patchKlearHubLeaksStep1(mainHtml);
+  mainHtml = patchKlearHubLeaksStep2(mainHtml);
+  mainHtml = patchKlearHubLeaksStep3(mainHtml);
+  mainHtml = patchKlearHubLeaksStep4(mainHtml);
+  mainHtml = patchKlearHubLeaksStep5(mainHtml);
+  mainHtml = removeKlearHubRotFixStrip(mainHtml);
+  mainHtml = removeKlearHubRotLabel(mainHtml);
+  mainHtml = patchKlearHubRotHeading(mainHtml);
+  mainHtml = patchKlearHubRotIntro(mainHtml);
+  mainHtml = removeKlearHubRotPxGrids(mainHtml);
+  mainHtml = patchKlearHubRotStep1Label(mainHtml);
+  mainHtml = patchKlearHubRotStep2Label(mainHtml);
+  mainHtml = patchKlearHubRotStep3Label(mainHtml);
+  mainHtml = patchKlearHubRotStep4Label(mainHtml);
+  mainHtml = patchKlearHubRotStep1Body(mainHtml);
+  mainHtml = patchKlearHubRotStep2Body(mainHtml);
+  mainHtml = patchKlearHubRotStep3Body(mainHtml);
+  mainHtml = removeKlearHubBlueflameCasebandSection(mainHtml);
+  mainHtml = removeKlearDataCtabandSection(mainHtml);
+  mainHtml = removeKlearHubHomeServicesRepeatDividers(mainHtml);
+  mainHtml = removeKlearHubHomeServicesRepeatCardLabels(mainHtml);
+  mainHtml = patchKlearHubHomeServicesRepeatCardIcons(mainHtml);
+}
+if (manifest.slug === 'services__technical-seo') {
+  mainHtml = removeCustomBrokersSvcHeroLabel(mainHtml);
+  mainHtml = patchTradeComplianceSvcHeroTitle(mainHtml);
+  mainHtml = patchTradeComplianceSvcHeroSub(mainHtml);
+  mainHtml = insertTradeComplianceScopeAfterHero(mainHtml);
+  mainHtml = patchTradeComplianceScopeHowItWorksBand(mainHtml);
+  mainHtml = removeTradeComplianceFoundationLabel(mainHtml);
+  mainHtml = patchTradeComplianceFoundationHeading(mainHtml);
+  mainHtml = removeTradeComplianceFoundationMachineReadabilityCard(mainHtml);
+  mainHtml = patchTradeComplianceFoundationCards(mainHtml);
+  mainHtml = insertTradeComplianceLeaksAfterFoundation(mainHtml);
+  mainHtml = insertTradeComplianceDpAltBeforeLeaks(mainHtml);
+  mainHtml = removeTradeComplianceDpAltSub(mainHtml);
+  mainHtml = patchTradeComplianceDpAltHeading(mainHtml);
+  mainHtml = patchTradeComplianceDpAltCards(mainHtml);
+  mainHtml = removeTradeComplianceDpAltCardBodies(mainHtml);
+  mainHtml = patchTradeComplianceLeaksHead(mainHtml);
+  mainHtml = patchTradeComplianceLeaksSteps(mainHtml);
+  mainHtml = removeTradeComplianceLeaksExtraSteps(mainHtml);
+  mainHtml = removeTradeComplianceRotSection(mainHtml);
+  mainHtml = insertTradeComplianceVsAfterFoundation(mainHtml);
+  mainHtml = patchTradeComplianceVsCards(mainHtml);
+  mainHtml = patchTradeComplianceVsIcons(mainHtml);
+}
+if (manifest.slug === 'aeo-agency') {
+  mainHtml = removeKlearDataSvcHeroLabel(mainHtml);
+  mainHtml = removeCustomBrokersSvcHeroLabel(mainHtml);
+  mainHtml = patchCustomBrokersSvcHeroTitle(mainHtml);
+  mainHtml = patchCustomBrokersSvcHeroSub(mainHtml);
+  mainHtml = patchCustomBrokersSvcHeroCta(mainHtml);
+  mainHtml = insertCustomBrokersScopeAfterHero(mainHtml);
+  mainHtml = patchCustomBrokersScopeHowItWorksBand(mainHtml);
+  mainHtml = removeCustomBrokersEvoSections(mainHtml);
+  mainHtml = patchCustomBrokersFoundationHeading(mainHtml);
+  mainHtml = removeCustomBrokersFoundationLabel(mainHtml);
+  mainHtml = patchCustomBrokersFoundationCards(mainHtml);
+  mainHtml = patchCustomBrokersFoundationCardIcons(mainHtml);
+  mainHtml = patchCustomBrokersRegressHeading(mainHtml);
+  mainHtml = removeCustomBrokersRegressLabel(mainHtml);
+  mainHtml = removeCustomBrokersRegressFoot(mainHtml);
+  mainHtml = removeCustomBrokersRegressThirdPartyCard(mainHtml);
+  mainHtml = insertCustomBrokersVsAfterFoundation(mainHtml);
+  mainHtml = patchCustomBrokersVsCards(mainHtml);
+  mainHtml = patchCustomBrokersVsIcons(mainHtml);
+  mainHtml = removeCustomBrokersLegencyVsBand(mainHtml);
+  mainHtml = removeCustomBrokersQsetSections(mainHtml);
+  mainHtml = removeCustomBrokersNotdoLabel(mainHtml);
+  mainHtml = patchCustomBrokersNotdoBand(mainHtml);
+  mainHtml = removeCustomBrokersNotdoFourthCard(mainHtml);
+  mainHtml = removeCustomBrokersLegencySplitStabilitySections(mainHtml);
+  mainHtml = removeCustomBrokersEvoSections(mainHtml);
+  mainHtml = removeCustomBrokersRegressLabel(mainHtml);
+}
+if (manifest.slug === 'services__webflow-enterprise') {
+  mainHtml = removeKlearDataSvcHeroLabel(mainHtml);
+  mainHtml = patchKlearDataSvcHeroTitle(mainHtml);
+  mainHtml = patchKlearDataSvcHeroSub(mainHtml);
+  mainHtml = patchKlearDataSvcHeroCta(mainHtml);
+  mainHtml = removeKlearDataSvcHeroProof(mainHtml);
+  mainHtml = removeKlearDataEvoSection(mainHtml);
+  mainHtml = removeKlearDataEnterpriseDpSection(mainHtml);
+  mainHtml = patchKlearDataDpBudgetLabel(mainHtml);
+  mainHtml = removeKlearDataDpFoot(mainHtml);
+  mainHtml = removeKlearDataDpBudgetCard3(mainHtml);
+  mainHtml = replaceKlearDataDpBudgetCardsWithServiceChoices(mainHtml);
+  mainHtml = insertKlearDataFeeBeforeDpAlt(mainHtml);
+  mainHtml = removeKlearDataDpAltSection(mainHtml);
+  mainHtml = patchKlearDataFoundationLabel(mainHtml);
+  mainHtml = patchKlearDataFoundationHeading(mainHtml);
+  mainHtml = patchKlearDataFoundationCard1Title(mainHtml);
+  mainHtml = patchKlearDataFoundationCard1Body(mainHtml);
+  mainHtml = patchKlearDataFoundationCard2Title(mainHtml);
+  mainHtml = patchKlearDataFoundationCard2Body(mainHtml);
+  mainHtml = patchKlearDataFoundationCard3Title(mainHtml);
+  mainHtml = patchKlearDataFoundationCard3Body(mainHtml);
+  mainHtml = patchKlearDataFoundationCardIcons(mainHtml);
+  mainHtml = insertKlearDataLeaksAfterFoundation(mainHtml);
+  mainHtml = insertKlearDataEntryLineAfterLeaks(mainHtml);
+  mainHtml = insertKlearDataVsAfterEntryLine(mainHtml);
+  mainHtml = duplicateKlearDataFoundationBeforeFeeBand(mainHtml);
+  mainHtml = patchKlearDataFoundation2Heading(mainHtml);
+  mainHtml = removeKlearDataFoundation2Label(mainHtml);
+  mainHtml = patchKlearDataFoundation2Sub(mainHtml);
+  mainHtml = patchKlearDataFoundation2Card1Title(mainHtml);
+  mainHtml = patchKlearDataFoundation2Card1Body(mainHtml);
+  mainHtml = patchKlearDataFoundation2Card2Title(mainHtml);
+  mainHtml = patchKlearDataFoundation2Card2Body(mainHtml);
+  mainHtml = patchKlearDataFoundation2Card3Title(mainHtml);
+  mainHtml = patchKlearDataFoundation2Card3Body(mainHtml);
+  mainHtml = removeKlearDataCasebandChip(mainHtml);
+  mainHtml = patchKlearDataCasebandHeading(mainHtml);
+  mainHtml = patchKlearDataCasebandText(mainHtml);
+  mainHtml = removeKlearDataFaqSection(mainHtml);
+  mainHtml = removeKlearDataCtabandSection(mainHtml);
+}
+if (manifest.slug === 'about') {
+  mainHtml = patchAboutHeroEarthDither(mainHtml);
+  if (!pagePath || pagePath === '/about/') {
+    mainHtml = patchAboutHeroTitle(mainHtml);
+    mainHtml = removeAboutHeroSub(mainHtml);
+    mainHtml = removeAboutHeroLabel(mainHtml);
+    mainHtml = removeAboutHeroCta(mainHtml);
+    mainHtml = patchAboutCredsList(mainHtml);
+    mainHtml = hideAboutCredsIntro(mainHtml);
+    mainHtml = swapAboutCredsColumns(mainHtml);
+    mainHtml = patchAboutSeparatesStory(mainHtml);
+    mainHtml = patchAboutBlogteaserTitle(mainHtml);
+    mainHtml = patchAboutBlogteaserYoutube(mainHtml);
+    mainHtml = removeAboutQuoteSection(mainHtml);
+    mainHtml = moveAboutBlogteaserAfterSeparates(mainHtml);
+    mainHtml = patchAboutLeadershipSection(mainHtml);
+  }
+}
+if (manifest.slug === 'home') {
+  mainHtml = patchHeroEarthDither(mainHtml);
+  mainHtml = patchTierDarkDither(mainHtml);
+  mainHtml = replaceQuoteSliderWithAgent(mainHtml);
+  mainHtml = insertTurnaroundBandsAfterQuote(mainHtml);
+  mainHtml = insertAstroServicesAfterBands(mainHtml);
+  mainHtml = insertRotSectionAfterEntryLine(mainHtml);
+  mainHtml = removeGreviewsSection(mainHtml);
+  mainHtml = removeCasesSection(mainHtml);
+  mainHtml = removeTeamSection(mainHtml);
+  mainHtml = collapseSeparatesToSingleStep(mainHtml);
+  mainHtml = patchSeparatesDemoBlurbTwoLines(mainHtml);
+  mainHtml = removeBlogteaserSection(mainHtml);
+}
+
+if (isKlearProductOrOperationMirror(manifest.slug)) {
+  mainHtml = patchKlearSvcHeroCta(mainHtml);
+  mainHtml = applyKlearProductClosingStack(mainHtml, manifest.slug);
+}
+if (manifest.slug === 'services__search-ai-visibility') {
+  mainHtml = removeFreightForwardersClosingDpSection(mainHtml);
+  mainHtml = insertFreightForwardersHomeServicesRepeatBeforeLeaks(mainHtml);
+  mainHtml = patchFreightForwardersHomeServicesRepeatTitle(mainHtml);
+  mainHtml = patchFreightForwardersHomeServicesRepeatSub(mainHtml);
+  mainHtml = patchFreightForwardersHomeServicesRepeatCards(mainHtml);
+  mainHtml = patchFreightForwardersHomeServicesRepeatCardIcons(mainHtml);
+  mainHtml = swapFreightForwardersDpAltAndHomeServicesRepeat(mainHtml);
+  mainHtml = removeFreightForwardersHomeServicesRepeat2Section(mainHtml);
+  mainHtml = insertFreightForwardersLeaksBeforeCaseband(mainHtml);
+  mainHtml = patchFreightForwardersLeaksHead(mainHtml);
+  mainHtml = patchFreightForwardersLeaksSteps(mainHtml);
+  mainHtml = removeFreightForwardersLeaksExtraSteps(mainHtml);
+}
+
+if (
+  manifest.slug === 'home' ||
+  manifest.slug === 'services__webflow-enterprise' ||
+  manifest.slug === 'services__webflow-support' ||
+  isKlearProductOrOperationMirror(manifest.slug)
+) {
+  mainHtml = stripLegencyReferences(mainHtml);
+}
+if (manifest.slug === 'aeo-agency') {
+  mainHtml = removeCustomBrokersRegressLabel(mainHtml);
+}
+---
+
+<div
+  class:list={[
+    'mirrored-root',
+    { 'mirrored-root--klear-svc-earth': usesKlearSvcEarth },
+    { 'mirrored-root--klear-data': manifest.slug === 'services__webflow-enterprise' },
+    { 'mirrored-root--klear-hub': manifest.slug === 'services__webflow-support' },
+    { 'mirrored-root--managed-trade': manifest.slug === 'services__wordpress-to-webflow-migration' },
+    { 'mirrored-root--freight-forwarders': manifest.slug === 'services__search-ai-visibility' },
+    { 'mirrored-root--custom-brokers': manifest.slug === 'aeo-agency' },
+    { 'mirrored-root--trade-compliance': manifest.slug === 'services__technical-seo' },
+    { 'mirrored-root--self-filers': manifest.slug === 'services__astro-agency' },
+    { 'mirrored-root--careers': manifest.slug === 'careers' },
+    { 'mirrored-root--klear-operation': isKlearOperationMirror(manifest.slug) },
+    { 'mirrored-root--klear-product': isKlearProductOrOperationMirror(manifest.slug) },
+    {
+      'mirrored-root--coverage-blog-shell':
+        manifest.slug === 'case-studies' || manifest.kind === 'case-study',
+    },
+  ]}
+  set:html={mainHtml}
+/>

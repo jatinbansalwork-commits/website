@@ -1,0 +1,166 @@
+/* Legency CRO “leaks” band — copied for KlearData after foundation */
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks {
+  background: var(--white);
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__head {
+  margin-bottom: var(--sp-5);
+  max-width: 62ch;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__heading {
+  font-size: var(--h4);
+  margin-bottom: var(--sp-3);
+  max-width: 22ch;
+}
+
+/* KlearData — full title on one line (“Six steps to filing-ready data”). */
+.mirrored-root--klear-data section.section.leaks .leaks__heading,
+.mirrored-root--careers section.section.leaks .leaks__heading {
+  max-width: none;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__head {
+  max-width: min(56rem, 100%);
+}
+
+.mirrored-root--careers section.section.leaks .leaks__heading {
+  font-size: clamp(1.55rem, 2.35vw, 2.35rem);
+  line-height: 1.2;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__heading-line {
+  display: block;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__sub {
+  font-size: var(--para-sm);
+  max-width: 54ch;
+  margin-bottom: var(--sp-2);
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__list {
+  gap: var(--sp-2);
+  list-style: none;
+  display: grid;
+  margin: 0;
+  padding: 0;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__item {
+  gap: var(--sp-4);
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  grid-template-columns: max-content minmax(0, 1fr);
+  display: grid;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__num {
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: var(--h6);
+  color: var(--blue);
+  line-height: 1;
+  padding-top: 0.15em;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__body {
+  min-width: 0;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__q {
+  font-size: inherit;
+  margin: 0;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__btn {
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: var(--h6);
+  letter-spacing: -0.02em;
+  color: var(--black);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__btn:hover .leaks__q-text {
+  color: var(--blue);
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__q-text {
+  flex: 1;
+  min-width: 0;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  margin-top: 0.35em;
+  color: var(--blue);
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__icon::before,
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__icon::after {
+  content: '';
+  background: currentColor;
+  margin: auto;
+  transition: transform 0.3s, opacity 0.3s;
+  position: absolute;
+  inset: 0;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__icon::before {
+  width: 16px;
+  height: 2px;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__icon::after {
+  width: 2px;
+  height: 16px;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__btn[aria-expanded='true'] .leaks__icon::after {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__panel {
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.625, 0.05, 0, 1);
+  display: grid;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers)
+  section.section.leaks
+  .leaks__item:has(.leaks__btn[aria-expanded='true'])
+  .leaks__panel {
+  grid-template-rows: 1fr;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__panel-inner {
+  overflow: hidden;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--freight-forwarders, .mirrored-root--klear-operation, .mirrored-root--careers) section.section.leaks .leaks__panel-inner p {
+  font-size: var(--para-sm);
+  max-width: 74ch;
+  margin: var(--sp-2) 0 0;
+  opacity: 0.9;
+}

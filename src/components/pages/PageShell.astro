@@ -1,0 +1,67 @@
+---
+import type { PageKind } from '../../data/sitemap';
+
+interface Props {
+  kind: PageKind;
+  title: string;
+  path: string;
+}
+
+const { kind, title, path } = Astro.props;
+
+const breadcrumbs: Record<PageKind, string> = {
+  home: 'Home',
+  about: 'About',
+  'how-we-work': 'How we work',
+  service: 'Services',
+  landing: 'Services',
+  industry: 'Industries',
+  'case-studies-index': 'Case studies',
+  'case-study': 'Case studies',
+  'blog-index': 'Blog',
+  'blog-post': 'Blog',
+  'resources-index': 'Resources',
+  resource: 'Resources',
+  contact: 'Get in touch',
+  legal: 'Legal',
+  utility: 'Legency Media',
+};
+---
+<section class="section page-shell">
+  <div class="container">
+    <span class="label">{breadcrumbs[kind]}</span>
+    <h1 class="page-shell__title">{title}</h1>
+    <p class="page-shell__lead">
+      Template page mirroring <a href={`https://legencymedia.com${path}`} target="_blank" rel="noopener">legencymedia.com{path}</a>.
+      Replace this placeholder with full section content from the live site audit.
+    </p>
+    <div class="page-shell__meta">
+      <span>Page type: <strong>{kind}</strong></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-shell__title {
+    font-size: var(--h3);
+    max-width: 18ch;
+    margin-bottom: var(--sp-3);
+  }
+  .page-shell__lead {
+    font-size: var(--para);
+    max-width: 60ch;
+    line-height: 1.5;
+    margin-bottom: var(--sp-4);
+  }
+  .page-shell__lead a {
+    color: var(--blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .page-shell__meta {
+    padding: var(--sp-3);
+    background: var(--white);
+    border-radius: var(--radius);
+    font-size: var(--para-sm);
+  }
+</style>

@@ -1,0 +1,372 @@
+[
+  {
+    "path": "/",
+    "kind": "home",
+    "title": "Legency Media | Webflow Agency & Enterprise Partner"
+  },
+  {
+    "path": "/about/",
+    "kind": "about",
+    "title": "About"
+  },
+  {
+    "path": "/aeo-agency/",
+    "kind": "landing",
+    "title": "Aeo Agency"
+  },
+  {
+    "path": "/ai-visibility-index/",
+    "kind": "utility",
+    "title": "Ai Visibility Index"
+  },
+  {
+    "path": "/answer-engine-optimization/",
+    "kind": "landing",
+    "title": "Answer Engine Optimization"
+  },
+  {
+    "path": "/b2b-web-design/",
+    "kind": "landing",
+    "title": "B2b Web Design"
+  },
+  {
+    "path": "/b2b-website-redesign/",
+    "kind": "landing",
+    "title": "B2b Website Redesign"
+  },
+  {
+    "path": "/blog/",
+    "kind": "blog-index",
+    "title": "Blog"
+  },
+  {
+    "path": "/blog/5-trust-signals-every-b2b-homepage-needs/",
+    "kind": "blog-post",
+    "title": "5 Trust Signals Every B2b Homepage Needs"
+  },
+  {
+    "path": "/blog/ab-testing-case-studies-by-industry/",
+    "kind": "blog-post",
+    "title": "Ab Testing Case Studies By Industry"
+  },
+  {
+    "path": "/blog/aeo-vs-seo-what-changes-for-marketing-teams/",
+    "kind": "blog-post",
+    "title": "Aeo Vs Seo What Changes For Marketing Teams"
+  },
+  {
+    "path": "/blog/ai-citation-tracking-tools/",
+    "kind": "blog-post",
+    "title": "Ai Citation Tracking Tools"
+  },
+  {
+    "path": "/blog/b2b-demo-form-optimization/",
+    "kind": "blog-post",
+    "title": "B2b Demo Form Optimization"
+  },
+  {
+    "path": "/blog/b2b-landing-page-test-brief/",
+    "kind": "blog-post",
+    "title": "B2b Landing Page Test Brief"
+  },
+  {
+    "path": "/blog/b2b-website-performance-scorecard/",
+    "kind": "blog-post",
+    "title": "B2b Website Performance Scorecard"
+  },
+  {
+    "path": "/blog/b2b-website-reporting-template/",
+    "kind": "blog-post",
+    "title": "B2b Website Reporting Template"
+  },
+  {
+    "path": "/blog/building-astro-websites-with-lumos/",
+    "kind": "blog-post",
+    "title": "Building Astro Websites With Lumos"
+  },
+  {
+    "path": "/blog/cro-for-low-traffic-b2b-websites/",
+    "kind": "blog-post",
+    "title": "Cro For Low Traffic B2b Websites"
+  },
+  {
+    "path": "/blog/google-preferred-sources/",
+    "kind": "blog-post",
+    "title": "Google Preferred Sources"
+  },
+  {
+    "path": "/blog/how-long-does-a-wordpress-to-webflow-migration-take/",
+    "kind": "blog-post",
+    "title": "How Long Does A Wordpress To Webflow Migration Take"
+  },
+  {
+    "path": "/blog/how-to-choose-a-webflow-enterprise-agency/",
+    "kind": "blog-post",
+    "title": "How To Choose A Webflow Enterprise Agency"
+  },
+  {
+    "path": "/blog/how-to-migrate-from-wordpress-to-webflow-without-losing-seo/",
+    "kind": "blog-post",
+    "title": "How To Migrate From Wordpress To Webflow Without Losing Seo"
+  },
+  {
+    "path": "/blog/how-to-optimize-for-answer-engines-2026-guide/",
+    "kind": "blog-post",
+    "title": "How To Optimize For Answer Engines 2026 Guide"
+  },
+  {
+    "path": "/blog/is-generative-engine-optimization-the-same-as-aeo/",
+    "kind": "blog-post",
+    "title": "Is Generative Engine Optimization The Same As Aeo"
+  },
+  {
+    "path": "/blog/optimising-your-website-for-iphone-duo/",
+    "kind": "blog-post",
+    "title": "Optimising Your Website For Iphone Duo"
+  },
+  {
+    "path": "/blog/source-by-webflow-b2b-marketing-teams/",
+    "kind": "blog-post",
+    "title": "Source By Webflow B2b Marketing Teams"
+  },
+  {
+    "path": "/blog/webflow-enterprise-what-you-get-what-it-costs-when-it-is-wrong/",
+    "kind": "blog-post",
+    "title": "Webflow Enterprise What You Get What It Costs When It Is Wrong"
+  },
+  {
+    "path": "/blog/webflow-sitemaps-now-include-lastmod-dates/",
+    "kind": "blog-post",
+    "title": "Webflow Sitemaps Now Include Lastmod Dates"
+  },
+  {
+    "path": "/blog/webflow-vs-wordpress-for-b2b-marketing-teams/",
+    "kind": "blog-post",
+    "title": "Webflow Vs Wordpress For B2b Marketing Teams"
+  },
+  {
+    "path": "/blog/what-does-a-webflow-enterprise-partner-actually-do/",
+    "kind": "blog-post",
+    "title": "What Does A Webflow Enterprise Partner Actually Do"
+  },
+  {
+    "path": "/case-studies/",
+    "kind": "case-studies-index",
+    "title": "Case Studies"
+  },
+  {
+    "path": "/case-studies/anthem-copper/",
+    "kind": "case-study",
+    "title": "Anthem Copper"
+  },
+  {
+    "path": "/case-studies/arcus/",
+    "kind": "case-study",
+    "title": "Arcus"
+  },
+  {
+    "path": "/case-studies/better-faster-further/",
+    "kind": "case-study",
+    "title": "Better Faster Further"
+  },
+  {
+    "path": "/case-studies/blueflame-ai/",
+    "kind": "case-study",
+    "title": "Blueflame Ai"
+  },
+  {
+    "path": "/case-studies/boop/",
+    "kind": "case-study",
+    "title": "Boop"
+  },
+  {
+    "path": "/case-studies/cavalry/",
+    "kind": "case-study",
+    "title": "Cavalry"
+  },
+  {
+    "path": "/case-studies/channelsight/",
+    "kind": "case-study",
+    "title": "Channelsight"
+  },
+  {
+    "path": "/case-studies/coreshell/",
+    "kind": "case-study",
+    "title": "Coreshell"
+  },
+  {
+    "path": "/case-studies/duality/",
+    "kind": "case-study",
+    "title": "Duality"
+  },
+  {
+    "path": "/case-studies/dydx/",
+    "kind": "case-study",
+    "title": "Dydx"
+  },
+  {
+    "path": "/case-studies/grata/",
+    "kind": "case-study",
+    "title": "Grata"
+  },
+  {
+    "path": "/case-studies/jocasta/",
+    "kind": "case-study",
+    "title": "Jocasta"
+  },
+  {
+    "path": "/case-studies/k2-group/",
+    "kind": "case-study",
+    "title": "K2 Group"
+  },
+  {
+    "path": "/case-studies/karias-health/",
+    "kind": "case-study",
+    "title": "Karias Health"
+  },
+  {
+    "path": "/case-studies/leaptree/",
+    "kind": "case-study",
+    "title": "Leaptree"
+  },
+  {
+    "path": "/case-studies/rivo/",
+    "kind": "case-study",
+    "title": "Rivo"
+  },
+  {
+    "path": "/careers/",
+    "kind": "landing",
+    "title": "Careers"
+  },
+  {
+    "path": "/cookies/",
+    "kind": "legal",
+    "title": "Cookies"
+  },
+  {
+    "path": "/get-in-touch/",
+    "kind": "contact",
+    "title": "Get In Touch"
+  },
+  {
+    "path": "/how-we-work/",
+    "kind": "how-we-work",
+    "title": "How We Work"
+  },
+  {
+    "path": "/industries/crypto-digital-assets/",
+    "kind": "industry",
+    "title": "Crypto Digital Assets"
+  },
+  {
+    "path": "/industries/ecommerce-technology/",
+    "kind": "industry",
+    "title": "Ecommerce Technology"
+  },
+  {
+    "path": "/industries/fintech-ai/",
+    "kind": "industry",
+    "title": "Fintech Ai"
+  },
+  {
+    "path": "/industries/insurance-insurtech/",
+    "kind": "industry",
+    "title": "Insurance Insurtech"
+  },
+  {
+    "path": "/industries/professional-services/",
+    "kind": "industry",
+    "title": "Professional Services"
+  },
+  {
+    "path": "/privacy/",
+    "kind": "legal",
+    "title": "Privacy"
+  },
+  {
+    "path": "/resources/",
+    "kind": "resource",
+    "title": "Resources"
+  },
+  {
+    "path": "/resources/astro-lumos-build-checklist/",
+    "kind": "resources-index",
+    "title": "Astro Lumos Build Checklist"
+  },
+  {
+    "path": "/resources/content-scoreability-checker/",
+    "kind": "resources-index",
+    "title": "Content Scoreability Checker"
+  },
+  {
+    "path": "/resources/how-to-improve-your-readability-score/",
+    "kind": "resources-index",
+    "title": "How To Improve Your Readability Score"
+  },
+  {
+    "path": "/saas-website-design/",
+    "kind": "landing",
+    "title": "Saas Website Design"
+  },
+  {
+    "path": "/schedule/",
+    "kind": "utility",
+    "title": "Schedule"
+  },
+  {
+    "path": "/services/astro-agency/",
+    "kind": "service",
+    "title": "Astro Agency"
+  },
+  {
+    "path": "/services/conversion-measurement/",
+    "kind": "service",
+    "title": "Conversion Measurement"
+  },
+  {
+    "path": "/services/conversion-rate-optimization/",
+    "kind": "service",
+    "title": "Conversion Rate Optimization"
+  },
+  {
+    "path": "/services/search-ai-visibility/",
+    "kind": "service",
+    "title": "Search Ai Visibility"
+  },
+  {
+    "path": "/services/technical-seo/",
+    "kind": "service",
+    "title": "Technical Seo"
+  },
+  {
+    "path": "/services/webflow-enterprise/",
+    "kind": "service",
+    "title": "Webflow Enterprise"
+  },
+  {
+    "path": "/services/webflow-support/",
+    "kind": "service",
+    "title": "Webflow Support"
+  },
+  {
+    "path": "/services/wordpress-to-webflow-migration/",
+    "kind": "service",
+    "title": "Wordpress To Webflow Migration"
+  },
+  {
+    "path": "/web-design-galway/",
+    "kind": "landing",
+    "title": "Web Design Galway"
+  },
+  {
+    "path": "/webflow-agency-ireland/",
+    "kind": "landing",
+    "title": "Webflow Agency Ireland"
+  },
+  {
+    "path": "/webflow-agency/",
+    "kind": "landing",
+    "title": "Webflow Agency"
+  }
+]

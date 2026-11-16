@@ -1,0 +1,34 @@
+---
+import type { ChromeData } from './ArchiveChrome.astro';
+import { stripLegencyReferences } from '../lib/brand';
+import {
+  patchFooterCopyright,
+  patchFooterLinkColumns,
+  patchFooterLogo,
+  removeFooterCloserSection,
+  removeFooterCookieLegal,
+  removeFooterPlace,
+  spacerFooterWebsitesAndSearchColumns,
+  stripPartnerBadges,
+} from '../lib/strip-partner-badges';
+
+interface Props {
+  chrome: ChromeData;
+}
+
+const { chrome } = Astro.props;
+const footerHtml = stripLegencyReferences(
+  removeFooterCloserSection(
+    removeFooterCookieLegal(
+      patchFooterCopyright(
+        patchFooterLinkColumns(
+          spacerFooterWebsitesAndSearchColumns(
+            removeFooterPlace(patchFooterLogo(stripPartnerBadges(chrome.footerHtml))),
+          ),
+        ),
+      ),
+    ),
+  ),
+);
+---
+<div class="archive-chrome-footer" set:html={footerHtml} />

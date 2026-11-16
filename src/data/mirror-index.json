@@ -1,0 +1,443 @@
+{
+  "timestamp": "20261017113451",
+  "pages": [
+    {
+      "slug": "home",
+      "path": "/",
+      "kind": "home",
+      "title": "Legency Media | Webflow Agency & Enterprise Partner"
+    },
+    {
+      "slug": "about",
+      "path": "/about/",
+      "kind": "about",
+      "title": "About Legency Media | The Webflow Enterprise Partner for B2B Marketing Teams"
+    },
+    {
+      "slug": "aeo-agency",
+      "path": "/aeo-agency/",
+      "kind": "landing",
+      "title": "AEO Agency: Answer Engine Optimization for B2B | Legency Media"
+    },
+    {
+      "slug": "ai-visibility-index",
+      "path": "/ai-visibility-index/",
+      "kind": "utility",
+      "title": "AI Visibility Index 2026 | 63 Brands, July Results"
+    },
+    {
+      "slug": "answer-engine-optimization",
+      "path": "/answer-engine-optimization/",
+      "kind": "landing",
+      "title": "Answer Engine Optimization (AEO) | Legency Media"
+    },
+    {
+      "slug": "b2b-web-design",
+      "path": "/b2b-web-design/",
+      "kind": "landing",
+      "title": "B2B Web Design Agency | Legency Media"
+    },
+    {
+      "slug": "b2b-website-redesign",
+      "path": "/b2b-website-redesign/",
+      "kind": "landing",
+      "title": "B2B Website Redesign Agency | Legency Media"
+    },
+    {
+      "slug": "blog",
+      "path": "/blog/",
+      "kind": "blog-index",
+      "title": "Blog | Legency Media"
+    },
+    {
+      "slug": "blog__5-trust-signals-every-b2b-homepage-needs",
+      "path": "/blog/5-trust-signals-every-b2b-homepage-needs/",
+      "kind": "blog-post",
+      "title": "The Five Trust Signals Every B2B Website Needs | Legency Media"
+    },
+    {
+      "slug": "blog__ab-testing-case-studies-by-industry",
+      "path": "/blog/ab-testing-case-studies-by-industry/",
+      "kind": "blog-post",
+      "title": "A/B Testing Case Studies Across SaaS, Finance and Retail | Legency Media"
+    },
+    {
+      "slug": "blog__aeo-vs-seo-what-changes-for-marketing-teams",
+      "path": "/blog/aeo-vs-seo-what-changes-for-marketing-teams/",
+      "kind": "blog-post",
+      "title": "AEO vs SEO: What Changes for Marketing Teams | Legency Media"
+    },
+    {
+      "slug": "blog__ai-citation-tracking-tools",
+      "path": "/blog/ai-citation-tracking-tools/",
+      "kind": "blog-post",
+      "title": "AI Visibility Tools: Eight Citation Trackers Compared | Legency Media"
+    },
+    {
+      "slug": "blog__b2b-demo-form-optimization",
+      "path": "/blog/b2b-demo-form-optimization/",
+      "kind": "blog-post",
+      "title": "B2B Demo Form Optimization: Diagnose Lead Quality | Legency Media"
+    },
+    {
+      "slug": "blog__b2b-landing-page-test-brief",
+      "path": "/blog/b2b-landing-page-test-brief/",
+      "kind": "blog-post",
+      "title": "A B2B Landing Page Brief for Conversion Testing | Legency Media"
+    },
+    {
+      "slug": "blog__b2b-website-performance-scorecard",
+      "path": "/blog/b2b-website-performance-scorecard/",
+      "kind": "blog-post",
+      "title": "B2B Website Performance Scorecard: 12 Evidence Checks | Legency Media"
+    },
+    {
+      "slug": "blog__b2b-website-reporting-template",
+      "path": "/blog/b2b-website-reporting-template/",
+      "kind": "blog-post",
+      "title": "A B2B Website Reporting Template for Marketing Leaders | Legency Media"
+    },
+    {
+      "slug": "blog__building-astro-websites-with-lumos",
+      "path": "/blog/building-astro-websites-with-lumos/",
+      "kind": "blog-post",
+      "title": "Lumos Astro: How to Build With Lumos for Astro | Legency Media"
+    },
+    {
+      "slug": "blog__cro-for-low-traffic-b2b-websites",
+      "path": "/blog/cro-for-low-traffic-b2b-websites/",
+      "kind": "blog-post",
+      "title": "CRO for Low-Traffic B2B Websites | Legency Media"
+    },
+    {
+      "slug": "blog__google-preferred-sources",
+      "path": "/blog/google-preferred-sources/",
+      "kind": "blog-post",
+      "title": "Google Preferred Sources: How to Use It | Legency Media"
+    },
+    {
+      "slug": "blog__how-long-does-a-wordpress-to-webflow-migration-take",
+      "path": "/blog/how-long-does-a-wordpress-to-webflow-migration-take/",
+      "kind": "blog-post",
+      "title": "How Long Does a WordPress to Webflow Migration Take? | Legency Media"
+    },
+    {
+      "slug": "blog__how-to-choose-a-webflow-enterprise-agency",
+      "path": "/blog/how-to-choose-a-webflow-enterprise-agency/",
+      "kind": "blog-post",
+      "title": "Best Webflow Enterprise Agency: Buyer Checklist | Legency Media"
+    },
+    {
+      "slug": "blog__how-to-migrate-from-wordpress-to-webflow-without-losing-seo",
+      "path": "/blog/how-to-migrate-from-wordpress-to-webflow-without-losing-seo/",
+      "kind": "blog-post",
+      "title": "Migrate WordPress to Webflow Without Losing SEO | Legency Media"
+    },
+    {
+      "slug": "blog__how-to-optimize-for-answer-engines-2026-guide",
+      "path": "/blog/how-to-optimize-for-answer-engines-2026-guide/",
+      "kind": "blog-post",
+      "title": "How to Optimize for Answer Engines: A 2026 Guide | Legency Media"
+    },
+    {
+      "slug": "blog__is-generative-engine-optimization-the-same-as-aeo",
+      "path": "/blog/is-generative-engine-optimization-the-same-as-aeo/",
+      "kind": "blog-post",
+      "title": "AEO vs GEO: Definitions and Differences | Legency Media"
+    },
+    {
+      "slug": "blog__optimising-your-website-for-iphone-duo",
+      "path": "/blog/optimising-your-website-for-iphone-duo/",
+      "kind": "blog-post",
+      "title": "iPhone Duo screen sizes: what they mean for your website | Legency Media"
+    },
+    {
+      "slug": "blog__source-by-webflow-b2b-marketing-teams",
+      "path": "/blog/source-by-webflow-b2b-marketing-teams/",
+      "kind": "blog-post",
+      "title": "What is Source by Webflow? | Legency Media"
+    },
+    {
+      "slug": "blog__webflow-enterprise-what-you-get-what-it-costs-when-it-is-wrong",
+      "path": "/blog/webflow-enterprise-what-you-get-what-it-costs-when-it-is-wrong/",
+      "kind": "blog-post",
+      "title": "Webflow Enterprise Explained by an Enterprise Webflow Agency | Legency Media"
+    },
+    {
+      "slug": "blog__webflow-sitemaps-now-include-lastmod-dates",
+      "path": "/blog/webflow-sitemaps-now-include-lastmod-dates/",
+      "kind": "blog-post",
+      "title": "Webflow Sitemaps Now Include Lastmod Dates | Legency Media"
+    },
+    {
+      "slug": "blog__webflow-vs-wordpress-for-b2b-marketing-teams",
+      "path": "/blog/webflow-vs-wordpress-for-b2b-marketing-teams/",
+      "kind": "blog-post",
+      "title": "Webflow vs WordPress for B2B Marketing Teams | Legency Media"
+    },
+    {
+      "slug": "blog__what-does-a-webflow-enterprise-partner-actually-do",
+      "path": "/blog/what-does-a-webflow-enterprise-partner-actually-do/",
+      "kind": "blog-post",
+      "title": "What Does a Webflow Enterprise Partner Do? | Legency Media"
+    },
+    {
+      "slug": "case-studies",
+      "path": "/case-studies/",
+      "kind": "case-studies-index",
+      "title": "Case Studies | Legency Media"
+    },
+    {
+      "slug": "case-studies__anthem-copper",
+      "path": "/case-studies/anthem-copper/",
+      "kind": "case-study",
+      "title": "Anthem Copper Case Study: A new website for a copper producer | Legency Media"
+    },
+    {
+      "slug": "case-studies__arcus",
+      "path": "/case-studies/arcus/",
+      "kind": "case-study",
+      "title": "Arcus Case Study: Website support across Framer and Webflow | Legency Media"
+    },
+    {
+      "slug": "case-studies__better-faster-further",
+      "path": "/case-studies/better-faster-further/",
+      "kind": "case-study",
+      "title": "Better Faster Further Case Study: A website for leadership development | Legency Media"
+    },
+    {
+      "slug": "case-studies__blueflame-ai",
+      "path": "/case-studies/blueflame-ai/",
+      "kind": "case-study",
+      "title": "Blueflame AI Case Study: A website Blueflame’s marketing team can manage | Legency Media"
+    },
+    {
+      "slug": "case-studies__boop",
+      "path": "/case-studies/boop/",
+      "kind": "case-study",
+      "title": "Boop Case Study: A travel platform brought to life in Webflow | Legency Media"
+    },
+    {
+      "slug": "case-studies__cavalry",
+      "path": "/case-studies/cavalry/",
+      "kind": "case-study",
+      "title": "Cavalry Biosciences Case Study: A Webflow website for a biosciences company | Legency Media"
+    },
+    {
+      "slug": "case-studies__channelsight",
+      "path": "/case-studies/channelsight/",
+      "kind": "case-study",
+      "title": "ChannelSight Case Study: Making a Commerce Platform Readable to AI Engines | Legency Media"
+    },
+    {
+      "slug": "case-studies__coreshell",
+      "path": "/case-studies/coreshell/",
+      "kind": "case-study",
+      "title": "CoreShell Case Study: A Webflow build for a new battery technology | Legency Media"
+    },
+    {
+      "slug": "case-studies__duality",
+      "path": "/case-studies/duality/",
+      "kind": "case-study",
+      "title": "Duality Case Study: An event website with a shared community | Legency Media"
+    },
+    {
+      "slug": "case-studies__dydx",
+      "path": "/case-studies/dydx/",
+      "kind": "case-study",
+      "title": "dYdX Case Study: Same-Day Support for a Market That Never Closes | Legency Media"
+    },
+    {
+      "slug": "case-studies__grata",
+      "path": "/case-studies/grata/",
+      "kind": "case-study",
+      "title": "Grata Case Study: A Webflow component system for Grata Intelligence | Legency Media"
+    },
+    {
+      "slug": "case-studies__jocasta",
+      "path": "/case-studies/jocasta/",
+      "kind": "case-study",
+      "title": "Jocasta Neuroscience Case Study: Website development for a neuroscience team | Legency Media"
+    },
+    {
+      "slug": "case-studies__k2-group",
+      "path": "/case-studies/k2-group/",
+      "kind": "case-study",
+      "title": "K2 Group Case Study: Turning a Six-Site Estate into the Answer AI Engines Give | Legency Media"
+    },
+    {
+      "slug": "case-studies__karias-health",
+      "path": "/case-studies/karias-health/",
+      "kind": "case-study",
+      "title": "Karias Health Case Study: A clearer route to the Karias team | Legency Media"
+    },
+    {
+      "slug": "case-studies__leaptree",
+      "path": "/case-studies/leaptree/",
+      "kind": "case-study",
+      "title": "LeapTree Case Study: Publishing support across product websites | Legency Media"
+    },
+    {
+      "slug": "case-studies__rivo",
+      "path": "/case-studies/rivo/",
+      "kind": "case-study",
+      "title": "Rivo Case Study: A Webflow landing page for a new finance brand | Legency Media"
+    },
+    {
+      "slug": "cookies",
+      "path": "/cookies/",
+      "kind": "legal",
+      "title": "Cookie Policy | Legency Media"
+    },
+    {
+      "slug": "get-in-touch",
+      "path": "/get-in-touch/",
+      "kind": "contact",
+      "title": "Get in touch | Legency Media"
+    },
+    {
+      "slug": "how-we-work",
+      "path": "/how-we-work/",
+      "kind": "how-we-work",
+      "title": "How We Work | The Evidence Engine | Legency Media"
+    },
+    {
+      "slug": "industries__crypto-digital-assets",
+      "path": "/industries/crypto-digital-assets/",
+      "kind": "industry",
+      "title": "Crypto Website Design & Webflow Support | Legency Media"
+    },
+    {
+      "slug": "industries__ecommerce-technology",
+      "path": "/industries/ecommerce-technology/",
+      "kind": "industry",
+      "title": "Webflow Enterprise Partner for E-commerce Tech | Legency Media"
+    },
+    {
+      "slug": "industries__fintech-ai",
+      "path": "/industries/fintech-ai/",
+      "kind": "industry",
+      "title": "Fintech Web Design & Marketing Agency | Legency Media"
+    },
+    {
+      "slug": "industries__insurance-insurtech",
+      "path": "/industries/insurance-insurtech/",
+      "kind": "industry",
+      "title": "Insurance Website Design on Webflow | Legency Media"
+    },
+    {
+      "slug": "industries__professional-services",
+      "path": "/industries/professional-services/",
+      "kind": "industry",
+      "title": "Professional Services Website Design | Legency Media"
+    },
+    {
+      "slug": "privacy",
+      "path": "/privacy/",
+      "kind": "legal",
+      "title": "Privacy Policy | Legency Media"
+    },
+    {
+      "slug": "resources",
+      "path": "/resources/",
+      "kind": "resource",
+      "title": "Resources | Legency Media"
+    },
+    {
+      "slug": "resources__astro-lumos-build-checklist",
+      "path": "/resources/astro-lumos-build-checklist/",
+      "kind": "resources-index",
+      "title": "Twelve questions to ask before an agency builds your site in Astro | Legency Media"
+    },
+    {
+      "slug": "resources__content-scoreability-checker",
+      "path": "/resources/content-scoreability-checker/",
+      "kind": "resources-index",
+      "title": "Content Scoreability Checker | Legency Media"
+    },
+    {
+      "slug": "resources__how-to-improve-your-readability-score",
+      "path": "/resources/how-to-improve-your-readability-score/",
+      "kind": "resources-index",
+      "title": "How to Improve Readability Scores | Legency Media"
+    },
+    {
+      "slug": "saas-website-design",
+      "path": "/saas-website-design/",
+      "kind": "landing",
+      "title": "SaaS Website Design Agency | Legency Media"
+    },
+    {
+      "slug": "schedule",
+      "path": "/schedule/",
+      "kind": "utility",
+      "title": "Schedule | Legency Media - Webflow Enterprise Partner"
+    },
+    {
+      "slug": "services__astro-agency",
+      "path": "/services/astro-agency/",
+      "kind": "service",
+      "title": "Astro Web Development Agency | Legency Media"
+    },
+    {
+      "slug": "services__conversion-measurement",
+      "path": "/services/conversion-measurement/",
+      "kind": "service",
+      "title": "Marketing Measurement & Reporting for B2B | Legency Media"
+    },
+    {
+      "slug": "services__conversion-rate-optimization",
+      "path": "/services/conversion-rate-optimization/",
+      "kind": "service",
+      "title": "Conversion Rate Optimization Agency for B2B | Legency Media"
+    },
+    {
+      "slug": "services__search-ai-visibility",
+      "path": "/services/search-ai-visibility/",
+      "kind": "service",
+      "title": "AI Visibility & AI SEO Agency | Legency Media"
+    },
+    {
+      "slug": "services__technical-seo",
+      "path": "/services/technical-seo/",
+      "kind": "service",
+      "title": "Technical SEO Agency for B2B Websites | Legency Media"
+    },
+    {
+      "slug": "services__webflow-enterprise",
+      "path": "/services/webflow-enterprise/",
+      "kind": "service",
+      "title": "Enterprise Webflow Agency | Webflow Enterprise Builds"
+    },
+    {
+      "slug": "services__webflow-support",
+      "path": "/services/webflow-support/",
+      "kind": "service",
+      "title": "Webflow Retainer for B2B Marketing Teams | Legency Media"
+    },
+    {
+      "slug": "services__wordpress-to-webflow-migration",
+      "path": "/services/wordpress-to-webflow-migration/",
+      "kind": "service",
+      "title": "WordPress to Webflow Migration Agency | Legency Media"
+    },
+    {
+      "slug": "web-design-galway",
+      "path": "/web-design-galway/",
+      "kind": "landing",
+      "title": "Website Design Galway | Webflow Enterprise Partner"
+    },
+    {
+      "slug": "webflow-agency-ireland",
+      "path": "/webflow-agency-ireland/",
+      "kind": "landing",
+      "title": "Webflow Agency Ireland | Webflow Expert & Enterprise Partner"
+    },
+    {
+      "slug": "webflow-agency",
+      "path": "/webflow-agency/",
+      "kind": "landing",
+      "title": "Webflow Agency for B2B Marketing Teams | Legency Media"
+    }
+  ]
+}

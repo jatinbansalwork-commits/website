@@ -1,0 +1,53 @@
+---
+import { footerColumns } from '../data/navigation';
+const year = new Date().getFullYear();
+const footerColSpacers = new Set(['Websites', 'Search & AI']);
+---
+<footer class="site-footer" data-footer-parallax>
+  <div data-footer-parallax-inner>
+    <section class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a class="footer__home" href="/" aria-label="KlearNow home">
+            <img
+              class="footer__logo"
+              src="/img/klearnow-logo-horizontal-primary.svg"
+              alt="KlearNow"
+              width="231"
+              height="57"
+            />
+          </a>
+        </div>
+        {footerColumns.map((col) =>
+          footerColSpacers.has(col.title) ? (
+            <div class="footer__col footer__col--spacer" aria-hidden="true" />
+          ) : (
+            <div class="footer__col">
+              <h3>{col.title}</h3>
+              <ul>
+                {col.links.map((link) => (
+                  <li>
+                    {'disabled' in link && link.disabled ? (
+                      <span class="footer__link footer__link--disabled" aria-disabled="true">
+                        {link.label}
+                      </span>
+                    ) : (
+                      <a href={link.href}>{link.label}</a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ),
+        )}
+      </div>
+      <div class="container footer__bottom">
+        <span><span data-dynamic-year>{year}</span> KlearNow.AI</span>
+        <span class="footer__legal">
+          <a href="/privacy/">Privacy policy</a>
+        </span>
+      </div>
+    </section>
+  </div>
+  <div class="site-footer__shade" data-footer-parallax-dark aria-hidden="true"></div>
+</footer>

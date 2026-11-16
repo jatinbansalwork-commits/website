@@ -1,0 +1,90 @@
+/* Agent thread typography — scoped port from klear360-sample-apps/tokens.css */
+
+.assist-kn-shell {
+  --kn-font-family: var(--t-font-body, "PP Frama Text", "Helvetica Neue", Arial, sans-serif);
+  --kn-font-family-display: var(--t-font-title, "PP Frama", "Helvetica Neue", Arial, sans-serif);
+  --kn-weight-regular: 400;
+  --kn-weight-medium: 500;
+  --kn-weight-semibold: 600;
+  --kn-type-display-sm-size: 3rem;
+  --kn-type-display-sm-line: 3.5rem;
+  --kn-type-body-md-size: 0.875rem;
+  --kn-type-body-md-line: 1.25rem;
+  --kn-type-body-sm-size: 0.75rem;
+  --kn-type-body-sm-line: 1.0625rem;
+  --kn-type-heading-sm-size: 1rem;
+  --kn-type-heading-sm-line: 1.375rem;
+  --kn-type-caption-sm-size: 0.6875rem;
+  --kn-type-caption-sm-line: 1rem;
+  --kn-text-normal: var(--ds-text-primary, #0f1117);
+  --kn-text-subtle: var(--ds-text-secondary, #0f1117b3);
+  --kn-text-muted: var(--ds-text-tertiary, #0f11179e);
+  --kn-text-disabled: color-mix(in srgb, var(--ds-text-primary, #0f1117) 38%, transparent);
+  /* Reuse sample “AI accent” slots with KlearNow brand teal */
+  --ai-assistant-accent: var(--primary, #003f5b);
+  --ai-assistant-accent-text: var(--ds-brand-deep, #004862);
+  --ai-assistant-accent-faded: var(--ds-brand-soft, #e6f3f7);
+  --ai-assistant-accent-subtle: color-mix(in srgb, var(--primary, #003f5b) 14%, #fff);
+  --ai-assistant-accent-border: color-mix(in srgb, var(--primary, #003f5b) 55%, #0f1117);
+  --ai-assistant-accent-border-subtle: color-mix(in srgb, var(--primary, #003f5b) 22%, transparent);
+  /* Ghost “Tab” badge — matches sample feedback neutral */
+  --kn-badge-neutral-bg: #f7f8f9;
+  --kn-badge-neutral-fg: #282e38;
+  font-family: var(--kn-font-family);
+}
+
+@media (width <= 900px) {
+  .assist-kn-shell {
+    --kn-type-display-sm-size: 2.125rem;
+    --kn-type-display-sm-line: 2.875rem;
+  }
+}
+
+.assist-kn-shell .type-display-sm {
+  font-family: var(--kn-font-family-display);
+  font-size: var(--kn-type-display-sm-size);
+  font-weight: var(--kn-weight-semibold);
+  letter-spacing: -0.04em;
+  line-height: var(--kn-type-display-sm-line);
+}
+
+.assist-kn-shell .type-display-sm.type-weight-medium {
+  font-weight: var(--kn-weight-medium);
+  letter-spacing: -0.04em;
+}
+
+.assist-kn-shell .type-heading-sm {
+  font-size: var(--kn-type-heading-sm-size);
+  font-weight: var(--kn-weight-medium);
+  letter-spacing: -0.02em;
+  line-height: var(--kn-type-heading-sm-line);
+}
+
+.assist-kn-shell .type-body-md {
+  font-size: var(--kn-type-body-md-size);
+  font-weight: var(--kn-weight-regular);
+  letter-spacing: -0.013em;
+  line-height: var(--kn-type-body-md-line);
+}
+
+.assist-kn-shell .type-body-sm {
+  font-size: var(--kn-type-body-sm-size);
+  font-weight: var(--kn-weight-regular);
+  line-height: var(--kn-type-body-sm-line);
+}
+
+.assist-kn-shell .type-caption-sm {
+  font-size: var(--kn-type-caption-sm-size);
+  font-weight: var(--kn-weight-regular);
+  line-height: var(--kn-type-caption-sm-line);
+}
+
+.assist-kn-shell .type-ui-sm {
+  font-size: var(--kn-type-body-sm-size);
+  font-weight: var(--kn-weight-medium);
+  line-height: var(--kn-type-body-sm-line);
+}
+
+.assist-kn-shell .type-weight-medium {
+  font-weight: var(--kn-weight-medium);
+}

@@ -1,0 +1,26 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  variant?: 'blue' | 'black' | 'white';
+  class?: string;
+}
+const { href, label, variant = 'blue', class: className = '' } = Astro.props;
+---
+<a class:list={['btn-bubble-arrow', `btn-bubble-arrow--${variant}`, className]} href={href}>
+  <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" class="btn-bubble-arrow__arrow-svg">
+      <polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5" />
+      <line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5" />
+    </svg>
+  </div>
+  <div class="btn-bubble-arrow__content">
+    <span class="btn-bubble-arrow__content-text">{label}</span>
+  </div>
+  <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" class="btn-bubble-arrow__arrow-svg">
+      <polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5" />
+      <line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5" />
+    </svg>
+  </div>
+</a>

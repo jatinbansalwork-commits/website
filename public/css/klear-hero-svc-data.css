@@ -1,0 +1,206 @@
+/* Klear svc-hero — same earth dither treatment as homepage hero--home */
+
+.mirrored-root--klear-svc-earth section.svc-hero {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  background: var(--bg, #fafaf7) !important;
+}
+
+.mirrored-root--klear-svc-earth section.svc-hero .hero-bg.svc-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mirrored-root--klear-svc-earth section.svc-hero .hero-glow {
+  position: absolute;
+  inset: -40px;
+  background:
+    radial-gradient(
+      40% 50% at 18% 18%,
+      color-mix(in srgb, var(--brand) 16%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      30% 40% at 70% 80%,
+      color-mix(in srgb, var(--brand-2) 12%, transparent),
+      transparent 70%
+    );
+}
+
+.mirrored-root--klear-svc-earth section.svc-hero .hero-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-image: radial-gradient(var(--line-2) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(60% 70% at 20% 30%, #000, transparent 75%);
+  -webkit-mask-image: radial-gradient(60% 70% at 20% 30%, #000, transparent 75%);
+}
+
+/* Legency ServiceLayout paints tex-hero.png on every svc-hero__tex */
+.mirrored-root--klear-svc-earth section.svc-hero .svc-hero__tex[data-astro-cid-asdozulm] {
+  background: none !important;
+  background-image: none !important;
+}
+
+.mirrored-root--klear-svc-earth section.svc-hero .svc-hero__tex--klear-earth {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  background: none !important;
+  opacity: 1 !important;
+  --planet-fade-start: 38%;
+  --planet-fade-mid: 52%;
+  --planet-fade-end: 68%;
+  mask-image: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent var(--planet-fade-start),
+    color-mix(in srgb, #000 35%, transparent) var(--planet-fade-mid),
+    #000 var(--planet-fade-end)
+  );
+  -webkit-mask-image: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent var(--planet-fade-start),
+    color-mix(in srgb, #000 35%, transparent) var(--planet-fade-mid),
+    #000 var(--planet-fade-end)
+  );
+}
+
+.mirrored-root--klear-svc-earth section.svc-hero .svc-hero__planet {
+  --planet-scale: 1.573;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  width: calc(76% * var(--planet-scale));
+  height: calc(100% * var(--planet-scale));
+  transform: translate(-50%, -50%);
+  background-color: var(--bg, #fafaf7);
+  background-image: none;
+  overflow: visible;
+}
+
+.mirrored-root--klear-svc-earth section.svc-hero .svc-hero__planet.hero__planet--poster-fallback {
+  background-image: url("/img/klearnow/home-earth-poster.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.mirrored-root--klear-svc-earth section.svc-hero .svc-hero__planet .live-dither__canvas {
+  opacity: 0;
+  pointer-events: none;
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.35s ease-out;
+}
+
+.mirrored-root--klear-svc-earth section.svc-hero .svc-hero__planet .live-dither__canvas.is-live {
+  opacity: 1;
+}
+
+.mirrored-root--klear-svc-earth section.svc-hero .svc-hero__planet.is-live {
+  background-image: none !important;
+}
+
+.mirrored-root--klear-svc-earth section.svc-hero .svc-hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Freight Forwarders — long product headline (~4 lines on desktop) */
+@media (width >= 721px) {
+  .mirrored-root--freight-forwarders section.svc-hero .svc-hero__title[data-astro-cid-asdozulm] {
+    max-width: 22ch;
+  }
+
+  /* Custom Brokers — three-line hero (explicit <br>); default 14ch reflows each line */
+  .mirrored-root--custom-brokers section.svc-hero .svc-hero__title[data-astro-cid-asdozulm] {
+    max-width: min(26ch, 100%);
+  }
+
+  .mirrored-root--trade-compliance section.svc-hero .svc-hero__title[data-astro-cid-asdozulm] {
+    max-width: min(34ch, 100%);
+  }
+}
+
+/* Product/operation heroes — respect <br> on desktop, natural wrap on mobile */
+@media (width <= 720px) {
+  :is(
+      .mirrored-root--managed-trade,
+      .mirrored-root--klear-hub,
+      .mirrored-root--freight-forwarders,
+      .mirrored-root--custom-brokers,
+      .mirrored-root--trade-compliance
+    )
+    section.svc-hero
+    .svc-hero__title
+    br {
+    display: none;
+  }
+}
+
+@media (width >= 901px) and (width <= 1200px) {
+  .mirrored-root--klear-svc-earth section.svc-hero .svc-hero__tex--klear-earth {
+    --planet-fade-start: 44%;
+    --planet-fade-mid: 56%;
+    --planet-fade-end: 72%;
+  }
+}
+
+@media (width >= 901px) and (width <= 1000px) {
+  .mirrored-root--klear-svc-earth section.svc-hero .svc-hero__tex--klear-earth {
+    --planet-fade-start: 48%;
+    --planet-fade-mid: 60%;
+    --planet-fade-end: 76%;
+  }
+}
+
+@media (width <= 720px) {
+  .mirrored-root--klear-svc-earth section.svc-hero .svc-hero__tex--klear-earth[data-astro-cid-asdozulm] {
+    opacity: 1 !important;
+    background-position: initial !important;
+    background-size: initial !important;
+  }
+}
+
+@media (width <= 900px) {
+  .mirrored-root--klear-svc-earth section.svc-hero .svc-hero__tex--klear-earth {
+    position: relative !important;
+    flex: 0 0 auto;
+    width: 100%;
+    height: clamp(230px, 37vw, 380px) !important;
+    bottom: auto !important;
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    --planet-fade-start: 0%;
+    --planet-fade-mid: 14%;
+    --planet-fade-end: 32%;
+    mask-image: linear-gradient(
+      110deg,
+      transparent var(--planet-fade-start),
+      color-mix(in srgb, #000 40%, transparent) var(--planet-fade-mid),
+      #000 var(--planet-fade-end)
+    );
+    -webkit-mask-image: linear-gradient(
+      110deg,
+      transparent var(--planet-fade-start),
+      color-mix(in srgb, #000 40%, transparent) var(--planet-fade-mid),
+      #000 var(--planet-fade-end)
+    );
+  }
+
+  .mirrored-root--klear-svc-earth section.svc-hero .svc-hero__planet {
+    width: calc(100% * var(--planet-scale));
+    left: 50%;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "klearnow",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync:wayback": "node scripts/sync-wayback.mjs",
+    "fix:assets": "node scripts/fix-asset-urls.mjs",
+    "fix:interactions": "node scripts/refresh-interaction-assets.mjs",
+    "patch:brand": "node scripts/patch-brand-assets.mjs",
+    "patch:inline-styles": "node scripts/patch-inline-styles.mjs",
+    "patch:behaviors": "node scripts/patch-mirror-behaviors.mjs",
+    "validate:mirrors": "node scripts/validate-mirrors.mjs",
+    "generate:hero-earth": "python3 scripts/generate-home-earth-planet.py",
+    "mirror:refresh": "npm run fix:assets && npm run fix:interactions && npm run patch:brand && npm run patch:inline-styles && npm run patch:behaviors && npm run validate:mirrors"
+  },
+  "dependencies": {
+    "astro": "^7.4.10"
+  }
+}

@@ -1,0 +1,54 @@
+/* Klear Agent demo tokens — scoped to the quote assist panel */
+.quote__assist {
+  color-scheme: light;
+
+  --t-font-title: "PP Frama", var(--font-title, "Helvetica Neue"), Arial, sans-serif;
+  --t-font-body: "PP Frama Text", var(--font-body, "Helvetica Neue"), Arial, sans-serif;
+
+  --ds-bg-page: #fafaf7;
+  --ds-bg-surface: #f3f2ec;
+  --ds-bg-elevated: #ffffff;
+  --ds-bg-elevated-2: #f7f6f2;
+
+  --ds-text-primary: #0f1117;
+  --ds-text-secondary: #0f1117b3;
+  --ds-text-tertiary: #0f11179e;
+
+  --ds-border-subtle: #0f111717;
+  --ds-border-default: #0f111729;
+
+  --primary: #005d7c;
+  --ds-brand-primary: var(--primary);
+  --ds-brand-deep: #004862;
+  --ds-brand-soft: #e6f3f7;
+  --ds-brand-ink: #004558;
+  --ds-brand-secondary: #007499;
+  --ds-on-brand: #ffffff;
+
+  --ds-success-fg: #0b7a52;
+  --ds-success-bg: #e2f5ec;
+  --ds-warning-fg: #b45309;
+  --ds-warning-bg: #fef3c7;
+
+  --bg: var(--ds-bg-page);
+  --surface: var(--ds-bg-elevated);
+  --ink: var(--ds-text-primary);
+  --brand: var(--ds-brand-primary);
+  --shadow-hero: 0 1px 2px #0f11170d, 0 30px 70px -28px #005d7c61;
+}
+
+@font-face {
+  font-family: "PP Frama";
+  src: url("/fonts/PPFrama-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Frama Text";
+  src: url("/fonts/PPFramaText-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

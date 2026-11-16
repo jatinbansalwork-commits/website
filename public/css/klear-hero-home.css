@@ -1,0 +1,158 @@
+/* marketing-site/hero-home.css — scoped overrides for mirrored Legency index CSS */
+
+.mirrored-root section.hero.hero--home {
+  overflow: visible !important;
+}
+
+.mirrored-root section.hero.hero--home .hero__stage {
+  position: relative;
+  isolation: isolate;
+  display: flow-root;
+  overflow: visible;
+}
+
+.mirrored-root section.hero.hero--home .hero__art {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  --planet-fade-start: 38% !important;
+  --planet-fade-mid: 52%;
+  --planet-fade-end: 68% !important;
+  mask-image: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent var(--planet-fade-start),
+    color-mix(in srgb, #000 35%, transparent) var(--planet-fade-mid),
+    #000 var(--planet-fade-end)
+  ) !important;
+  -webkit-mask-image: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent var(--planet-fade-start),
+    color-mix(in srgb, #000 35%, transparent) var(--planet-fade-mid),
+    #000 var(--planet-fade-end)
+  ) !important;
+}
+
+.mirrored-root section.hero.hero--home .hero__planet {
+  --planet-scale: 1.573 !important;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  width: calc(76% * var(--planet-scale)) !important;
+  height: calc(100% * var(--planet-scale)) !important;
+  transform: translate(-50%, -50%);
+  contain: none !important;
+  background-color: var(--bg, #fafaf7) !important;
+  background-image: none !important;
+  overflow: visible;
+}
+
+/* Static poster only when WebGL/texture fails — avoids “x-ray” flash on refresh */
+.mirrored-root section.hero.hero--home .hero__planet.hero__planet--poster-fallback {
+  background-image: url("/img/klearnow/home-earth-poster.webp") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.mirrored-root section.hero.hero--home .hero__planet .live-dither__canvas {
+  opacity: 0;
+  pointer-events: none;
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.35s ease-out;
+}
+
+.mirrored-root section.hero.hero--home .hero__planet .live-dither__canvas.is-live {
+  opacity: 1;
+}
+
+.mirrored-root section.hero.hero--home .hero__planet.is-live {
+  background-image: none !important;
+}
+
+.mirrored-root section.hero.hero--home .hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.mirrored-root section.hero.hero--home .hero__title-accent {
+  color: var(--blue);
+}
+
+@media (width >= 901px) {
+  .mirrored-root section.hero.hero--home .hero__title {
+    max-width: 11.5em;
+  }
+
+  .mirrored-root section.hero.hero--home .hero__sub {
+    max-width: 62ch;
+  }
+
+  .mirrored-root section.hero.hero--home .hero__stage {
+    min-height: clamp(620px, 41vw, 820px);
+  }
+}
+
+@media (width >= 901px) and (width <= 1200px) {
+  .mirrored-root section.hero.hero--home .hero__art {
+    --planet-fade-start: 44% !important;
+    --planet-fade-mid: 56%;
+    --planet-fade-end: 72% !important;
+  }
+}
+
+@media (width >= 901px) and (width <= 1000px) {
+  .mirrored-root section.hero.hero--home .hero__art {
+    --planet-fade-start: 48% !important;
+    --planet-fade-mid: 60%;
+    --planet-fade-end: 76% !important;
+  }
+}
+
+@media (width <= 900px) {
+  .mirrored-root section.hero.hero--home .hero__stage {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mirrored-root section.hero.hero--home .hero__inner {
+    order: 0;
+    padding-bottom: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .mirrored-root section.hero.hero--home .hero__art {
+    position: relative !important;
+    flex: 0 0 auto;
+    order: 1;
+    width: 100%;
+    height: clamp(230px, 37vw, 380px);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    --planet-fade-start: 0% !important;
+    --planet-fade-mid: 14%;
+    --planet-fade-end: 32% !important;
+    mask-image: linear-gradient(
+      110deg,
+      transparent var(--planet-fade-start),
+      color-mix(in srgb, #000 40%, transparent) var(--planet-fade-mid),
+      #000 var(--planet-fade-end)
+    ) !important;
+    -webkit-mask-image: linear-gradient(
+      110deg,
+      transparent var(--planet-fade-start),
+      color-mix(in srgb, #000 40%, transparent) var(--planet-fade-mid),
+      #000 var(--planet-fade-end)
+    ) !important;
+  }
+
+  .mirrored-root section.hero.hero--home .hero__planet {
+    width: calc(100% * var(--planet-scale)) !important;
+    left: 50%;
+  }
+}

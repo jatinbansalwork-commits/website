@@ -1,0 +1,24 @@
+---
+description: KlearNow stroke icon standard for mirrored marketing pages
+globs:
+  - "**/*.{html,astro,css,ts}"
+  - "src/data/**"
+  - "public/css/**"
+---
+
+# Klear stroke iconography
+
+Use the **homepage tier list** look everywhere in `.mirrored-root`:
+
+| Property | Value |
+|----------|--------|
+| Wrapper | `icon-chip icon-chip--bare` |
+| Size | `--icon-chip-size: 22px` |
+| ViewBox | `0 0 24 24` |
+| Stroke | `1.5`, `round` caps/joins |
+| Fill | `none` |
+| Color | `stroke="currentColor"` (ink on light, white on `.tier--dark`) |
+
+Implement new icons via `klearStrokeSvg()` / `klearStrokeIconChip()` in `src/lib/klear-stroke-icons.ts`. Global enforcement lives in `public/css/klear-iconography.css`.
+
+Avoid filled `icon-chip` tiles on KlearData/KlearHub foundation and module cards unless the design explicitly calls for an exception.

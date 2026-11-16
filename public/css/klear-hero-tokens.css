@@ -1,0 +1,9 @@
+/* KlearNow live-dither theme — must match marketing-site tokens.css names */
+:root {
+  --bg: #fafaf7;
+  --primary: #003f5b;
+  --brand: #003f5b;
+  --brand-2: #007499;
+  --brand-soft: #e6f3f7;
+  --line-2: #0f111729;
+}

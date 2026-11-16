@@ -1,0 +1,200 @@
+/* Legency enterprise “dp” bands (data-astro-cid-biwego7o) — mirrored from services__webflow-enterprise inline CSS */
+
+.dp__grid[data-astro-cid-biwego7o] {
+  gap: var(--sp-5);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  display: grid;
+}
+
+.dp__heading[data-astro-cid-biwego7o] {
+  font-size: var(--h4);
+  margin-bottom: var(--sp-3);
+  max-width: 24ch;
+}
+
+.dp__text[data-astro-cid-biwego7o] p[data-astro-cid-biwego7o],
+.dp__sub[data-astro-cid-biwego7o] {
+  font-size: var(--para-sm);
+  max-width: 56ch;
+  margin-bottom: var(--sp-2);
+}
+
+.dp__note[data-astro-cid-biwego7o] {
+  opacity: 0.7;
+}
+
+.dp__head[data-astro-cid-biwego7o] {
+  margin-bottom: var(--sp-4);
+  max-width: 64ch;
+}
+
+.dp--alt[data-astro-cid-biwego7o] {
+  background: var(--white);
+}
+
+.dp__cards[data-astro-cid-biwego7o] {
+  gap: var(--sp-3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: grid;
+}
+
+.dp__cards--three[data-astro-cid-biwego7o] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dp__card[data-astro-cid-biwego7o] {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+}
+
+.dp--alt[data-astro-cid-biwego7o] .dp__card[data-astro-cid-biwego7o] {
+  background: var(--bg);
+}
+
+.dp__card[data-astro-cid-biwego7o] h3[data-astro-cid-biwego7o] {
+  font-size: var(--h6);
+  margin-bottom: var(--sp-2);
+  max-width: 26ch;
+}
+
+.dp__card[data-astro-cid-biwego7o] p[data-astro-cid-biwego7o] {
+  font-size: var(--para-sm);
+}
+
+@media (width <= 900px) {
+  .dp__grid[data-astro-cid-biwego7o],
+  .dp__cards[data-astro-cid-biwego7o],
+  .dp__cards--three[data-astro-cid-biwego7o] {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* KlearData / KlearHub budget band with service-choice cards */
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product)
+  section.section.dp
+  > .container:empty {
+  display: none !important;
+}
+
+/* “When to use KlearData” dp--alt (Legency thdesxtn mirror — FF inline + TC inserted band). */
+.dp__grid[data-astro-cid-thdesxtn] {
+  gap: var(--sp-5);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  display: grid;
+}
+
+.dp__heading[data-astro-cid-thdesxtn] {
+  font-size: var(--h4);
+  margin-bottom: var(--sp-3);
+  max-width: 24ch;
+}
+
+.dp__text[data-astro-cid-thdesxtn] p[data-astro-cid-thdesxtn],
+.dp__sub[data-astro-cid-thdesxtn] {
+  font-size: var(--para-sm);
+  max-width: 56ch;
+  margin-bottom: var(--sp-2);
+}
+
+.dp__note[data-astro-cid-thdesxtn] {
+  opacity: 0.7;
+}
+
+.dp__head[data-astro-cid-thdesxtn] {
+  margin-bottom: var(--sp-4);
+  max-width: 64ch;
+}
+
+.dp--alt[data-astro-cid-thdesxtn] {
+  background: var(--white);
+}
+
+.dp__cards[data-astro-cid-thdesxtn] {
+  gap: var(--sp-3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: grid;
+}
+
+.dp__cards--three[data-astro-cid-thdesxtn] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dp__card[data-astro-cid-thdesxtn] {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+}
+
+.dp--alt[data-astro-cid-thdesxtn] .dp__card[data-astro-cid-thdesxtn] {
+  background: var(--bg);
+}
+
+.dp__card[data-astro-cid-thdesxtn] h3[data-astro-cid-thdesxtn] {
+  font-size: var(--h6);
+  margin-bottom: var(--sp-2);
+  max-width: 26ch;
+}
+
+.dp__card[data-astro-cid-thdesxtn] p[data-astro-cid-thdesxtn] {
+  font-size: var(--para-sm);
+}
+
+.dp__steps[data-astro-cid-thdesxtn] {
+  gap: var(--sp-2);
+  list-style: none;
+  display: grid;
+}
+
+.dp__step[data-astro-cid-thdesxtn] {
+  gap: var(--sp-4);
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  grid-template-columns: max-content minmax(0, 1fr);
+  display: grid;
+}
+
+.dp--alt[data-astro-cid-thdesxtn] .dp__step[data-astro-cid-thdesxtn] {
+  background: var(--bg);
+}
+
+.dp__num[data-astro-cid-thdesxtn] {
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: var(--h6);
+  color: var(--blue);
+  line-height: 1;
+}
+
+.dp__step[data-astro-cid-thdesxtn] h3[data-astro-cid-thdesxtn] {
+  font-size: var(--h6);
+  margin-bottom: var(--sp-2);
+}
+
+.dp__step[data-astro-cid-thdesxtn] p[data-astro-cid-thdesxtn] {
+  font-size: var(--para-sm);
+  max-width: 74ch;
+}
+
+.dp__foot[data-astro-cid-thdesxtn] {
+  margin-top: var(--sp-3);
+  font-size: var(--para-sm);
+  opacity: 0.7;
+  max-width: 72ch;
+}
+
+@media (width <= 900px) {
+  .dp__grid[data-astro-cid-thdesxtn],
+  .dp__cards[data-astro-cid-thdesxtn],
+  .dp__cards--three[data-astro-cid-thdesxtn],
+  .dp__step[data-astro-cid-thdesxtn] {
+    grid-template-columns: 1fr;
+  }
+
+  .dp__step[data-astro-cid-thdesxtn] {
+    gap: var(--sp-2);
+  }
+}

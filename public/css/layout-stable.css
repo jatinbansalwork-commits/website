@@ -1,0 +1,2191 @@
+/* Reduce CLS / micro-jumps on hard refresh (fonts, scrollbar, Lenis, hero). */
+
+:root {
+  /* KlearNow: navy primary, teal accent (was single teal #005d7c). */
+  --blue: #003f5b;
+  --klear-teal: #007499;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Lenis toggles overflow when it mounts; reserve scrollbar width up front. */
+html.lenis {
+  scrollbar-gutter: stable;
+}
+
+/* PP Frama preloads in <head>; optional avoids a late metric swap (FOUT). */
+@font-face {
+  font-family: PP Frama;
+  src: url(/fonts/PPFrama-Medium.woff2) format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: PP Frama;
+  src: url(/fonts/PPFrama-Regular.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: "PP Frama Text";
+  src: url(/fonts/PPFramaText-Regular.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: "PP Frama Text";
+  src: url(/fonts/PPFramaText-Bold.woff2) format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: optional;
+}
+
+.mirrored-root section.hero.hero--home .hero__planet {
+  contain: none;
+}
+
+/* Hero earth dither: poster → canvas handled in klear-hero-home.css */
+
+/* Ecosystem tier chips — teal tint (not Legency electric blue). */
+.tier__head {
+  align-items: center;
+}
+
+.tier__chip {
+  color: var(--ink);
+  background: rgba(0, 93, 124, 0.1);
+  border: 1px solid rgba(0, 93, 124, 0.35);
+  flex: 0 0 auto;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+.tier--dark .tier__chip {
+  color: var(--white);
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+/* Execution layer — KlearNow book dither (replaces Legency donut video). */
+.tier--dark {
+  --primary: var(--blue);
+  --klear-book-bg: #060415;
+  isolation: isolate;
+  color: var(--white);
+  background: var(--klear-book-bg) !important;
+}
+
+.tier--dark .tier__video video {
+  display: none !important;
+}
+
+.tier--dark .tier__video canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  image-rendering: pixelated;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.tier--dark .tier__video canvas.is-live {
+  opacity: 0.34;
+}
+
+.tier--dark .tier__video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--klear-book-bg);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.tier--dark .tier__video-shade {
+  display: none;
+}
+
+.quote__head .quote__sub {
+  flex-basis: 100%;
+  font-size: var(--para);
+  line-height: 1.45;
+  opacity: 0.85;
+  max-width: 56ch;
+  margin: 0;
+}
+
+.quote .quote__assist {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.quote .quote__assist .marketing-thread__title {
+  /* Demo header sits inside main; avoid mirrored roll-title transforms */
+  transform: none !important;
+}
+
+.hero__partners-logos {
+  --hero-partner-slot: 160px;
+  --hero-partner-slot-h: 48px;
+}
+
+.hero__partners-logo:not([src*="logo-placeholder"]) {
+  width: auto;
+  max-width: calc(var(--hero-partner-slot) * 0.85);
+  max-height: calc(var(--hero-partner-slot-h) * 0.85);
+  justify-self: center;
+  margin-inline: auto;
+}
+
+.tsnav__logo img,
+.tsnav__logo-img {
+  height: 40px;
+  width: auto;
+  max-width: 169px;
+}
+
+/* Nav panel: hide “Site” / “Services” eyebrows but keep vertical rhythm. */
+@media (width > 991px) {
+  .tsnav__eyebrow--site,
+  .tsnav__eyebrow--services {
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .tsnav__eyebrow--site {
+    margin-bottom: 39px;
+  }
+
+  .tsnav__eyebrow--services {
+    margin-bottom: 23px;
+  }
+}
+
+/* Services mega-menu: book CTA in column 3 (beside Operation TYpe). */
+@media (width > 991px) {
+  .tsnav__groups > .tsnav__book {
+    flex-direction: column;
+    align-items: stretch;
+    align-self: stretch;
+    justify-content: space-between;
+    min-height: 100%;
+    padding: 18px 20px;
+  }
+
+  .tsnav__groups > .tsnav__book .tsnav__book-title {
+    max-width: 16ch;
+  }
+
+  .tsnav__groups > .tsnav__book .tsnav__book-cta {
+    padding-top: 1.25em;
+  }
+
+  .tsnav__groups > .tsnav__book .btn-bubble-arrow {
+    width: 100%;
+  }
+}
+
+/* KlearData / KlearHub foundation intro (enterprise mirror). */
+.mirrored-root--klear-data section.section.foundation .foundation__heading,
+.mirrored-root--klear-hub section.section.foundation .foundation__heading {
+  max-width: none;
+  line-height: 1.12;
+}
+
+.mirrored-root--klear-data section.section.foundation .foundation__sub,
+.mirrored-root--klear-hub section.section.foundation .foundation__sub,
+.mirrored-root--managed-trade section.section.foundation .foundation__sub {
+  font-size: var(--para);
+  line-height: 1.45;
+  max-width: min(54ch, 100%);
+  margin: var(--sp-3) 0 0;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.mirrored-root--managed-trade section.section.foundation .foundation__heading,
+.mirrored-root--freight-forwarders section.section.foundation .foundation__heading {
+  max-width: none;
+  line-height: 1.12;
+}
+
+/* Freight Forwarders foundation band — white section, soft gray cards. */
+.mirrored-root--freight-forwarders section.section.foundation {
+  background: var(--white) !important;
+}
+
+.mirrored-root--freight-forwarders section.section.foundation .found-card {
+  background: var(--bg) !important;
+}
+
+/* KlearData duplicate foundation (after fee band) — white band, gray cards. */
+.mirrored-root--klear-data #klear-data-foundation-2 {
+  background: var(--white) !important;
+}
+
+.mirrored-root--klear-data #klear-data-foundation-2 .found-card,
+.mirrored-root--klear-data #klear-data-foundation-2 .found-card[data-astro-cid-6q4o4ab6] {
+  background: var(--bg) !important;
+}
+
+/* Trade Compliance foundation — three cards in one row (Legency mirror ships four). */
+.mirrored-root--klear-operation
+  section.section.foundation
+  .foundation__grid:has(> .found-card:nth-child(3):last-child),
+.mirrored-root--klear-operation
+  section.section.foundation
+  .foundation__grid[data-astro-cid-6q4o4ab6]:has(> .found-card:nth-child(3):last-child) {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+@media (width <= 900px) {
+  .mirrored-root--klear-operation
+    section.section.foundation
+    .foundation__grid:has(> .found-card:nth-child(3):last-child),
+  .mirrored-root--klear-operation
+    section.section.foundation
+    .foundation__grid[data-astro-cid-6q4o4ab6]:has(> .found-card:nth-child(3):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (width <= 600px) {
+  .mirrored-root--klear-operation
+    section.section.foundation
+    .foundation__grid:has(> .found-card:nth-child(3):last-child),
+  .mirrored-root--klear-operation
+    section.section.foundation
+    .foundation__grid[data-astro-cid-6q4o4ab6]:has(> .found-card:nth-child(3):last-child) {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Foundation card icons: see klear-iconography.css (tier-style bare stroke). */
+
+.mirrored-root--klear-data section.caseband .caseband__heading,
+.mirrored-root--klear-hub section.caseband .caseband__heading {
+  max-width: min(100%, 22em);
+  line-height: 1.12;
+}
+
+.mirrored-root--klear-data section.caseband .caseband__text,
+.mirrored-root--klear-hub section.caseband .caseband__text {
+  max-width: min(100%, 42ch);
+  line-height: 1.45;
+}
+
+/* Home turnaround bands — same canvas as #home-services (“FROM THE ENTRY LINE”). */
+.mirrored-root section.section.bands {
+  --bands-green: #1f8a47;
+  --bands-before: #c4373a;
+  background: var(--bg, #fafaf7);
+  color: var(--black);
+}
+
+.mirrored-root section.section.bands .label {
+  color: var(--blue);
+}
+
+.mirrored-root section.section.bands .bands__head {
+  max-width: min(36ch, 100%);
+}
+
+@media (width >= 768px) {
+  .mirrored-root section.section.bands .bands__head {
+    max-width: min(72ch, 100%);
+  }
+}
+
+@media (width >= 1200px) {
+  .mirrored-root section.section.bands .bands__head {
+    max-width: min(78ch, 100%);
+  }
+}
+
+.mirrored-root section.section.bands .bands__heading {
+  color: var(--black);
+  max-width: 100% !important;
+  text-wrap: normal;
+}
+
+.mirrored-root section.section.bands .bands__card {
+  background: var(--white);
+  border-color: #201d1d1a;
+  color: var(--black);
+}
+
+.mirrored-root section.section.bands .bands__card--before .bands__time,
+.mirrored-root section.section.bands .bands__card:nth-child(1) .bands__time {
+  color: var(--bands-before) !important;
+}
+
+.mirrored-root section.section.bands .bands__card--with .bands__time,
+.mirrored-root section.section.bands .bands__card:nth-child(2) .bands__time {
+  color: var(--bands-green) !important;
+}
+
+.mirrored-root section.section.bands .bands__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mirrored-root section.section.bands .bands__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9em;
+  margin-bottom: 0.9em;
+  font-size: var(--para-sm);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.mirrored-root section.section.bands .bands__list li:last-child {
+  margin-bottom: 0;
+}
+
+.mirrored-root section.section.bands .bands__mark.icon-chip {
+  --icon-chip-size: 24px;
+  width: var(--icon-chip-size);
+  height: var(--icon-chip-size);
+  min-width: var(--icon-chip-size);
+  min-height: var(--icon-chip-size);
+  border-radius: 50%;
+  margin-top: 0.08em;
+  flex-shrink: 0;
+  color: var(--white);
+  place-items: center;
+}
+
+.mirrored-root section.section.bands .bands__mark.icon-chip svg {
+  width: 13px !important;
+  height: 13px !important;
+  display: block;
+  flex-shrink: 0;
+}
+
+.mirrored-root section.section.bands .bands__card--before .bands__mark.icon-chip {
+  background: var(--bands-before);
+  border: 0;
+}
+
+.mirrored-root section.section.bands .bands__card--with .bands__mark.icon-chip {
+  background: var(--bands-green);
+  border: 0;
+}
+
+.mirrored-root section.section.bands .bands__card h3,
+.mirrored-root section.section.bands .bands__card p {
+  color: var(--ink);
+}
+
+.mirrored-root section.section.bands .bands__foot {
+  color: #201d1db8;
+}
+
+.mirrored-root section.section.bands .bands__dot {
+  box-shadow: 0 0 0 6px var(--bg, #fafaf7);
+}
+
+.mirrored-root section.section.bands .bands__dot:nth-child(1) {
+  background: var(--bands-before) !important;
+}
+
+.mirrored-root section.section.bands .bands__dot:nth-child(2) {
+  background: var(--bands-green) !important;
+}
+
+.mirrored-root section.section.bands .bands__track::before {
+  background: linear-gradient(
+    90deg,
+    var(--bands-before),
+    var(--bands-green) 55%,
+    rgba(32, 29, 29, 0.12)
+  ) !important;
+}
+
+.mirrored-root section.section.bands .bands__grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mirrored-root section.section.bands .bands__track {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Home entry-line service cards — excerpt, rule, subtitle, title */
+#home-services .service-choice__divider {
+  border: 0;
+  border-top: 1px solid #dcdde7;
+  margin: auto 0 var(--sp-2);
+}
+
+:is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice__subtitle {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.35rem;
+}
+
+:is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice__title {
+  letter-spacing: -0.025em;
+  max-width: 16ch;
+  margin: 0 0 var(--sp-2);
+}
+
+#home-services article.service-choice:nth-child(3) .service-choice__title,
+.mirrored-root--self-filers #home-services article.service-choice .service-choice__title,
+.mirrored-root--klear-data #home-services article.service-choice:nth-child(6) .service-choice__title,
+.mirrored-root--klear-hub #home-services article.service-choice:nth-child(6) .service-choice__title,
+.mirrored-root--klear-hub #home-services article.service-choice:nth-child(7) .service-choice__title,
+.mirrored-root--klear-hub #home-services article.service-choice:nth-child(8) .service-choice__title,
+.mirrored-root--klear-hub #home-services article.service-choice:nth-child(9) .service-choice__title,
+.mirrored-root--managed-trade #home-services article.service-choice:nth-child(6) .service-choice__title,
+.mirrored-root--managed-trade #home-services article.service-choice:nth-child(7) .service-choice__title,
+.mirrored-root--managed-trade #home-services article.service-choice:nth-child(8) .service-choice__title,
+.mirrored-root--managed-trade #home-services article.service-choice:nth-child(9) .service-choice__title,
+.mirrored-root--klear-hub #home-services-repeat article.service-choice:nth-child(6) .service-choice__title,
+.mirrored-root--klear-hub #home-services-repeat article.service-choice:nth-child(7) .service-choice__title,
+.mirrored-root--klear-hub #home-services-repeat article.service-choice:nth-child(8) .service-choice__title,
+.mirrored-root--klear-hub #home-services-repeat article.service-choice:nth-child(9) .service-choice__title {
+  max-width: none;
+}
+
+:is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice__link {
+  font-family: var(--font-title);
+  font-size: clamp(26px, 2.1vw, 34px) !important;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-top: 0 !important;
+}
+
+/* Entry-line cards: static panels, teal hover (not Legency blue lift). */
+:is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice {
+  cursor: default;
+  color: inherit;
+  text-decoration: none;
+}
+
+:is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice:hover {
+  border-color: rgba(0, 93, 124, 0.4) !important;
+  background: rgba(0, 93, 124, 0.08) !important;
+  transform: none !important;
+}
+
+/* KlearData / KlearHub “What it does” cards — tier-style bare icons. */
+.mirrored-root--klear-data #home-services .service-choice__iconhead,
+.mirrored-root--self-filers #home-services .service-choice__iconhead,
+.mirrored-root--managed-trade #home-services .service-choice__iconhead,
+.mirrored-root--klear-hub :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice__iconhead,
+.mirrored-root--managed-trade :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice__iconhead,
+.mirrored-root--freight-forwarders :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice__iconhead {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-bottom: 0;
+  display: flex;
+}
+
+.mirrored-root--klear-data #home-services .service-choice__iconhead .service-choice__top,
+.mirrored-root--managed-trade :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice__iconhead .service-choice__top,
+.mirrored-root--klear-hub :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice__iconhead .service-choice__top,
+.mirrored-root--freight-forwarders :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice__iconhead .service-choice__top {
+  margin-bottom: 0 !important;
+  display: block;
+  line-height: 1.2;
+}
+
+/* #home-services icon size/color: klear-iconography.css */
+
+.mirrored-root--klear-data #home-services .service-choice__iconhead + .service-choice__divider,
+.mirrored-root--self-filers #home-services .service-choice__iconhead + .service-choice__divider,
+.mirrored-root--managed-trade #home-services .service-choice__iconhead + .service-choice__divider,
+.mirrored-root--klear-hub #home-services .service-choice__iconhead + .service-choice__divider {
+  border: 0;
+  border-top: 1px solid #dcdde7;
+  margin: 0.75rem 0 1rem;
+  width: 100%;
+}
+
+/* Self Filers: bare icons only — no divider, icon-to-title rhythm like repeat bands. */
+.mirrored-root--self-filers #home-services .service-choice__divider,
+.mirrored-root--self-filers #home-services hr.service-choice__divider,
+.mirrored-root--self-filers #home-services hr {
+  display: none !important;
+  visibility: hidden !important;
+  border: 0 !important;
+  margin: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+.mirrored-root--self-filers #home-services .service-choice__iconhead {
+  gap: 0;
+  margin-bottom: 0;
+}
+
+.mirrored-root--self-filers #home-services .service-choice__iconhead .icon-chip.icon-chip--bare {
+  margin-bottom: 0.75rem;
+}
+
+.mirrored-root--self-filers #home-services .service-choice__iconhead + .service-choice__title,
+.mirrored-root--self-filers #home-services .service-choice__iconhead ~ .service-choice__title {
+  margin-top: 0;
+}
+
+.mirrored-root--klear-hub #home-services-repeat .service-choice__divider,
+.mirrored-root--klear-hub #home-services-repeat hr.service-choice__divider,
+.mirrored-root--klear-hub #home-services-repeat hr,
+.mirrored-root--managed-trade #home-services-repeat .service-choice__divider,
+.mirrored-root--managed-trade #home-services-repeat hr.service-choice__divider,
+.mirrored-root--managed-trade #home-services-repeat hr,
+.mirrored-root--freight-forwarders :is(#home-services-repeat, #home-services-repeat-2) .service-choice__divider,
+.mirrored-root--freight-forwarders :is(#home-services-repeat, #home-services-repeat-2) hr.service-choice__divider,
+.mirrored-root--freight-forwarders :is(#home-services-repeat, #home-services-repeat-2) hr {
+  display: none !important;
+  visibility: hidden !important;
+  border: 0 !important;
+  margin: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+.mirrored-root--klear-hub #home-services-repeat .service-choice__iconhead,
+.mirrored-root--managed-trade #home-services-repeat .service-choice__iconhead,
+.mirrored-root--freight-forwarders :is(#home-services-repeat, #home-services-repeat-2) .service-choice__iconhead {
+  gap: 0;
+  margin-bottom: 0;
+}
+
+/* Repeat band: no divider — match first-band icon-to-title rhythm (~1.75rem). */
+.mirrored-root--klear-hub #home-services-repeat .service-choice__iconhead .icon-chip.icon-chip--bare,
+.mirrored-root--managed-trade #home-services-repeat .service-choice__iconhead .icon-chip.icon-chip--bare,
+.mirrored-root--freight-forwarders :is(#home-services-repeat, #home-services-repeat-2) .service-choice__iconhead .icon-chip.icon-chip--bare {
+  margin-bottom: 1rem;
+}
+
+.mirrored-root--klear-hub #home-services-repeat .service-choice__iconhead + .service-choice__title,
+.mirrored-root--klear-hub #home-services-repeat .service-choice__iconhead ~ .service-choice__title,
+.mirrored-root--managed-trade #home-services-repeat .service-choice__iconhead + .service-choice__title,
+.mirrored-root--managed-trade #home-services-repeat .service-choice__iconhead ~ .service-choice__title,
+.mirrored-root--freight-forwarders :is(#home-services-repeat, #home-services-repeat-2) .service-choice__iconhead + .service-choice__title,
+.mirrored-root--freight-forwarders :is(#home-services-repeat, #home-services-repeat-2) .service-choice__iconhead ~ .service-choice__title {
+  margin-top: 0.75rem;
+}
+
+.mirrored-root--klear-data #home-services .service-choice .service-choice__title,
+.mirrored-root--self-filers #home-services .service-choice .service-choice__title,
+.mirrored-root--managed-trade :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice .service-choice__title,
+.mirrored-root--klear-hub :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice .service-choice__title,
+.mirrored-root--freight-forwarders :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice .service-choice__title {
+  margin: 0 0 0.75rem;
+}
+
+.mirrored-root--klear-data #home-services .service-choice > p,
+.mirrored-root--self-filers #home-services .service-choice > p,
+.mirrored-root--managed-trade :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice > p,
+.mirrored-root--klear-hub :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice > p,
+.mirrored-root--freight-forwarders :is(#home-services, #home-services-repeat, #home-services-repeat-2) .service-choice > p {
+  margin-bottom: 0 !important;
+  max-width: none;
+}
+
+/* Self Filers “Why Being Prepared Matters” — same card system as foundation bottlenecks. */
+.mirrored-root--self-filers #home-services.section.foundation {
+  padding-block: var(--sp-6);
+  background: var(--bg);
+}
+
+.mirrored-root--self-filers #home-services .foundation__head {
+  margin-bottom: var(--sp-5);
+}
+
+.mirrored-root--self-filers #home-services .foundation__heading {
+  font-size: var(--h3);
+  max-width: none;
+  line-height: 1.12;
+}
+
+.mirrored-root--self-filers #home-services .foundation__grid {
+  gap: var(--sp-3);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: grid !important;
+  flex-wrap: unset !important;
+  font-size: inherit !important;
+  justify-content: unset !important;
+  align-items: stretch !important;
+}
+
+@media (width <= 900px) {
+  .mirrored-root--self-filers #home-services .foundation__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width <= 600px) {
+  .mirrored-root--self-filers #home-services .foundation__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mirrored-root--self-filers #home-services .found-card {
+  background: var(--white);
+  border: 0;
+  border-radius: var(--radius);
+  padding: var(--sp-4) var(--sp-3);
+  flex-direction: column;
+  display: flex;
+}
+
+.mirrored-root--self-filers #home-services .found-card .icon-chip.icon-chip--bare {
+  --icon-chip-size: var(--klear-foundation-icon-size);
+  width: var(--icon-chip-size);
+  height: var(--icon-chip-size);
+  min-width: var(--icon-chip-size);
+  min-height: var(--icon-chip-size);
+  color: var(--blue);
+  margin-bottom: var(--sp-3);
+  background: transparent !important;
+  border: 0 !important;
+  display: inline-grid;
+  place-items: center;
+}
+
+.mirrored-root--self-filers #home-services .found-card:nth-child(2) .icon-chip {
+  color: var(--klear-teal, var(--blue));
+}
+
+.mirrored-root--self-filers #home-services .found-card .icon-chip.icon-chip--bare svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mirrored-root--self-filers #home-services .found-card h3 {
+  font-size: var(--h5);
+  max-width: none;
+  margin: 0 0 var(--sp-4);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.mirrored-root--self-filers #home-services .found-card > p {
+  font-size: var(--para);
+  line-height: 1.55;
+  color: var(--ink);
+  opacity: 0.8;
+  max-width: none;
+  margin: 0;
+  margin-top: auto;
+}
+
+/* Klear product + Operation TYpe closing dp bands — left-align intro (not centered narrow column). */
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product) section.section.dp {
+  text-align: left;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product)
+  section.section.dp
+  .container.dp__head {
+  margin-inline: 0;
+  margin-bottom: var(--sp-4);
+  max-width: min(64ch, 100%);
+  text-align: left;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product)
+  section.section.dp
+  .dp__heading {
+  font-size: var(--h3) !important;
+  max-width: none !important;
+  text-align: left;
+}
+
+@media (width >= 900px) {
+  :is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product)
+    section.section.dp
+    .container.dp__head {
+    max-width: min(80ch, 100%);
+  }
+
+  :is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product)
+    section.section.dp
+    .container.dp__head
+    > .dp__heading {
+    white-space: nowrap;
+  }
+}
+
+/* Managed Trade migration band — two-line heading (explicit break), not closing-dp nowrap. */
+.mirrored-root--managed-trade
+  section#migration-content.section.dp
+  .container.dp__head
+  > .dp__heading {
+  white-space: normal;
+  font-size: var(--h4) !important;
+  max-width: min(24ch, 100%) !important;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product)
+  section.section.dp:not(.dp--alt)
+  .service-choices {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Closing dp band — teal hover (not Legency blue / #eceeff lift from astro-agency). */
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product)
+  section.section.dp
+  .service-choice:hover {
+  border-color: rgba(0, 93, 124, 0.4) !important;
+  background: rgba(0, 93, 124, 0.08) !important;
+  transform: none !important;
+}
+
+/* dp band symbols: klear-iconography.css */
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product)
+  section.section.dp
+  .service-choice__symbol {
+  display: grid;
+  flex-shrink: 0;
+  font-size: 0;
+  line-height: 0;
+  place-items: center;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product)
+  section.section.dp
+  .dp__sub {
+  max-width: min(56ch, 100%);
+  text-align: left;
+}
+
+:is(.mirrored-root--klear-data, .mirrored-root--klear-hub, .mirrored-root--klear-product)
+  section.section.dp
+  .dp__sub:empty {
+  display: none;
+}
+
+.mirrored-root--klear-data .klear-data-fee-band .fee__heading {
+  color: var(--blue);
+  font-family: var(--font-title);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0 0 var(--sp-2);
+  max-width: none;
+}
+
+.mirrored-root--klear-data .klear-data-fee-band .fee__title {
+  font-size: var(--h4);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 var(--sp-5);
+  max-width: none;
+}
+
+.mirrored-root--klear-data .klear-data-fee-band .fee__steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* KlearHub / Managed Trade “How it works” fee row — three steps (not Legency 4-up). */
+:is(.mirrored-root--klear-hub, .mirrored-root--managed-trade)
+  section.section.scope
+  .fee__steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+:is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+  section.section.scope
+  .fee__steps--four {
+  gap: var(--sp-2);
+}
+
+/* Base regress band (Self Filers insert — Trade Compliance gets these from technical-seo.css). */
+.mirrored-root--self-filers section.section.regress .regress__heading[data-astro-cid-diqpbc75] {
+  font-size: var(--h4);
+  margin-bottom: var(--sp-3);
+  max-width: none;
+}
+
+/* Operation / Self Filers — “Why Being Prepared Matters” stays one line. */
+.mirrored-root--klear-operation section.section.regress .regress__heading[data-astro-cid-diqpbc75] {
+  max-width: none;
+}
+
+@media (width >= 900px) {
+  :is(.mirrored-root--klear-operation, .mirrored-root--self-filers)
+    section.section.regress
+    .regress__heading[data-astro-cid-diqpbc75] {
+    white-space: nowrap;
+  }
+}
+
+.mirrored-root--self-filers section.section.regress .regress__head[data-astro-cid-diqpbc75] {
+  margin-bottom: var(--sp-4);
+}
+
+.mirrored-root--self-filers section.section.regress .regress__grid[data-astro-cid-diqpbc75] {
+  gap: var(--sp-3);
+  display: grid;
+}
+
+.mirrored-root--self-filers section.section.regress .regress__card[data-astro-cid-diqpbc75] {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+}
+
+.mirrored-root--self-filers section.section.regress .regress__card[data-astro-cid-diqpbc75] h3 {
+  font-size: var(--h6);
+  margin-bottom: var(--sp-2);
+}
+
+.mirrored-root--self-filers section.section.regress .regress__card[data-astro-cid-diqpbc75] p {
+  font-size: var(--para-sm);
+}
+
+/* Operation TYpe — hide Legency “Why the Crawl Runs Monthly” regress eyebrow. */
+.mirrored-root--klear-operation section.section.regress .regress__head > .label {
+  display: none !important;
+}
+
+/* Operation TYpe — three regress cards in one row (Legency mirror is 2-up). */
+.mirrored-root--klear-operation section.section.regress .regress__grid,
+.mirrored-root--klear-operation section.section.regress .regress__grid[data-astro-cid-diqpbc75] {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+@media (width <= 900px) {
+  .mirrored-root--klear-operation section.section.regress .regress__grid,
+  .mirrored-root--klear-operation section.section.regress .regress__grid[data-astro-cid-diqpbc75] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (width <= 600px) {
+  .mirrored-root--klear-operation section.section.regress .regress__grid,
+  .mirrored-root--klear-operation section.section.regress .regress__grid[data-astro-cid-diqpbc75] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+:is(.mirrored-root--klear-hub, .mirrored-root--managed-trade)
+  section.section.scope
+  .fee__step
+  h4 {
+  font-size: var(--para-sm);
+  font-weight: 400;
+  line-height: 1.55;
+  max-width: none;
+  margin: var(--sp-2) 0 0;
+}
+
+:is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+  section.section.scope
+  .fee__step
+  h4 {
+  font-size: var(--h6);
+  font-weight: 500;
+  line-height: 1.25;
+  max-width: none;
+  margin: var(--sp-2) 0 0;
+}
+
+:is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+  section.section.scope
+  .fee__step
+  p {
+  font-size: var(--para-sm);
+  font-weight: 400;
+  line-height: 1.55;
+  max-width: none;
+  margin: var(--sp-2) 0 0;
+  opacity: 0.92;
+}
+
+@media (width <= 900px) {
+  :is(.mirrored-root--klear-hub, .mirrored-root--managed-trade)
+    section.section.scope
+    .fee__steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Freight Forwarders / Trade Compliance — “When to use KlearData” dp--alt (thdesxtn). */
+:is(.mirrored-root--freight-forwarders, .mirrored-root--klear-operation)
+  section.section.dp.dp--alt
+  .dp__head {
+  margin-bottom: var(--sp-5);
+  max-width: min(72ch, 100%);
+}
+
+:is(.mirrored-root--freight-forwarders, .mirrored-root--klear-operation)
+  section.section.dp.dp--alt
+  .dp__heading {
+  margin-bottom: var(--sp-2);
+  max-width: min(72ch, 100%);
+}
+
+.mirrored-root--klear-operation section.section.dp.dp--alt .dp__card h3[data-astro-cid-thdesxtn] {
+  max-width: none;
+}
+
+/* Ideal-importer cards (Trade Compliance / Self Filers) — titles only; bump above default --h6 */
+:is(.mirrored-root--trade-compliance, .mirrored-root--self-filers)
+  section.section.dp.dp--alt
+  .dp__card
+  h3[data-astro-cid-thdesxtn] {
+  font-size: var(--h5);
+  line-height: 1.25;
+  margin-bottom: 0;
+  max-width: none;
+}
+
+:is(.mirrored-root--freight-forwarders, .mirrored-root--klear-operation)
+  section.section.dp.dp--alt
+  .dp__head
+  .dp__sub {
+  margin: var(--sp-2) 0 0;
+  opacity: 1;
+  max-width: min(56ch, 100%);
+}
+
+:is(.mirrored-root--freight-forwarders, .mirrored-root--klear-operation)
+  section.section.dp.dp--alt
+  .dp__cards.dp__cards--three {
+  margin-top: 0;
+}
+
+.mirrored-root--klear-data section.section.dp.dp--alt .dp__card .dp__num {
+  display: block;
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: var(--h6);
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: var(--sp-2);
+}
+
+/* WHO WE SERVE — rot pixel grids (teal, not Legency blue / #7d80ff). */
+.mirrored-root section.section.rot {
+  --rot-pixel: var(--blue);
+  --rot-pixel-accent: var(--klear-teal);
+}
+
+.mirrored-root--managed-trade section.section.rot .rot__head {
+  grid-template-columns: 1fr;
+}
+
+.mirrored-root--managed-trade section.section.rot .rot__heading {
+  max-width: min(20em, 100%);
+}
+
+.mirrored-root--klear-operation section.section.rot .rot__steps:has(> .rot__step:nth-child(3):last-child),
+.mirrored-root--klear-operation
+  section.section.rot
+  .rot__steps[data-astro-cid-r7auhxne]:has(> .rot__step:nth-child(3):last-child) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mirrored-root section.section.rot .rot__px i {
+  background: var(--rot-pixel) !important;
+}
+
+.mirrored-root section.section.rot .rot__px[data-stage="2"] i:nth-child(5),
+.mirrored-root section.section.rot .rot__px[data-stage="3"] i:nth-child(2),
+.mirrored-root section.section.rot .rot__px[data-stage="3"] i:nth-child(9),
+.mirrored-root section.section.rot .rot__px[data-stage="4"] i:nth-child(4) {
+  background: var(--rot-pixel-accent) !important;
+}
+
+.mirrored-root section.section.rot .rot__px[data-stage="4"] i:first-child,
+.mirrored-root section.section.rot .rot__px[data-stage="4"] i:nth-child(8) {
+  background: var(--rot-pixel) !important;
+}
+
+.mirrored-root .separates__item .separates__cta {
+  margin-top: var(--sp-3);
+  flex-shrink: 0;
+}
+
+/* Home: remove dead black band between arc marquee and separates panel. */
+.mirrored-root section.arc {
+  margin-bottom: 0;
+}
+
+.mirrored-root section.arc + section.separates {
+  margin-top: 0;
+  padding-top: 0 !important;
+}
+
+.mirrored-root section.separates > .pixelated-scroll-transition {
+  block-size: 0 !important;
+  margin: 0 !important;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mirrored-root section.separates .pin-spacer {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Separates: single KlearNow panel (no 3-step sticky scroll). */
+.mirrored-root section.separates .separates__panel--single {
+  border-radius: var(--radius);
+  background: radial-gradient(
+    110% 140% at 30% 38%,
+    var(--blue) 0%,
+    color-mix(in srgb, var(--blue) 35%, var(--black)) 60%,
+    var(--black) 100%
+  );
+  grid-template-columns: 1fr 1fr;
+  height: min(85svh, 840px);
+  display: grid;
+  overflow: hidden;
+}
+
+.mirrored-root section.separates .separates__panel--single .separates__text-col {
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  display: flex;
+  position: relative;
+}
+
+.mirrored-root section.separates .separates__panel--single .separates__items {
+  display: grid;
+}
+
+.mirrored-root section.separates .separates__panel--single .separates__item {
+  align-items: flex-start;
+  gap: var(--sp-3);
+  visibility: visible !important;
+  border-top: 0;
+  flex-direction: column;
+  grid-area: 1 / 1;
+  padding: 0;
+  display: flex;
+}
+
+.mirrored-root section.separates .separates__panel--single .separates__item h3 {
+  font-size: var(--h4);
+  margin: 0;
+}
+
+.mirrored-root section.separates .separates__panel--single .separates__item p {
+  opacity: 0.9;
+  max-width: min(54ch, 100%);
+  line-height: 1.35;
+}
+
+.mirrored-root section.separates .separates__panel--single .separates__visuals {
+  display: block !important;
+  position: relative;
+}
+
+.mirrored-root section.separates .separates__panel--single .separates__visual {
+  background-color: var(--black);
+  background-repeat: no-repeat;
+  position: absolute;
+  inset: clamp(10px, 1.4vw, 20px);
+}
+
+.mirrored-root section.separates .separates__panel--single .separates__visual--1 {
+  background-image: url(/img/separates-speed.png);
+  background-position: 50%;
+  background-size: cover;
+}
+
+.mirrored-root section.separates .separates__progress {
+  display: none !important;
+}
+
+/* KlearNow footer — match homepage off-white canvas (#fafaf7), dark type. */
+.archive-chrome-footer .site-footer,
+.archive-chrome-footer [data-footer-parallax-inner],
+.site-footer[data-footer-parallax] [data-footer-parallax-inner] {
+  background: #fafaf7;
+}
+
+.archive-chrome-footer section.footer,
+.site-footer section.footer {
+  background: #fafaf7 !important;
+  color: var(--black);
+}
+
+.archive-chrome-footer section.footer .footer__col h3,
+.archive-chrome-footer section.footer .footer__col p,
+.archive-chrome-footer section.footer .footer__col li,
+.archive-chrome-footer section.footer .footer__col a,
+.archive-chrome-footer section.footer .footer__bottom,
+.archive-chrome-footer section.footer .footer__legal a,
+.archive-chrome-footer section.footer .footer__consent,
+.site-footer section.footer .footer__col h3,
+.site-footer section.footer .footer__col p,
+.site-footer section.footer .footer__col li,
+.site-footer section.footer .footer__col a,
+.site-footer section.footer .footer__bottom,
+.site-footer section.footer .footer__legal a,
+.site-footer section.footer .footer__consent {
+  color: var(--black);
+}
+
+.archive-chrome-footer section.footer .footer__link--disabled,
+.site-footer section.footer .footer__link--disabled {
+  color: color-mix(in srgb, var(--black) 42%, transparent);
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+}
+
+.archive-chrome-footer .footer__home:focus-visible,
+.site-footer .footer__home:focus-visible {
+  outline-color: var(--ink);
+}
+
+.archive-chrome-footer .footer__bottom,
+.site-footer .footer__bottom {
+  border-top-color: #201d1d1a;
+}
+
+.archive-chrome-footer .footer__place,
+.site-footer .footer__place {
+  color: var(--ink);
+  opacity: 0.75;
+}
+
+.archive-chrome-footer .site-footer__shade,
+.site-footer .site-footer__shade {
+  display: none !important;
+}
+
+.archive-chrome-footer .footer__col--spacer,
+.site-footer .footer__col--spacer {
+  min-height: 1px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Coverage gallery — Legency desk photos removed; preserve card visual ratio */
+.mirrored-root .work-card__visual .case-visual--placeholder,
+.mirrored-root section.cs-hero figure.cs-hero__media .case-visual--placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1440 / 1008;
+  background: #dfdff0;
+}
+
+/* Case study detail — match Coverage gallery tag chips */
+.mirrored-root section.cs-hero .coverage-hero__tags {
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.mirrored-root section.cs-hero .coverage-hero__tags li {
+  border: 1px solid #201d1d25;
+  border-radius: 5px;
+  padding: 9px 10px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+/* Case study solution card — source cross-check + duty tables (Grata) */
+.mirrored-root .sol-card:has(.sol-card__text--rich) {
+  min-height: 0;
+}
+
+.mirrored-root .sol-card__text--rich {
+  max-width: none;
+  margin-top: 0;
+  padding-top: var(--sp-4);
+  font-size: var(--h8);
+  line-height: 1.45;
+}
+
+.mirrored-root .kn-sol-sources {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.mirrored-root .kn-source-block__label {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-title);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.mirrored-root .kn-source-block__label--spaced {
+  margin-top: var(--sp-2);
+}
+
+.mirrored-root .kn-source-block__text {
+  margin: 0;
+  max-width: 52ch;
+}
+
+.mirrored-root .kn-sol-verify__p {
+  margin: 0 0 var(--sp-3);
+  max-width: none;
+}
+
+.mirrored-root .kn-sol-verify__p:last-child {
+  margin-bottom: 0;
+}
+
+/* Coverage pages using blog list / post shells */
+.mirrored-root--coverage-blog-shell .post-card__media--placeholder,
+.mirrored-root--coverage-blog-shell .featured__img--placeholder {
+  display: block;
+  width: 100%;
+  min-height: clamp(200px, 22vw, 320px);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+
+.mirrored-root--coverage-blog-shell .post-card__media--placeholder .case-visual--placeholder {
+  width: 100%;
+  min-height: inherit;
+  border-radius: inherit;
+}
+
+.mirrored-root--coverage-blog-shell .posthead__cover--placeholder {
+  width: 100%;
+  min-height: clamp(220px, 30vw, 420px);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+
+.mirrored-root--coverage-blog-shell .kn-coverage-prose .challenge,
+.mirrored-root--coverage-blog-shell .kn-coverage-prose .solution {
+  margin-top: var(--sp-6);
+}
+
+.mirrored-root .kn-duty-compare {
+  display: grid;
+  gap: var(--sp-3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .mirrored-root .kn-duty-compare {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mirrored-root .kn-duty-table-wrap {
+  margin: 0;
+  border: 1px solid #201d1d1f;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.mirrored-root .kn-duty-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.mirrored-root .kn-duty-table caption {
+  padding: var(--sp-2) var(--sp-3);
+  text-align: left;
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: #fff;
+  border-bottom: 1px solid #201d1d1f;
+}
+
+.mirrored-root .kn-duty-table th,
+.mirrored-root .kn-duty-table td {
+  padding: 0.5rem var(--sp-3);
+  text-align: left;
+  border-bottom: 1px solid #201d1d14;
+  font-weight: 400;
+}
+
+.mirrored-root .kn-duty-table th {
+  font-weight: 500;
+}
+
+.mirrored-root .kn-duty-table__total th,
+.mirrored-root .kn-duty-table__total td {
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.mirrored-root .kn-duty-table td {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.mirrored-root .kn-duty-table__note {
+  margin: 0;
+  padding: var(--sp-2) var(--sp-3);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: #201d1db3;
+  background: #fff;
+  border-top: 1px solid #201d1d14;
+}
+
+.mirrored-root .kn-duty-stats {
+  display: grid;
+  gap: var(--sp-3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: var(--sp-2) 0 0;
+  padding: var(--sp-3) 0 0;
+  border-top: 1px solid #201d1d1f;
+}
+
+@media (max-width: 700px) {
+  .mirrored-root .kn-duty-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mirrored-root .kn-duty-stats__item {
+  margin: 0;
+}
+
+.mirrored-root .kn-duty-stats dt {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.mirrored-root .kn-duty-stats dd {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  max-width: 28ch;
+}
+
+/* Self Filers: static KlearNow mark (replaces Legency dither poster on light bands). */
+.mirrored-root--self-filers .astro-dither-logo--klear {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: min(100%, 22rem);
+  margin-inline: auto;
+}
+
+.mirrored-root--self-filers .astro-dither-logo--klear .astro-dither-logo__brand {
+  opacity: 1 !important;
+  position: static !important;
+  width: min(100%, 12.5rem) !important;
+  max-width: none !important;
+  height: auto !important;
+  transform: none !important;
+}
+
+.mirrored-root--self-filers .astro-dither-logo__fallback,
+.mirrored-root--self-filers .astro-close__dither,
+.mirrored-root--self-filers img[src*='/img/marks/astro-dither-poster'] {
+  display: none !important;
+}
+
+/* Self Filers / inserted vs band — keep Unicorn scene inside the dark card. */
+.mirrored-root--self-filers section.section.vs .vs__card--strong {
+  min-height: 11rem;
+}
+
+.mirrored-root--self-filers section.section.vs .vs__scene canvas,
+.mirrored-root--self-filers section.section.vs .vs__scene > div {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100%;
+}
+
+.mirrored-root--self-filers section.section.vs .vs__card h3 {
+  max-width: 30ch;
+}
+
+/* Contact / get-in-touch — hide empty status slot (messages still show when set). */
+.enquiry__status[data-astro-cid-acgmji4b]:empty {
+  display: none;
+}
+
+/* Contact — space between form intro heading and step title (steps nav removed). */
+.enquiry__form-head[data-astro-cid-acgmji4b] {
+  margin-bottom: 28px;
+}
+
+.enquiry__step-title[data-astro-cid-acgmji4b] {
+  margin-top: 8px;
+}
+
+.enquiry__field--span[data-astro-cid-acgmji4b] {
+  grid-column: 1 / -1;
+}
+
+/* About Us — hide creds label + intro; keep layout space. */
+.mirrored-root section.section.creds .creds__left > .label,
+.mirrored-root section.section.creds .creds__left > .creds__intro {
+  visibility: hidden;
+}
+
+/* About Us — three stats as one proof component. */
+.mirrored-root section.section.creds .klear-creds-proof {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4, 1.25rem);
+  width: 100%;
+  max-width: 63ch; /* 42ch × 1.5 */
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.mirrored-root section.section.creds .klear-creds-proof__item {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.mirrored-root section.section.creds .klear-creds-proof__title {
+  font-size: var(--h6, 1.125rem);
+  margin: 0 0 var(--sp-1, 0.35rem);
+}
+
+.mirrored-root section.section.creds .klear-creds-proof__body {
+  margin: 0;
+  max-width: none;
+  opacity: 0.85;
+}
+
+/* About Us — company story in separates band. */
+.mirrored-root section.separates .separates__row--about-story {
+  display: block;
+  border-top: none;
+  padding-block: 0;
+}
+
+.mirrored-root section.separates .klear-about-story {
+  width: 100%;
+  max-width: min(72ch, 100%);
+}
+
+.mirrored-root section.separates .klear-about-story > p {
+  margin: 0 0 var(--sp-3, 1rem);
+  max-width: none; /* override .separates__row p { max-width: 46ch } */
+  font-size: clamp(1.2rem, 1.55vw, 1.5rem);
+  line-height: 1.55;
+  opacity: 0.92;
+}
+
+.mirrored-root section.separates .klear-about-story > h3 {
+  margin: var(--sp-4, 1.25rem) 0 var(--sp-3, 1rem);
+  font-size: var(--h5, 1.25rem);
+}
+
+.mirrored-root section.separates .klear-about-story > p:last-child {
+  margin-bottom: 0;
+}
+
+/* About Us — YouTube story thumbnail in blogteaser slot. */
+.mirrored-root section.section.blogteaser > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.mirrored-root section.section.blogteaser .blogteaser__title {
+  width: 100%;
+  text-align: center;
+}
+
+.mirrored-root section.section.blogteaser .klear-yt {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius, 12px);
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.mirrored-root section.section.blogteaser .klear-yt__facade {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+}
+
+.mirrored-root section.section.blogteaser .klear-yt__thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mirrored-root section.section.blogteaser .klear-yt__play {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 68px;
+  height: 48px;
+  margin: -24px 0 0 -34px;
+  border-radius: 14px;
+  background: #f00;
+  box-shadow: 0 4px 18px rgb(0 0 0 / 35%);
+}
+
+.mirrored-root section.section.blogteaser .klear-yt__play::before {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  margin: -7px 0 0 -5px;
+  border-style: solid;
+  border-width: 8px 0 8px 14px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.mirrored-root section.section.blogteaser .klear-yt__facade:hover .klear-yt__play {
+  background: #c00;
+}
+
+.mirrored-root section.section.blogteaser .klear-yt__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* About Us — leadership team (pillars replacement). */
+.mirrored-root section.section.klear-leadership {
+  --leadership-bg: #003f5b;
+  --leadership-card: #0a4a66;
+  --leadership-accent: var(--klear-teal, #007499);
+  background: var(--leadership-bg);
+  color: #fff;
+  padding-block: var(--sp-6, 4rem);
+}
+
+.mirrored-root section.section.klear-leadership .klear-leadership__title {
+  font-size: var(--h3);
+  text-align: center;
+  margin: 0 0 var(--sp-4, 1.5rem);
+}
+
+.mirrored-root section.section.klear-leadership .klear-leadership__tabs {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 0 0 var(--sp-5, 2.5rem);
+  border-bottom: 1px solid rgb(255 255 255 / 22%);
+}
+
+.mirrored-root section.section.klear-leadership .klear-leadership__tab {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  padding: 0.65rem 0.25rem 0.85rem;
+  color: rgb(255 255 255 / 72%);
+  font: inherit;
+  font-size: var(--para, 1.05rem);
+  cursor: pointer;
+}
+
+.mirrored-root section.section.klear-leadership .klear-leadership__tab.is-active,
+.mirrored-root section.section.klear-leadership .klear-leadership__tab[aria-selected="true"] {
+  color: #fff;
+  border-bottom-color: var(--leadership-accent);
+}
+
+.mirrored-root section.section.klear-leadership .klear-leadership__tab:focus-visible {
+  outline: 2px solid var(--leadership-accent);
+  outline-offset: 4px;
+}
+
+.mirrored-root section.section.klear-leadership .klear-leadership__panel-title {
+  font-size: var(--h5, 1.5rem);
+  margin: 0 0 var(--sp-3, 1rem);
+}
+
+.mirrored-root section.section.klear-leadership .klear-leadership__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-3, 1rem);
+}
+
+.mirrored-root section.section.klear-leadership .klear-leader-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: transparent;
+}
+
+.mirrored-root section.section.klear-leadership .klear-leader-card__photo {
+  aspect-ratio: 1;
+  width: 100%;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 12%), rgb(255 255 255 / 4%));
+  border: 1px dashed rgb(255 255 255 / 28%);
+}
+
+.mirrored-root section.section.klear-leadership .klear-leader-card__meta {
+  background: var(--leadership-card);
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.mirrored-root section.section.klear-leadership .klear-leader-card__name {
+  margin: 0 0 0.35rem;
+  font-size: var(--h7, 1.125rem);
+  font-weight: 500;
+}
+
+.mirrored-root section.section.klear-leadership .klear-leader-card__role {
+  margin: 0;
+  font-size: var(--para-sm, 0.95rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.mirrored-root section.section.klear-leadership .klear-leader-card--placeholder {
+  opacity: 0.72;
+}
+
+@media (width <= 900px) {
+  .mirrored-root section.section.klear-leadership .klear-leadership__grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+}
+
+/* Careers — How it works accordion (same card layout as KlearData leaks). */
+.mirrored-root--careers section.section.leaks {
+  background: var(--white);
+  padding-block: var(--sp-6, 4rem);
+}
+
+.mirrored-root--careers section.section.leaks .leaks__head {
+  margin-bottom: var(--sp-5);
+  max-width: min(56rem, 100%);
+}
+
+.mirrored-root--careers section.section.leaks .leaks__heading {
+  font-size: clamp(1.55rem, 2.35vw, 2.35rem);
+  margin-bottom: var(--sp-3);
+  max-width: none;
+  line-height: 1.2;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__heading-line {
+  display: block;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__sub {
+  font-size: var(--para-sm);
+  max-width: 54ch;
+  margin-bottom: var(--sp-2);
+}
+
+.mirrored-root--careers section.section.leaks .leaks__list {
+  gap: var(--sp-2);
+  list-style: none;
+  display: grid;
+  margin: 0;
+  padding: 0;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__item {
+  gap: var(--sp-4);
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  grid-template-columns: max-content minmax(0, 1fr);
+  display: grid;
+  width: 100%;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__num {
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: var(--h6);
+  color: var(--blue);
+  line-height: 1;
+  padding-top: 0.15em;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__body {
+  min-width: 0;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__q {
+  font-size: inherit;
+  margin: 0;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__btn {
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: var(--h6);
+  letter-spacing: -0.02em;
+  color: var(--black);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__btn:hover .leaks__q-text {
+  color: var(--blue);
+}
+
+.mirrored-root--careers section.section.leaks .leaks__q-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  margin-top: 0.35em;
+  color: var(--blue);
+}
+
+.mirrored-root--careers section.section.leaks .leaks__icon::before,
+.mirrored-root--careers section.section.leaks .leaks__icon::after {
+  content: "";
+  background: currentColor;
+  margin: auto;
+  transition: transform 0.3s, opacity 0.3s;
+  position: absolute;
+  inset: 0;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__icon::before {
+  width: 16px;
+  height: 2px;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__icon::after {
+  width: 2px;
+  height: 16px;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__btn[aria-expanded="true"] .leaks__icon::after {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.mirrored-root--careers section.section.leaks .leaks__panel {
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.625, 0.05, 0, 1);
+  display: grid;
+}
+
+.mirrored-root--careers
+  section.section.leaks
+  .leaks__item:has(.leaks__btn[aria-expanded="true"])
+  .leaks__panel {
+  grid-template-rows: 1fr;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__panel-inner {
+  overflow: hidden;
+}
+
+.mirrored-root--careers section.section.leaks .leaks__panel-inner p {
+  font-size: var(--para-sm);
+  max-width: 74ch;
+  margin: var(--sp-2) 0 0;
+  opacity: 0.9;
+}
+
+/* Careers — content from klearnow.ai/careers. */
+.mirrored-root section.section.legal.klear-careers {
+  background: var(--bg);
+}
+
+.mirrored-root .klear-careers__block {
+  margin-bottom: var(--sp-6, 3.5rem);
+}
+
+.mirrored-root .klear-careers__block:last-child {
+  margin-bottom: 0;
+}
+
+.mirrored-root .klear-careers__block--culture {
+  text-align: center;
+}
+
+.mirrored-root .klear-careers__block--culture .klear-careers__heading,
+.mirrored-root .klear-careers__block--culture .klear-careers__prose {
+  margin-inline: auto;
+}
+
+.mirrored-root .klear-careers__heading {
+  font-size: var(--h5, 1.5rem);
+  margin: 0 0 var(--sp-3, 1rem);
+}
+
+.mirrored-root .klear-careers__prose {
+  max-width: min(72rem, 100%);
+}
+
+.mirrored-root .klear-careers__prose p {
+  font-size: var(--para);
+  margin: 0 0 var(--sp-3, 1rem);
+  line-height: 1.55;
+}
+
+.mirrored-root .klear-careers__spotlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-3, 1rem);
+}
+
+.mirrored-root .klear-careers__spotlight {
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgb(32 29 29 / 12%);
+  border-radius: var(--radius, 12px);
+  overflow: hidden;
+  background: #fff;
+}
+
+.mirrored-root .klear-careers__spotlight-photo {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #d9e4ec, #eef3f6);
+  border-bottom: 1px solid rgb(32 29 29 / 10%);
+}
+
+.mirrored-root .klear-careers__spotlight h3 {
+  margin: 1rem 1.1rem 0.25rem;
+  font-size: var(--h7, 1.125rem);
+}
+
+.mirrored-root .klear-careers__spotlight-role,
+.mirrored-root .klear-careers__spotlight-loc {
+  margin: 0 1.1rem;
+  font-size: var(--para-sm, 1rem);
+}
+
+.mirrored-root .klear-careers__spotlight-role {
+  font-weight: 500;
+}
+
+.mirrored-root .klear-careers__spotlight-loc {
+  opacity: 0.7;
+  margin-top: 0.15rem;
+}
+
+.mirrored-root .klear-careers__spotlight blockquote {
+  margin: 0.85rem 1.1rem 1.15rem;
+  font-size: var(--para-sm, 1rem);
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.mirrored-root .klear-careers__eeo {
+  font-size: var(--h6, 1.25rem);
+  max-width: 36ch;
+  margin: 0 0 var(--sp-4, 1.5rem);
+  line-height: 1.25;
+}
+
+.mirrored-root .klear-careers__values {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-3, 1rem);
+}
+
+.mirrored-root .klear-careers__value {
+  margin: 0;
+  padding: var(--sp-3, 1rem) var(--sp-4, 1.25rem);
+  border-radius: var(--radius, 12px);
+  background: #003f5b;
+  color: #fff;
+}
+
+.mirrored-root .klear-careers__value h3 {
+  margin: 0 0 0.5rem;
+  font-size: var(--h7, 1.125rem);
+}
+
+.mirrored-root .klear-careers__value p {
+  margin: 0;
+  font-size: var(--para-sm, 1rem);
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.mirrored-root .klear-careers__count {
+  margin: 0 0 0.5rem;
+  font-size: var(--para);
+  font-weight: 500;
+}
+
+.mirrored-root .klear-careers__apply {
+  margin: 0 0 var(--sp-3, 1rem);
+  font-size: var(--para-sm, 1rem);
+}
+
+.mirrored-root .klear-careers__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-3);
+}
+
+/* Match site pillar / dp card surface. */
+.mirrored-root .klear-careers__role {
+  position: relative;
+  margin: 0;
+  padding: var(--sp-4);
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-height: clamp(220px, 20vw, 280px);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.mirrored-root .klear-careers__role:has(.klear-careers__role-link:hover),
+.mirrored-root .klear-careers__role:has(.klear-careers__role-link:focus-visible) {
+  box-shadow: 0 10px 28px rgb(32 29 29 / 8%);
+  transform: translateY(-2px);
+}
+
+.mirrored-root .klear-careers__role h3 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--h6);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.mirrored-root .klear-careers__role-meta {
+  margin: 0;
+  font-size: var(--para-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  opacity: 1;
+}
+
+.mirrored-root .klear-careers__role-excerpt {
+  margin: 0;
+  font-size: var(--para-sm);
+  line-height: 1.45;
+  color: var(--ink);
+  opacity: 0.75;
+  flex: 1;
+}
+
+.mirrored-root .klear-careers__role-link {
+  margin-top: auto;
+  color: var(--blue);
+  text-decoration: none;
+  font-size: var(--para-sm);
+  font-weight: 500;
+}
+
+.mirrored-root .klear-careers__role-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.mirrored-root .klear-careers__role-link:hover {
+  text-underline-offset: 0.15em;
+  text-decoration: underline;
+}
+
+.mirrored-root .klear-careers__role-link:focus-visible {
+  outline: none;
+}
+
+.mirrored-root .klear-careers__role-link:focus-visible::after {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+@media (width <= 900px) {
+  .mirrored-root .klear-careers__spotlights,
+  .mirrored-root .klear-careers__values,
+  .mirrored-root .klear-careers__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Contact form — teal focus/hover instead of Legency lavender/blue. */
+.enquiry[data-astro-cid-acgmji4b]
+  :is(input, select, textarea, button, a)[data-astro-cid-acgmji4b]:focus-visible {
+  outline: 2px solid var(--klear-teal) !important;
+  outline-offset: 3px;
+}
+
+.enquiry__field[data-astro-cid-acgmji4b]
+  :is(input, select, textarea)[data-astro-cid-acgmji4b]:hover {
+  border-color: color-mix(in srgb, var(--klear-teal) 65%, #60657b);
+}
+
+.enquiry__field[data-astro-cid-acgmji4b]
+  :is(input, select, textarea)[data-astro-cid-acgmji4b]:focus,
+.enquiry__field[data-astro-cid-acgmji4b]
+  :is(input, select, textarea)[data-astro-cid-acgmji4b]:focus-visible {
+  border-color: var(--klear-teal);
+  box-shadow: 0 0 0 1px var(--klear-teal);
+}
+
+.enquiry-select__trigger:hover {
+  background: color-mix(in srgb, var(--klear-teal) 14%, transparent) !important;
+  border-color: color-mix(in srgb, var(--klear-teal) 55%, #60657b) !important;
+}
+
+.enquiry-select__trigger:focus-visible {
+  outline: 2px solid var(--klear-teal) !important;
+  outline-offset: 3px;
+}
+
+.enquiry-select__trigger[aria-expanded='true'] {
+  background: color-mix(in srgb, var(--klear-teal) 16%, transparent) !important;
+  border-color: var(--klear-teal) !important;
+}
+
+.enquiry-select__option.is-active,
+.enquiry-select__option:hover {
+  background: color-mix(in srgb, var(--klear-teal) 28%, transparent) !important;
+  color: #fff !important;
+}
+
+.enquiry-select__option[aria-selected='true'] {
+  color: color-mix(in srgb, var(--klear-teal) 55%, #fff) !important;
+}
+
+.enquiry-select__option[aria-selected='true']:after {
+  border-color: var(--klear-teal) !important;
+}
+
+.enquiry[data-astro-cid-acgmji4b] input[type='checkbox'] {
+  accent-color: var(--klear-teal);
+}
+
+/* Contact / get-in-touch — email channels under intro (replaces Legency proof). */
+.enquiry__channels[data-astro-cid-acgmji4b] {
+  grid-area: 2 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 40px;
+  max-width: 28rem;
+}
+
+.enquiry__channel[data-astro-cid-acgmji4b] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.95rem 0;
+  border-top: 1px solid #d7dcff24;
+}
+
+.enquiry__channel[data-astro-cid-acgmji4b]:last-child {
+  padding-bottom: 0;
+}
+
+.enquiry__channel-label[data-astro-cid-acgmji4b] {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-transform: none;
+  color: #f6f6fa99;
+}
+
+.enquiry__channel-hint[data-astro-cid-acgmji4b] {
+  color: #f6f6fa66;
+  font-weight: 400;
+}
+
+.enquiry__channel-email[data-astro-cid-acgmji4b] {
+  color: #f6f6fa;
+  font-size: 1rem;
+  line-height: 1.35;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.enquiry__channel-email[data-astro-cid-acgmji4b]:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.enquiry[data-astro-cid-acgmji4b] h1[data-astro-cid-acgmji4b] {
+  max-width: 18ch;
+}
+
+@media (width <= 900px) {
+  .enquiry__channels[data-astro-cid-acgmji4b] {
+    grid-area: auto / 1;
+    order: 2;
+    padding-top: 8px;
+  }
+}

@@ -1,0 +1,17 @@
+---
+import { applyKlearNavChrome } from '../lib/strip-partner-badges';
+
+export interface ChromeData {
+  navHtml: string;
+  footerHtml: string;
+  consentHtml?: string;
+}
+
+interface Props {
+  chrome: ChromeData;
+}
+
+const { chrome } = Astro.props;
+const navHtml = applyKlearNavChrome(chrome.navHtml);
+---
+<div class="archive-chrome-nav" set:html={navHtml} />

@@ -1,0 +1,160 @@
+/* Testimonials carousel — Klear product + Operation TYpe mirrored inserts */
+.mirrored-root--klear-product section.testimonials {
+  background: var(--white);
+}
+
+.mirrored-root--klear-product section.testimonials .testimonials__head {
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  display: flex;
+}
+
+.mirrored-root--klear-product section.testimonials .testimonials__head h2 {
+  font-size: var(--h3);
+}
+
+.mirrored-root--klear-product section.testimonials .testimonials__controls {
+  align-items: center;
+  gap: var(--sp-2);
+  flex: none;
+  display: flex;
+}
+
+.mirrored-root--klear-product section.testimonials .testimonials__position {
+  font-variant-numeric: tabular-nums;
+  font-size: var(--para-sm);
+  margin-right: var(--sp-2);
+}
+
+.mirrored-root--klear-product section.testimonials .testimonials__controls button {
+  border: 1px solid var(--ink);
+  width: 48px;
+  height: 48px;
+  color: var(--ink);
+  cursor: pointer;
+  background: 0 0;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.mirrored-root--klear-product
+  section.testimonials
+  .testimonials__controls
+  button:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.mirrored-root--klear-product
+  section.testimonials
+  .testimonials__controls
+  button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.mirrored-root--klear-product
+  section.testimonials
+  .testimonials__controls
+  button:focus-visible,
+.mirrored-root--klear-product section.testimonials .testimonials__track:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 5px;
+}
+
+.mirrored-root--klear-product section.testimonials .testimonials__track {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  border-radius: var(--radius);
+  display: flex;
+  overflow-x: auto;
+}
+
+.mirrored-root--klear-product section.testimonials .testimonials__track::-webkit-scrollbar {
+  display: none;
+}
+
+.mirrored-root--klear-product section.testimonials .testimonials__slide {
+  min-width: 0;
+  padding: var(--sp-5);
+  background: var(--bg);
+  scroll-snap-align: start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-direction: column;
+  flex: 0 0 100%;
+  margin: 0;
+  display: flex;
+}
+
+.mirrored-root--klear-product section.testimonials blockquote {
+  margin: 0;
+}
+
+.mirrored-root--klear-product section.testimonials blockquote p {
+  font-family: var(--font-title);
+  letter-spacing: -0.025em;
+  max-width: 49ch;
+  font-size: clamp(1.5rem, 2.6vw, 2.65rem);
+  line-height: 1.25;
+}
+
+.mirrored-root--klear-product section.testimonials figcaption {
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-3);
+  display: flex;
+}
+
+.mirrored-root--klear-product section.testimonials figcaption strong {
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: var(--para);
+  display: block;
+}
+
+.mirrored-root--klear-product section.testimonials figcaption span {
+  font-size: var(--para-sm);
+  margin-top: 0.3em;
+  display: block;
+}
+
+.mirrored-root--klear-product section.testimonials figcaption img {
+  object-fit: contain;
+  filter: brightness(0);
+  width: 160px;
+  height: 54px;
+}
+
+.mirrored-root--klear-product section.testimonials figcaption img.tonal {
+  filter: grayscale();
+  mix-blend-mode: multiply;
+}
+
+.mirrored-root--klear-product
+  section.testimonials
+  figcaption
+  img.testimonials__logo--brand {
+  filter: none;
+  object-fit: contain;
+  background: transparent;
+}
+
+@media (width <= 600px) {
+  .mirrored-root--klear-product section.testimonials .testimonials__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mirrored-root--klear-product section.testimonials .testimonials__slide {
+    padding: var(--sp-3);
+  }
+
+  .mirrored-root--klear-product section.testimonials figcaption {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

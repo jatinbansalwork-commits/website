@@ -1,0 +1,245 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ArchiveChrome from '../components/ArchiveChrome.astro';
+import ArchiveFooterChrome from '../components/ArchiveFooterChrome.astro';
+import type { MirrorManifest } from '../lib/mirror-types';
+import MirroredMain from '../components/MirroredMain.astro';
+import {
+  isKlearSvcHeroEarthMirror,
+  isKlearProductOrOperationMirror,
+  resolveKlearCanonicalPath,
+} from '../data/klear-nav-urls';
+import { SITE_NAME, SITE_ORIGIN, stripLegencyReferences } from '../lib/brand';
+import { resolveKlearPageMeta } from '../lib/klear-page-meta';
+import { augmentManifestForCaseStudyBlogLayout } from '../lib/case-study-blog-layout';
+import {
+  MARKETING_AGENT_DEFERRED_SCRIPTS,
+  MARKETING_AGENT_MODULE,
+  MARKETING_AGENT_STYLES,
+  KLEAR_HERO_DITHER_MODULE,
+  KLEAR_HERO_STYLES,
+  KLEAR_DATA_HERO_STYLES,
+  KLEAR_SVC_LAYOUT_STYLESHEET,
+  KLEAR_FAQ_SECTION_STYLESHEET,
+  KLEAR_DATA_DP_SECTION_STYLESHEET,
+  KLEAR_DATA_TESTIMONIALS_STYLESHEET,
+  KLEAR_DATA_TESTIMONIALS_SCRIPT,
+  KLEAR_DATA_LEAKS_STYLESHEET,
+  KLEAR_DATA_LEAKS_SCRIPT,
+  KLEAR_DATA_VS_STYLESHEET,
+  KLEAR_DATA_FEE_STYLESHEET,
+  TIER_DITHER_MODULE,
+  HOME_BANDS_STYLESHEET,
+  HOME_ASTRO_SERVICES_STYLESHEET,
+  patchAboutInlineModulesTeal,
+} from '../lib/marketing-agent-home';
+
+interface Props {
+  manifest: MirrorManifest;
+  /** Built route path (e.g. `/custom-brokers/` for aliases). */
+  pagePath?: string;
+}
+
+let { manifest, pagePath } = Astro.props;
+manifest = augmentManifestForCaseStudyBlogLayout(manifest);
+
+if (manifest.kind === 'about' && manifest.inlineModules?.length) {
+  manifest = {
+    ...manifest,
+    inlineModules: patchAboutInlineModulesTeal(manifest.inlineModules),
+  };
+}
+
+const isHome = manifest.slug === 'home';
+const isAbout = manifest.slug === 'about' || manifest.kind === 'about';
+const isCareers = manifest.slug === 'careers' || pagePath === '/careers/';
+const usesKlearHeroEarth = isHome || isAbout;
+const isKlearData = manifest.slug === 'services__webflow-enterprise';
+const isKlearHub = manifest.slug === 'services__webflow-support';
+const isManagedTrade = manifest.slug === 'services__wordpress-to-webflow-migration';
+const isFreightForwarders = manifest.slug === 'services__search-ai-visibility';
+const isCustomBrokers = manifest.slug === 'aeo-agency';
+const isTradeCompliance = manifest.slug === 'services__technical-seo';
+const isSelfFilers = manifest.slug === 'services__astro-agency';
+const usesKlearHowItWorksScopeBand = isCustomBrokers || isTradeCompliance || isSelfFilers;
+const isKlearSvcEarth = isKlearSvcHeroEarthMirror(manifest.slug);
+const isKlearProductPage = isKlearProductOrOperationMirror(manifest.slug);
+const pageMeta = resolveKlearPageMeta(manifest);
+const documentTitle = pageMeta.title;
+const pageDescription = pageMeta.description;
+const canonicalPath = pagePath ?? resolveKlearCanonicalPath(manifest.slug, manifest.path);
+const canonicalUrl = new URL(canonicalPath, SITE_ORIGIN).href;
+
+const defaultScripts = [
+  '/_astro/Nav.astro_astro_type_script_index_0_lang.BTi8Y4C0.js',
+  '/_astro/Footer.astro_astro_type_script_index_0_lang.QLgbxcz6.js',
+  '/_astro/ConsentBanner.astro_astro_type_script_index_0_lang.BlWZOVqD.js',
+  '/_astro/Base.astro_astro_type_script_index_0_lang.BUtqXeGZ.js',
+  '/_astro/Base.astro_astro_type_script_index_1_lang.s69FG7Vr.js',
+];
+
+let bodyScripts =
+  manifest.scripts?.length > 0 ? [...new Set(manifest.scripts)] : [...defaultScripts];
+
+const pick = (needle: string, fallback: string) =>
+  manifest.stylesheets.find((s) => s.includes(needle)) ?? fallback;
+
+const globalCss = pick('global.', '/_astro/global.Btqt_PqA.css');
+const baseCss = pick('Base.', '/_astro/Base.Cz7aN_E5.css');
+const consentCss = pick('ConsentBanner.', '/_astro/ConsentBanner.Bjqg_HPr.css');
+
+const pageStyles = manifest.stylesheets.filter(
+  (s) => s !== globalCss && s !== baseCss && s !== consentCss,
+);
+
+const selfFilersNeedsSvcLayout = isSelfFilers && !manifest.stylesheets.some((s) => s.includes('ServiceLayout.'));
+const selfFilersNeedsFaqStyles =
+  isSelfFilers && !manifest.stylesheets.some((s) => s.includes('FaqSection.'));
+
+const astroHeroScriptNeedles = ['AstroDitherLogo', 'astro-agency.astro_astro_type_script'] as const;
+if (isSelfFilers) {
+  for (let i = bodyScripts.length - 1; i >= 0; i -= 1) {
+    if (astroHeroScriptNeedles.some((needle) => bodyScripts[i]?.includes(needle))) {
+      bodyScripts.splice(i, 1);
+    }
+  }
+}
+
+let chrome = null;
+try {
+  chrome = (await import('../data/mirror-chrome.json')).default;
+} catch {
+  chrome = null;
+}
+
+/** Legency mirrors ship inline CSS that disables the pixel page loader — drop it. */
+function stripMirroredPageLoaderKillSwitch(css: string): string | null {
+  const trimmed = css.trim();
+  if (!trimmed) return null;
+  if (/^\.transition\s*\{[^}]*display:\s*none[^}]*\}$/s.test(trimmed)) return null;
+  const withoutBodyRule = trimmed
+    .replace(/body\s*>\s*\.transition\s*\{[^}]*\}/g, '')
+    .trim();
+  return withoutBodyRule || null;
+}
+
+const mirroredInlineStyles =
+  manifest.inlineStyles
+    ?.map(stripMirroredPageLoaderKillSwitch)
+    .filter((css): css is string => Boolean(css)) ?? [];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{documentTitle}</title>
+    <meta name="application-name" content={SITE_NAME} />
+    <meta name="apple-mobile-web-app-title" content={SITE_NAME} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:title" content={documentTitle} />
+    {pageDescription && <meta name="description" content={pageDescription} />}
+    {pageDescription && <meta property="og:description" content={pageDescription} />}
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-transparent.png" />
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon-adaptive.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="preload"
+      href="/fonts/PPFrama-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin=""
+    />
+    <link
+      rel="preload"
+      href="/fonts/PPFramaText-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin=""
+    />
+    <link rel="stylesheet" href={globalCss} />
+    <link rel="stylesheet" href={baseCss} />
+    <link rel="stylesheet" href={consentCss} />
+    {pageStyles.map((href) => <link rel="stylesheet" href={href} />)}
+    <link rel="stylesheet" href="/css/layout-stable.css" />
+    <link rel="stylesheet" href="/css/klear-iconography.css" />
+    <link rel="stylesheet" href="/css/klear-hero-tokens.css" />
+    {(usesKlearHeroEarth || isKlearSvcEarth) && (
+      <link rel="preload" as="image" href="/img/klearnow/home-earth.webp" type="image/webp" />
+    )}
+    {usesKlearHeroEarth && KLEAR_HERO_STYLES.map((href) => <link rel="stylesheet" href={href} />)}
+    {isKlearSvcEarth && KLEAR_DATA_HERO_STYLES.map((href) => <link rel="stylesheet" href={href} />)}
+    {selfFilersNeedsSvcLayout && <link rel="stylesheet" href={KLEAR_SVC_LAYOUT_STYLESHEET} />}
+    {selfFilersNeedsFaqStyles && <link rel="stylesheet" href={KLEAR_FAQ_SECTION_STYLESHEET} />}
+    {isKlearProductPage && <link rel="stylesheet" href={KLEAR_DATA_TESTIMONIALS_STYLESHEET} />}
+    {(isKlearData || isKlearHub || isFreightForwarders || isTradeCompliance || isSelfFilers || isCareers) && (
+      <link rel="stylesheet" href={KLEAR_DATA_LEAKS_STYLESHEET} />
+    )}
+    {isKlearProductPage && (
+      <link rel="stylesheet" href={HOME_ASTRO_SERVICES_STYLESHEET} />
+    )}
+    {isKlearProductPage && <link rel="stylesheet" href={KLEAR_DATA_DP_SECTION_STYLESHEET} />}
+    {(isKlearData || isFreightForwarders || isCustomBrokers || isTradeCompliance || isSelfFilers) && (
+      <link rel="stylesheet" href={KLEAR_DATA_VS_STYLESHEET} />
+    )}
+    {isKlearData && <link rel="stylesheet" href={KLEAR_DATA_FEE_STYLESHEET} />}
+    {usesKlearHowItWorksScopeBand && <link rel="stylesheet" href={KLEAR_DATA_FEE_STYLESHEET} />}
+    {usesKlearHowItWorksScopeBand && <link rel="stylesheet" href="/css/custom-brokers-scope.css" />}
+    {isHome && MARKETING_AGENT_STYLES.map((href) => <link rel="stylesheet" href={href} />)}
+    {isHome && <link rel="stylesheet" href={HOME_BANDS_STYLESHEET} />}
+    {isHome && <link rel="stylesheet" href={HOME_ASTRO_SERVICES_STYLESHEET} />}
+    {isManagedTrade && <link rel="stylesheet" href={HOME_BANDS_STYLESHEET} />}
+    {(isFreightForwarders || isTradeCompliance) && (
+      <link rel="stylesheet" href={HOME_BANDS_STYLESHEET} />
+    )}
+    {mirroredInlineStyles.map((css) => <style set:html={css} />)}
+  </head>
+  <body class:list={{ 'page-klear-data': isKlearData }}>
+    <div class="transition" aria-hidden="true"></div>
+    {chrome ? <ArchiveChrome chrome={chrome} /> : <Nav />}
+    <main>
+      <MirroredMain manifest={manifest} pagePath={pagePath} />
+    </main>
+    {chrome ? <ArchiveFooterChrome chrome={chrome} /> : <Footer />}
+    {chrome?.consentHtml ? (
+      <div set:html={stripLegencyReferences(chrome.consentHtml)} />
+    ) : null}
+    <script is:inline>
+      document.querySelectorAll('main h2').forEach((h) => h.setAttribute('data-no-roll', ''));
+    </script>
+    <script src="/scripts/logo-motion.js" defer></script>
+    {isAbout && pagePath === '/about/' && (
+      <script src="/scripts/klear-yt-facade.js" defer />
+    )}
+    {isAbout && pagePath === '/about/' && (
+      <script src="/scripts/klear-leadership-tabs.js" defer />
+    )}
+    {isKlearProductPage && <script src={KLEAR_DATA_TESTIMONIALS_SCRIPT} defer />}
+    {(isKlearData || isKlearHub || isFreightForwarders || isTradeCompliance || isSelfFilers || isCareers) && (
+      <script src={KLEAR_DATA_LEAKS_SCRIPT} defer />
+    )}
+    {(usesKlearHeroEarth || isKlearSvcEarth) && (
+      <script type="module" src={KLEAR_HERO_DITHER_MODULE} />
+    )}
+    {bodyScripts.map((src) => (
+      <script type="module" src={src} />
+    ))}
+    {isHome &&
+      MARKETING_AGENT_DEFERRED_SCRIPTS.map((src) => <script src={src} defer />)}
+    {isHome && <script type="module" src={MARKETING_AGENT_MODULE} />}
+    {isHome && <script type="module" src={TIER_DITHER_MODULE} />}
+    {manifest.inlineModules?.map((code) => (
+      <script type="module" set:html={code} />
+    ))}
+    {manifest.deferredScripts?.map((src) =>
+      src.includes('calendly.com') ? (
+        <script src={src} async />
+      ) : (
+        <script src={src} defer />
+      ),
+    )}
+  </body>
+</html>

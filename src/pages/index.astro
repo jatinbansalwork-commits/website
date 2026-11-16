@@ -1,0 +1,18 @@
+---
+import ArchiveLayout from '../layouts/ArchiveLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageShell from '../components/pages/PageShell.astro';
+import { loadMirror } from '../lib/mirror';
+
+const manifest = await loadMirror('home');
+---
+{manifest ? (
+  <ArchiveLayout manifest={manifest} pagePath="/" />
+) : (
+  <BaseLayout title="KlearNow | Autonomous Customs & Trade Intelligence">
+    <PageShell kind="home" title="Home" path="/" />
+    <p class="container" style="margin-top:2rem;font-size:var(--para-sm);">
+      Run <code>npm run sync:wayback</code> to pull the Oct 2026 archive (Saturn hero + all pages).
+    </p>
+  </BaseLayout>
+)}

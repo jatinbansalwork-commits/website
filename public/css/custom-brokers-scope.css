@@ -1,0 +1,89 @@
+/* Operation / Custom Brokers “How it works” — four steps in one row (webflow-support fee grid). */
+
+:is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+  section.section.scope
+  .fee__steps--four,
+:is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+  section.section.scope
+  .fee__steps--four[data-astro-cid-r7auhxne] {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+/* webflow-support drops to 2 columns at 1100px; keep four across for this product band. */
+@media (width <= 1100px) {
+  :is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+    section.section.scope
+    .fee__steps--four,
+  :is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+    section.section.scope
+    .fee__steps--four[data-astro-cid-r7auhxne] {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  :is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+    section.section.scope
+    .fee__step[data-astro-cid-r7auhxne]:nth-child(2):before {
+    display: block;
+  }
+}
+
+@media (width <= 768px) {
+  :is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+    section.section.scope
+    .fee__steps--four,
+  :is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+    section.section.scope
+    .fee__steps--four[data-astro-cid-r7auhxne] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (width <= 600px) {
+  :is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+    section.section.scope
+    .fee__steps--four,
+  :is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+    section.section.scope
+    .fee__steps--four[data-astro-cid-r7auhxne] {
+    grid-template-columns: 1fr !important;
+  }
+
+  :is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+    section.section.scope
+    .fee__step[data-astro-cid-r7auhxne]:before {
+    display: none;
+  }
+}
+
+/* Regress band — hide Legency crawl eyebrow if mirror HTML still carries it. */
+:is(.mirrored-root--custom-brokers, .mirrored-root--klear-operation)
+  section.section.regress
+  .regress__head
+  > .label {
+  display: none !important;
+}
+
+/* “When to use KlearHub” — three narrow cards in one row (Legency notdo grid is 2-up). */
+.mirrored-root--custom-brokers section.section.notdo .notdo__grid,
+.mirrored-root--custom-brokers section.section.notdo .notdo__grid[data-astro-cid-hsjbckyb] {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.mirrored-root--custom-brokers section.section.notdo .notdo__card h3,
+.mirrored-root--custom-brokers section.section.notdo .notdo__card h3[data-astro-cid-hsjbckyb] {
+  max-width: none;
+}
+
+@media (width <= 900px) {
+  .mirrored-root--custom-brokers section.section.notdo .notdo__grid,
+  .mirrored-root--custom-brokers section.section.notdo .notdo__grid[data-astro-cid-hsjbckyb] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (width <= 600px) {
+  .mirrored-root--custom-brokers section.section.notdo .notdo__grid,
+  .mirrored-root--custom-brokers section.section.notdo .notdo__grid[data-astro-cid-hsjbckyb] {
+    grid-template-columns: 1fr !important;
+  }
+}

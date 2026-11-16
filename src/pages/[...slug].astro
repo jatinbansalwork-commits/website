@@ -1,0 +1,44 @@
+---
+import ArchiveLayout from '../layouts/ArchiveLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageShell from '../components/pages/PageShell.astro';
+import { routes, pathToSlug } from '../data/sitemap';
+import { klearRouteAliases } from '../data/klear-nav-urls';
+import { loadMirror, slugFromPath } from '../lib/mirror';
+
+export function getStaticPaths() {
+  const fromRoutes = routes
+    .filter((r) => r.path !== '/')
+    .map((r) => ({
+      params: { slug: pathToSlug(r.path)! },
+      props: r,
+    }));
+
+  const fromAliases = klearRouteAliases.map((a) => ({
+    params: { slug: pathToSlug(a.path)! },
+    props: {
+      path: a.path,
+      kind: a.kind,
+      title: a.title,
+      mirrorPath: a.mirrorPath,
+    },
+  }));
+
+  return [...fromRoutes, ...fromAliases];
+}
+
+const route = Astro.props;
+const mirrorPath = route.mirrorPath ?? route.path;
+const manifest = await loadMirror(slugFromPath(mirrorPath));
+const pagePath = route.path;
+---
+{manifest ? (
+  <ArchiveLayout manifest={manifest} pagePath={pagePath} />
+) : (
+  <BaseLayout title={route.title}>
+    <PageShell kind={route.kind} title={route.title} path={route.path} />
+    <p class="container" style="margin-bottom:3rem;font-size:var(--para-sm);">
+      Mirror missing — run <code>npm run sync:wayback</code> for this route.
+    </p>
+  </BaseLayout>
+)}

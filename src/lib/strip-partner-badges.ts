@@ -1,6 +1,23 @@
-import { footerColumns, servicesNavAccordionLabel } from '../data/navigation';
+import { footerColumns, servicesNavAccordionLabel, siteNav } from '../data/navigation';
 import { klearNavHrefRewrites } from '../data/klear-nav-urls';
 import { stripLegencyReferences } from './brand';
+
+/** Hide disabled primary nav items from archive chrome (pages stay routable). */
+export function removeDisabledSiteNavItems(html: string): string {
+  let out = html;
+  for (const item of siteNav) {
+    if (!('disabled' in item && item.disabled)) continue;
+    const escaped = item.href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    out = out.replace(
+      new RegExp(
+        `<li[^>]*>\\s*<a class="tsnav__li"[^>]*href="${escaped}"[^>]*>[\\s\\S]*?<\\/a>\\s*<\\/li>`,
+        'gi',
+      ),
+      '',
+    );
+  }
+  return out;
+}
 
 /** Remove Webflow Enterprise + Google Preferred Source partner marks from mirrored templates. */
 export function stripPartnerBadges(html: string): string {
@@ -244,6 +261,7 @@ export function applyKlearNavChrome(html: string): string {
   out = moveNavBookBesideOperationType(out);
   out = hideNavPanelEyebrows(out);
   out = patchNavKlearHrefs(out);
+  out = removeDisabledSiteNavItems(out);
   return stripLegencyReferences(out);
 }
 

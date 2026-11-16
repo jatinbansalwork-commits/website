@@ -12,11 +12,11 @@ export const servicesNavAccordionLabel = 'Service model' as const;
 
 export const siteNav = [
   { href: klearSiteNavHrefs.home, label: 'Home' },
-  { href: klearSiteNavHrefs.postEntryAudit, label: 'Post-Entry Audit' },
-  { href: klearSiteNavHrefs.tariffCalcultor, label: 'Tariff Calcultor' },
-  { href: klearSiteNavHrefs.coverage, label: 'Coverage' },
-  { href: klearSiteNavHrefs.blog, label: 'Blog' },
-  { href: klearSiteNavHrefs.resources, label: 'Resources' },
+  { href: klearSiteNavHrefs.postEntryAudit, label: 'Post-Entry Audit', disabled: true },
+  { href: klearSiteNavHrefs.tariffCalcultor, label: 'Tariff Calcultor', disabled: true },
+  { href: klearSiteNavHrefs.coverage, label: 'Coverage', disabled: true },
+  { href: klearSiteNavHrefs.blog, label: 'Blog', disabled: true },
+  { href: klearSiteNavHrefs.resources, label: 'Resources', disabled: true },
   { href: klearSiteNavHrefs.getInTouch, label: 'Get in touch' },
 ] as const;
 

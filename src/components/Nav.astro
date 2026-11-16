@@ -31,7 +31,9 @@ import { siteNav, serviceGroups, servicesNavBookCta, servicesNavAccordionLabel }
                 <div class="tsnav__col tsnav__col--info">
                   <p class="tsnav__eyebrow tsnav__eyebrow--site" aria-hidden="true"></p>
                   <ul class="tsnav__ul">
-                    {siteNav.map((item) => (
+                    {siteNav
+                      .filter((item) => !('disabled' in item && item.disabled))
+                      .map((item) => (
                       <li><a class="tsnav__li" href={item.href}>{item.label}</a></li>
                     ))}
                   </ul>

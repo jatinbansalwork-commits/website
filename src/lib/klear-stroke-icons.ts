@@ -20,3 +20,5 @@ export function klearStrokeSvg(paths: string, extraAttrs = ''): string {
 export function klearStrokeIconChip(paths: string, sizePx = KLEAR_ICON_SIZE_PX): string {
   return `<span class="icon-chip icon-chip--bare" style="--icon-chip-size:${sizePx}px" aria-hidden="true">${klearStrokeSvg(paths)}</span>`;
 }
+
+export * from './klear-icon-paths';

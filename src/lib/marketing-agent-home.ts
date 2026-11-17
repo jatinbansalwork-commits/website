@@ -35,6 +35,28 @@ import {
   patchFoundCardIconByTitle,
   patchFoundationBareIconChips,
 } from './klear-foundation-icons';
+import {
+  ICON_BELL,
+  ICON_BRIEFCASE,
+  ICON_CLIPBOARD,
+  ICON_DOC_INGESTION,
+  ICON_DRAYAGE,
+  ICON_FILE_CHECK,
+  ICON_FILE_SEARCH,
+  ICON_GLOBE,
+  ICON_LANDED_COST,
+  ICON_LAYERS,
+  ICON_LAYOUT,
+  ICON_LINK,
+  ICON_MAIL,
+  ICON_MAP_PIN,
+  ICON_MESSAGE,
+  ICON_SHIELD_CHECK,
+  ICON_TARIFF_CHART,
+  ICON_TREND_UP,
+  ICON_USERS,
+  ICON_USER_X,
+} from './klear-icon-paths';
 import { klearStrokeSvg } from './klear-stroke-icons';
 
 /** KlearData / FF two-card vs band (not Legency “tool vs agency” `vs__grid` elsewhere). */
@@ -1299,12 +1321,12 @@ export function patchSelfFilersVsIcons(mainHtml: string): string {
   html = patchFreightForwardersVsCardIcon(
     html,
     SELF_FILERS_VS_CARD1_TITLE,
-    '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v4c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 9v4c0 1.7 3.6 3 8 3s8-1.3 8-3V9"/><path d="M12 13v8"/><path d="m9 18 3 3 3-3"/>',
+    ICON_DOC_INGESTION,
   );
   html = patchFreightForwardersVsCardIcon(
     html,
     SELF_FILERS_VS_CARD2_TITLE,
-    '<path d="m12.83 2.18 8 4.52a1 1 0 0 1 0 1.74l-8 4.52a1 1 0 0 1-.83 0l-8-4.52a1 1 0 0 1 0-1.74l8-4.52a1 1 0 0 1 .83 0z"/><path d="m22 10-10 5L2 10"/><path d="m22 15-10 5L2 15"/>',
+    ICON_LAYERS,
   );
   return html;
 }
@@ -2032,17 +2054,17 @@ export function patchFreightForwardersHomeServicesRepeatCardIcons(mainHtml: stri
   html = patchHubRepeatCardIconByTitle(
     html,
     FREIGHT_FORWARDERS_HOME_SERVICES_REPEAT_CARD1_TITLE,
-    '<path d="M10 17h4"/><path d="M3 9h11v8H3z"/><path d="M14 9h4l3 4v4h-7V9z"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="17.5" cy="18" r="1.5"/>',
+    ICON_DRAYAGE,
   );
   html = patchHubRepeatCardIconByTitle(
     html,
     FREIGHT_FORWARDERS_HOME_SERVICES_REPEAT_CARD2_TITLE,
-    '<path d="M3 3v18h18"/><path d="m7 15 3-3 3 3 4-5"/><path d="M17 10h3v3"/>',
+    ICON_TARIFF_CHART,
   );
   html = patchHubRepeatCardIconByTitle(
     html,
     FREIGHT_FORWARDERS_HOME_SERVICES_REPEAT_CARD3_TITLE,
-    '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/>',
+    ICON_MESSAGE,
   );
   return html;
 }
@@ -2973,12 +2995,12 @@ function applyFreightForwardersStyleVsIcons(mainHtml: string): string {
   html = patchFreightForwardersVsCardIcon(
     html,
     FREIGHT_FORWARDERS_VS_CARD1_TITLE,
-    '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v4c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 9v4c0 1.7 3.6 3 8 3s8-1.3 8-3V9"/><path d="M12 13v8"/><path d="m9 18 3 3 3-3"/>',
+    ICON_DOC_INGESTION,
   );
   html = patchFreightForwardersVsCardIcon(
     html,
     FREIGHT_FORWARDERS_VS_CARD2_TITLE,
-    '<path d="m12.83 2.18 8 4.52a1 1 0 0 1 0 1.74l-8 4.52a1 1 0 0 1-.83 0l-8-4.52a1 1 0 0 1 0-1.74l8-4.52a1 1 0 0 1 .83 0z"/><path d="m22 10-10 5L2 10"/><path d="m22 15-10 5L2 15"/>',
+    ICON_LAYERS,
   );
   return html;
 }
@@ -3754,17 +3776,17 @@ export function patchManagedTradeHomeServicesRepeatCardIcons(mainHtml: string): 
   html = patchHubRepeatCardIconByTitle(
     html,
     MANAGED_TRADE_HOME_SERVICES_REPEAT_CARD1_TITLE,
-    '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    ICON_USERS,
   );
   html = patchHubRepeatCardIconByTitle(
     html,
     MANAGED_TRADE_HOME_SERVICES_REPEAT_CARD2_TITLE,
-    '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+    ICON_SHIELD_CHECK,
   );
   html = patchHubRepeatCardIconByTitle(
     html,
     MANAGED_TRADE_HOME_SERVICES_REPEAT_CARD3_TITLE,
-    '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/>',
+    ICON_LAYERS,
   );
   return html;
 }
@@ -3955,30 +3977,12 @@ export function patchManagedTradeHomeServicesCardIcons(mainHtml: string): string
   if (!mainHtml.includes('id="home-services"')) return mainHtml;
 
   const iconByTitle: readonly [string, string][] = [
-    [
-      'Customs clearance in five countries',
-      '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
-    ],
-    [
-      'Managed refund recovery',
-      '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><circle cx="10.5" cy="15.5" r="2.5"/><path d="m12.5 17.5 4 4"/>',
-    ],
-    [
-      'Connect your systems',
-      '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
-    ],
-    [
-      'Expert help on tap',
-      '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
-    ],
-    [
-      'A named team, not a queue',
-      '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-    ],
-    [
-      'Your process, written down',
-      '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>',
-    ],
+    ['Customs clearance in five countries', ICON_GLOBE],
+    ['Managed refund recovery', ICON_FILE_SEARCH],
+    ['Connect your systems', ICON_LINK],
+    ['Expert help on tap', ICON_MESSAGE],
+    ['A named team, not a queue', ICON_USERS],
+    ['Your process, written down', ICON_CLIPBOARD],
   ];
 
   let html = mainHtml;
@@ -5258,21 +5262,9 @@ export function patchKlearHubHomeServicesRepeatCardIcons(mainHtml: string): stri
   if (!mainHtml.includes('id="home-services-repeat"')) return mainHtml;
 
   let html = mainHtml;
-  html = patchHubRepeatCardIconByTitle(
-    html,
-    'Customs Brokers',
-    '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-  );
-  html = patchHubRepeatCardIconByTitle(
-    html,
-    'Trade compliance leaders',
-    '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
-  );
-  html = patchHubRepeatCardIconByTitle(
-    html,
-    'Self-filers and IORs',
-    '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/>',
-  );
+  html = patchHubRepeatCardIconByTitle(html, 'Customs Brokers', ICON_USERS);
+  html = patchHubRepeatCardIconByTitle(html, 'Trade compliance leaders', ICON_SHIELD_CHECK);
+  html = patchHubRepeatCardIconByTitle(html, 'Self-filers and IORs', ICON_LAYERS);
   return html;
 }
 
@@ -6753,11 +6745,8 @@ export function patchTradeComplianceVsCards(mainHtml: string): string {
   return patchTradeComplianceTwoCardVsCards(mainHtml);
 }
 
-const CUSTOM_BROKERS_VS_CARD1_ICON_PATHS =
-  '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v4c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 9v4c0 1.7 3.6 3 8 3s8-1.3 8-3V9"/><path d="M12 13v8"/><path d="m9 18 3 3 3-3"/>';
-
-const CUSTOM_BROKERS_VS_CARD2_ICON_PATHS =
-  '<path d="m12.83 2.18 8 4.52a1 1 0 0 1 0 1.74l-8 4.52a1 1 0 0 1-.83 0l-8-4.52a1 1 0 0 1 0-1.74l8-4.52a1 1 0 0 1 .83 0z"/><path d="m22 10-10 5L2 10"/><path d="m22 15-10 5L2 15"/>';
+const CUSTOM_BROKERS_VS_CARD1_ICON_PATHS = ICON_DOC_INGESTION;
+const CUSTOM_BROKERS_VS_CARD2_ICON_PATHS = ICON_LAYERS;
 
 /** Custom Brokers — drop Legency “Before You Buy Either” tool vs agency band (keep two-card vs). */
 export function removeCustomBrokersLegencyVsBand(mainHtml: string): string {
@@ -7069,23 +7058,17 @@ export function patchKlearHubFoundationCardIcons(mainHtml: string): string {
   html = patchFoundCardIconByTitle(
     html,
     KLEAR_HUB_FOUNDATION_CARD1_TITLE,
-    klearFoundationIconSvg(
-      '<rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>',
-    ),
+    klearFoundationIconSvg(ICON_LAYOUT),
   );
   html = patchFoundCardIconByTitle(
     html,
     KLEAR_HUB_FOUNDATION_CARD2_TITLE,
-    klearFoundationIconSvg(
-      '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
-    ),
+    klearFoundationIconSvg(ICON_MAP_PIN),
   );
   html = patchFoundCardIconByTitle(
     html,
     KLEAR_HUB_FOUNDATION_CARD3_TITLE,
-    klearFoundationIconSvg(
-      '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 6.84a2 2 0 0 1-2.06 0L2 7"/>',
-    ),
+    klearFoundationIconSvg(ICON_MAIL),
   );
   return html;
 }
@@ -7099,23 +7082,17 @@ export function patchManagedTradeFoundationCardIcons(mainHtml: string): string {
   html = patchFoundCardIconByTitle(
     html,
     MANAGED_TRADE_FOUNDATION_CARD1_TITLE,
-    klearFoundationIconSvg(
-      '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-    ),
+    klearFoundationIconSvg(ICON_USERS),
   );
   html = patchFoundCardIconByTitle(
     html,
     MANAGED_TRADE_FOUNDATION_CARD2_TITLE,
-    klearFoundationIconSvg(
-      '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
-    ),
+    klearFoundationIconSvg(ICON_TREND_UP),
   );
   html = patchFoundCardIconByTitle(
     html,
     MANAGED_TRADE_FOUNDATION_CARD3_TITLE,
-    klearFoundationIconSvg(
-      '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/>',
-    ),
+    klearFoundationIconSvg(ICON_USER_X),
   );
 
   return patchManagedTradeFoundationCardIconChips(html);
@@ -7141,51 +7118,15 @@ export function patchKlearHubHomeServicesCardIcons(mainHtml: string): string {
   if (!mainHtml.includes('id="home-services"')) return mainHtml;
 
   let html = mainHtml;
-  html = patchHubServiceChoiceIconByTitle(
-    html,
-    'File your own customs',
-    '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/>',
-  );
-  html = patchHubServiceChoiceIconByTitle(
-    html,
-    'Work with the brokers you already have',
-    '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-  );
-  html = patchHubServiceChoiceIconByTitle(
-    html,
-    'See every shipment',
-    '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
-  );
-  html = patchHubServiceChoiceIconByTitle(
-    html,
-    'Turn history into decisions',
-    '<path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/>',
-  );
-  html = patchHubServiceChoiceIconByTitle(
-    html,
-    'Stay audit-ready',
-    '<path d="M3 7v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M7 12h10"/>',
-  );
-  html = patchHubServiceChoiceIconByTitle(
-    html,
-    'One parts library',
-    '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/>',
-  );
-  html = patchHubServiceChoiceIconByTitle(
-    html,
-    'Clearance and filing workspace',
-    '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
-  );
-  html = patchHubServiceChoiceIconByTitle(
-    html,
-    'Never miss a milestone',
-    '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
-  );
-  html = patchHubServiceChoiceIconByTitle(
-    html,
-    "Find money you're owed",
-    '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><circle cx="10.5" cy="15.5" r="2.5"/><path d="m12.5 17.5 4 4"/>',
-  );
+  html = patchHubServiceChoiceIconByTitle(html, 'File your own customs', ICON_FILE_CHECK);
+  html = patchHubServiceChoiceIconByTitle(html, 'Work with the brokers you already have', ICON_USERS);
+  html = patchHubServiceChoiceIconByTitle(html, 'See every shipment', ICON_MAP_PIN);
+  html = patchHubServiceChoiceIconByTitle(html, 'Turn history into decisions', ICON_LANDED_COST);
+  html = patchHubServiceChoiceIconByTitle(html, 'Stay audit-ready', ICON_BRIEFCASE);
+  html = patchHubServiceChoiceIconByTitle(html, 'One parts library', ICON_LAYERS);
+  html = patchHubServiceChoiceIconByTitle(html, 'Clearance and filing workspace', ICON_SHIELD_CHECK);
+  html = patchHubServiceChoiceIconByTitle(html, 'Never miss a milestone', ICON_BELL);
+  html = patchHubServiceChoiceIconByTitle(html, "Find money you're owed", ICON_FILE_SEARCH);
   return html;
 }
 

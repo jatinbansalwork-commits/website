@@ -120,6 +120,7 @@ import {
   replaceSelfFilersAstroHeroWithOperationSvcHero,
   patchPrivacyPolicyContent,
   patchGetInTouchEnquiryHeading,
+  patchGetInTouchEnquiryEarthArt,
   patchGetInTouchEnquiryFormHeading,
   patchGetInTouchEnquirySummary,
   removeGetInTouchEnquiryProof,
@@ -484,6 +485,7 @@ if (manifest.slug === 'careers') {
 }
 if (manifest.slug === 'get-in-touch') {
   mainHtml = patchGetInTouchEnquiryHeading(mainHtml);
+  mainHtml = patchGetInTouchEnquiryEarthArt(mainHtml);
   mainHtml = patchGetInTouchEnquiryFormHeading(mainHtml);
   mainHtml = patchGetInTouchEnquirySummary(mainHtml);
   mainHtml = removeGetInTouchEnquiryCall(mainHtml);

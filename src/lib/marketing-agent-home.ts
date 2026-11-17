@@ -758,6 +758,23 @@ export function patchGetInTouchEnquiryHeading(mainHtml: string): string {
   );
 }
 
+/** Contact / get-in-touch: Saturn enquiry dither → Earth on the same dark navy palette. */
+export function patchGetInTouchEnquiryEarthArt(mainHtml: string): string {
+  if (!mainHtml.includes('class="enquiry__art"')) return mainHtml;
+
+  let html = mainHtml.replace(
+    /data-live-dither="\/img\/enquiry-planet\.webp"/g,
+    'data-live-dither="/img/klearnow/home-earth.webp" data-live-dither-theme="enq-earth"',
+  );
+  if (!html.includes('data-live-dither-theme="enq-earth"') && html.includes('class="enquiry__art"')) {
+    html = html.replace(
+      /(<div class="enquiry__art"[^>]*data-live-dither="\/img\/klearnow\/home-earth\.webp")/,
+      '$1 data-live-dither-theme="enq-earth"',
+    );
+  }
+  return html;
+}
+
 const GET_IN_TOUCH_FORM_HEADING = 'Tell us a little bit about you';
 
 /** Privacy policy page — replace Legency prose with KlearNow.AI policy. */
